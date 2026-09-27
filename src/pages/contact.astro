@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import TrustChips from '../components/TrustChips.astro';
+import Steps from '../components/Steps.astro';
+import { business, licenseDisplay } from '../config/business';
+
+const license = licenseDisplay();
+
+const title = 'Request Service | Sunshine Climate Solutions';
+const description =
+  'Request HVAC service in Tampa Bay — or call or text (727) 661-5200. $50 service call, waived when you proceed with the repair. Free estimates. Open 7:30 AM – 7:30 PM, every day.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Contact</p>
+      <h1>Request service</h1>
+      <p class="lead">
+        Tell us what's going on and where you are — we'll contact you to confirm availability.
+        Submitting a request does not book an appointment.
+      </p>
+      <div class="cluster" style="margin-top: var(--sp-xs);">
+        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-contact-hero">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-contact-hero">
+          <Icon name="message" /> Text Us
+        </a>
+        <a
+          class="hero-alt"
+          href={`mailto:${business.email}`}
+          data-cta="email-contact-hero"
+        >
+          <Icon name="mail" /> {business.email}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="request-heading">
+    <div class="container home-duo">
+      <div class="stack stack--lg">
+        <h2 id="request-heading" style="font-size: var(--text-h2);">Ways to reach us</h2>
+        <div class="stack">
+          <a class="card card-hover" href={business.phone.href} data-cta="call-contact-card">
+            <span class="card-icon"><Icon name="phone" /></span>
+            <h3 style="font-size: var(--text-lg);">Call</h3>
+            <p>{business.phone.display} — the fastest way to reach the owner directly.</p>
+          </a>
+          <a class="card card-hover" href={business.phone.sms} data-cta="text-contact-card">
+            <span class="card-icon"><Icon name="message" /></span>
+            <h3 style="font-size: var(--text-lg);">Text</h3>
+            <p>Questions or photos of your unit — send them to {business.phone.display}.</p>
+          </a>
+          <a
+            class="card card-hover"
+            href={`mailto:${business.email}`}
+            data-cta="email-contact-card"
+          >
+            <span class="card-icon"><Icon name="mail" /></span>
+            <h3 style="font-size: var(--text-lg);">Email</h3>
+            <p>{business.email} — good for project details and TAB inquiries.</p>
+          </a>
+        </div>
+
+        <div>
+          <h2 style="font-size: var(--text-h3);">Hours</h2>
+          <p class="muted">{business.hours.display}, {business.hours.days.toLowerCase()}. US Eastern time.</p>
+        </div>
+
+        <div>
+          <h2 style="font-size: var(--text-h3);">Pricing, up front</h2>
+          <p class="muted">
+            {business.pricing.serviceCall} service call — waived when you proceed with the repair ·
+            {business.pricing.estimates.toLowerCase()}.
+          </p>
+          <p class="muted" style="margin-top: var(--sp-2xs);">
+            Service area: Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and
+            surrounding communities. Central Florida projects considered depending on scope.
+          </p>
+          <p class="license-line" style="margin-top: var(--sp-2xs);">
+            <Icon name="badge" /> Licensed and insured {license ? `· ${license}` : ''}
+          </p>
+        </div>
+
+        <TrustChips />
+      </div>
+
+      <div class="form-card" id="request-form">
+        <h2 style="font-size: var(--text-h2); margin-bottom: var(--sp-md);">Request service</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">What happens next</p>
+        <h2 id="process-heading">After you reach out</h2>
+      </div>
+      <Steps />
+    </div>
+  </section>
+</BaseLayout>

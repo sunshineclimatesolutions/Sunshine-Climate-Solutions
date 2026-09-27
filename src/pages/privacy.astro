@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../config/business';
+
+const title = 'Privacy | Sunshine Climate Solutions';
+const description =
+  'How Sunshine Climate Solutions handles information you send us: what the request form collects, how Web3Forms processes it, and how to reach us instead.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Privacy</p>
+      <h1>How your information is handled</h1>
+      <p class="lead">
+        Short version: this website runs no advertising or tracking scripts, and the only personal
+        information we collect is what you choose to send us.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="prose">
+        <h2>What the request form collects</h2>
+        <p>
+          The service request form sends the information you type into it: your name, phone
+          number, ZIP code, the service you selected, your description of the problem, and — only
+          if you provide them — your email address, preferred date and time window, and a company
+          or project name.
+        </p>
+        <p>
+          We ask for a ZIP code to help confirm service coverage before we talk. We don't collect
+          your street address through the form, and nothing else about your visit is recorded by
+          this website.
+        </p>
+
+        <h2>How form submissions are processed</h2>
+        <p>
+          Submissions are transmitted to <a href="https://web3forms.com" rel="noopener">Web3Forms</a>,
+          a third-party form-processing service. Web3Forms forwards the submission as an email to
+          our business inbox ({business.email}) so we can follow up with you. Processing happens on
+          Web3Forms' servers; this website itself has no database and stores nothing.
+        </p>
+        <p>
+          For details about Web3Forms' own handling of submission data, refer to their published
+          privacy documentation. If you prefer not to send information through a third-party form
+          processor, call or text {business.phone.display} instead — that works just as well.
+        </p>
+
+        <h2>No trackers or advertising cookies</h2>
+        <p>
+          This site loads no analytics, advertising, or tracking scripts, and sets no tracking
+          cookies. Fonts are served from this website's own files — there are no third-party font
+          or embedded-content requests.
+        </p>
+
+        <h2>Communication you start</h2>
+        <p>
+          If you call, text, or email us, we use your contact details to respond to your inquiry
+          and coordinate service. That's it. We don't add customers to marketing lists through this
+          website, and the form has no marketing sign-up checkbox.
+        </p>
+
+        <h2>Questions</h2>
+        <p>
+          Questions about this page? Email <a href={`mailto:${business.email}`}>{business.email}</a>
+          or call <a href={business.phone.href}>{business.phone.display}</a> and ask for the owner.
+        </p>
+        <p><em>Last updated: September 2026.</em></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

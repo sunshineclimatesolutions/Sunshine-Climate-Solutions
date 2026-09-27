@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { business, licenseDisplay } from '../config/business';
+
+const projects = await getCollection('projects');
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const year = new Date().getFullYear();
+const license = licenseDisplay();
+---
+
+<footer class="site-footer on-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Logo size="lg" />
+        <p>
+          Owner-operated heating and cooling service for Tampa Bay homes and businesses. Clear
+          explanations, straightforward options, and a repair-first approach.
+        </p>
+        <a
+          class="footer-reviews"
+          href={business.reviewsUrl}
+          data-cta="reviews-footer"
+          rel="noopener"
+        >
+          <Icon name="star" />
+          {business.reviewsLabel}
+        </a>
+        <p class="license-line">
+          <Icon name="badge" /> Licensed and insured · EPA Section 608 certified
+        </p>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Services</h2>
+        <ul class="footer-links">
+          {
+            services.map((s) => (
+              <li>
+                <a href={`/services/${s.id}/`}>{s.data.title}</a>
+              </li>
+            ))
+          }
+          <li><a href="/tab-commissioning-support/">TAB & Commissioning</a></li>
+          {projects.length > 0 && <li><a href="/our-work/">Our Work</a></li>}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Company</h2>
+        <ul class="footer-links">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/service-area/">Service Area</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Get in touch</h2>
+        <div class="footer-contact">
+          <a href={business.phone.href} data-cta="call-footer">
+            <Icon name="phone" /> {business.phone.display}
+          </a>
+          <a href={business.phone.sms} data-cta="text-footer">
+            <Icon name="message" /> Text us
+          </a>
+          <a href={`mailto:${business.email}`} data-cta="email-footer">
+            <Icon name="mail" /> {business.email}
+          </a>
+          <p class="fc-meta">
+            <span class="fc-line">
+              <Icon name="clock" /> {business.hours.display} · {business.hours.days}
+            </span>
+            <span class="fc-line">
+              <Icon name="map-pin" /> Hernando · Pasco · Pinellas · Hillsborough
+            </span>
+          </p>
+          <p class="fc-meta">We accept {business.payments.accepted.join(', ').toLowerCase()}.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {year} {business.legalName}. All rights reserved.</p>
+      <p>
+        {business.pricing.serviceCall} service call, waived with repair · {business.pricing.estimates.toLowerCase()}
+      </p>
+      {license && <p class="license">{license}</p>}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fc-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/business';
+
+interface Props {
+  title: string;
+  text?: string;
+  /** Stable, unique-per-page context for measurement-ready data-cta ids. */
+  context: string;
+  requestLabel?: string;
+  requestHref?: string;
+}
+
+const {
+  title,
+  text,
+  context,
+  requestLabel = 'Request Service',
+  requestHref = '/contact/',
+} = Astro.props;
+
+const headingId = `cta-${context}-heading`;
+---
+
+<section class="cta-band on-dark" aria-labelledby={headingId}>
+  <div class="container cta-band-inner">
+    <div>
+      <h2 id={headingId}>{title}</h2>
+      {text && <p>{text}</p>}
+    </div>
+    <div class="cta-band-actions">
+      <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta={`call-cta-${context}`}>
+        <Icon name="phone" /> Call {business.phone.display}
+      </a>
+      <a class="btn btn--outline-light" href={requestHref} data-cta={`request-cta-${context}`}>
+        {requestLabel}
+      </a>
+    </div>
+  </div>
+</section>

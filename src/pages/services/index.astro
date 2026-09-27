@@ -1,0 +1,99 @@
+﻿---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const projects = await getCollection('projects');
+
+const title = 'HVAC Services in Tampa Bay | Repairs, Replacements, Airflow & TAB';
+const description =
+  'AC repair and diagnostics, replacements and installations, airflow and ductwork troubleshooting, commercial service, and TAB/commissioning support across Tampa Bay. Free estimates.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Services</p>
+      <h1>Heating and cooling services across Tampa Bay</h1>
+      <p class="lead">
+        Repairs come first. If replacement is genuinely the better call, youâ€™ll hear why â€” with
+        plain-language findings, straightforward options, and a free estimate.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="services-list-heading">
+    <div class="container">
+      <h2 id="services-list-heading" class="visually-hidden">Service details</h2>
+      <div class="grid grid--wide">
+        {
+          services.map((service) => (
+            <ServiceCard
+              href={`/services/${service.id}/`}
+              title={service.data.title}
+              icon={service.data.icon}
+              summary={service.data.summary}
+            />
+          ))
+        }
+        <a
+          class="card card-hover"
+          href="/tab-commissioning-support/"
+          style="background: var(--c-navy); border-color: var(--c-navy);"
+        >
+          <span class="card-icon"><Icon name="activity" /></span>
+          <h3 style="color: #fff;">Testing, Adjusting & Balancing</h3>
+          <p style="color: var(--c-on-navy-soft);">
+            Air and hydronic TAB, duct traverses, outside-air verification, building-pressure
+            checks, and commissioning support for professional teams.
+          </p>
+          <span class="card-cta" style="color: var(--c-gold);">
+            Explore TAB support <Icon name="arrow-right" size={18} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="maintenance-heading">
+    <div class="container home-duo">
+      <div>
+        <p class="eyebrow">Maintenance</p>
+        <h2 id="maintenance-heading">Maintenance without mystery</h2>
+        <p class="muted" style="margin-top: var(--sp-xs);">
+          We provide maintenance for residential and light commercial systems â€” and since every
+          system is different, we quote it for your equipment instead of publishing invented
+          package prices. Ask what a maintenance visit includes for your system.
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow">Contractors & property managers</p>
+        <h2>Technical help, on your terms</h2>
+        <p class="muted" style="margin-top: var(--sp-xs);">
+          We support contractors with subcontracted installation and overflow service, and
+          professional teams with
+          <a href="/tab-commissioning-support/">TAB and commissioning support</a>. Scope is
+          reviewed and agreed before acceptance.
+        </p>
+        {projects.length > 0 && (
+          <p style="margin-top: var(--sp-sm);">
+            <a class="text-link" href="/our-work/">
+              See examples of our work <Icon name="arrow-right" size={18} />
+            </a>
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context="services"
+    title="Not sure what you need?"
+    text="Describe what's going on and we'll help you figure out the right first step â€” no pressure, no obligation. The service call is $50, waived when you proceed with the repair."
+  />
+</BaseLayout>
+
+

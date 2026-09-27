@@ -1,0 +1,105 @@
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — Sunshine Climate Solutions
+   Documented in docs/DESIGN-SYSTEM.md. Change values here only.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Color — brand */
+  --c-navy: #10263d;
+  --c-navy-deep: #0b1a2b;
+  --c-navy-raised: #1b3550;
+  --c-gold: #f4b631;
+  --c-gold-strong: #e9a41b;
+  --c-gold-tint: #fbf3df;
+
+  /* Color — surfaces and text */
+  --c-bg: #ffffff;
+  --c-bg-soft: #f4f6f8;
+  --c-ink: #14283c;
+  --c-ink-soft: #44586c;
+  --c-on-navy: #ffffff;
+  --c-on-navy-soft: #c9d6e3;
+  --c-line: #d8e0e8;
+  --c-line-strong: #b9c6d2;
+  --c-line-navy: #2a4763;
+  --c-danger: #b3261e;
+  --c-danger-bg: #fbedeb;
+  --c-success: #1e6b3c;
+  --c-success-bg: #ebf5ef;
+
+  /* Focus indicators (visible on both light and dark surfaces) */
+  --focus-color-light: #10263d;
+  --focus-color-dark: #f4b631;
+  --focus-width: 3px;
+  --focus-offset: 2px;
+
+  /* Typography */
+  --font-head: 'Archivo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Public Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --tracking-tight: -0.02em;
+  --tracking-caps: 0.08em;
+  --leading-tight: 1.08;
+  --leading-snug: 1.35;
+  --leading-body: 1.65;
+
+  /* Fluid type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.3125rem;
+  --text-lead: clamp(1.0625rem, 1rem + 0.4vw, 1.375rem);
+  --text-h3: clamp(1.25rem, 1.125rem + 0.5vw, 1.5rem);
+  --text-h2: clamp(1.625rem, 1.375rem + 1.1vw, 2.375rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 2.9vw, 3.875rem);
+  --text-hero-h1: clamp(2.375rem, 1.5rem + 3.6vw, 4.375rem);
+
+  /* Spacing */
+  --sp-3xs: 0.25rem;
+  --sp-2xs: 0.5rem;
+  --sp-xs: 0.75rem;
+  --sp-sm: 1rem;
+  --sp-md: 1.5rem;
+  --sp-lg: 2rem;
+  --sp-xl: 3rem;
+  --sp-2xl: 4rem;
+  --sp-3xl: 6rem;
+
+  /* Layout */
+  --container: 68rem;
+  --container-narrow: 46rem;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+  --header-h: 4.5rem;
+  --actionbar-h: 3.25rem;
+
+  /* Radii and borders */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  --r-full: 999px;
+
+  /* Shadows (used sparingly) */
+  --sh-sm: 0 1px 2px rgba(16, 38, 61, 0.08), 0 1px 6px rgba(16, 38, 61, 0.06);
+  --sh-md: 0 6px 18px rgba(16, 38, 61, 0.1);
+  --sh-lg: 0 16px 40px rgba(16, 38, 61, 0.16);
+
+  /* Layering */
+  --z-header: 20;
+  --z-actionbar: 30;
+  --z-nav: 40;
+  --z-skip: 50;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.1, 0, 1);
+  --dur-fast: 140ms;
+  --dur-med: 240ms;
+  --dur-slow: 360ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-med: 0ms;
+    --dur-slow: 0ms;
+  }
+}

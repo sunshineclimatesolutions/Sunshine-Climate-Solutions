@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import TrustChips from '../components/TrustChips.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business } from '../config/business';
+
+const title = 'TAB & Commissioning Support in Tampa Bay | Sunshine Climate Solutions';
+const description =
+  'Air and hydronic testing, adjusting, and balancing; airflow measurements and balancing reports; duct traverses; outside-air verification; building-pressure checks; and commissioning support for professional teams.';
+
+const services = [
+  {
+    icon: 'wind',
+    title: 'Air & hydronic TAB',
+    text: 'Testing, adjusting, and balancing for air and hydronic systems, within the scope we agree on.',
+  },
+  {
+    icon: 'clipboard',
+    title: 'Airflow measurement & balancing reports',
+    text: 'Measured airflow at grilles, registers, and diffusers, with balancing performed to the agreed targets.',
+  },
+  {
+    icon: 'activity',
+    title: 'Duct traverses',
+    text: 'Duct traverses for airflow quantities where direct measurement at terminals is not enough.',
+  },
+  {
+    icon: 'sun',
+    title: 'Outside-air verification',
+    text: 'Verification of outside-air quantities against the requirements for your building.',
+  },
+  {
+    icon: 'shield',
+    title: 'Building-pressure checks',
+    text: 'Building-pressure measurements to find pressurization and ventilation problems.',
+  },
+  {
+    icon: 'wrench',
+    title: 'Performance investigation',
+    text: 'System performance investigation when a building is not behaving the way it should.',
+  },
+  {
+    icon: 'check-circle',
+    title: 'Commissioning support',
+    text: 'Commissioning support within agreed scope, coordinated with your team and schedule.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">For contractors, engineers & property teams</p>
+      <h1>Testing, Adjusting & Balancing, and Commissioning Support</h1>
+      <p class="lead">
+        Measurement-driven TAB and commissioning support across Tampa Bay — with the scope,
+        deliverables, and certification requirements reviewed and agreed before acceptance.
+      </p>
+      <div class="cluster" style="margin-top: var(--sp-xs);">
+        <a
+          class="btn btn--gold btn--lg"
+          href="/contact/?service=tab-commissioning-support"
+          data-cta="request-tab-page"
+        >
+          <Icon name="clipboard" /> Request a TAB Proposal
+        </a>
+        <a class="btn btn--outline-light" href={business.phone.href} data-cta="call-tab-page">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="tab-services-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Scope of work</p>
+        <h2 id="tab-services-heading">What we provide</h2>
+      </div>
+      <div class="grid">
+        {
+          services.map((item) => (
+            <div class="card">
+              <span class="card-icon">
+                <Icon name={item.icon} />
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="callout" style="margin-top: var(--sp-xl);">
+        <strong>Project scope and certification requirements are reviewed before acceptance.</strong>
+        <span>
+          If your project requires a specific certification, sealed or stamped documents, or
+          engineering deliverables, we’ll review those requirements with you before any work is
+          accepted — no assumptions, no surprises.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="tab-process-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">How a TAB project works</p>
+        <h2 id="tab-process-heading">From request to report</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Scope review</h3>
+          <p>
+            You share the project, the systems involved, and the deliverables required. We confirm
+            what we can take on and what the requirements mean — before acceptance.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Site measurements</h3>
+          <p>
+            Airflow, pressure, temperature, and system measurements taken methodically, with the
+            equipment set to the conditions the project requires.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Balancing & verification</h3>
+          <p>
+            Adjustments to bring systems to the agreed targets, then re-measurement to verify the
+            results.
+          </p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Findings & next steps</h3>
+          <p>
+            A clear summary of what was measured, what was adjusted, and what we recommend looking
+            at next.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--sp-lg);">
+        <TrustChips />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context="tab"
+    title="Have a project in mind?"
+    text="Send the scope and we'll talk through requirements, schedule, and deliverables before anything is accepted."
+    requestLabel="Request a TAB Proposal"
+    requestHref="/contact/?service=tab-commissioning-support"
+  />
+</BaseLayout>

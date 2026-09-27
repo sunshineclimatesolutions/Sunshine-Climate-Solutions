@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+
+// Factual trust signals shown near CTAs and the request form.
+const chips = [
+  { icon: 'badge', label: 'Owner-operated' },
+  { icon: 'shield', label: 'Licensed and insured' },
+  { icon: 'check-circle', label: 'EPA Section 608 certified' },
+  { icon: 'clipboard', label: 'Clear explanations' },
+  { icon: 'clock', label: 'Open seven days a week' },
+];
+---
+
+<div class="chips">
+  {
+    chips.map((c) => (
+      <span class="chip">
+        <Icon name={c.icon} /> {c.label}
+      </span>
+    ))
+  }
+</div>

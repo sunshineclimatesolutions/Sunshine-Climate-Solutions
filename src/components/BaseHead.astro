@@ -1,0 +1,96 @@
+---
+import { business } from '../config/business';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+
+const site = Astro.site ?? new URL(business.url);
+const path = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(path, site).href;
+
+// Preview deployments set PUBLIC_PREVIEW_MODE=true so they are never indexed.
+// The production deployment must leave it unset/false (see docs/DEPLOYMENT.md).
+const preview = import.meta.env.PUBLIC_PREVIEW_MODE === 'true';
+const robots = noindex || preview ? 'noindex, follow' : 'index, follow';
+
+const pageTitle = title.includes(business.name) ? title : `${title} | ${business.name}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HVACBusiness',
+  '@id': new URL('/#business', site).href,
+  name: business.name,
+  legalName: business.legalName,
+  url: business.url,
+  telephone: business.phone.e164,
+  email: business.email,
+  image: new URL('/brand/icon-512.png', site).href,
+  logo: new URL('/brand/icon-512.png', site).href,
+  priceRange: '$$',
+  founder: { '@type': 'Person', name: business.owner.name },
+  sameAs: [business.reviewsUrl],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: business.hours.schema.opens,
+      closes: business.hours.schema.closes,
+    },
+  ],
+  areaServed: [
+    ...business.serviceArea.counties.map((c) => ({ '@type': 'AdministrativeArea', name: c })),
+    { '@type': 'Place', name: 'Tampa Bay' },
+  ],
+};
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={robots} />
+<meta name="theme-color" content="#10263d" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/brand/icon-180.png" />
+
+<link
+  rel="preload"
+  href="/fonts/archivo-var-latin.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/publicsans-var-latin.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<meta property="og:site_name" content={business.name} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={new URL('/brand/og-default.png', site).href} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

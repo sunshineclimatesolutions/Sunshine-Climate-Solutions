@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business } from '../config/business';
+
+const counties = [
+  {
+    name: 'Hernando County',
+    communities: ['Brooksville', 'Spring Hill', 'Weeki Wachee', 'Hernando Beach'],
+  },
+  {
+    name: 'Pasco County',
+    communities: [
+      'New Port Richey',
+      'Port Richey',
+      "Land O' Lakes",
+      'Wesley Chapel',
+      'Zephyrhills',
+      'Dade City',
+    ],
+  },
+  {
+    name: 'Pinellas County',
+    communities: [
+      'Clearwater',
+      'St. Petersburg',
+      'Largo',
+      'Palm Harbor',
+      'Dunedin',
+      'Safety Harbor',
+      'Seminole',
+      'Pinellas Park',
+    ],
+  },
+  {
+    name: 'Hillsborough County',
+    communities: [
+      'Tampa',
+      'Brandon',
+      'Riverview',
+      'Valrico',
+      'Carrollwood',
+      "Town 'n' Country",
+      'Temple Terrace',
+    ],
+  },
+];
+
+const title = 'HVAC Service Area | Hernando, Pasco, Pinellas & Hillsborough';
+const description =
+  'Sunshine Climate Solutions serves Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and surrounding communities. Not sure if you\'re covered? Call or text (727) 661-5200.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Service area</p>
+      <h1>Serving Tampa Bay, county by county</h1>
+      <p class="lead">
+        Owner-operated heating and cooling service across Hernando, Pasco, Pinellas, and
+        Hillsborough counties — Tampa Bay and surrounding communities.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="area-counties-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Counties we serve</p>
+        <h2 id="area-counties-heading">Where we work</h2>
+      </div>
+      <div class="area-list">
+        {
+          counties.map((county) => (
+            <div class="card area-card">
+              <h3>
+                <Icon name="map-pin" /> {county.name}
+              </h3>
+              <ul>
+                {county.communities.map((community) => (
+                  <li>{community}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="callout" style="margin-top: var(--sp-xl);">
+        <strong>Beyond Tampa Bay?</strong>
+        <span>
+          {business.serviceArea.centralFloridaNote} We don't promise statewide routine service —
+          but the right project in Central Florida is worth a conversation.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="area-check-heading">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Coverage check</p>
+        <h2 id="area-check-heading">Not sure if you're covered?</h2>
+        <p class="lead">
+          Call or text your address and we'll give you a straight answer before you spend anything.
+          We'd rather confirm coverage than guess — and if you're outside our area, we'll tell you
+          that too.
+        </p>
+      </div>
+      <div class="cluster">
+        <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-area">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-area">
+          <Icon name="message" /> Text your address
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context="area"
+    title="Ready to schedule?"
+    text="Requests are confirmed with you before anything is booked — submit the short form or call directly."
+  />
+</BaseLayout>

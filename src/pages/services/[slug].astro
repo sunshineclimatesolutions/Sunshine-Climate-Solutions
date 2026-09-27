@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import TrustChips from '../../components/TrustChips.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { business } from '../../config/business';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.id },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+---
+
+<BaseLayout title={`${service.data.title} in Tampa Bay`} description={service.data.metaDescription}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Services</p>
+      <h1>{service.data.title}</h1>
+      <p class="lead">{service.data.summary}</p>
+      <div class="cluster" style="margin-top: var(--sp-xs);">
+        <a class="btn btn--gold" href={business.phone.href} data-cta={`call-hero-${service.id}`}>
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-light" href="/contact/" data-cta={`request-hero-${service.id}`}>
+          Request Service
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="callout" style="margin-top: var(--sp-xl);">
+        <strong>
+          {business.pricing.serviceCall} service call — waived when you proceed with the repair.
+          Free estimates.
+        </strong>
+        <span>
+          Work begins only after you approve it. Open 7:30 AM – 7:30 PM, every day.
+        </span>
+      </div>
+
+      <div style="margin-top: var(--sp-lg);">
+        <TrustChips />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context={`service-${service.id}`}
+    title="Talk it through with the owner"
+    text="Describe the situation and get clear answers about your options — repair-first, always explained before anything is approved."
+  />
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/business';
+---
+
+<!-- Sticky mobile action bar: Call / Text / Request. Hidden on desktop.
+     Body bottom padding + safe-area handling are in global.css. -->
+<div class="action-bar on-dark" data-action-bar>
+  <a class="ab-btn ab-call" href={business.phone.href} data-cta="call-action-bar">
+    <Icon name="phone" /><span>Call</span>
+  </a>
+  <a class="ab-btn ab-text" href={business.phone.sms} data-cta="text-action-bar">
+    <Icon name="message" /><span>Text</span>
+  </a>
+  <a class="ab-btn ab-request" href="/contact/" data-cta="request-action-bar">
+    <Icon name="calendar" /><span>Request</span>
+  </a>
+</div>
+
+<script>
+  // Hide the action bar while the on-screen keyboard is open so it can never
+  // cover focused fields or form buttons.
+  const bar = document.querySelector<HTMLElement>('[data-action-bar]');
+  if (bar) {
+    document.addEventListener('focusin', (event) => {
+      if ((event.target as HTMLElement).matches?.('input, select, textarea')) {
+        bar.setAttribute('data-keyboard', 'open');
+      }
+    });
+    document.addEventListener('focusout', (event) => {
+      if ((event.target as HTMLElement).matches?.('input, select, textarea')) {
+        bar.removeAttribute('data-keyboard');
+      }
+    });
+  }
+</script>

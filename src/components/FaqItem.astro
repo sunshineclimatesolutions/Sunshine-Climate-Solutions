@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+const id = `faq-${question.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60)}`;
+---
+
+<details class="faq-item" id={id}>
+  <summary>
+    <span>{question}</span>
+    <Icon name="chevron-down" />
+  </summary>
+  <div class="faq-answer">
+    <slot />
+  </div>
+</details>

@@ -1,0 +1,380 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/business';
+
+// Form is rendered only when a public Web3Forms access key is configured.
+// Without a key nothing is sent or simulated — visitors are pointed to
+// call/text/email instead (see .env.example and docs/CONTENT-GUIDE.md).
+const formEnabled = Boolean(business.web3forms.accessKey);
+
+const serviceOptions = [
+  'AC repair / diagnostic',
+  'Replacement / installation estimate',
+  'Airflow / ductwork issue',
+  'Commercial service / maintenance',
+  'TAB / commissioning support',
+  'Something else',
+];
+
+const timeWindows = [
+  'Morning (7:30 AM – 11:00 AM)',
+  'Midday (11:00 AM – 3:00 PM)',
+  'Afternoon (3:00 PM – 7:30 PM)',
+];
+
+const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
+---
+
+{
+  formEnabled && (
+    <form
+      id="service-request-form"
+      class="service-form"
+      method="POST"
+      action={business.web3forms.endpoint}
+      data-redirect="/thank-you/"
+      data-phone={business.phone.display}
+    >
+      <input type="hidden" name="access_key" value={business.web3forms.accessKey} />
+      <input type="hidden" name="subject" value="New service request — sunshineclimatesolutions.com" />
+      <input type="hidden" name="from_name" value="Sunshine Climate Solutions website" />
+      <input type="hidden" name="redirect" value={noJsRedirect} />
+      <input
+        type="checkbox"
+        name="botcheck"
+        class="hp-field"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+
+      <p class="required-note">Required fields are marked with an asterisk (*).</p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="f-name">Full name <span aria-hidden="true">*</span></label>
+          <input id="f-name" name="Full Name" type="text" autocomplete="name" required />
+          <p class="field-error" id="f-name-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please enter your name.</span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">Phone number <span aria-hidden="true">*</span></label>
+          <input
+            id="f-phone"
+            name="Phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="(727) 000-0000"
+            required
+          />
+          <p class="field-error" id="f-phone-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please enter a phone number we can reach you at.</span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="f-email">Email <span class="optional">(optional)</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" />
+          <p class="field-error" id="f-email-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please check the email address — it looks incomplete.</span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="f-zip">ZIP code <span aria-hidden="true">*</span></label>
+          <input
+            id="f-zip"
+            name="ZIP Code"
+            type="text"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            placeholder="34609"
+            required
+          />
+          <p class="field-error" id="f-zip-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please enter a 5-digit ZIP code (ZIP+4 is fine too).</span>
+          </p>
+        </div>
+
+        <div class="field field--full">
+          <label for="f-service">Service requested <span aria-hidden="true">*</span></label>
+          <select id="f-service" name="Service Requested" autocomplete="off" required>
+            <option value="" disabled selected>
+              Select a service…
+            </option>
+            {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+          </select>
+          <p class="field-error" id="f-service-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please choose the service you need.</span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="f-date">Preferred date <span class="optional">(optional)</span></label>
+          <input id="f-date" name="Preferred Date" type="date" autocomplete="off" />
+        </div>
+
+        <div class="field">
+          <label for="f-time">Preferred time window <span class="optional">(optional)</span></label>
+          <select id="f-time" name="Preferred Time Window" autocomplete="off">
+            <option value="">No preference</option>
+            {timeWindows.map((window_) => <option value={window_}>{window_}</option>)}
+          </select>
+        </div>
+
+        <div class="field field--full">
+          <label for="f-company">
+            Company or project name <span class="optional">(optional — leave blank for home service)</span>
+          </label>
+          <input id="f-company" name="Company or Project" type="text" autocomplete="organization" />
+        </div>
+
+        <div class="field field--full">
+          <label for="f-desc">Brief description <span aria-hidden="true">*</span></label>
+          <textarea
+            id="f-desc"
+            name="Description"
+            rows="4"
+            autocomplete="off"
+            placeholder="What’s going on? (for example: upstairs never cools down, or the unit runs but blows warm)"
+            required
+          />
+          <p class="field-error" id="f-desc-error" hidden>
+            <Icon name="alert-circle" size={15} />
+            <span>Please briefly describe what you need — a few words is fine.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn--gold btn--lg" type="submit" data-cta="form-submit">
+          Submit request <Icon name="arrow-right" size={20} />
+        </button>
+        <p class="form-status" role="status" aria-live="polite" data-status />
+      </div>
+
+      <p class="form-note">
+        Submitting a request does not book an appointment. We’ll contact you to confirm availability.
+      </p>
+      <p class="form-note">
+        Prefer to call or text photos? Call or text
+        <a href={business.phone.href} data-cta="call-form-note">{business.phone.display}</a>.
+      </p>
+    </form>
+  )
+}
+
+{
+  !formEnabled && (
+    <section class="form-unavailable" aria-labelledby="form-unavailable-heading">
+      <h2 id="form-unavailable-heading">Online requests are unavailable right now</h2>
+      <p>
+        We’re sorry — the online request form is temporarily unavailable. Please call or text us
+        directly and we’ll take care of you right away.
+      </p>
+      <div class="cluster">
+        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-form-unavailable">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-form-unavailable">
+          <Icon name="message" /> Text Us
+        </a>
+      </div>
+      <p class="form-note">
+        You can also email <a href={`mailto:${business.email}`}>{business.email}</a>.
+      </p>
+    </section>
+  )
+}
+
+<script>
+  const form = document.getElementById('service-request-form') as HTMLFormElement | null;
+
+  if (form) {
+    const statusEl = form.querySelector<HTMLElement>('[data-status]');
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const phoneDisplay = form.dataset.phone ?? '(727) 661-5200';
+
+    // Native validation attributes remain as the no-JS fallback; once this
+    // script takes over, accessible custom validation runs instead.
+    form.noValidate = true;
+
+    interface Check {
+      el: HTMLElement;
+      errorEl: HTMLElement | null;
+      validate: () => string;
+    }
+
+    const checks: Check[] = [];
+
+    const addCheck = (
+      inputId: string,
+      validate: (
+        el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
+      ) => string,
+    ): void => {
+      const el = form.querySelector<HTMLElement>(`#${inputId}`);
+      if (!el) return;
+      const errorEl = el.closest('.field')?.querySelector<HTMLElement>('.field-error') ?? null;
+      checks.push({
+        el,
+        errorEl,
+        validate: () =>
+          validate(el as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement),
+      });
+    };
+
+    addCheck('f-name', (el) => (el.value.trim().length >= 2 ? '' : 'name'));
+    addCheck(
+      'f-phone',
+      (el) => (el.value.replace(/\D/g, '').length >= 7 ? '' : 'phone'),
+    );
+    addCheck(
+      'f-email',
+      (el) => (!el.value || el.reportValidity() ? '' : 'email'),
+    );
+    addCheck(
+      'f-zip',
+      (el) => (/^\d{5}(-?\d{4})?$/.test(el.value.trim()) ? '' : 'zip'),
+    );
+    addCheck('f-service', (el) => (el.value ? '' : 'service'));
+    addCheck('f-desc', (el) => (el.value.trim().length >= 8 ? '' : 'description'));
+
+    const showError = (check: Check): void => {
+      const el = check.el;
+      el.setAttribute('aria-invalid', 'true');
+      el.closest('.field')?.setAttribute('data-invalid', '');
+      if (check.errorEl) {
+        check.errorEl.hidden = false;
+        const existing = el.getAttribute('aria-describedby');
+        if (!existing?.includes(check.errorEl.id)) {
+          el.setAttribute('aria-describedby', `${existing ?? ''} ${check.errorEl.id}`.trim());
+        }
+      }
+    };
+
+    const hideError = (check: Check): void => {
+      check.el.removeAttribute('aria-invalid');
+      check.el.closest('.field')?.removeAttribute('data-invalid');
+      if (check.errorEl) check.errorEl.hidden = true;
+    };
+
+    const setStatus = (message: string, state: 'idle' | 'error' | 'success'): void => {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      if (state === 'idle') statusEl.removeAttribute('data-state');
+      else statusEl.setAttribute('data-state', state);
+    };
+
+    let sending = false;
+
+    form.addEventListener('submit', async (event: SubmitEvent) => {
+      event.preventDefault();
+      if (sending) return;
+
+      let firstInvalid: Check | null = null;
+      for (const check of checks) {
+        if (check.validate()) {
+          showError(check);
+          if (!firstInvalid) firstInvalid = check;
+        } else {
+          hideError(check);
+        }
+      }
+
+      if (firstInvalid) {
+        firstInvalid.el.focus();
+        setStatus('Please fix the highlighted fields, then submit again.', 'error');
+        return;
+      }
+
+      sending = true;
+      if (submitBtn) submitBtn.disabled = true;
+      setStatus('Sending your request…', 'idle');
+
+      try {
+        const data = Object.fromEntries(new FormData(form).entries());
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 20000);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+          signal: controller.signal,
+        });
+        window.clearTimeout(timeout);
+
+        let payload: { success?: boolean; message?: string } = {};
+        try {
+          payload = (await response.json()) as { success?: boolean; message?: string };
+        } catch {
+          // Non-JSON response — treated as a failure below.
+        }
+
+        // Success is only acknowledged after the provider confirms acceptance.
+        if (response.ok && payload.success === true) {
+          setStatus('Request received — thank you!', 'success');
+          window.location.assign(form.dataset.redirect ?? '/thank-you/');
+          return;
+        }
+
+        if (response.status === 429) {
+          setStatus(
+            `Too many attempts from this device. Please call or text ${phoneDisplay} and we'll help you right away.`,
+            'error',
+          );
+        } else if (response.status >= 500) {
+          setStatus(
+            `The request service had a problem on its end. Your answers are still here — please try again, or call or text ${phoneDisplay}.`,
+            'error',
+          );
+        } else {
+          const detail = payload.message ? ` (${payload.message})` : '';
+          setStatus(
+            `We couldn't send your request${detail}. Please try again, or call or text ${phoneDisplay}.`,
+            'error',
+          );
+        }
+      } catch {
+        setStatus(
+          `We couldn't reach the request service (network or timeout). Your answers are still here — please try again, or call or text ${phoneDisplay}.`,
+          'error',
+        );
+      }
+
+      sending = false;
+      if (submitBtn) submitBtn.disabled = false;
+    });
+
+    // Clear a field's error as soon as the customer edits it.
+    for (const check of checks) {
+      check.el.addEventListener('input', () => hideError(check));
+      check.el.addEventListener('change', () => hideError(check));
+    }
+
+    // Optional date field: don't allow dates in the past.
+    const dateInput = form.querySelector<HTMLInputElement>('#f-date');
+    if (dateInput) {
+      dateInput.min = new Date().toISOString().split('T')[0] ?? '';
+    }
+
+    // Preselect service from ?service=… (used by the TAB "Request a TAB Proposal" CTA).
+    const serviceSelect = form.querySelector<HTMLSelectElement>('#f-service');
+    const preset = new URLSearchParams(window.location.search).get('service');
+    if (serviceSelect && preset) {
+      const normalize = (value: string): string => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const option = Array.from(serviceSelect.options).find(
+        (candidate) => normalize(candidate.value) === normalize(preset),
+      );
+      if (option) serviceSelect.value = option.value;
+    }
+  }
+</script>

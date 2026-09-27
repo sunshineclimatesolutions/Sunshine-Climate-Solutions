@@ -1,0 +1,88 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqItem from '../components/FaqItem.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { business } from '../config/business';
+
+const faqs = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+
+const entries = await Promise.all(
+  faqs.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+
+const groups: Array<{ id: string; heading: string; blurb?: string }> = [
+  { id: 'pricing', heading: 'Pricing & estimates' },
+  { id: 'process', heading: 'Requests & scheduling' },
+  { id: 'service-area', heading: 'Service area' },
+  { id: 'repairs', heading: 'Repairs vs. replacement' },
+  { id: 'brands', heading: 'Brands' },
+  {
+    id: 'payments',
+    heading: 'Payments',
+    blurb:
+      'We accept credit and debit cards, bank transfer (ACH), checks, and cash. Other options are arranged directly with the business — details below.',
+  },
+  { id: 'warranty', heading: 'Warranty' },
+  { id: 'communication', heading: 'Calls, texts & photos' },
+  { id: 'commercial', heading: 'Commercial, contractors & TAB' },
+];
+
+const title = 'HVAC FAQ | Pricing, Service Area, Payments & More';
+const description =
+  'Straight answers about service-call pricing, free estimates, our Tampa Bay service area, brands, payments, warranty coverage, and how service requests work.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">FAQ</p>
+      <h1>Frequently asked questions</h1>
+      <p class="lead">
+        Straight answers about pricing, scheduling, coverage, and how we work. If your question
+        isn't here, call or text {business.phone.display} — real answers, no scripts.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      {
+        groups.map((group) => {
+          const items = entries.filter(({ entry }) => entry.data.category === group.id);
+          if (items.length === 0) return null;
+          return (
+            <div class="stack" style="margin-bottom: var(--sp-xl);">
+              <div>
+                <h2>{group.heading}</h2>
+                {group.blurb && <p class="muted">{group.blurb}</p>}
+              </div>
+              <div class="faq-list">
+                {items.map(({ entry, Content }) => (
+                  <FaqItem question={entry.data.question}>
+                    <Content />
+                  </FaqItem>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+
+      <div class="callout">
+        <strong>Still have a question?</strong>
+        <span>
+          Call or text <a href={business.phone.href}>{business.phone.display}</a> — or
+          <a href="/contact/">send a request online</a> and we'll get back to you during business
+          hours.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context="faq"
+    title="Ready to get started?"
+    text="One call connects you directly with the owner — no dispatch maze, no runaround."
+  />
+</BaseLayout>

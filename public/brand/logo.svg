@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 96">
+  <!-- Provisional SCS monogram — replace with the final owner-approved logo
+       (see docs/LOGO-PROMPTS.md). -->
+  <g stroke="#10263d" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M 40 31 C 40 23 16 23 16 34 C 16 45 40 45 40 58 C 40 70 15 72 12 66"/>
+    <path d="M 87 30 A 18.5 18.5 0 1 0 87 66"/>
+    <path d="M 116 31 C 116 23 92 23 92 34 C 92 45 116 45 116 58 C 116 70 91 72 88 66"/>
+  </g>
+  <path d="M 12 88 Q 66 78 120 88" stroke="#f4b631" stroke-width="7" stroke-linecap="round" fill="none"/>
+</svg>

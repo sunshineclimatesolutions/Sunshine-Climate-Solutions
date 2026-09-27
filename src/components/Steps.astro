@@ -1,0 +1,33 @@
+---
+// "What happens after you contact us" — keeps the process clear everywhere.
+const steps = [
+  {
+    title: 'Send your request',
+    text: 'Call, text, or use the short request form. Tell us what’s going on and where you’re located.',
+  },
+  {
+    title: 'We confirm with you',
+    text: 'We contact you to confirm availability. Submitting a request does not book an appointment.',
+  },
+  {
+    title: 'Findings, explained',
+    text: 'We evaluate your system on site and explain what we find in plain language, with your options.',
+  },
+  {
+    title: 'You approve the work',
+    text: 'Nothing proceeds until you approve it. When repair makes sense, we lead with the repair.',
+  },
+];
+---
+
+<div class="steps">
+  {
+    steps.map((step, index) => (
+      <div class="step">
+        <span class="step-num" aria-hidden="true">{index + 1}</span>
+        <h3>{step.title}</h3>
+        <p>{step.text}</p>
+      </div>
+    ))
+  }
+</div>

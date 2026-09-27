@@ -1,0 +1,135 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const categoryLabels: Record<string, string> = {
+  'residential-repair': 'Residential repair',
+  'residential-installation': 'Residential installation',
+  'airflow-ductwork': 'Airflow & ductwork',
+  diagnostics: 'Diagnostics',
+  commercial: 'Commercial',
+  tab: 'TAB',
+  'deficiency-findings': 'Deficiency findings',
+  other: 'Other',
+};
+
+const beforePhotos = project.data.photos.filter((photo) => photo.label === 'before');
+const afterPhotos = project.data.photos.filter((photo) => photo.label === 'after');
+const otherPhotos = project.data.photos.filter(
+  (photo) => photo.label !== 'before' && photo.label !== 'after',
+);
+const pairs = beforePhotos.map((before, index) => ({
+  before,
+  after: afterPhotos[index],
+}));
+---
+
+<BaseLayout
+  title={`${project.data.title} — ${project.data.city} | Our Work`}
+  description={project.data.summary ?? project.data.outcome.slice(0, 155)}
+>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Our work</p>
+      <div class="cluster">
+        <span class="tag" style="background: rgba(255,255,255,.08); border-color: var(--c-line-navy); color: #e8eff6;">
+          {categoryLabels[project.data.category] ?? project.data.category}
+        </span>
+      </div>
+      <h1>{project.data.title}</h1>
+      <p class="lead">
+        <Icon name="map-pin" size={18} />
+        {project.data.city}
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="callout" style="margin-top: var(--sp-lg);">
+        <strong>Verified outcome</strong>
+        <span>{project.data.outcome}</span>
+      </div>
+
+      {
+        pairs.length > 0 && (
+          <div class="stack" style="margin-top: var(--sp-xl);">
+            <h2 style="font-size: var(--text-h3);">Before & after</h2>
+            {pairs.map((pair) => (
+              <div class="ba-grid">
+                <figure class="project-media">
+                  <Image
+                    src={pair.before.image}
+                    alt={pair.before.alt}
+                    widths={[400, 800]}
+                    sizes="(min-width: 48em) 46vw, 92vw"
+                    loading="lazy"
+                  />
+                  <figcaption>Before</figcaption>
+                </figure>
+                {pair.after && (
+                  <figure class="project-media">
+                    <Image
+                      src={pair.after.image}
+                      alt={pair.after.alt}
+                      widths={[400, 800]}
+                      sizes="(min-width: 48em) 46vw, 92vw"
+                      loading="lazy"
+                    />
+                    <figcaption>After</figcaption>
+                  </figure>
+                )}
+              </div>
+            ))}
+          </div>
+        )
+      }
+
+      {
+        otherPhotos.length > 0 && (
+          <div class="stack" style="margin-top: var(--sp-xl);">
+            <h2 style="font-size: var(--text-h3);">Project photos</h2>
+            <div class="grid">
+              {otherPhotos.map((photo) => (
+                <figure class="project-media">
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    widths={[400, 800]}
+                    sizes="(min-width: 48em) 30vw, 92vw"
+                    loading="lazy"
+                  />
+                  <figcaption>{photo.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    context={`project-${project.id}`}
+    title="Have a similar situation?"
+    text="Every system is different — we'll measure yours and explain what's actually going on."
+  />
+</BaseLayout>

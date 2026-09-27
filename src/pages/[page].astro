@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+// Conditional standalone pages. "our-work" is ONLY generated when genuine
+// project entries exist — with an empty projects collection this route is
+// not built at all (404), and no navigation link points to it.
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  if (projects.length === 0) return [];
+  return [{ params: { page: 'our-work' } }];
+}
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const categoryLabels: Record<string, string> = {
+  'residential-repair': 'Residential repair',
+  'residential-installation': 'Residential installation',
+  'airflow-ductwork': 'Airflow & ductwork',
+  diagnostics: 'Diagnostics',
+  commercial: 'Commercial',
+  tab: 'TAB',
+  'deficiency-findings': 'Deficiency findings',
+  other: 'Other',
+};
+
+const title = 'Our Work | Sunshine Climate Solutions';
+const description =
+  'Examples of Sunshine Climate Solutions work across Tampa Bay: repairs, installations, airflow corrections, diagnostics, and TAB projects — with verified outcomes.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Our work</p>
+      <h1>Recent projects</h1>
+      <p class="lead">
+        Real jobs, real findings, and honest outcomes — the problems we found, the work performed,
+        and what was verified afterward.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--wide">
+        {
+          projects.map((project) => (
+            <a class="card card-hover" href={`/our-work/${project.id}/`}>
+              <span class="tag">{categoryLabels[project.data.category] ?? project.data.category}</span>
+              <h3>{project.data.title}</h3>
+              <p>
+                {project.data.summary ??
+                  (project.data.outcome.length > 140
+                    ? `${project.data.outcome.slice(0, 140)}…`
+                    : project.data.outcome)}
+              </p>
+              <p style="font-size: var(--text-sm); color: var(--c-ink-soft);">
+                <Icon name="map-pin" size={16} /> {project.data.city}
+              </p>
+              <span class="card-cta">
+                Read the project <Icon name="arrow-right" size={18} />
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    context="our-work"
+    title="Have a similar problem?"
+    text="If one of these sounds familiar, call or request service — we'll take a real look at yours."
+  />
+</BaseLayout>

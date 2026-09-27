@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { business } from '../config/business';
+
+// Noindexed: only reached after a confirmed form submission redirect.
+const title = 'Request Received | Sunshine Climate Solutions';
+const description = 'Your service request was received. We will contact you to confirm availability.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Thank you</p>
+      <h1>Request received</h1>
+      <p class="lead">
+        Thanks — your request went through. We'll contact you to confirm availability during
+        business hours (7:30 AM – 7:30 PM, every day).
+      </p>
+      <p class="lead" style="margin-top: var(--sp-2xs); font-size: var(--text-md);">
+        This didn't book an appointment — and if anything is urgent, calling is always fastest.
+      </p>
+      <div class="cluster" style="margin-top: var(--sp-sm);">
+        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-thank-you">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-thank-you">
+          <Icon name="message" /> Text Us
+        </a>
+        <a class="hero-alt" href="/" data-cta="home-thank-you">
+          <Icon name="arrow-right" /> Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="steps">
+        <div class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>We review your request</h3>
+          <p>Submitted requests are read by the owner — usually the same business day.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>We contact you to confirm</h3>
+          <p>Availability is confirmed with you directly before anything is scheduled.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Clear findings, your choice</h3>
+          <p>On site, we explain what we find and you approve any work before it begins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

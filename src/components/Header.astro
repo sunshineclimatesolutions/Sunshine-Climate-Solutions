@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { business } from '../config/business';
+
+// Our Work appears in navigation only when genuine project entries exist.
+const projects = await getCollection('projects');
+const showOurWork = projects.length > 0;
+
+const nav = [
+  { href: '/services/', label: 'Services' },
+  { href: '/service-area/', label: 'Service Area' },
+  { href: '/about/', label: 'About' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/contact/', label: 'Contact' },
+];
+if (showOurWork) nav.splice(1, 0, { href: '/our-work/', label: 'Our Work' });
+
+const current = Astro.url.pathname;
+---
+
+<header class="site-header on-dark">
+  <div class="container header-row">
+    <Logo />
+    <nav class="header-nav" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={current === item.href ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href={business.phone.href} data-cta="call-header">
+        <Icon name="phone" />
+        <span>{business.phone.display}</span>
+      </a>
+      <a class="btn btn--gold btn--sm" href="/contact/" data-cta="request-header">
+        Request Service
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-nav-toggle
+      >
+        <span class="visually-hidden">Open menu</span>
+        <Icon name="menu" class="icon-menu" />
+        <Icon name="x" class="icon-x" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile contact strip: full phone number + Request Service always visible,
+       no menu interaction required. -->
+  <div class="contact-strip">
+    <div class="container strip-row">
+      <a class="strip-call" href={business.phone.href} data-cta="call-strip">
+        <Icon name="phone" />
+        Call <strong>{business.phone.display}</strong>
+      </a>
+      <a class="strip-request" href="/contact/" data-cta="request-strip">Request Service</a>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-nav" class="mobile-nav on-dark" hidden>
+  <div class="mobile-nav-top">
+    <button class="mobile-nav-close" type="button" data-nav-close>
+      <span class="visually-hidden">Close menu</span>
+      <Icon name="x" />
+    </button>
+  </div>
+  <nav aria-label="Primary">
+    <a href="/" aria-current={current === '/' ? 'page' : undefined}>Home</a>
+    <a href="/services/" aria-current={current === '/services/' ? 'page' : undefined}>
+      Services
+    </a>
+    <a
+      href="/tab-commissioning-support/"
+      aria-current={current === '/tab-commissioning-support/' ? 'page' : undefined}
+    >
+      TAB & Commissioning
+    </a>
+    {
+      showOurWork && (
+        <a href="/our-work/" aria-current={current === '/our-work/' ? 'page' : undefined}>
+          Our Work
+        </a>
+      )
+    }
+    <a href="/service-area/" aria-current={current === '/service-area/' ? 'page' : undefined}>
+      Service Area
+    </a>
+    <a href="/about/" aria-current={current === '/about/' ? 'page' : undefined}>About</a>
+    <a href="/faq/" aria-current={current === '/faq/' ? 'page' : undefined}>FAQ</a>
+    <a href="/contact/" aria-current={current === '/contact/' ? 'page' : undefined}>Contact</a>
+  </nav>
+  <div class="mobile-nav-actions">
+    <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-mobile-nav">
+      <Icon name="phone" /> Call {business.phone.display}
+    </a>
+    <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-mobile-nav">
+      <Icon name="message" /> Text Us
+    </a>
+  </div>
+  <div class="mobile-nav-meta">
+    <p>
+      <strong>Hours:</strong> {business.hours.display}, {business.hours.days.toLowerCase()}
+    </p>
+    <p>Serving Hernando, Pasco, Pinellas & Hillsborough counties.</p>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const panel = document.getElementById('mobile-nav');
+
+  if (toggle && panel) {
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('nav-open', open);
+      if (open) {
+        panel.querySelector<HTMLElement>('[data-nav-close]')?.focus();
+      } else {
+        toggle.focus();
+      }
+    };
+
+    toggle.addEventListener('click', () => setOpen(panel.hidden));
+
+    panel.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-nav-close]') || target.closest('a')) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+      }
+    });
+  }
+</script>

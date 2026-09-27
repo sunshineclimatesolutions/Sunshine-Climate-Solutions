@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { business } from '../config/business';
+
+const title = 'Page Not Found | Sunshine Climate Solutions';
+const description = 'That page does not exist. Call or text (727) 661-5200, or use the links below to find what you need.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="page-hero on-dark">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">404</p>
+      <h1>That page isn't here</h1>
+      <p class="lead">
+        The page you're looking for doesn't exist or moved. The good news: everything important is
+        a tap away — including a real human at {business.phone.display}.
+      </p>
+      <div class="cluster" style="margin-top: var(--sp-sm);">
+        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-404">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-404">
+          <Icon name="message" /> Text Us
+        </a>
+        <a class="hero-alt" href="/" data-cta="home-404">
+          <Icon name="arrow-right" /> Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        <a class="card card-hover" href="/services/">
+          <span class="card-icon"><Icon name="wrench" /></span>
+          <h3 style="font-size: var(--text-lg);">Services</h3>
+          <p>AC repair, replacements, airflow and ductwork, commercial service, and TAB support.</p>
+        </a>
+        <a class="card card-hover" href="/service-area/">
+          <span class="card-icon"><Icon name="map-pin" /></span>
+          <h3 style="font-size: var(--text-lg);">Service area</h3>
+          <p>Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and surrounding communities.</p>
+        </a>
+        <a class="card card-hover" href="/faq/">
+          <span class="card-icon"><Icon name="clipboard" /></span>
+          <h3 style="font-size: var(--text-lg);">FAQ</h3>
+          <p>Pricing, scheduling, payments, warranty — straight answers.</p>
+        </a>
+        <a class="card card-hover" href="/contact/">
+          <span class="card-icon"><Icon name="calendar" /></span>
+          <h3 style="font-size: var(--text-lg);">Contact</h3>
+          <p>Call, text, email, or submit a service request online.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
