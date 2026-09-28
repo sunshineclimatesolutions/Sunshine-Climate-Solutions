@@ -47,6 +47,11 @@ const consoleErrors = [];
 
 const browser = await chromium.launch();
 
+// Automated captures are not keyboard sessions: Chromium's expanded
+// (captureBeyondViewport) rendering paints the position:fixed skip link into
+// full-page/element captures even though it is outside the viewport in real
+// browsing (verified: computed top stays -64px, focus-gated). Hide it for
+// capture only — its real keyboard behavior is tested separately.
 try {
   for (const viewport of viewports) {
     const context = await browser.newContext({
@@ -54,6 +59,13 @@ try {
       deviceScaleFactor: 1,
       isMobile: viewport.width < 500,
       hasTouch: viewport.width < 500,
+    });
+    await context.addInitScript(() => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const style = document.createElement('style');
+        style.textContent = '.skip-link{display:none !important}';
+        document.head.appendChild(style);
+      });
     });
     const page = await context.newPage();
     page.on('console', (message) => {

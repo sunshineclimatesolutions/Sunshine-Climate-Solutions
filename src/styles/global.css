@@ -182,6 +182,7 @@ ol {
   border-radius: var(--r-md);
   box-shadow: var(--sh-md);
   text-decoration: none;
+  white-space: nowrap;
   transition: top var(--dur-fast) var(--ease-out);
 }
 
@@ -1443,28 +1444,36 @@ body.nav-open {
   list-style: none;
   padding: 0;
   margin: var(--sp-md) 0 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--sp-sm);
-  align-items: stretch;
+}
+
+@media (min-width: 40em) {
+  .brand-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .brand-list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 
 .brand-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   background: var(--c-bg);
   border: 1px solid var(--c-line);
   border-radius: var(--r-md);
   padding: var(--sp-sm) var(--sp-md);
-  height: 4.5rem;
-  width: 8.5rem;
-  flex: none;
+  min-height: 6rem;
 }
 
 .brand-box img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: min(100%, 9rem);
+  max-height: 3.25rem;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1491,6 +1500,32 @@ body.nav-open {
   font-size: var(--text-sm);
   color: var(--c-ink-soft);
   margin-top: var(--sp-2xs);
+}
+
+.map-source {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--c-ink-soft);
+  opacity: 0.85;
+}
+
+/* TAB field photos: asymmetric editorial layout so portrait and landscape
+   photographs keep their natural aspect without stretched empty cards. */
+.tab-visuals {
+  display: grid;
+  gap: var(--sp-md);
+  align-items: start;
+  margin-top: var(--sp-lg);
+}
+
+@media (min-width: 48em) {
+  .tab-visuals {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+}
+
+.tab-visuals .photo-card {
+  margin: 0;
 }
 
 .map-band {
@@ -1527,6 +1562,7 @@ body.nav-open {
   display: grid;
   gap: var(--sp-2xs);
   align-content: start;
+  padding: var(--sp-lg);
 }
 
 .conditions-approach h3 {

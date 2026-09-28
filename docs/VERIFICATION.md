@@ -1,9 +1,25 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: portfolio proof milestone (branch
-`portfolio-conversion-proof`): homepage proof cards, equipment-brands strip, Census
-county maps, TAB field visuals, FAQ conditions section.**
+verification continues. **Last updated: visual polish pass (branch
+`portfolio-conversion-proof`): skip-link capture automation fix, proof copy, brand grid, map
+captions, TAB asymmetric layout, conditions spacing.**
+
+## Visual polish pass — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 15 pages |
+| `scripts/links.mjs` | **PASS** — 607 internal URLs, 0 broken |
+| `scripts/smoke.mjs` (360/1440) | **PASS** |
+| `scripts/a11y.mjs` (axe-core, 24 scans) | **PASS** — 0 violations |
+| Skip link — hidden by default | **PASS** — computed `top:-64px`, not focused, in normal browsing |
+| Skip link — keyboard focus | **PASS** — Tab focuses it, slides into view (`top:6px`), Enter jumps to `#main`; documented in `docs/verification/screenshots/skip-link-focused-360.jpg` |
+| Skip link — screenshot artifact | **RESOLVED** — the gold bar in earlier captures was a Playwright `captureBeyondViewport` artifact (fixed elements painted into expanded captures; DOM proved hidden). Automation now suppresses the skip link for captures only (`addInitScript` in both screenshot scripts); keyboard behavior untouched and verified separately |
+| Mobile action bar clearance | **PASS** — worst gap 254px above the bar at page bottoms across 6 routes at 360px |
+| Overflow + image loading (360/768/1440) | **PASS** — 0px overflow; all images loaded on all checked routes |
+| CTA integrity | **PASS** — 8 tel / 5 sms / 9 request links, all correctly formed (`tel:+17276615200`, `sms:+17276615200`) |
+| Polish check suite | **22/22 PASS** |
 
 ## Portfolio proof milestone — verification
 
