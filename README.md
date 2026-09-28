@@ -101,8 +101,9 @@ instructions: **`docs/DEPLOYMENT.md`**.
 ## Notes
 
 - Fonts (Archivo, Public Sans) are self-hosted under SIL OFL — see `public/fonts/`.
-- The SCS monogram is a **provisional** mark — replacement instructions are in
-  `docs/LOGO-PROMPTS.md`.
+- Branding uses the **approved Logo 2** (owner-supplied): bold angular SCS letters with a
+  gold stripe. Transparent variants, favicons and social images are generated from
+  `brand-source/` originals — see `docs/IMAGE-GUIDE.md` and `scripts/generate-brand-images.mjs`.
 - Expected build notices: while `projects`/`reviews` collections are empty, the build logs
   "The collection … does not exist or is empty" — that is intentional (the pages stay hidden
   until real content exists) and does not affect the output.

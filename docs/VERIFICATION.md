@@ -1,8 +1,8 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: post-recovery architecture overhaul session
-(AGENTS.md, site content collection, image tooling, verification suite).**
+verification continues. **Last updated: Logo 2 branding + Google review QR implementation
+(branch `brand-logo2-review`).**
 
 ## Environment
 
@@ -104,10 +104,27 @@ these are rendered for the owner's human review; layout behavior is verified pro
   `src/pages/services/index.astro` — visible on the live `/services/` page until now.
 - `git grep` audit across all tracked files: **no remaining mojibake**.
 
+## Branding (Logo 2) + review QR — this implementation
+
+| Check | Result |
+| --- | --- |
+| Logo extraction (trim + white→transparent, cluster-anchored un-blend) | 1319×383 content crop; interior colors snap to measured artwork colors (navy rgb(21,45,68), gold rgb(236,191,41)); AA edge band 4.6% — **PASS** |
+| Clipping/distortion check (numeric) | All four crop edges show sparse letter-tip density (117/19/16/19 solid px), not straight cuts; zero resampling → zero distortion — **PASS** |
+| QR generation (`qrcode` lib, EC-H, 4-module quiet zone) | SVG 61×61 modules + PNG 560px + print 3000px — **PASS** |
+| QR independent decode verification (jsQR in browser) | All three generated assets decode to the **exact** `business.reviewsSubmissionUrl` — **PASS** |
+| Brand assets in build | All 9 assets (logos, favicon, icons, og, QR×3) present in `dist/` — **PASS** |
+| Header/footer geometry (360/768/1440) | Header mark 127×37px, footer 171×50px, **0px overflow at all widths**, logo image loads at 2.6× display (retina-clear) — **PASS** |
+| Review page at 360/1440 | QR 259/288px square (scannable), button 74/55px tall with correct g.page URL, 0px overflow — **PASS** |
+| `/leave-review/` integration | Footer link, sitemap entry, 576 internal URLs 0 broken (15 pages) — **PASS** |
+| Payload | `dist/` 0.67 MB / 35 files (was 0.53 MB / 29): delta is the QR (+52 KB incl. print asset), logos (+24 KB), favicon (+11 KB), og (+27 KB); page-critical additions = one 12 KB header logo image — **no meaningful page-weight regression**; Lighthouse baseline still pending (pre-existing) |
+
 ## Not yet verified (pending)
 
-- **Owner visual review** of the screenshot set (and of the eyebrow color change on light
-  surfaces: gold → navy).
+- **Owner visual review** of the screenshot set — now including the new Logo 2 in
+  header/footer (light variant), the favicon/icons/OG card, and the `/leave-review/` page.
+- **Owner identity confirmation for the Google review destination** — the generated QR and
+  button resolve to `business.reviewsSubmissionUrl` (decode-verified); the owner should
+  confirm that this Google Business Profile place ID is Sunshine Climate Solutions' own.
 - **Lighthouse lab metrics** (LCP/CLS/TBT medians ×3 runs) — runner not yet added; targets
   remain LCP ≤ 2.0s (stretch <1.8s), CLS ≤ 0.05.
 - **Real Web3Forms delivery to the inbox** — requires an owner-authorized live submission.

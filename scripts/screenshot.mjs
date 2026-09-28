@@ -18,6 +18,7 @@ const pages = [
   { name: 'about', path: '/about/' },
   { name: 'faq', path: '/faq/' },
   { name: 'contact', path: '/contact/' },
+  { name: 'leave-review', path: '/leave-review/' },
   { name: 'privacy', path: '/privacy/' },
   { name: 'thank-you', path: '/thank-you/' },
   { name: 'not-found', path: '/this-page-does-not-exist' },
@@ -33,6 +34,7 @@ const viewports = [
 const commit = new Set([
   'home-360', 'home-768', 'home-1440',
   'contact-360', 'contact-768', 'contact-1440',
+  'leave-review-360', 'leave-review-1440',
   'service-ac-repair-360',
   'tab-360',
   'faq-360',

@@ -242,6 +242,14 @@ const site = defineCollection({
     // tab.md — scope callout under the services grid.
     callout: z.object({ strong: z.string(), text: z.string() }).optional(),
 
+    // leave-review.md — Google review submission page.
+    reviewCta: z
+      .object({
+        buttonLabel: z.string(),
+        qrNote: z.string(),
+      })
+      .optional(),
+
     // Shared — closing CtaBand copy (about, service-area, tab).
     ctaBand: z
       .object({

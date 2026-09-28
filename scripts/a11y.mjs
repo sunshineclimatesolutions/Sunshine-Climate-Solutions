@@ -19,6 +19,7 @@ const pages = [
   { name: 'about', path: '/about/' },
   { name: 'faq', path: '/faq/' },
   { name: 'contact', path: '/contact/' },
+  { name: 'leave-review', path: '/leave-review/' },
   { name: 'privacy', path: '/privacy/' },
   { name: 'thank-you', path: '/thank-you/' },
   { name: 'not-found', path: '/this-page-does-not-exist' },

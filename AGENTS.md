@@ -79,7 +79,7 @@ intentional** while those collections are empty — not errors.
 | To change… | Edit |
 | --- | --- |
 | Any business fact (phone, email, hours, pricing, counties, brands, payments, license, flags) | `src/config/business.ts` |
-| Home/about/contact/service-area/TAB page copy or SEO | `src/content/site/<page>.md` |
+| Home/about/contact/service-area/TAB/leave-review page copy or SEO | `src/content/site/<page>.md` |
 | Service pages | `src/content/services/*.md` |
 | FAQs | `src/content/faqs/*.md` |
 | Portfolio entries (photos + story) | `src/content/projects/*.md` + images in `src/content/projects/images/` |
@@ -161,7 +161,11 @@ Schemas and how-to: `docs/CONTENT-GUIDE.md`. After content edits run `npm run ve
 
 - Real Web3Forms delivery to the inbox is verified only by an owner-authorized live submission.
 - `licenseNumber` is empty (owner input required).
-- The SCS monogram is a provisional mark (replacement prompts in `docs/LOGO-PROMPTS.md`).
+- Branding uses the approved Logo 2 (transparent light/dark variants in `public/brand/`,
+  originals preserved in `brand-source/originals/`); regenerate display assets with
+  `scripts/generate-brand-images.mjs`. The Google-review QR lives in
+  `public/brand/qr-review.*` and is verified by `scripts/generate-review-qr.mjs`
+  (decode-checked against `business.reviewsSubmissionUrl`).
 - Lighthouse lab metrics and full axe-core scans are documented as pending in
   `docs/VERIFICATION.md`.
 - Docs history: the site was originally documented for Cloudflare Pages; the deployment is now

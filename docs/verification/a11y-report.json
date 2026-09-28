@@ -41,6 +41,11 @@
       "violations": []
     },
     {
+      "page": "leave-review",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
       "page": "privacy",
       "viewport": "mobile",
       "violations": []
@@ -96,6 +101,11 @@
       "violations": []
     },
     {
+      "page": "leave-review",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
       "page": "privacy",
       "viewport": "desktop",
       "violations": []
@@ -112,7 +122,7 @@
     }
   ],
   "summary": {
-    "scanned": 22,
+    "scanned": 24,
     "totalViolationGroups": 0,
     "byRule": {}
   }

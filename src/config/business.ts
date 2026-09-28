@@ -42,6 +42,12 @@ export const business = {
 
   reviewsUrl: 'https://maps.app.goo.gl/5TD44KHGmZymgndh9',
   reviewsLabel: 'Read our Google reviews',
+  // Google review SUBMISSION link (QR code destination). Distinct from
+  // reviewsUrl above, which only READS existing reviews. Used on /leave-review/
+  // and by scripts/generate-review-qr.mjs — never change without regenerating
+  // and decode-verifying the QR assets.
+  reviewsSubmissionUrl:
+    'https://g.page/r/CTXPJRFuZT-tEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr',
 
   serviceArea: {
     counties: ['Hernando County', 'Pasco County', 'Pinellas County', 'Hillsborough County'],

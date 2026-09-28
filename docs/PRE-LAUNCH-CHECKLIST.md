@@ -44,7 +44,7 @@ Statuses: **Complete** / **Owner input required** / **Not yet verified**
 
 | Item | Status |
 | --- | --- |
-| Final logo replacing provisional SCS wordmark | Owner input required (prompts in `docs/LOGO-PROMPTS.md`) |
+| Final logo replacing provisional SCS wordmark | Complete — approved Logo 2 implemented (transparent variants, favicon, touch icons, OG image); owner visual pass recommended via screenshots |
 | Real project gallery | Owner input required (empty collection; Our Work hidden until entries exist) |
 | Genuine testimonials | Owner input required (empty collection; hidden until entries exist) |
 | Optional future analytics | Not started (intentionally; stable `data-cta` IDs are already in place on every CTA) |

@@ -1,8 +1,10 @@
 ---
-// Provisional SCS wordmark (documented as provisional in docs/LOGO-PROMPTS.md).
-// Monogram letters are drawn as strokes so the mark scales cleanly and needs
-// no external font. Replace public/brand/ assets + this component when a
-// final logo is supplied by the owner.
+// Approved Logo 2 (brand-source/originals/logo2.jpg): bold, angular SCS
+// letters with a gold stripe. This component shows the LIGHT variant (white
+// letters, gold stripe) for the navy header/footer. The full business name
+// renders as text beside the mark. Assets: public/brand/logo-light.png
+// (regenerate via the process documented in brand-source/ and
+// scripts/generate-brand-images.mjs).
 interface Props {
   size?: 'md' | 'lg';
 }
@@ -10,31 +12,24 @@ const { size = 'md' } = Astro.props;
 ---
 
 <a href="/" class="logo" data-cta="logo-home" aria-label="Sunshine Climate Solutions — home">
-  <svg
+  <img
     class={`logo-mark${size === 'lg' ? ' logo-mark--lg' : ''}`}
-    viewBox="0 0 132 96"
+    src="/brand/logo-light.png"
+    width="331"
+    height="96"
+    alt=""
     aria-hidden="true"
-    focusable="false"
-  >
-    <g stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none">
-      <path d="M 40 31 C 40 23 16 23 16 34 C 16 45 40 45 40 58 C 40 70 15 72 12 66"></path>
-      <path d="M 87 30 A 18.5 18.5 0 1 0 87 66"></path>
-      <path d="M 116 31 C 116 23 92 23 92 34 C 92 45 116 45 116 58 C 116 70 91 72 88 66"></path>
-    </g>
-    <path class="logo-arc" d="M 12 88 Q 66 78 120 88" fill="none"></path>
-  </svg>
+  />
   <span class="logo-name">Sunshine <span>Climate Solutions</span></span>
 </a>
 
 <style>
-  .logo-arc {
-    stroke: var(--c-gold);
-    stroke-width: 7;
-    stroke-linecap: round;
+  .logo-mark {
+    height: 2.3rem;
+    width: auto;
   }
 
   .logo-mark--lg {
-    width: 3.4rem;
-    height: 3.05rem;
+    height: 3.1rem;
   }
 </style>
