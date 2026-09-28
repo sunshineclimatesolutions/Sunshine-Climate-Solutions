@@ -3,7 +3,6 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -76,23 +75,25 @@ const pairs = beforePhotos.map((before, index) => ({
             {pairs.map((pair) => (
               <div class="ba-grid">
                 <figure class="project-media">
-                  <Image
+                  <img
                     src={pair.before.image}
                     alt={pair.before.alt}
-                    widths={[400, 800]}
-                    sizes="(min-width: 48em) 46vw, 92vw"
+                    width={pair.before.width}
+                    height={pair.before.height}
                     loading="lazy"
+                    decoding="async"
                   />
                   <figcaption>Before</figcaption>
                 </figure>
                 {pair.after && (
                   <figure class="project-media">
-                    <Image
+                    <img
                       src={pair.after.image}
                       alt={pair.after.alt}
-                      widths={[400, 800]}
-                      sizes="(min-width: 48em) 46vw, 92vw"
+                      width={pair.after.width}
+                      height={pair.after.height}
                       loading="lazy"
+                      decoding="async"
                     />
                     <figcaption>After</figcaption>
                   </figure>
@@ -110,12 +111,13 @@ const pairs = beforePhotos.map((before, index) => ({
             <div class="grid">
               {otherPhotos.map((photo) => (
                 <figure class="project-media">
-                  <Image
+                  <img
                     src={photo.image}
                     alt={photo.alt}
-                    widths={[400, 800]}
-                    sizes="(min-width: 48em) 30vw, 92vw"
+                    width={photo.width}
+                    height={photo.height}
                     loading="lazy"
+                    decoding="async"
                   />
                   <figcaption>{photo.alt}</figcaption>
                 </figure>

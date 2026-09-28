@@ -76,3 +76,21 @@ Real-browser checks against the production build at **360px** and **1440px**:
   Build logs "collection … is empty" notices while they are empty — expected.
 - WCAG 2.2 AA conformance is not certified; automated checks are necessary but not sufficient,
   and manual review by the owner is recommended before launch (see PRE-LAUNCH-CHECKLIST).
+
+## Pages CMS integration (branch `pages-cms` — pending owner approval)
+
+What was verified locally on the branch:
+
+| Check | Result |
+| --- | --- |
+| `.pages.yml` matches current Pages CMS 2.x documentation | **PASS** — config reference checked against pagescms.org/docs (media input/output, content groups/collections/files, `body` key, `list` fields, select/image options) |
+| `.pages.yml` parses as valid YAML | **PASS** (js-yaml) |
+| CMS field names/categories match Astro schemas (`src/content.config.ts`) | **PASS** — services, FAQs, reviews, projects, site |
+| Simulated hero-photo upload (`public/images/…` + `heroImage` field) | **PASS** — `<img src="/images/…" alt=…>` rendered, file copied to `dist/` |
+| Simulated CMS review entry | **PASS** — CMS-shaped frontmatter rendered on the homepage |
+| Simulated CMS project entry with media-library photo + width/height | **PASS** — Our Work page + detail page built, image rendered with dimensions, sitemap updated |
+| Test content removed after simulation | **PASS** — no fabricated testimonials/photos/projects shipped; clean rebuild = 14 pages, Our Work hidden again |
+| Regression: `astro check` | **PASS** — 0 errors |
+| Regression: production build + smoke test | **PASS** — 14 pages, all smoke checks green |
+| Stale Astro content store after local file deletions | Documented — clear `node_modules/.astro` locally (see CONTENT-GUIDE); CI/CMS builds are always clean and unaffected |
+| Live connection to app.pagescms.org | **Not yet verified** — owner action: install the Pages CMS GitHub App and open the repo (see `docs/PAGES-CMS.md`). Editing in the CMS UI itself could not be exercised without that connection; the config was validated against the current documented format instead. |

@@ -44,6 +44,11 @@ the full post-push verification pass.)
 
 ## Editing content (no code changes needed)
 
+**Visual editing (recommended):** the site is wired for [Pages CMS](https://pagescms.org) via
+the committed `.pages.yml`. It edits homepage/About/TAB/Contact text, SEO metadata, the hero
+photo, services, FAQs, reviews, projects, and a photo media library — all without touching
+code. Setup and daily-use instructions: **`docs/PAGES-CMS.md`**.
+
 All editable business facts live in **`src/config/business.ts`** — phone, email, hours, pricing,
 counties, brands, payment options, feature flags, and:
 
@@ -87,6 +92,7 @@ Full setup, DNS cautions, and rollback instructions: **`docs/DEPLOYMENT.md`**.
 ## Docs index
 
 - `docs/CONTENT-GUIDE.md` — adding/editing services, FAQs, projects, reviews
+- `docs/PAGES-CMS.md` — visual editing with Pages CMS (owner instructions)
 - `docs/PRE-LAUNCH-CHECKLIST.md` — launch blockers and verification status
 - `docs/VERIFICATION.md` — what has been tested, results, and known limitations
 - `docs/DEPLOYMENT.md` — Cloudflare Pages setup, indexing, rollback

@@ -1,0 +1,392 @@
+# Pages CMS configuration — Sunshine Climate Solutions
+# Docs: https://pagescms.org/docs/configuration/
+#
+# Editing this file changes what appears in the CMS UI. Field names match the
+# Astro content schemas in src/content.config.ts exactly — renaming a field
+# here without updating both the schema and templates will break the build.
+#
+# Facts that stay OUT of the CMS on purpose (edit src/config/business.ts):
+#   phone, email, hours, pricing, license number, service counties, brands.
+
+media:
+  - name: images
+    label: Photos
+    input: public/images
+    output: /images
+    categories: [image]
+    rename: safe
+
+content:
+  # ── Marketing pages (single files, no create/delete) ──────────────────────
+  - name: pages
+    label: Pages
+    type: group
+    items:
+      - name: home
+        label: Homepage
+        type: file
+        path: src/content/site/home.md
+        operations:
+          delete: false
+          rename: false
+        fields:
+          - name: metaTitle
+            label: SEO title
+            type: string
+            required: true
+            description: Shown in browser tabs and search results (aim for ~60 characters).
+          - name: metaDescription
+            label: SEO description
+            type: text
+            required: true
+            description: Shown in search results (aim for ~150–160 characters).
+          - name: heroEyebrow
+            label: Hero eyebrow
+            type: string
+            description: Small label above the headline (currently the company name).
+          - name: heroHeadline
+            label: Hero headline
+            type: string
+            required: true
+            description: Main headline. Keep the phone number OUT of headlines.
+          - name: heroAccent
+            label: Hero gold text
+            type: string
+            description: Optional words shown at the end of the headline in gold.
+          - name: heroLead
+            label: Hero supporting text
+            type: text
+          - name: heroImage
+            label: Hero photo (optional)
+            type: image
+            description: Leave empty for the clean typographic hero. Landscape, at least 1200px wide.
+            options:
+              media: images
+          - name: heroImageAlt
+            label: Hero photo alt text
+            type: string
+            description: Describe the photo for screen readers. Required if a hero photo is set.
+          - name: servicesHeading
+            label: Services section heading
+            type: string
+          - name: servicesIntro
+            label: Services section intro
+            type: text
+          - name: aboutBlurb
+            label: About excerpt
+            type: text
+            description: Short company story shown mid-page; links to the full About page.
+          - name: ctaHeading
+            label: Final section heading
+            type: string
+          - name: ctaLead
+            label: Final section text
+            type: text
+
+      - name: about
+        label: About page
+        type: file
+        path: src/content/site/about.md
+        operations:
+          delete: false
+          rename: false
+        fields:
+          - name: metaTitle
+            label: SEO title
+            type: string
+            required: true
+          - name: metaDescription
+            label: SEO description
+            type: text
+            required: true
+            description: Shown in search results (aim for ~150–160 characters).
+          - name: introLead
+            label: Intro text
+            type: text
+          - name: body
+            label: About story
+            type: rich-text
+            description: >-
+              The full About page story (why the company exists, how we work, Aaron's
+              background). Business contact details, hours, and license are shown
+              automatically from central config — do not repeat them here.
+            options:
+              format: markdown
+              media: images
+
+      - name: tab
+        label: TAB page
+        type: file
+        path: src/content/site/tab.md
+        operations:
+          delete: false
+          rename: false
+        fields:
+          - name: metaTitle
+            label: SEO title
+            type: string
+            required: true
+          - name: metaDescription
+            label: SEO description
+            type: text
+            required: true
+          - name: introLead
+            label: Intro text
+            type: text
+            description: Shown under the page title. Keep the scope-review note accurate.
+
+      - name: contact
+        label: Contact page
+        type: file
+        path: src/content/site/contact.md
+        operations:
+          delete: false
+          rename: false
+        fields:
+          - name: metaTitle
+            label: SEO title
+            type: string
+            required: true
+          - name: metaDescription
+            label: SEO description
+            type: text
+            required: true
+          - name: introLead
+            label: Intro text
+            type: text
+            description: Must keep it clear that submitting a request does not book an appointment.
+
+  # ── Content collections ──────────────────────────────────────────────────
+  - name: services
+    label: Services
+    type: collection
+    path: src/content/services
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      sort: order
+    fields:
+      - name: title
+        label: Service title
+        type: string
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+        description: Short blurb shown on service cards and as the page intro.
+      - name: metaDescription
+        label: SEO description
+        type: text
+        required: true
+        description: Shown in search results (aim for ~150–160 characters).
+      - name: icon
+        label: Card icon
+        type: select
+        options:
+          values:
+            - name: wrench
+              label: Wrench (repairs)
+            - name: thermometer
+              label: Thermometer (installations)
+            - name: wind
+              label: Airflow
+            - name: briefcase
+              label: Commercial
+      - name: order
+        label: Sort order
+        type: number
+        description: Lower numbers show first. Repairs = 1, Replacements = 2.
+      - name: body
+        label: Service details
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+
+  - name: faqs
+    label: FAQs
+    type: collection
+    path: src/content/faqs
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: question
+      sort: order
+    fields:
+      - name: question
+        label: Question
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - name: pricing
+              label: Pricing & estimates
+            - name: process
+              label: Requests & scheduling
+            - name: service-area
+              label: Service area
+            - name: repairs
+              label: Repairs vs. replacement
+            - name: brands
+              label: Brands
+            - name: payments
+              label: Payments
+            - name: warranty
+              label: Warranty
+            - name: communication
+              label: Calls, texts & photos
+            - name: commercial
+              label: Commercial, contractors & TAB
+      - name: order
+        label: Sort order within category
+        type: number
+      - name: body
+        label: Answer
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: reviews
+    label: Customer reviews
+    type: collection
+    path: src/content/reviews
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: author
+      sort: order
+    fields:
+      - name: quote
+        label: Review text
+        type: text
+        required: true
+        description: Paste the customer's genuine words. Only use reviews you have permission to display.
+      - name: author
+        label: Customer name
+        type: string
+        required: true
+        description: e.g. "Maria H." — first name plus initial is fine.
+      - name: context
+        label: Context (optional)
+        type: string
+        description: e.g. "AC repair — New Port Richey".
+      - name: source
+        label: Source
+        type: select
+        options:
+          values:
+            - name: google
+              label: Google review
+            - name: direct
+              label: Sent directly
+            - name: other
+              label: Other
+      - name: order
+        label: Sort order
+        type: number
+
+  - name: projects
+    label: Our work projects
+    type: collection
+    path: src/content/projects
+    exclude: [".gitkeep"]
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      sort: order
+    fields:
+      - name: title
+        label: Project title
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - name: residential-repair
+              label: Residential repair
+            - name: residential-installation
+              label: Residential installation
+            - name: airflow-ductwork
+              label: Airflow & ductwork
+            - name: diagnostics
+              label: Diagnostics
+            - name: commercial
+              label: Commercial
+            - name: tab
+              label: TAB
+            - name: deficiency-findings
+              label: Deficiency findings
+            - name: other
+              label: Other
+      - name: city
+        label: City (general area)
+        type: string
+        required: true
+        description: General area only — never a customer's street address.
+      - name: summary
+        label: Summary (optional)
+        type: text
+      - name: outcome
+        label: Verified outcome
+        type: text
+        required: true
+        description: What was actually confirmed after the work. Never invent results.
+      - name: featured
+        label: Featured
+        type: boolean
+      - name: order
+        label: Sort order
+        type: number
+      - name: body
+        label: Project story
+        type: rich-text
+        description: The problem, the work performed, and what was verified. Markdown.
+        options:
+          format: markdown
+      - name: photos
+        label: Photos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label} — {alt}"
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            required: true
+            options:
+              media: images
+          - name: alt
+            label: Alt text
+            type: string
+            required: true
+            description: Describe what the photo shows, for screen readers.
+          - name: label
+            label: Label
+            type: select
+            options:
+              values: [before, after, during, detail, other]
+            description: before/after pairs are displayed side by side with visible labels.
+          - name: width
+            label: Photo width in pixels (optional)
+            type: number
+            description: From your photo's file info. Prevents page shifting while photos load.
+          - name: height
+            label: Photo height in pixels (optional)
+            type: number
+            description: From your photo's file info. Prevents page shifting while photos load.

@@ -1,7 +1,12 @@
 # Content guide
 
-How to edit site content. Schemas live in `src/content.config.ts` — if frontmatter is wrong,
-`npm run build` fails with a clear error instead of publishing broken content.
+How to edit site content. **The easiest way is Pages CMS** — see `docs/PAGES-CMS.md` to edit
+services, FAQs, reviews, projects, page text, SEO metadata, and photos in a visual editor
+with no code or Git knowledge needed. This guide covers the same content from the file side;
+both paths edit the same files.
+
+Schemas live in `src/content.config.ts` — if frontmatter is wrong, `npm run build` fails with
+a clear error instead of publishing broken content.
 
 ## Central business facts — `src/config/business.ts`
 
@@ -23,7 +28,8 @@ web3forms: {
 
 ## Adding a project (shows the Our Work page + nav)
 
-1. Drop the photos into `src/content/projects/images/` (web-sized JPG/PNG/WebP).
+1. Put the photos in the media library folder `public/images/` (Pages CMS uploads them there
+   automatically; web-sized JPG/PNG/WebP, e.g. 1200–1600px wide).
 2. Create `src/content/projects/my-project.md`:
 
 ```md
@@ -33,14 +39,19 @@ category: 'residential-installation'   # residential-repair | residential-instal
 city: 'Spring Hill'
 summary: 'Short blurb used on the Our Work grid.'   # optional
 outcome: 'Verified cooling restored and temperatures even across both floors.'
+featured: false
 order: 1
 photos:
-  - image: './images/air-handler-before.jpg'
+  - image: '/images/air-handler-before.jpg'
     alt: 'Old air handler with rusted cabinet'
     label: 'before'                     # before | after | during | detail | other
-  - image: './images/air-handler-after.jpg'
+    width: 1600                          # optional but recommended — prevents page shift
+    height: 1067
+  - image: '/images/air-handler-after.jpg'
     alt: 'New air handler installed and sealed'
     label: 'after'
+    width: 1600
+    height: 1067
 ---
 
 The problem the customer called about.
@@ -50,9 +61,9 @@ The problem the customer called about.
 **What we verified.** How the result was confirmed.
 ```
 
-3. `photos[].image` is relative to the .md file (Astro optimizes these images automatically).
-   `before`/`after` pairs render as labeled side-by-side (stacked on mobile). Everything else
-   renders in a photo grid.
+3. `photos[].image` is a media-library URL (`/images/<file>`). `before`/`after` pairs render as
+   labeled side-by-side (stacked on mobile); everything else renders in a photo grid.
+   Optional `width`/`height` (pixels, from your photo's file info) prevent layout shifting.
 4. Rebuild. The Our Work page, its nav/footer links, and homepage highlights appear
    automatically once at least one entry exists — no code changes.
 
@@ -100,3 +111,20 @@ Create `src/content/services/new-service.md` with frontmatter
 Per owner direction: no invented reviews, prices, certifications, response-time guarantees,
 24/7 claims, or "best/cheapest" claims. Warranty wording stays exactly:
 "Ask about the workmanship and manufacturer warranty coverage included with your proposal."
+
+## Local-development note: deleting content files
+
+Astro's incremental content store occasionally keeps a deleted entry in local development
+builds. If you delete a content file locally and the built site still shows it, clear the
+store and rebuild:
+
+```bash
+# Windows (PowerShell)
+Remove-Item -Recurse -Force node_modules/.astro
+npm run build
+
+# macOS / Linux
+rm -rf node_modules/.astro && npm run build
+```
+
+Cloudflare Pages and Pages CMS builds are always clean (fresh install) and are not affected.

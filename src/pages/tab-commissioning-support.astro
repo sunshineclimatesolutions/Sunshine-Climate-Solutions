@@ -1,13 +1,17 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import TrustChips from '../components/TrustChips.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { business } from '../config/business';
 
-const title = 'TAB & Commissioning Support in Tampa Bay | Sunshine Climate Solutions';
-const description =
-  'Air and hydronic testing, adjusting, and balancing; airflow measurements and balancing reports; duct traverses; outside-air verification; building-pressure checks; and commissioning support for professional teams.';
+// SEO + intro text are managed in src/content/site/tab.md (editable via Pages CMS).
+const tab = await getEntry('site', 'tab');
+if (!tab) throw new Error('Missing src/content/site/tab.md');
+
+const title = tab.data.metaTitle;
+const description = tab.data.metaDescription;
 
 const services = [
   {
@@ -53,10 +57,7 @@ const services = [
     <div class="container page-hero-inner">
       <p class="eyebrow">For contractors, engineers & property teams</p>
       <h1>Testing, Adjusting & Balancing, and Commissioning Support</h1>
-      <p class="lead">
-        Measurement-driven TAB and commissioning support across Tampa Bay — with the scope,
-        deliverables, and certification requirements reviewed and agreed before acceptance.
-      </p>
+      {tab.data.introLead && <p class="lead">{tab.data.introLead}</p>}
       <div class="cluster" style="margin-top: var(--sp-xs);">
         <a
           class="btn btn--gold btn--lg"

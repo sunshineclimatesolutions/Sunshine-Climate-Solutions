@@ -757,6 +757,44 @@ body.nav-open {
   max-width: 46rem;
 }
 
+/* Split hero when a photo is set through the CMS (optional) */
+.hero-inner--split {
+  max-width: var(--container);
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .hero-inner--split {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--sp-2xl);
+  }
+
+  .hero-inner--split .hero-copy {
+    max-width: 34rem;
+  }
+}
+
+.hero-copy {
+  display: grid;
+  gap: var(--sp-md);
+}
+
+.hero-media {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: var(--sh-lg);
+  background: var(--c-navy-raised);
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
 .hero-deco {
   position: absolute;
   inset: 0;
@@ -1515,12 +1553,19 @@ body.nav-open {
   font-size: var(--text-sm);
 }
 
-.project-media {
-  display: grid;
-  gap: var(--sp-2xs);
+.project-media img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-lg);
+  background: var(--c-bg-soft);
 }
 
-.project-media figure {
+.project-media img:not([width]) {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.project-media {
   margin: 0;
   display: grid;
   gap: var(--sp-3xs);
