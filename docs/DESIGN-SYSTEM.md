@@ -18,8 +18,12 @@ Change values there only — never hard-code colors/sizes in components.
 | `--c-line` / `--c-line-strong` / `--c-line-navy` | borders on light / inputs / navy surfaces |
 | `--c-danger` `#B3261E` / `--c-success` `#1E6B3C` | Validation message colors (both ≥ 4.5:1 on their surfaces) |
 
-Gold is used as an accent or as a button background with navy text (≈ 7.5:1) — never as small
-text on light surfaces.
+Gold is used as an accent or as a button background with navy text (≈ 7.5:1) — never as
+small text on light surfaces.
+
+**Eyebrow labels** (small-caps section headings): gold (`--c-gold`) on dark/navy surfaces;
+navy (`--c-navy`) on light surfaces (gold at eyebrow size measured 1.97–2.14:1 on
+white/soft-gray — below the 4.5:1 WCAG AA minimum, so light surfaces use navy ≈ 13:1).
 
 ## Typography
 

@@ -1,72 +1,118 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated after the initial build + smoke test (pre-deployment).**
+verification continues. **Last updated: post-recovery architecture overhaul session
+(AGENTS.md, site content collection, image tooling, verification suite).**
 
 ## Environment
 
 - OS: Windows (PowerShell 5.1 test runner)
 - Node v24.19.0, npm 11.17.0
-- Astro 5.18.2, TypeScript strictest preset
-- Browser checks: Playwright Chromium (installed via `npx playwright install chromium`)
+- Astro 5.18.2, TypeScript strictest preset (`exactOptionalPropertyTypes` on)
+- Browser checks: Playwright Chromium, axe-core via `@axe-core/playwright`
 - Server under test: `astro preview` serving the **production build** (`npm run build`),
   `PUBLIC_PREVIEW_MODE` unset (production settings)
+
+> **Preview-server pitfall (observed this session):** a leftover `astro preview` process can
+> keep port 4321 bound with a stale in-memory snapshot while new instances fail to bind —
+> making checks silently run against an OLD build. Before trusting any preview-based check,
+> ensure the port is free (e.g. `Get-NetTCPConnection -LocalPort 4321`) and confirm the served
+> CSS/HTML hash matches `dist/`.
 
 ## Build & types
 
 | Check | Result |
 | --- | --- |
-| `npx astro check` (strictest TS) | **0 errors, 0 warnings** (31 files) |
-| `npm run build` | **PASS** — 14 pages + `sitemap-index.xml` + `robots.txt` |
-| Empty `projects`/`reviews` collections | Our Work page **not built**, no nav/footer links to it (verified in `dist/`) |
-| `dist/our-work` absent | **PASS** |
+| `npm run verify` (check + build) | **PASS** — 0 errors, 0 warnings, 0 hints; 14 pages + `sitemap-index.xml` + `robots.txt` |
+| Empty `projects`/`reviews` collections | Our Work page **not built**, no nav/footer links to it (verified in `dist/`) — intentional |
 | robots.txt (production) | `User-agent: * Allow: /` + sitemap URL — **PASS** |
-| robots.txt (preview build, `PUBLIC_PREVIEW_MODE=true`) | `Disallow: /` — **PASS** (separate build, then rebuilt production) |
-| Preview build meta robots | `noindex, follow` on every page — **PASS** |
 | `/thank-you/` | `noindex, follow` in production build — **PASS** |
 | Sitemap | 12 routes, excludes 404 and thank-you — **PASS** |
 
-## Smoke test (`node scripts/smoke.mjs` — committed)
+## Content extraction (site collection) — render-identity proof
 
-Real-browser checks against the production build at **360px** and **1440px**:
+Page copy for home, about, contact, service-area, and TAB was moved from inline markup into
+`src/content/site/*.md` (this session). Verification method: snapshot the pre-change `dist/`,
+rebuild, then compare all five pages after entity-decoding + whitespace normalization.
+
+| Page | Result |
+| --- | --- |
+| `/`, `/about/`, `/contact/`, `/service-area/`, `/tab-commissioning-support/` | **RENDER-IDENTICAL** — only HTML entity escaping (e.g. `’` → `&#39;`) and whitespace shifts; zero content differences |
+
+One transcription error (about page pricing card title) was caught by the same diff and fixed
+before commit.
+
+## Smoke test (`node scripts/smoke.mjs`)
+
+Real-browser checks against the production build at **360px** and **1440px** — re-run after
+every phase this session (recovery, extraction, image system, contrast fix):
 
 | Check | Result |
 | --- | --- |
 | `/` and `/contact/` HTTP status | 200 both viewports — **PASS** |
-| Horizontal overflow (scrollWidth vs clientWidth) | **0px at 360 and 1440** — PASS (initially 119px at 360 from header actions; fixed by hiding duplicate desktop phone/CTA on mobile) |
-| Gold contact strip (full phone number) visible without opening nav at 360 | **PASS** |
-| Sticky action bar at 360 | 3 buttons (Call/Text/Request), 53px tall, body padding reserves space — **PASS** |
-| Action bar hides when a form field is focused | **PASS** (data-keyboard=open set) |
-| Form validation (empty submit at 360) | ≥4 linked field errors shown — **PASS** |
-| Mobile nav | Opens (aria-expanded=true), panel visible, closes on Escape — **PASS** |
-| tel:/sms: links present | 8 tel + 5 sms per page — **PASS** |
-| Console/page errors (both pages, both widths) | **None** — PASS |
+| Horizontal overflow | **0px at 360 and 1440** — PASS |
+| Gold contact strip visible without opening nav at 360 | **PASS** |
+| Sticky action bar at 360 | 3 buttons, 53px tall, body padding reserves space — **PASS** |
+| Mobile nav / form validation / tel:/sms: links | **PASS** (8 tel + 5 sms per page) |
+| Console/page errors | **None** — PASS |
+
+## Internal link checker (`scripts/links.mjs` — added this session)
+
+| Check | Result |
+| --- | --- |
+| All `href`, `src`, `srcset` URLs across 14 built pages | **496 internal URLs, 0 broken** — PASS |
+| Negative test (poisoned fixture with bad href/src/srcset) | All breakages detected, exit code 1 — **PASS** |
+
+## Accessibility (`node scripts/a11y.mjs` — axe-core, WCAG 2.2 AA)
+
+| Check | Result |
+| --- | --- |
+| 11 routes × mobile (390px) + desktop (1280px) = 22 scans | **0 violations** — PASS |
+
+A pre-existing defect was found and fixed this session: `.eyebrow` labels on **light**
+surfaces used gold (`--c-gold-strong`, contrast 1.97–2.14:1 — below the 4.5:1 minimum, and
+against the site's own documented "never gold small text on light surfaces" rule). Light-surface
+eyebrows now use `--c-navy` (≈13:1); dark-surface eyebrows keep gold (passing). After the fix:
+0 violations across all 22 scans. Report: `docs/verification/a11y-report.json`.
+
+## Image guardrail tool (`scripts/photo.mjs` — added this session)
+
+| Check | Result |
+| --- | --- |
+| Report mode on oversized fixture (5000×3000, 10 MB) | Both warnings raised (edge >4000px, size >1 MB), exit 1 — **PASS** |
+| Dry run without `--write` | No files modified — **PASS** |
+| `--resize 2000 --write` | 5000×3000 → **2000×1200** (aspect preserved, `fit: inside`, no crop), 10 253 KB → **611 KB** — **PASS** |
+| Recheck after resize | Clean, exit 0 — **PASS** |
+
+## Screenshots (`node scripts/screenshot.mjs`)
+
+Committed set captured at 360/768/1440 including mobile nav-open and form-validation states:
+`docs/verification/screenshots/`. **The engineering agent cannot visually inspect images** —
+these are rendered for the owner's human review; layout behavior is verified programmatically
+(smoke test geometry checks). Owner visual pass: **pending**.
 
 ## Form implementation review (static + code inspection)
 
-- Form action `https://api.web3forms.com/submit`, honeypot `botcheck`, access key rendered —
-  verified present in built HTML.
-- Success only after JSON `success: true` (provider acceptance); 429/5xx/network/timeout each
-  produce distinct, honest messages with call/text alternatives; field values preserved on
-  failure; double-submit prevented; status announced via `role="status"` `aria-live="polite"`.
-- Missing-key state: renders honest call/text/email fallback, never simulates success (code
-  path committed in `ContactForm.astro`).
+- Unchanged from the previous session; re-verified present in built HTML: action
+  `https://api.web3forms.com/submit`, honeypot `botcheck`, access key rendered.
+- Success only after JSON `success: true`; distinct honest failure messages; missing-key
+  fallback renders call/text/email, never fake success.
 
-## Not yet verified (planned post-push)
+## Text encoding audit (this session)
 
-- **Lighthouse lab metrics** (LCP/CLS/TBT medians ×3 runs) — deferred per deadline; targets
-  are LCP ≤ 2.0s (stretch <1.8s) and CLS ≤ 0.05 in documented repeatable mobile lab testing;
-  the runner will be added with the post-push verification pass.
-- **Full axe-core WCAG 2.2 AA scans** across routes — script committed (`scripts/a11y.mjs`),
-  not yet run.
-- **Screenshots at 360/768/1440** — script committed (`scripts/screenshot.mjs`), not yet run.
-  Note: the engineering model in this session cannot visually inspect images, so screenshots
-  are captured for the owner's review and layout behavior is verified programmatically instead.
+- Found and fixed pre-existing mojibake (double-encoded UTF-8: `â€™`/`â€"`) in
+  `src/pages/services/index.astro` — visible on the live `/services/` page until now.
+- `git grep` audit across all tracked files: **no remaining mojibake**.
+
+## Not yet verified (pending)
+
+- **Owner visual review** of the screenshot set (and of the eyebrow color change on light
+  surfaces: gold → navy).
+- **Lighthouse lab metrics** (LCP/CLS/TBT medians ×3 runs) — runner not yet added; targets
+  remain LCP ≤ 2.0s (stretch <1.8s), CLS ≤ 0.05.
 - **Real Web3Forms delivery to the inbox** — requires an owner-authorized live submission.
-  Endpoint, payload shape, and response handling are implemented per Web3Forms' current
-  documented API and exercised only against mocks so far.
 - **Production deployment behavior** (DNS/HTTPS/canonical redirects) — pending deployment
-  authorization.
+  authorization. Local commits are NOT pushed (pushing `main` triggers the production build).
 
 ## Known limitations
 
@@ -74,5 +120,5 @@ Real-browser checks against the production build at **360px** and **1440px**:
   traffic.
 - The `projects`/`reviews` collections are intentionally empty; corresponding UI is hidden.
   Build logs "collection … is empty" notices while they are empty — expected.
-- WCAG 2.2 AA conformance is not certified; automated checks are necessary but not sufficient,
-  and manual review by the owner is recommended before launch (see PRE-LAUNCH-CHECKLIST).
+- WCAG 2.2 AA: automated scans pass; manual review (keyboard walkthrough, zoom, screen-reader
+  pass) by the owner is still recommended before launch.

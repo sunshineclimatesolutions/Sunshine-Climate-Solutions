@@ -30,6 +30,7 @@ npx playwright install chromium   # optional: only for the verification scripts
 | `npm run verify` | `check` + `build` in one go |
 | `node scripts/smoke.mjs` | Quick mobile/desktop smoke test (run `npm run preview` first) |
 | `node scripts/photo.mjs <path>` | Photo size/format guardrails; `--resize 2000 --write` downscales in place |
+| `node scripts/links.mjs` | Broken internal-link check on the built site (run after `npm run build`) |
 
 Optional deeper verification (after `npm run preview`):
 

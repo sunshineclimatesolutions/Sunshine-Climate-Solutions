@@ -1,0 +1,119 @@
+{
+  "report": [
+    {
+      "page": "home",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "services",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "service-ac-repair",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "tab",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "service-area",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "about",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "faq",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "contact",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "privacy",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "thank-you",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "not-found",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
+      "page": "home",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "services",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "service-ac-repair",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "tab",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "service-area",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "about",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "faq",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "contact",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "privacy",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "thank-you",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
+      "page": "not-found",
+      "viewport": "desktop",
+      "violations": []
+    }
+  ],
+  "summary": {
+    "scanned": 22,
+    "totalViolationGroups": 0,
+    "byRule": {}
+  }
+}

@@ -199,7 +199,9 @@ ol {
   font-weight: 700;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-  color: var(--c-gold-strong);
+  /* Navy on light surfaces — gold at this size fails WCAG AA contrast on
+     white/soft backgrounds (gold stays for dark surfaces below). */
+  color: var(--c-navy);
 }
 
 .on-dark .eyebrow,

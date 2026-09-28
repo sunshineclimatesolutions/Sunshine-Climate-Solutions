@@ -33,9 +33,9 @@ Statuses: **Complete** / **Owner input required** / **Not yet verified**
 | TypeScript strict check | Complete (0 errors) |
 | Mobile/desktop smoke test (real browser) | Complete — all checks pass |
 | Console errors introduced by our code | Complete — none |
-| Responsive visual inspection at 360/768/1440 | Not yet verified (screenshots pending; owner visual review recommended) |
+| Responsive visual inspection at 360/768/1440 | Screenshots captured (`docs/verification/screenshots/`) — owner human visual review recommended |
 | Keyboard focus + zoom walkthrough | Not yet verified (manual owner pass recommended) |
-| axe-core WCAG 2.2 AA scan | Not yet verified (planned with post-push verification pass) |
+| axe-core WCAG 2.2 AA scan | Complete — 0 violations across 22 scans (11 routes × mobile + desktop); pre-existing gold-on-light eyebrow contrast fixed (now navy on light surfaces) |
 | Lighthouse performance (LCP/CLS targets) | Not yet verified (planned with post-push verification pass) |
 | Form: validation/pending/success/failure states | Complete (against provider-spec mocks; live delivery still needs item 3) |
 | Form: missing-key fallback | Complete (honest call/text/email state; no fake success) |
