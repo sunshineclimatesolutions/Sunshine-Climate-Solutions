@@ -75,21 +75,23 @@ success is only acknowledged after the provider confirms acceptance.
 ## Preview vs production indexing
 
 - Production build: normal indexing (`index, follow`) + `robots.txt` with sitemap.
-- Preview builds: set `PUBLIC_PREVIEW_MODE=true` (e.g. in Cloudflare Pages preview environment)
+- Preview builds: set `PUBLIC_PREVIEW_MODE=true` (e.g. in the Cloudflare preview environment)
   → every page gets `noindex` meta and `robots.txt` becomes `Disallow: /`.
   **Must remain unset/false for the production deployment.** Details: `docs/DEPLOYMENT.md`.
 
 ## Deployment
 
-Cloudflare Pages (GitHub integration): build `npm run build`, output `dist/`, Node 20+.
-Full setup, DNS cautions, and rollback instructions: **`docs/DEPLOYMENT.md`**.
+GitHub-connected Cloudflare project (Workers): build `npm run build`, output `dist/`, Node 20+.
+Pushes to `main` trigger the production deployment. Full details, DNS cautions, and rollback
+instructions: **`docs/DEPLOYMENT.md`**.
 
 ## Docs index
 
+- **`AGENTS.md`** — permanent instructions for AI engineering agents (read first)
 - `docs/CONTENT-GUIDE.md` — adding/editing services, FAQs, projects, reviews
 - `docs/PRE-LAUNCH-CHECKLIST.md` — launch blockers and verification status
 - `docs/VERIFICATION.md` — what has been tested, results, and known limitations
-- `docs/DEPLOYMENT.md` — Cloudflare Pages setup, indexing, rollback
+- `docs/DEPLOYMENT.md` — Cloudflare deployment, indexing, DNS cautions, rollback
 - `docs/DESIGN-SYSTEM.md` — design tokens and typography
 - `docs/LOGO-PROMPTS.md` — three ready-to-paste Ideogram prompts for the final logo
 

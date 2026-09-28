@@ -52,8 +52,8 @@ Statuses: **Complete** / **Owner input required** / **Not yet verified**
 ## Final go-live sequence
 
 1. Confirm blockers 1 and 3 above.
-2. Deploy via Cloudflare Pages (see `docs/DEPLOYMENT.md`); leave preview `PUBLIC_PREVIEW_MODE`
-   on the *preview* environment only.
+2. Deploy via the GitHub-connected Cloudflare project (see `docs/DEPLOYMENT.md`); leave preview
+   `PUBLIC_PREVIEW_MODE` on the *preview* environment only.
 3. Verify blockers 4 and 5 against the live URL.
 4. Submit one live form test and confirm it arrives at owner@sunshineclimatesolutions.com, then
    delete the test email.

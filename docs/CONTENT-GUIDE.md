@@ -18,7 +18,8 @@ web3forms: {
 
 - **License:** leave empty until verified; no license line is shown while it's blank.
 - **Form key:** a public client-side identifier (safe to commit). Set
-  `PUBLIC_WEB3FORMS_ACCESS_KEY` in Cloudflare Pages to override without touching code.
+  `PUBLIC_WEB3FORMS_ACCESS_KEY` in the Cloudflare build environment to override without
+  touching code.
 - **flags.financingPromo:** keep `false` until Klarna merchant availability is confirmed.
 
 ## Adding a project (shows the Our Work page + nav)
