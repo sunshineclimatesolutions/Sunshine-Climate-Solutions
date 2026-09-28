@@ -1,9 +1,20 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: visual polish pass (branch
-`portfolio-conversion-proof`): skip-link capture automation fix, proof copy, brand grid, map
-captions, TAB asymmetric layout, conditions spacing.**
+verification continues. **Last updated: Phase 2A local-SEO metadata (branch
+`seo-local-spring-hill`): Spring Hill homepage + AC-repair metadata, optional service
+`metaTitle`.**
+
+## Phase 2A local-SEO metadata — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 15 pages |
+| Built titles/descriptions | Homepage + `/services/ac-repair-diagnostics/` carry the Spring Hill metadata; other service pages unchanged (verified in `dist/`) |
+| `scripts/links.mjs` | **PASS** — 607 internal URLs, 0 broken |
+| `scripts/smoke.mjs` | **PASS** |
+| `scripts/a11y.mjs` | **PASS** — 24 scans, 0 violations |
+| Canonical URLs | Unchanged (self-referencing production domain) |
 
 ## Visual polish pass — verification
 

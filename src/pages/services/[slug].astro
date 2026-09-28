@@ -18,7 +18,10 @@ const { service } = Astro.props;
 const { Content } = await render(service);
 ---
 
-<BaseLayout title={`${service.data.title} in Tampa Bay`} description={service.data.metaDescription}>
+<BaseLayout
+  title={service.data.metaTitle ?? `${service.data.title} in Tampa Bay`}
+  description={service.data.metaDescription}
+>
   <section class="page-hero on-dark">
     <div class="container page-hero-inner">
       <p class="eyebrow">Services</p>

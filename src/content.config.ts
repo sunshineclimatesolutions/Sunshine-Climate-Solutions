@@ -6,6 +6,9 @@ const services = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/services' }),
   schema: z.object({
     title: z.string(),
+    // Optional SEO title override. Default page title is "<title> in Tampa Bay";
+    // use this only where a specific local intent justifies different wording.
+    metaTitle: z.string().optional(),
     summary: z.string(),
     metaDescription: z.string(),
     icon: z.enum(['wrench', 'thermometer', 'wind', 'briefcase']),

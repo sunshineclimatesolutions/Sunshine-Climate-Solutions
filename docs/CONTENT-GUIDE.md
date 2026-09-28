@@ -113,12 +113,14 @@ order: 4
 
 Answer body — plain Markdown, links allowed.
 ```
-
 ## Adding a service page
 
 Create `src/content/services/new-service.md` with frontmatter
 (`title`, `summary`, `metaDescription`, `icon` = wrench | thermometer | wind | briefcase,
-`order`) — the page, card, and footer link appear automatically at `/services/<filename>/`.
+`order`) — the page, card, and footer link appear automatically at
+`/services/<filename>/`. Optional `metaTitle` overrides the default
+`"<title> in Tampa Bay"` SEO title — use it only where a specific local search intent
+justifies different wording (e.g. `ac-repair-diagnostics.md` targets Spring Hill).
 
 ## What NOT to put in content
 

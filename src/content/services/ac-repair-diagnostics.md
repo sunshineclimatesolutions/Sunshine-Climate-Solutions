@@ -1,11 +1,13 @@
 ---
 title: AC Repair & Diagnostics
+metaTitle: AC Repair in Spring Hill & Tampa Bay
 summary: >-
   Not cooling, short cycling, or acting up? Real diagnostics with findings explained in plain
   language — $50 service call, waived when you proceed with the repair.
 metaDescription: >-
-  AC repair and diagnostics across Tampa Bay. Owner-operated, repair-first troubleshooting with
-  clear pricing: $50 service call, waived when you proceed with the repair. Free estimates.
+  AC repair and diagnostics in Spring Hill and across Tampa Bay. Owner-operated, repair-first
+  troubleshooting with clear pricing: $50 service call, waived when you proceed with the
+  repair. Free estimates.
 icon: wrench
 order: 1
 ---

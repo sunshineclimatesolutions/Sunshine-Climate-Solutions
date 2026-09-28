@@ -5,11 +5,11 @@
 #   from src/config/business.ts.
 # - The only token supported is {serviceCall} (replaced from business.pricing).
 # - After editing, run `npm run verify`.
-metaTitle: Sunshine Climate Solutions | AC Repair & HVAC Service in Tampa Bay
+metaTitle: Sunshine Climate Solutions | AC Repair in Spring Hill & Tampa Bay
 metaDescription: >-
-  Owner-operated AC repair, replacement, and HVAC service across Hernando, Pasco,
-  Pinellas, and Hillsborough counties. $50 service call, waived with repair. Free
-  estimates. Call (727) 661-5200.
+  Owner-operated AC repair and HVAC service based in Spring Hill, serving
+  Hernando, Pasco, Pinellas, and Hillsborough counties. $50 service call, waived
+  with repair. Free estimates. Call (727) 661-5200.
 
 hero:
   eyebrow: Sunshine Climate Solutions
