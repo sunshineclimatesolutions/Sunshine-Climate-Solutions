@@ -101,7 +101,7 @@ serviceArea:
   eyebrow: Service area
   heading: Proudly serving Tampa Bay
   # The county cards render from business.serviceArea.counties (business.ts).
-  linkLabel: See the full service area
+  linkLabel: View our service area
 
 reviews:
   eyebrow: Reviews
@@ -117,4 +117,33 @@ final:
   lead: >-
     Call, text, or send a request — we’ll confirm availability with you before
     anything is scheduled. Open 7:30 AM to 7:30 PM, every day.
+proof:
+  eyebrow: Behind the service
+  heading: See the work behind the service
+  lead: >-
+    From careful equipment installations to airflow measurement, here's a closer
+    look at the details we work on.
+  cards:
+    - image: './images/linehide-and-disconnect.jpg'
+      alt: 'Refrigerant line-set concealment (line hide) and electrical disconnect installed beside an outdoor unit'
+      title: Details that matter
+      text: 'A look at line-hide and disconnect installation details.'
+      linkLabel: AC installation services
+      linkHref: '/services/replacement-installation/'
+    - image: './images/fabricated-supply-plenum.jpg'
+      alt: 'Site-fabricated sheet-metal supply plenum fitted during an installation'
+      title: Ductwork and airflow
+      text: 'Supply-plenum fabrication and ductwork details from the field.'
+      linkLabel: Airflow services
+      linkHref: '/services/airflow-ductwork/'
+    - image: './images/airflow-measurement-at-grille.jpg'
+      alt: 'Instrument taking an airflow reading at a supply grille during commercial/TAB field work'
+      title: Measurements, not assumptions
+      text: 'Field airflow measurement is part of understanding how a system is performing. Shown here from commercial/TAB field work.'
+      linkLabel: 'TAB & commissioning support'
+      linkHref: '/tab-commissioning-support/'
+
+brands:
+  heading: Equipment brands we service
+  lead: 'Service experience across a range of common HVAC equipment. Call with your system model and issue.'
 ---

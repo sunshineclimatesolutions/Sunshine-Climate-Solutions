@@ -1,0 +1,40 @@
+---
+// Reusable photographic proof card (homepage proof section, TAB field photos,
+// educational conditions). Presentation-only; all copy comes from props —
+// captions must be factual and must not claim results.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  title: string;
+  text?: string;
+  caption?: string;
+  linkLabel?: string | undefined;
+  linkHref?: string | undefined;
+}
+
+const { image, alt, title, text, caption, linkLabel, linkHref } = Astro.props;
+---
+
+<figure class="photo-card card">
+  <Image
+    src={image}
+    alt={alt}
+    widths={[400, 800]}
+    sizes="(min-width: 48em) 30vw, 92vw"
+    loading="lazy"
+  />
+  <figcaption>
+    <h3>{title}</h3>
+    {text && <p>{text}</p>}
+    {caption && <p class="photo-caption muted">{caption}</p>}
+    {linkHref && linkLabel && (
+      <a class="text-link card-cta" href={linkHref}>
+        {linkLabel} <Icon name="arrow-right" size={18} />
+      </a>
+    )}
+  </figcaption>
+</figure>

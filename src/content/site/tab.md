@@ -91,4 +91,18 @@ ctaBand:
     Send the scope and we'll talk through requirements, schedule, and deliverables
     before anything is accepted.
   requestLabel: Request a TAB Proposal
+visuals:
+  eyebrow: From the field
+  heading: Field measurement and system verification
+  lead: >-
+    Selected photographs from airflow measurement, mechanical-equipment and
+    ductwork field activities. We review scope, required reports and
+    certification requirements before accepting each project.
+  photos:
+    - image: './images/airflow-measurement-at-grille.jpg'
+      alt: 'Instrument taking an airflow reading at a supply grille during TAB field work'
+      caption: 'Airflow measurement at a supply grille.'
+    - image: './images/rooftop-mechanical-equipment.jpg'
+      alt: 'Rooftop mechanical equipment on a commercial project site'
+      caption: 'Rooftop mechanical equipment on a commercial site.'
 ---

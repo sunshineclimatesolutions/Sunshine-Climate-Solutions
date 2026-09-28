@@ -14,7 +14,8 @@ The editable text of the five main pages lives in one Markdown file per page, va
 | `src/content/site/about.md` | Hero, info-card titles, story sections, closing CTA copy, SEO |
 | `src/content/site/contact.md` | Hero, section headings, process heading, SEO |
 | `src/content/site/service-area.md` | Hero, counties + communities list, coverage section, CTA copy, SEO |
-| `src/content/site/tab.md` | Hero, scope-of-work cards, process steps, CTA copy, SEO |
+| `src/content/site/tab.md` | Hero, scope-of-work cards, process steps, field-photo visuals, CTA copy, SEO |
+| `src/content/site/faq.md` | FAQ page SEO + educational "conditions we investigate" section |
 | `src/content/site/leave-review.md` | Google review page: thank-you copy, QR note, button label, SEO |
 
 Rules:

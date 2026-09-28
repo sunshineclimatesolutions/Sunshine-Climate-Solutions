@@ -14,6 +14,7 @@ const counties = need(area.data.counties, 'service-area.md → counties');
 const beyond = need(area.data.beyond, 'service-area.md → beyond');
 const coverage = need(area.data.coverage, 'service-area.md → coverage');
 const ctaBand = need(area.data.ctaBand, 'service-area.md → ctaBand');
+const mapBand = area.data.mapBand; // optional until map copy approved
 
 const title = area.data.metaTitle;
 const description = area.data.metaDescription;
@@ -61,6 +62,37 @@ const description = area.data.metaDescription;
       </div>
     </div>
   </section>
+
+  {mapBand && (
+    <section class="section section--alt" aria-labelledby="area-map-heading">
+      <div class="container map-band">
+        <figure class="service-map-full">
+          <img
+            src="/images/service-area-map.svg"
+            alt="Map of west-central Florida showing Hernando, Pasco, Pinellas and Hillsborough counties highlighted, with neighboring counties and the Gulf of Mexico for context."
+            loading="lazy"
+            width="1674"
+            height="2219"
+          />
+          <figcaption>County boundaries from the U.S. Census Bureau cartographic boundary files.</figcaption>
+        </figure>
+        <div class="map-band-copy">
+          <h2 id="area-map-heading">{mapBand.heading}</h2>
+          <p class="lead">
+            {mapBand.lead}
+          </p>
+          <div class="cluster">
+            <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-area-map">
+              <Icon name="phone" /> Call {business.phone.display}
+            </a>
+            <a class="btn btn--outline-navy btn--lg" href="/contact/" data-cta="request-area-map">
+              {mapBand.ctaLabel}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section section--alt" aria-labelledby="area-check-heading">
     <div class="container">

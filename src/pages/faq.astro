@@ -1,11 +1,15 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqItem from '../components/FaqItem.astro';
 import CtaBand from '../components/CtaBand.astro';
+import PhotoCard from '../components/PhotoCard.astro';
+import Icon from '../components/Icon.astro';
 import { business } from '../config/business';
 
 const faqs = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+const faqPage = await getEntry('site', 'faq');
+const conditions = faqPage?.data.conditions; // optional educational section
 
 const entries = await Promise.all(
   faqs.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
@@ -28,8 +32,9 @@ const groups: Array<{ id: string; heading: string; blurb?: string }> = [
   { id: 'commercial', heading: 'Commercial, contractors & TAB' },
 ];
 
-const title = 'HVAC Service FAQs & Pricing';
+const title = faqPage?.data.metaTitle ?? 'HVAC Service FAQs & Pricing';
 const description =
+  faqPage?.data.metaDescription ??
   'Straight answers about service-call pricing, free estimates, our Tampa Bay service area, brands, payments, warranty coverage, and how service requests work.';
 ---
 
@@ -79,6 +84,36 @@ const description =
       </div>
     </div>
   </section>
+
+  {conditions && (
+    <section class="section section--alt" aria-labelledby="conditions-heading">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">{conditions.eyebrow}</p>
+          <h2 id="conditions-heading">{conditions.heading}</h2>
+          <p class="lead">
+            {conditions.lead}
+          </p>
+        </div>
+        <div class="grid conditions-grid">
+          <PhotoCard
+            image={conditions.photo.image}
+            alt={conditions.photo.alt}
+            title={conditions.photo.caption}
+          />
+          <div class="card conditions-approach">
+            <h3>What we'd check</h3>
+            <p>
+              {conditions.approach}
+            </p>
+            <a class="text-link card-cta" href="/contact/" data-cta="conditions-contact">
+              {conditions.ctaLabel} <Icon name="arrow-right" size={18} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <CtaBand
     context="faq"

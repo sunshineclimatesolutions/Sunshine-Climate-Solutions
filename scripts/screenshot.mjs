@@ -35,9 +35,10 @@ const commit = new Set([
   'home-360', 'home-768', 'home-1440',
   'contact-360', 'contact-768', 'contact-1440',
   'leave-review-360', 'leave-review-1440',
+  'service-area-360', 'service-area-1440',
   'service-ac-repair-360',
-  'tab-360',
-  'faq-360',
+  'tab-360', 'tab-1440',
+  'faq-360', 'faq-1440',
   'about-1440',
   'not-found-360',
 ]);

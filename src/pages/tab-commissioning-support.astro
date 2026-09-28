@@ -6,6 +6,7 @@ import TrustChips from '../components/TrustChips.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { business } from '../config/business';
 import { need } from '../lib/site-content';
+import PhotoCard from '../components/PhotoCard.astro';
 
 const tab = await getEntry('site', 'tab');
 if (!tab) throw new Error('[content] src/content/site/tab.md is missing');
@@ -16,6 +17,7 @@ const servicesCopy = need(tab.data.services, 'tab.md → services');
 const callout = need(tab.data.callout, 'tab.md → callout');
 const processCopy = need(tab.data.process, 'tab.md → process');
 const ctaBand = need(tab.data.ctaBand, 'tab.md → ctaBand');
+const visuals = tab.data.visuals; // optional until photos approved
 
 const title = tab.data.metaTitle;
 const description = tab.data.metaDescription;
@@ -70,6 +72,23 @@ const description = tab.data.metaDescription;
           {callout.text}
         </span>
       </div>
+
+      {visuals && visuals.photos.length > 0 && (
+        <div class="stack" style="margin-top: var(--sp-xl);">
+          <div class="section-heading">
+            <p class="eyebrow">{visuals.eyebrow}</p>
+            <h2>{visuals.heading}</h2>
+            <p class="lead">
+              {visuals.lead}
+            </p>
+          </div>
+          <div class="grid photo-grid">
+            {visuals.photos.map((photo) => (
+              <PhotoCard image={photo.image} alt={photo.alt} title={photo.caption} caption="" />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 

@@ -1,8 +1,25 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: Logo 2 branding + Google review QR implementation
-(branch `brand-logo2-review`).**
+verification continues. **Last updated: portfolio proof milestone (branch
+`portfolio-conversion-proof`): homepage proof cards, equipment-brands strip, Census
+county maps, TAB field visuals, FAQ conditions section.**
+
+## Portfolio proof milestone — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 15 pages |
+| `scripts/links.mjs` | **PASS** — 608 internal URLs, 0 broken |
+| `scripts/smoke.mjs` (360/1440) | **PASS** — all conversions intact, 0px overflow |
+| `scripts/a11y.mjs` (axe-core, 24 scans) | **PASS** — 0 violations |
+| Section geometry probe (360/768/1440) | **PASS** — 3 proof cards, 6 brand boxes, compact map, full map band + CTA, 2 TAB photos, 1 conditions photo; 0px overflow everywhere; no console errors |
+| Lazy-loading confirmation (scroll-through) | **PASS** — 6/6 brands, compact map, 2/2 TAB photos, conditions photo all load on scroll |
+| Map accuracy | Census 2025 boundaries; county names asserted against `business.ts`; label-fit + north→south geography checks passed (`docs/SERVICE-AREA-MAP.md`) |
+| Logo normalization | All 6 manufacturer logos trimmed/normalized to ≤360px, aspect preserved ≤0.34% delta (verified programmatically) |
+| Screenshots | Full set (home/service-area/tab/faq at 360/768/1440) + 12 section close-ups in `docs/verification/screenshots/sections/` + labeled contact sheet |
+| **Owner visual/crop approval** | **PENDING** — contact sheet + section screenshots for review; agent cannot visually inspect images |
+| **Owner facts for `/our-work/`** | **PENDING** — see `docs/PORTFOLIO-APPROVAL.md`; no project entries fabricated |
 
 ## Environment
 

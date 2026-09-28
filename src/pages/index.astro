@@ -7,6 +7,7 @@ import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
 import { business, licenseDisplay } from '../config/business';
 import { need } from '../lib/site-content';
+import PhotoCard from '../components/PhotoCard.astro';
 
 const home = await getEntry('site', 'home');
 if (!home) throw new Error('[content] src/content/site/home.md is missing');
@@ -32,6 +33,8 @@ const areaCopy = need(home.data.serviceArea, 'home.md → serviceArea');
 const reviewsCopy = need(home.data.reviews, 'home.md → reviews');
 const processCopy = need(home.data.process, 'home.md → process');
 const finalCopy = need(home.data.final, 'home.md → final');
+const proof = home.data.proof; // optional until photos are approved
+const brands = home.data.brands; // optional equipment-brands strip
 
 const title = home.data.metaTitle;
 const description = home.data.metaDescription;
@@ -84,6 +87,32 @@ const description = home.data.metaDescription;
     </div>
   </section>
 
+  {proof && proof.cards.length > 0 && (
+    <section class="section" aria-labelledby="home-proof-heading">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">{proof.eyebrow}</p>
+          <h2 id="home-proof-heading">{proof.heading}</h2>
+          <p class="lead">
+            {proof.lead}
+          </p>
+        </div>
+        <div class="grid photo-grid">
+          {proof.cards.map((card) => (
+            <PhotoCard
+              image={card.image}
+              alt={card.alt}
+              title={card.title}
+              text={card.text}
+              linkLabel={card.linkLabel}
+              linkHref={card.linkHref}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Services -->
   <section class="section section--alt" aria-labelledby="home-services-heading">
     <div class="container">
@@ -132,6 +161,22 @@ const description = home.data.metaDescription;
       <p class="muted" style="margin-top: var(--sp-md); font-size: var(--text-sm);">
         {servicesCopy.footnote}
       </p>
+
+      {brands && (
+        <div class="brand-strip" aria-labelledby="brands-heading">
+          <h2 id="brands-heading" class="visually-hidden">{brands.heading}</h2>
+          <p class="brand-strip-heading">{brands.heading}</p>
+          {brands.lead && <p class="muted brand-strip-lead">{brands.lead}</p>}
+          <ul class="brand-list">
+            <li class="brand-box"><img src="/images/brand-carrier.png" alt="Carrier" loading="lazy" width="360" height="162" /></li>
+            <li class="brand-box"><img src="/images/brand-goodman.png" alt="Goodman" loading="lazy" width="360" height="182" /></li>
+            <li class="brand-box"><img src="/images/brand-lennox.png" alt="Lennox" loading="lazy" width="360" height="128" /></li>
+            <li class="brand-box"><img src="/images/brand-rheem.png" alt="Rheem" loading="lazy" width="360" height="360" /></li>
+            <li class="brand-box"><img src="/images/brand-ruud.png" alt="Ruud" loading="lazy" width="360" height="229" /></li>
+            <li class="brand-box"><img src="/images/brand-trane.png" alt="Trane" loading="lazy" width="292" height="360" /></li>
+          </ul>
+        </div>
+      )}
     </div>
   </section>
 
@@ -251,6 +296,18 @@ const description = home.data.metaDescription;
         <p class="muted" style="margin-top: var(--sp-sm); font-size: var(--text-sm);">
           {business.serviceArea.centralFloridaNote}
         </p>
+        <figure class="service-map-compact">
+          <img
+            src="/images/service-area-map-compact.svg"
+            alt="Compact map of west-central Florida highlighting the four counties Sunshine Climate Solutions serves. County names are listed alongside."
+            loading="lazy"
+            width="1674"
+            height="2219"
+          />
+          <figcaption>
+            Our four primary counties — <a href="/service-area/">View our service area</a>
+          </figcaption>
+        </figure>
         <p style="margin-top: var(--sp-sm);">
           <a class="text-link" href="/service-area/">
             {areaCopy.linkLabel} <Icon name="arrow-right" size={18} />

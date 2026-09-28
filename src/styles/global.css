@@ -1383,6 +1383,160 @@ body.nav-open {
   color: var(--c-gold);
 }
 
+/* ── Photographic proof cards ────────────────────────────────── */
+
+.photo-grid {
+  margin-top: var(--sp-lg);
+}
+
+.photo-card {
+  padding: 0;
+  overflow: clip;
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+
+.photo-card figcaption {
+  padding: var(--sp-md);
+  display: grid;
+  gap: var(--sp-2xs);
+}
+
+.photo-card figcaption h3 {
+  font-size: var(--text-lg);
+}
+
+.photo-card figcaption p {
+  color: var(--c-ink-soft);
+}
+
+.photo-card .photo-caption {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+/* ── Equipment brand strip ────────────────────────────────────── */
+
+.brand-strip {
+  margin-top: var(--sp-xl);
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--c-line);
+}
+
+.brand-strip-heading {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-md);
+  color: var(--c-navy);
+}
+
+.brand-strip-lead {
+  font-size: var(--text-sm);
+  margin-top: var(--sp-2xs);
+}
+
+.brand-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-md) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  align-items: stretch;
+}
+
+.brand-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  padding: var(--sp-sm) var(--sp-md);
+  height: 4.5rem;
+  width: 8.5rem;
+  flex: none;
+}
+
+.brand-box img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── Service-area maps ────────────────────────────────────────── */
+
+.service-map-compact {
+  margin: var(--sp-md) 0 0;
+  max-width: 17rem;
+}
+
+.service-map-compact img,
+.service-map-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+}
+
+.service-map-compact figcaption,
+.service-map-full figcaption {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  margin-top: var(--sp-2xs);
+}
+
+.map-band {
+  display: grid;
+  gap: var(--sp-xl);
+  align-items: center;
+}
+
+.service-map-full {
+  margin: 0;
+  max-width: 26rem;
+}
+
+.map-band-copy {
+  display: grid;
+  gap: var(--sp-sm);
+  justify-items: start;
+}
+
+@media (min-width: 48em) {
+  .map-band {
+    grid-template-columns: minmax(0, 26rem) 1fr;
+    gap: var(--sp-2xl);
+  }
+}
+
+/* ── Conditions section ───────────────────────────────────────── */
+
+.conditions-grid {
+  margin-top: var(--sp-lg);
+}
+
+.conditions-approach {
+  display: grid;
+  gap: var(--sp-2xs);
+  align-content: start;
+}
+
+.conditions-approach h3 {
+  font-size: var(--text-lg);
+}
+
+.conditions-approach p {
+  color: var(--c-ink-soft);
+}
+
 /* ── Review page ─────────────────────────────────────────────── */
 
 .review-card {

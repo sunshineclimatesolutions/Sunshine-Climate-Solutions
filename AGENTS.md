@@ -79,7 +79,7 @@ intentional** while those collections are empty — not errors.
 | To change… | Edit |
 | --- | --- |
 | Any business fact (phone, email, hours, pricing, counties, brands, payments, license, flags) | `src/config/business.ts` |
-| Home/about/contact/service-area/TAB/leave-review page copy or SEO | `src/content/site/<page>.md` |
+| Home/about/contact/service-area/TAB/FAQ/leave-review page copy or SEO | `src/content/site/<page>.md` |
 | Service pages | `src/content/services/*.md` |
 | FAQs | `src/content/faqs/*.md` |
 | Portfolio entries (photos + story) | `src/content/projects/*.md` + images in `src/content/projects/images/` |

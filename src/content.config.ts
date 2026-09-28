@@ -117,7 +117,8 @@ const siteIconEnum = z.enum([
 
 const site = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/site' }),
-  schema: z.object({
+  schema: ({ image }) =>
+    z.object({
     // SEO — every entry must define these; pages pass them to BaseLayout.
     metaTitle: z.string(),
     metaDescription: z.string(),
@@ -247,6 +248,81 @@ const site = defineCollection({
       .object({
         buttonLabel: z.string(),
         qrNote: z.string(),
+      })
+      .optional(),
+
+    // home.md — "See the work behind the service" proof cards (maximum three,
+    // each a different proof category; factual captions only, no outcome claims).
+    proof: z
+      .object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        lead: z.string(),
+        cards: z
+          .array(
+            z.object({
+              image: image(),
+              alt: z.string(),
+              title: z.string(),
+              text: z.string(),
+              linkLabel: z.string(),
+              linkHref: z.string(),
+            }),
+          )
+          .max(3),
+      })
+      .optional(),
+
+    // home.md — equipment brands strip (claims service familiarity only —
+    // never dealership, certification or endorsement).
+    brands: z
+      .object({
+        heading: z.string(),
+        lead: z.string().optional(),
+      })
+      .optional(),
+
+    // service-area.md — full county-map band copy.
+    mapBand: z
+      .object({
+        heading: z.string(),
+        lead: z.string(),
+        ctaLabel: z.string(),
+      })
+      .optional(),
+
+    // tab.md — field measurement and system verification photos.
+    visuals: z
+      .object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        lead: z.string(),
+        photos: z
+          .array(
+            z.object({
+              image: image(),
+              alt: z.string(),
+              caption: z.string(),
+            }),
+          )
+          .max(3),
+      })
+      .optional(),
+
+    // faq.md — educational "conditions we investigate" section. Captions must
+    // state only what is visibly shown; no diagnosis, no remediation claim.
+    conditions: z
+      .object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        lead: z.string(),
+        photo: z.object({
+          image: image(),
+          alt: z.string(),
+          caption: z.string(),
+        }),
+        approach: z.string(),
+        ctaLabel: z.string(),
       })
       .optional(),
 
