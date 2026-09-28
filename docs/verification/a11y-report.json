@@ -16,6 +16,11 @@
       "violations": []
     },
     {
+      "page": "service-ac-maintenance",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
       "page": "tab",
       "viewport": "mobile",
       "violations": []
@@ -76,6 +81,11 @@
       "violations": []
     },
     {
+      "page": "service-ac-maintenance",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
       "page": "tab",
       "viewport": "desktop",
       "violations": []
@@ -122,7 +132,7 @@
     }
   ],
   "summary": {
-    "scanned": 24,
+    "scanned": 26,
     "totalViolationGroups": 0,
     "byRule": {}
   }

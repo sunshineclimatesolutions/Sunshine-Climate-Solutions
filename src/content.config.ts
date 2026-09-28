@@ -11,7 +11,7 @@ const services = defineCollection({
     metaTitle: z.string().optional(),
     summary: z.string(),
     metaDescription: z.string(),
-    icon: z.enum(['wrench', 'thermometer', 'wind', 'briefcase']),
+    icon: z.enum(['wrench', 'thermometer', 'wind', 'briefcase', 'shield']),
     order: z.number().int(),
   }),
 });
@@ -282,6 +282,15 @@ const site = defineCollection({
       .object({
         heading: z.string(),
         lead: z.string().optional(),
+      })
+      .optional(),
+
+    // home.md — $75 Premium AC Maintenance promotion band.
+    maintenanceBand: z
+      .object({
+        title: z.string(),
+        text: z.string(),
+        ctaLabel: z.string(),
       })
       .optional(),
 

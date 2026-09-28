@@ -5,6 +5,7 @@ import Icon from '../components/Icon.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { business, licenseDisplay } from '../config/business';
 import { need } from '../lib/site-content';
 import PhotoCard from '../components/PhotoCard.astro';
@@ -35,6 +36,7 @@ const processCopy = need(home.data.process, 'home.md → process');
 const finalCopy = need(home.data.final, 'home.md → final');
 const proof = home.data.proof; // optional until photos are approved
 const brands = home.data.brands; // optional equipment-brands strip
+const maintenanceBand = home.data.maintenanceBand; // optional $75 maintenance promo
 
 const title = home.data.metaTitle;
 const description = home.data.metaDescription;
@@ -179,6 +181,16 @@ const description = home.data.metaDescription;
       )}
     </div>
   </section>
+
+  {maintenanceBand && (
+    <CtaBand
+      context="maintenance"
+      title={maintenanceBand.title}
+      text={maintenanceBand.text}
+      requestLabel={maintenanceBand.ctaLabel}
+      requestHref="/contact/?service=premium-ac-maintenance"
+    />
+  )}
 
   <!-- Diagnostics strengths -->
   <section class="section" aria-labelledby="home-diag-heading">

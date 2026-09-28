@@ -12,6 +12,7 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const shots = [
   ['/', 'section[aria-labelledby="home-proof-heading"]', 'home-proof'],
+  ['/', 'section[aria-labelledby="cta-maintenance-heading"]', 'home-maintenance'],
   ['/', '.brand-strip', 'home-brands'],
   ['/', '.service-map-compact', 'home-compact-map'],
   ['/service-area/', '.map-band', 'service-area-map'],

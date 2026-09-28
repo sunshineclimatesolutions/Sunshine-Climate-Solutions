@@ -116,7 +116,7 @@ Answer body — plain Markdown, links allowed.
 ## Adding a service page
 
 Create `src/content/services/new-service.md` with frontmatter
-(`title`, `summary`, `metaDescription`, `icon` = wrench | thermometer | wind | briefcase,
+(`title`, `summary`, `metaDescription`, `icon` = wrench | thermometer | wind | briefcase | shield,
 `order`) — the page, card, and footer link appear automatically at
 `/services/<filename>/`. Optional `metaTitle` overrides the default
 `"<title> in Tampa Bay"` SEO title — use it only where a specific local search intent

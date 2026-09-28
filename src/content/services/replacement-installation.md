@@ -47,6 +47,11 @@ Replacements are planned with you in advance: what's included, what changes in y
 what happens on the day of the work. You'll know the plan before we start, and the work proceeds
 the way it was described.
 
+## Caring for your system after installation
+
+Routine maintenance keeps new equipment cleaned, tested and evaluated — see
+[$75 Premium AC Maintenance](/services/ac-maintenance/) for the details.
+
 ## Next steps
 
 - **Call or text (727) 661-5200** to talk through your system.

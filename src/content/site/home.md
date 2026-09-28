@@ -147,4 +147,9 @@ proof:
 brands:
   heading: Equipment brands we service
   lead: 'Service experience across a range of common HVAC equipment. Call with your system model and issue.'
+
+maintenanceBand:
+  title: $75 Premium AC Maintenance
+  text: 'Routine coil cleaning, condensate drain flushing, blower-compartment cleaning and a comprehensive system check.'
+  ctaLabel: Schedule Maintenance
 ---

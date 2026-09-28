@@ -14,6 +14,7 @@ const pages = [
   { name: 'home', path: '/' },
   { name: 'services', path: '/services/' },
   { name: 'service-ac-repair', path: '/services/ac-repair-diagnostics/' },
+  { name: 'service-ac-maintenance', path: '/services/ac-maintenance/' },
   { name: 'tab', path: '/tab-commissioning-support/' },
   { name: 'service-area', path: '/service-area/' },
   { name: 'about', path: '/about/' },

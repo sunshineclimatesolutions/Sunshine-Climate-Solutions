@@ -1,9 +1,20 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: Phase 2A local-SEO metadata (branch
-`seo-local-spring-hill`): Spring Hill homepage + AC-repair metadata, optional service
-`metaTitle`.**
+verification continues. **Last updated: $75 Premium AC Maintenance launch (branch
+`maintenance-launch`) — AWAITING OWNER SCOPE APPROVAL before publication.**
+
+## $75 Premium AC Maintenance — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 16 pages |
+| `scripts/links.mjs` | **PASS** — 669 internal URLs, 0 broken |
+| `scripts/smoke.mjs` | **PASS** |
+| `scripts/a11y.mjs` (maintenance page added) | **PASS** — 26 scans, 0 violations |
+| Maintenance check suite | **27/27 PASS** — price consistency ("$75 per system, per visit" ×6), all four confirmed cleanings present, exclusions + authorization wording, maintenance vs $50 service-call distinction, no membership language, no positive guarantee claims (honest disclaimer present), homepage promo + preselect link, contact form option + URL preselect verified in browser, services index/homepage/footer listings, contextual links from AC-repair and installation pages, Call/Request CTAs, 0px overflow at 360/768/1440 |
+| Screenshots | `docs/verification/screenshots/service-ac-maintenance-{360,1440}.jpg`, `sections/home-maintenance-{360,1440}.jpg` |
+| **Owner scope approval** | **PENDING** — the four confirmed cleaning inclusions are definite; all other checklist items are the proposed standard scope awaiting final owner approval |
 
 ## Phase 2A local-SEO metadata — verification
 

@@ -50,6 +50,12 @@ Some companies sell replacements because it's easier for them. We lead with the 
 
 Daikin, Carrier, Bryant, Trane, Ruud, Rheem, Lennox, Goodman, York, and more.
 
+## Staying ahead of breakdowns
+
+Repairs fix what's wrong; maintenance is the preventive side — see
+[$75 Premium AC Maintenance](/services/ac-maintenance/) for routine coil cleaning,
+condensate drain flushing, blower-compartment cleaning and a full system check.
+
 ## Next steps
 
 - **Call or text (727) 661-5200** — photos of the unit or data plate are welcome by text.
