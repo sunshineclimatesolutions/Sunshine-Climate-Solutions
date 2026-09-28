@@ -29,6 +29,7 @@ npx playwright install chromium   # optional: only for the verification scripts
 | `npm run check` | Astro + TypeScript diagnostics |
 | `npm run verify` | `check` + `build` in one go |
 | `node scripts/smoke.mjs` | Quick mobile/desktop smoke test (run `npm run preview` first) |
+| `node scripts/photo.mjs <path>` | Photo size/format guardrails; `--resize 2000 --write` downscales in place |
 
 Optional deeper verification (after `npm run preview`):
 
@@ -88,7 +89,8 @@ instructions: **`docs/DEPLOYMENT.md`**.
 ## Docs index
 
 - **`AGENTS.md`** — permanent instructions for AI engineering agents (read first)
-- `docs/CONTENT-GUIDE.md` — adding/editing services, FAQs, projects, reviews
+- `docs/CONTENT-GUIDE.md` — adding/editing services, FAQs, projects, reviews, page copy
+- `docs/IMAGE-GUIDE.md` — photo management, naming, alt text, before/after, guardrails
 - `docs/PRE-LAUNCH-CHECKLIST.md` — launch blockers and verification status
 - `docs/VERIFICATION.md` — what has been tested, results, and known limitations
 - `docs/DEPLOYMENT.md` — Cloudflare deployment, indexing, DNS cautions, rollback

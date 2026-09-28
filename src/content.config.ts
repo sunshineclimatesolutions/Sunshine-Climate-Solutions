@@ -61,6 +61,9 @@ const projects = defineCollection({
             image: image(),
             alt: z.string(),
             label: z.enum(['before', 'after', 'during', 'detail', 'other']).default('other'),
+            // Optional focal point for responsive crops — any CSS object-position
+            // value, e.g. "center 30%" or "left top". Default: center.
+            position: z.string().optional(),
           }),
         )
         .default([]),

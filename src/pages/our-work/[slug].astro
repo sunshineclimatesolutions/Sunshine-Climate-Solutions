@@ -73,7 +73,7 @@ const pairs = beforePhotos.map((before, index) => ({
         pairs.length > 0 && (
           <div class="stack" style="margin-top: var(--sp-xl);">
             <h2 style="font-size: var(--text-h3);">Before & after</h2>
-            {pairs.map((pair) => (
+                {pairs.map((pair) => (
               <div class="ba-grid">
                 <figure class="project-media">
                   <Image
@@ -82,6 +82,7 @@ const pairs = beforePhotos.map((before, index) => ({
                     widths={[400, 800]}
                     sizes="(min-width: 48em) 46vw, 92vw"
                     loading="lazy"
+                    {...(pair.before.position ? { style: `object-position: ${pair.before.position}` } : {})}
                   />
                   <figcaption>Before</figcaption>
                 </figure>
@@ -93,6 +94,7 @@ const pairs = beforePhotos.map((before, index) => ({
                       widths={[400, 800]}
                       sizes="(min-width: 48em) 46vw, 92vw"
                       loading="lazy"
+                      {...(pair.after.position ? { style: `object-position: ${pair.after.position}` } : {})}
                     />
                     <figcaption>After</figcaption>
                   </figure>
@@ -116,6 +118,7 @@ const pairs = beforePhotos.map((before, index) => ({
                     widths={[400, 800]}
                     sizes="(min-width: 48em) 30vw, 92vw"
                     loading="lazy"
+                    {...(photo.position ? { style: `object-position: ${photo.position}` } : {})}
                   />
                   <figcaption>{photo.alt}</figcaption>
                 </figure>

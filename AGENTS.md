@@ -56,6 +56,7 @@ with the owner; never silently work around this file.
 | `node scripts/smoke.mjs` | Real-browser smoke test (run `npm run preview` first; needs Playwright Chromium) |
 | `node scripts/screenshot.mjs` | Screenshots at 360/768/1440 for owner review |
 | `node scripts/a11y.mjs` | axe-core WCAG scan (needs preview server) |
+| `node scripts/photo.mjs <path>` | Photo guardrails: dimensions/size/format check; `--resize 2000 --write` downscales in place |
 
 Build notices like "The collection 'projects' does not exist or is empty" are **expected and
 intentional** while those collections are empty — not errors.
@@ -89,18 +90,24 @@ Schemas and how-to: `docs/CONTENT-GUIDE.md`. After content edits run `npm run ve
 
 ## Photo and image management
 
-- **Project photos** live in `src/content/projects/images/`, referenced from each entry's
-  frontmatter via `image()` fields — Astro's built-in `astro:assets` pipeline optimizes them
-  automatically (responsive, dimensions enforced). `alt` text is required by the schema; the
-  build fails without it. `label: 'before' | 'after'` pairs render as labeled before/after
-  comparisons (side by side on desktop, stacked on mobile).
-- `public/images/` is for direct-reference assets only (not optimized); `public/brand/` holds
-  logo/icons/OG image.
+- **Project photos** live in `src/content/projects/images/`, **page-copy photos** in
+  `src/content/site/images/` — both referenced from frontmatter via `image()` fields so
+  Astro's built-in `astro:assets` pipeline optimizes them automatically (responsive,
+  dimensions enforced, no distortion). `alt` text is required by the schema; the build
+  fails without it. `label: 'before' | 'after'` pairs render as labeled before/after
+  comparisons (side by side on desktop, stacked on mobile). Optional `position` field
+  sets the focal point (any CSS `object-position` value).
+- `public/images/` is for direct-reference assets only (not optimized); `public/brand/`
+  holds logo/icons/OG image.
 - Naming: lowercase, hyphenated, descriptive — e.g. `air-handler-replacement-spring-hill-before.jpg`.
+- Run `node scripts/photo.mjs <path>` to check photos for oversized dimensions (>4000px),
+  file size (>1 MB), or wrong format; `--resize 2000 --write` downscales in place
+  (good targets: ≤2000px long edge, JPEG, under ~500 KB).
 - Never fabricate or stage photos; only genuine owner-supplied work photos.
-- When the owner supplies photos anywhere in the project, the agent should optimize, rename,
-  place them in the correct collection images directory, and wire them into frontmatter with
-  honest alt text.
+- When the owner supplies photos anywhere in the project, the agent should run the
+  guardrail tool, optimize, rename, place them in the correct collection images directory,
+  and wire them into frontmatter with honest alt text.
+- Full conventions: `docs/IMAGE-GUIDE.md`.
 
 ## Component development standards
 
