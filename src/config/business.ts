@@ -77,6 +77,19 @@ export const business = {
     accessKey: import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? 'c6385a71-df8e-4352-9ba8-99ac3b35f6b5',
   },
 
+  analytics: {
+    // Umami Cloud — cookieless aggregate analytics. The website ID is a public
+    // client-side identifier rendered in page HTML by design (safe to commit,
+    // like the Web3Forms key). Override with PUBLIC_UMAMI_WEBSITE_ID; an empty
+    // string disables tracking entirely.
+    // RULE: events carry fixed names only — never send form contents, phone
+    // numbers, names or any personal information to analytics.
+    umami: {
+      websiteId:
+        import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? '2635b6ca-2d10-4742-8838-9e6ec879a5a7',
+    },
+  },
+
   flags: {
     // Keep prominent financing promotion DISABLED until Klarna merchant
     // availability is confirmed by the owner. Payment options are stated

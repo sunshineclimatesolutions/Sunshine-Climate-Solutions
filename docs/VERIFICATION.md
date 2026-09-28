@@ -1,8 +1,19 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: $75 Premium AC Maintenance launch (branch
-`maintenance-launch`) — AWAITING OWNER SCOPE APPROVAL before publication.**
+verification continues. **Last updated: Umami Cloud analytics integrated on top of the
+published $75 Premium AC Maintenance release (branch `umami-release`).**
+
+## Umami Cloud analytics — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` + built output | **PASS** — 0/0/0; loader + website ID + click listener present in the production build |
+| `scripts/links.mjs` / smoke / a11y | **PASS** — 0 broken links; ALL PASSED; 0 violations |
+| Preview-mode gate | **PASS** — a `PUBLIC_PREVIEW_MODE=true` build contains **no** Umami loader (and remains noindex); the normal build contains it — preview/test traffic cannot pollute the dashboard |
+| Event behavior (real browser, provider mocked — no real submission) | **PASS** — `call-click` on tel links, `text-click` on sms links, `form-success` fires **exactly once and only after Web3Forms confirms success** (none on rejection), real `/thank-you/` redirect preserved |
+| PII rule | **PASS** — every `umami.track` call observed carries a single fixed event name; no payloads, no form contents, no numbers |
+| Privacy page | Updated: honest Analytics disclosure (Umami, cookieless, aggregate; no universal-consent claims); outdated "no analytics" copy removed |
 
 ## $75 Premium AC Maintenance — verification
 
@@ -12,9 +23,10 @@ verification continues. **Last updated: $75 Premium AC Maintenance launch (branc
 | `scripts/links.mjs` | **PASS** — 669 internal URLs, 0 broken |
 | `scripts/smoke.mjs` | **PASS** |
 | `scripts/a11y.mjs` (maintenance page added) | **PASS** — 26 scans, 0 violations |
-| Maintenance check suite | **27/27 PASS** — price consistency ("$75 per system, per visit" ×6), all four confirmed cleanings present, exclusions + authorization wording, maintenance vs $50 service-call distinction, no membership language, no positive guarantee claims (honest disclaimer present), homepage promo + preselect link, contact form option + URL preselect verified in browser, services index/homepage/footer listings, contextual links from AC-repair and installation pages, Call/Request CTAs, 0px overflow at 360/768/1440 |
+| Maintenance check suite | **29/29 PASS** — price consistency ("$75 per system, per visit"), all four confirmed cleanings present, exclusions + authorization wording, maintenance vs $50 service-call distinction, no membership language, no positive guarantee claims (honest disclaimer present), homepage promo + preselect link, contact form option + URL preselect verified in browser, services index/homepage/footer listings, contextual links from AC-repair and installation pages, Call/Request CTAs, 0px overflow at 360/768/1440 |
 | Screenshots | `docs/verification/screenshots/service-ac-maintenance-{360,1440}.jpg`, `sections/home-maintenance-{360,1440}.jpg` |
-| **Owner scope approval** | **PENDING** — the four confirmed cleaning inclusions are definite; all other checklist items are the proposed standard scope awaiting final owner approval |
+| Owner scope approval | **APPROVED by owner; published in release `04e6e7d`** |
+
 
 ## Phase 2A local-SEO metadata — verification
 

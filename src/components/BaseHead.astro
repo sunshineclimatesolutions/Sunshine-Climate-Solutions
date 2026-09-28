@@ -20,6 +20,13 @@ const canonical = new URL(path, site).href;
 const preview = import.meta.env.PUBLIC_PREVIEW_MODE === 'true';
 const robots = noindex || preview ? 'noindex, follow' : 'index, follow';
 
+// Umami Cloud analytics (cookieless, aggregate only). Loads only when a website
+// ID is configured and never in preview mode — preview/test traffic cannot
+// pollute the dashboard. Click events send fixed names only; no personal
+// information is ever transmitted (rule documented in AGENTS.md).
+const umamiId = business.analytics.umami.websiteId;
+const umamiEnabled = Boolean(umamiId) && !preview;
+
 const pageTitle = title.includes(business.name) ? title : `${title} | ${business.name}`;
 
 const jsonLd = {
@@ -94,3 +101,20 @@ const jsonLd = {
 <meta name="twitter:card" content="summary_large_image" />
 
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+{
+  umamiEnabled && (
+    <>
+      <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id={umamiId} />
+      <script
+        is:inline
+        set:html={`document.addEventListener('click', function (event) {
+  var link = event.target.closest('a[href^="tel:"], a[href^="sms:"]');
+  if (!link || !window.umami) return;
+  var href = link.getAttribute('href') || '';
+  window.umami.track(href.indexOf('tel:') === 0 ? 'call-click' : 'text-click');
+}, { capture: true });`}
+      />
+    </>
+  )
+}

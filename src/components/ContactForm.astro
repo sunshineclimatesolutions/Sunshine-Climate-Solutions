@@ -322,6 +322,9 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
 
         // Success is only acknowledged after the provider confirms acceptance.
         if (response.ok && payload.success === true) {
+          // Analytics: fixed-name event only, fired strictly after Web3Forms
+          // confirms — never on failures, never with any form contents.
+          window.umami?.track('form-success');
           setStatus('Request received — thank you!', 'success');
           window.location.assign(form.dataset.redirect ?? '/thank-you/');
           return;

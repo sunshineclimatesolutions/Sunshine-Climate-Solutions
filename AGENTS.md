@@ -43,6 +43,11 @@ with the owner; never silently work around this file.
   success is acknowledged only after the provider confirms; every failure path has an honest
   message and a call/text alternative; a missing key renders an honest fallback, never a fake
   success.
+- Analytics: Umami Cloud (cookieless, aggregate only) loads from `BaseHead.astro` when
+  `business.analytics.umami.websiteId` is set and never in preview mode. Events are fixed-name
+  only — `call-click`, `text-click`, `form-success` (fired strictly after Web3Forms confirms).
+  **Never send form contents, phone numbers, names, or any personal information to analytics.**
+  The privacy page discloses this; keep it accurate if analytics change.
 
 ## Commands
 
