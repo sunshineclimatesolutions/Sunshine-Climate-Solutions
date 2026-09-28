@@ -4,11 +4,11 @@ import { business } from '../config/business';
 
 interface Props {
   title: string;
-  text?: string;
+  text?: string | undefined;
   /** Stable, unique-per-page context for measurement-ready data-cta ids. */
   context: string;
-  requestLabel?: string;
-  requestHref?: string;
+  requestLabel?: string | undefined;
+  requestHref?: string | undefined;
 }
 
 const {

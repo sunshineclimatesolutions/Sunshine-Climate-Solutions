@@ -3,6 +3,28 @@
 How to edit site content. Schemas live in `src/content.config.ts` — if frontmatter is wrong,
 `npm run build` fails with a clear error instead of publishing broken content.
 
+## Page copy (home, about, contact, service-area, TAB) — `src/content/site/*.md`
+
+The editable text of the five main pages lives in one Markdown file per page, validated by the
+`site` collection schema:
+
+| File | Controls |
+| --- | --- |
+| `src/content/site/home.md` | Hero, services/diagnostics/TAB/offer/about/reviews/process/final section copy, SEO |
+| `src/content/site/about.md` | Hero, info-card titles, story sections, closing CTA copy, SEO |
+| `src/content/site/contact.md` | Hero, section headings, process heading, SEO |
+| `src/content/site/service-area.md` | Hero, counties + communities list, coverage section, CTA copy, SEO |
+| `src/content/site/tab.md` | Hero, scope-of-work cards, process steps, CTA copy, SEO |
+
+Rules:
+
+- Business facts (phone, email, hours, pricing, license) are **not** duplicated here — they
+  render from `src/config/business.ts` inside the page markup.
+- The only supported token is `{serviceCall}` (about.md) — replaced from `business.pricing` at
+  build time.
+- Pages fail the build with a clear message if a required section is missing from the file.
+- After editing, run `npm run verify`.
+
 ## Central business facts — `src/config/business.ts`
 
 Phone, email, hours, pricing, counties, brands, payments, and flags live in this one file.

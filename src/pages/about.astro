@@ -3,23 +3,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import TrustChips from '../components/TrustChips.astro';
 import CtaBand from '../components/CtaBand.astro';
+import { getEntry } from 'astro:content';
 import { business, licenseDisplay } from '../config/business';
+import { need, interpolateBusiness } from '../lib/site-content';
+
+const about = await getEntry('site', 'about');
+if (!about) throw new Error('[content] src/content/site/about.md is missing');
 
 const license = licenseDisplay();
 
-const title = 'About Sunshine Climate Solutions | Aaron Thomas, Owner';
-const description =
-  'Owner-operated HVAC service in Tampa Bay. Aaron Thomas — five years of hands-on HVAC experience, EPA Section 608 certified, repair-first. Learn why Sunshine Climate Solutions exists.';
+const hero = need(about.data.hero, 'about.md → hero');
+const infoTitles = need(about.data.infoTitles, 'about.md → infoTitles');
+const story = need(about.data.story, 'about.md → story');
+const ctaBand = need(about.data.ctaBand, 'about.md → ctaBand');
+
+const title = about.data.metaTitle;
+const description = about.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
     <div class="container page-hero-inner">
-      <p class="eyebrow">About</p>
-      <h1>Owner-operated, on purpose</h1>
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.heading}</h1>
       <p class="lead">
-        Sunshine Climate Solutions exists to give Tampa Bay homeowners and businesses HVAC service
-        grounded in integrity, transparency, and genuine care.
+        {hero.lead}
       </p>
     </div>
   </section>
@@ -30,7 +38,7 @@ const description =
       <h2 id="about-business-heading" class="visually-hidden">Business information</h2>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));">
         <div class="card">
-          <h3 style="font-size: var(--text-lg);">Call or text</h3>
+          <h3 style="font-size: var(--text-lg);">{infoTitles.call}</h3>
           <p>
             <a href={business.phone.href} data-cta="call-about" class="text-link">
               <Icon name="phone" /> {business.phone.display}
@@ -43,16 +51,16 @@ const description =
           </p>
         </div>
         <div class="card">
-          <h3 style="font-size: var(--text-lg);">Hours</h3>
+          <h3 style="font-size: var(--text-lg);">{infoTitles.hours}</h3>
           <p>{business.hours.display}, {business.hours.days.toLowerCase()}.</p>
           <p style="font-size: var(--text-sm);">Timezone: US Eastern (America/New_York).</p>
         </div>
         <div class="card">
-          <h3 style="font-size: var(--text-lg);">Service area</h3>
+          <h3 style="font-size: var(--text-lg);">{infoTitles.area}</h3>
           <p>Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and surrounding communities.</p>
         </div>
         <div class="card">
-          <h3 style="font-size: var(--text-lg);">Pricing</h3>
+          <h3 style="font-size: var(--text-lg);">{infoTitles.pricing}</h3>
           <p>
             {business.pricing.serviceCall} service call, waived when you proceed with the repair ·
             Free estimates.
@@ -69,55 +77,24 @@ const description =
   <section class="section" aria-labelledby="about-story-heading">
     <div class="container container--narrow">
       <div class="prose">
-        <h2 id="about-story-heading">Why Sunshine Climate Solutions exists</h2>
-        <p>
-          Aaron Thomas started Sunshine Climate Solutions because he was tired of seeing homeowners
-          pressured into equipment they didn't need. Too many people get walked through a script
-          that ends at a replacement — even when a sound repair would serve them better for years.
-        </p>
-        <p>
-          So he built a different kind of company: one where the person who shows up is the person
-          whose name is on the business, the findings get explained in plain language, and the
-          customer — not the commission — drives the decision. That's the whole idea: service
-          grounded in integrity, transparency, and genuine care.
-        </p>
-
-        <h2>How we work</h2>
-        <ul>
-          <li>You work directly with the owner on every job.</li>
-          <li>Findings and options are explained before anything is recommended.</li>
-          <li>Work proceeds only after you approve it.</li>
-          <li>A sound repair is prioritized where it makes sense.</li>
-          <li>
-            Replacement recommendations are based on equipment condition and practical options —
-            never fear tactics.
-          </li>
-          <li>
-            Transparent pricing: {business.pricing.serviceCall} service call, waived when you
-            proceed with the repair. Free estimates.
-          </li>
-        </ul>
-
-        <h2>About Aaron Thomas</h2>
-        <ul>
-          <li>Five years of hands-on HVAC experience — residential and commercial installation, service, and maintenance.</li>
-          <li>HVAC schooling at Lively Technical College.</li>
-          <li>EPA Section 608 certification.</li>
-          <li>Experience working with engineering companies and smaller contractors.</li>
-          <li>Leadership, project coordination, and mentoring background.</li>
-          <li>Particular strength in airflow diagnostics and electrical / control-board troubleshooting.</li>
-        </ul>
-        <p>
-          The company is licensed and insured, and open 7:30 AM – 7:30 PM every day.
-        </p>
-
-        <h2>The technical edge</h2>
-        <p>
-          Weak airflow, hot rooms, and control-board gremlins are where sloppy diagnostics usually
-          end in a new system. They're also where we're strongest: measuring the whole air path,
-          tracing electrical faults methodically, and explaining what we find so clearly that
-          you could make the decision without us in the room.
-        </p>
+        {
+          story.map((section, index) => (
+            <>
+              <h2 id={index === 0 ? 'about-story-heading' : undefined}>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p>{interpolateBusiness(paragraph)}</p>
+              ))}
+              {section.list.length > 0 && (
+                <ul>
+                  {section.list.map((item) => (
+                    <li>{interpolateBusiness(item)}</li>
+                  ))}
+                </ul>
+              )}
+              {section.footnote && <p>{interpolateBusiness(section.footnote)}</p>}
+            </>
+          ))
+        }
       </div>
 
       <div style="margin-top: var(--sp-lg);">
@@ -126,9 +103,5 @@ const description =
     </div>
   </section>
 
-  <CtaBand
-    context="about"
-    title="Work with the owner directly"
-    text="Call, text, or send a request — you'll get clear answers and straight options, every time."
-  />
+  <CtaBand context="about" title={ctaBand.title} text={ctaBand.text} />
 </BaseLayout>

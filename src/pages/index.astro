@@ -1,11 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
 import { business, licenseDisplay } from '../config/business';
+import { need } from '../lib/site-content';
+
+const home = await getEntry('site', 'home');
+if (!home) throw new Error('[content] src/content/site/home.md is missing');
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const featured = services.slice(0, 2);
@@ -14,9 +18,23 @@ const projects = await getCollection('projects');
 const reviews = await getCollection('reviews');
 const license = licenseDisplay();
 
-const title = 'Sunshine Climate Solutions | AC Repair & HVAC Service in Tampa Bay';
-const description =
-  'Owner-operated AC repair, replacement, and HVAC service across Hernando, Pasco, Pinellas, and Hillsborough counties. $50 service call, waived with repair. Free estimates. Call (727) 661-5200.';
+const hero = need(home.data.hero, 'home.md → hero');
+const headlineAccent = need(hero.headlineAccent, 'home.md → hero.headlineAccent');
+const headlineTail = need(hero.headlineTail, 'home.md → hero.headlineTail');
+const servicesCopy = need(home.data.services, 'home.md → services');
+const servicesLead = need(servicesCopy.lead, 'home.md → services.lead');
+const tabCard = need(servicesCopy.tabCard, 'home.md → services.tabCard');
+const diagnostics = need(home.data.diagnostics, 'home.md → diagnostics');
+const tabBand = need(home.data.tabBand, 'home.md → tabBand');
+const offerBand = need(home.data.offerBand, 'home.md → offerBand');
+const aboutBand = need(home.data.aboutBand, 'home.md → aboutBand');
+const areaCopy = need(home.data.serviceArea, 'home.md → serviceArea');
+const reviewsCopy = need(home.data.reviews, 'home.md → reviews');
+const processCopy = need(home.data.process, 'home.md → process');
+const finalCopy = need(home.data.final, 'home.md → final');
+
+const title = home.data.metaTitle;
+const description = home.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -37,11 +55,12 @@ const description =
       </svg>
     </div>
     <div class="container hero-inner">
-      <p class="eyebrow">Sunshine Climate Solutions</p>
-      <h1>Honest AC repair. <span class="accent">Clear answers.</span> Local service.</h1>
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>
+        {hero.headline} <span class="accent">{headlineAccent}</span> {headlineTail}
+      </h1>
       <p class="lead">
-        Owner-operated heating and cooling service across Tampa Bay and surrounding communities.
-        Clear explanations, straightforward options, and a repair-first approach when it makes sense.
+        {hero.lead}
       </p>
       <div class="hero-actions">
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-hero">
@@ -57,9 +76,9 @@ const description =
       <p class="offer-chip">
         <strong>{business.pricing.serviceCall} service call</strong>
         <span class="dot" aria-hidden="true">·</span>
-        <span>waived when you proceed with the repair</span>
+        <span>{business.pricing.serviceCallWaiver}</span>
         <span class="dot" aria-hidden="true">·</span>
-        <span>Free estimates</span>
+        <span>{business.pricing.estimates}</span>
       </p>
       <TrustChips />
     </div>
@@ -69,11 +88,10 @@ const description =
   <section class="section section--alt" aria-labelledby="home-services-heading">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Services</p>
-        <h2 id="home-services-heading">HVAC service for Tampa Bay homes and businesses</h2>
+        <p class="eyebrow">{servicesCopy.eyebrow}</p>
+        <h2 id="home-services-heading">{servicesCopy.heading}</h2>
         <p class="lead">
-          Repairs come first — and if replacement is genuinely the better call, you’ll hear exactly
-          why, with real options and a free estimate.
+          {servicesLead}
         </p>
       </div>
 
@@ -102,19 +120,17 @@ const description =
         }
         <a class="card card-hover" href="/tab-commissioning-support/" style="background: var(--c-navy); border-color: var(--c-navy);">
           <span class="card-icon"><Icon name="activity" /></span>
-          <h3 style="color: #fff;">Testing, Adjusting & Balancing</h3>
+          <h3 style="color: #fff;">{tabCard.title}</h3>
           <p style="color: var(--c-on-navy-soft);">
-            Air and hydronic TAB, duct traverses, outside-air verification, and commissioning
-            support for contractors, engineers, and property teams.
+            {tabCard.text}
           </p>
           <span class="card-cta" style="color: var(--c-gold);">
-            Request a TAB proposal <Icon name="arrow-right" size={18} />
+            {tabCard.ctaLabel} <Icon name="arrow-right" size={18} />
           </span>
         </a>
       </div>
       <p class="muted" style="margin-top: var(--sp-md); font-size: var(--text-sm);">
-        We also support contractors with subcontracted installation and overflow work — call to
-        talk through scope.
+        {servicesCopy.footnote}
       </p>
     </div>
   </section>
@@ -123,52 +139,31 @@ const description =
   <section class="section" aria-labelledby="home-diag-heading">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Why trust us with your system</p>
-        <h2 id="home-diag-heading">Diagnostics done right — airflow, electrical, control boards</h2>
+        <p class="eyebrow">{diagnostics.eyebrow}</p>
+        <h2 id="home-diag-heading">{diagnostics.heading}</h2>
         <p class="lead">
-          Many “dead” systems turn out to be a failed capacitor, a stuck contactor, a control-board
-          fault, or an airflow problem nobody actually measured. We find the real cause before we
-          recommend anything.
+          {diagnostics.lead}
         </p>
       </div>
       <div class="grid">
-        <div class="card">
-          <span class="card-icon"><Icon name="wind" /></span>
-          <h3>Airflow and static pressure analysis</h3>
-          <p>
-            Weak airflow, hot rooms, and humidity trouble usually have measurable causes. We check
-            the whole air path, not just the box outside.
-          </p>
-        </div>
-        <div class="card">
-          <span class="card-icon"><Icon name="activity" /></span>
-          <h3>Electrical and control-board diagnostics</h3>
-          <p>
-            Control boards, wiring, capacitors, contactors, and sensors — traced methodically
-            instead of parts-swapping at your expense.
-          </p>
-        </div>
-        <div class="card">
-          <span class="card-icon"><Icon name="clipboard" /></span>
-          <h3>Plain-language findings</h3>
-          <p>
-            You’ll see what we found, what it means, and what your options cost — before any work
-            is approved or performed.
-          </p>
-        </div>
-        <div class="card">
-          <span class="card-icon"><Icon name="badge" /></span>
-          <h3>Owner-operated, EPA Section 608 certified</h3>
-          <p>
-            You work directly with Aaron — five years of hands-on HVAC experience and a
-            repair-first approach that puts the decision in your hands.
-          </p>
-        </div>
+        {
+          diagnostics.cards.map((card) => (
+            <div class="card">
+              <span class="card-icon"><Icon name={card.icon} /></span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))
+        }
       </div>
-      <p class="muted" style="margin-top: var(--sp-md);">
-        Want the full story?
-        <a href="/about/">More about Aaron and how we work</a>.
-      </p>
+      {
+        diagnostics.footnote && (
+          <p class="muted" style="margin-top: var(--sp-md);">
+            {diagnostics.footnote.lead}
+            <a href="/about/">{diagnostics.footnote.linkLabel}</a>.
+          </p>
+        )
+      }
     </div>
   </section>
 
@@ -176,16 +171,18 @@ const description =
   <section class="cta-band on-dark" aria-labelledby="home-tab-heading">
     <div class="container cta-band-inner">
       <div>
-        <p class="eyebrow">For contractors, engineers & property teams</p>
-        <h2 id="home-tab-heading">Testing, adjusting & balancing, and commissioning support</h2>
+        <p class="eyebrow">{tabBand.eyebrow}</p>
+        <h2 id="home-tab-heading">{tabBand.heading}</h2>
         <p>
-          Air and hydronic TAB, airflow measurement and balancing reports, duct traverses,
-          outside-air verification, building-pressure checks, performance investigation, and
-          commissioning support within agreed scope.
+          {tabBand.text}
         </p>
-        <p style="margin-top: var(--sp-2xs); font-size: var(--text-sm);">
-          Project scope and certification requirements are reviewed before acceptance.
-        </p>
+        {
+          tabBand.note && (
+            <p style="margin-top: var(--sp-2xs); font-size: var(--text-sm);">
+              {tabBand.note}
+            </p>
+          )
+        }
       </div>
       <div class="cta-band-actions">
         <a
@@ -193,10 +190,10 @@ const description =
           href="/contact/?service=tab-commissioning-support"
           data-cta="request-tab-proposal"
         >
-          <Icon name="clipboard" /> Request a TAB Proposal
+          <Icon name="clipboard" /> {tabBand.ctaLabel}
         </a>
         <a class="btn btn--outline-light" href="/tab-commissioning-support/" data-cta="tab-learn-more">
-          See TAB services
+          {tabBand.secondaryLabel}
         </a>
       </div>
     </div>
@@ -207,11 +204,10 @@ const description =
     <div class="container band-inner">
       <div>
         <h2 id="home-offer-heading">
-          {business.pricing.serviceCall} service call — waived when you proceed with the repair.
+          {business.pricing.serviceCall} service call — {business.pricing.serviceCallWaiver}.
         </h2>
         <p>
-          Free estimates, clear options before any work begins, and hours that fit real schedules:
-          7:30 AM – 7:30 PM, every day.
+          {offerBand.text}
         </p>
       </div>
       <div class="cluster">
@@ -219,7 +215,7 @@ const description =
           <Icon name="phone" /> Call {business.phone.display}
         </a>
         <a class="text-link" href="/contact/" data-cta="request-offer" style="color: var(--c-navy);">
-          or request service online <Icon name="arrow-right" size={18} />
+          {offerBand.linkLabel} <Icon name="arrow-right" size={18} />
         </a>
       </div>
     </div>
@@ -229,23 +225,20 @@ const description =
   <section class="section" aria-labelledby="home-about-heading">
     <div class="container home-duo">
       <div>
-        <p class="eyebrow">About</p>
-        <h2 id="home-about-heading">Work directly with the owner</h2>
+        <p class="eyebrow">{aboutBand.eyebrow}</p>
+        <h2 id="home-about-heading">{aboutBand.heading}</h2>
         <p class="muted" style="margin-top: var(--sp-xs);">
-          Aaron Thomas started Sunshine Climate Solutions because he was tired of watching
-          homeowners get pressured into equipment they didn’t need. With five years of hands-on
-          HVAC experience, EPA Section 608 certification, and a repair-first approach, you’ll
-          always know what’s going on and what your real options are.
+          {aboutBand.blurb}
         </p>
         <p style="margin-top: var(--sp-sm);">
           <a class="text-link" href="/about/">
-            More about Aaron and our approach <Icon name="arrow-right" size={18} />
+            {aboutBand.linkLabel} <Icon name="arrow-right" size={18} />
           </a>
         </p>
       </div>
       <div>
-        <p class="eyebrow">Service area</p>
-        <h2>Proudly serving Tampa Bay</h2>
+        <p class="eyebrow">{areaCopy.eyebrow}</p>
+        <h2>{areaCopy.heading}</h2>
         <ul class="area-list" style="margin-top: var(--sp-sm);">
           {
             business.serviceArea.counties.map((county) => (
@@ -260,7 +253,7 @@ const description =
         </p>
         <p style="margin-top: var(--sp-sm);">
           <a class="text-link" href="/service-area/">
-            See the full service area <Icon name="arrow-right" size={18} />
+            {areaCopy.linkLabel} <Icon name="arrow-right" size={18} />
           </a>
         </p>
       </div>
@@ -271,8 +264,8 @@ const description =
   <section class="section section--alt" aria-labelledby="home-reviews-heading">
     <div class="container">
       <div class="section-heading" style="text-align: center; margin-inline: auto;">
-        <p class="eyebrow">Reviews</p>
-        <h2 id="home-reviews-heading">Hear it from customers</h2>
+        <p class="eyebrow">{reviewsCopy.eyebrow}</p>
+        <h2 id="home-reviews-heading">{reviewsCopy.heading}</h2>
       </div>
       {
         reviews.length > 0 && (
@@ -305,7 +298,7 @@ const description =
       {projects.length > 0 && (
         <p style="text-align: center; margin-top: var(--sp-md);">
           <a class="text-link" href="/our-work/">
-            See examples of our work <Icon name="arrow-right" size={18} />
+            {reviewsCopy.workLink} <Icon name="arrow-right" size={18} />
           </a>
         </p>
       )}
@@ -316,8 +309,8 @@ const description =
   <section class="section" aria-labelledby="home-process-heading">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">What happens next</p>
-        <h2 id="home-process-heading">What happens after you reach out</h2>
+        <p class="eyebrow">{processCopy.eyebrow}</p>
+        <h2 id="home-process-heading">{processCopy.heading}</h2>
       </div>
       <Steps />
     </div>
@@ -331,10 +324,9 @@ const description =
   >
     <div class="container" style="display: grid; gap: var(--sp-md); justify-items: start;">
       <div>
-        <h2 id="home-contact-heading" style="color: #fff;">Ready when you are</h2>
+        <h2 id="home-contact-heading" style="color: #fff;">{finalCopy.heading}</h2>
         <p class="lead" style="margin-top: var(--sp-2xs);">
-          Call, text, or send a request — we’ll confirm availability with you before anything is
-          scheduled. Open 7:30 AM to 7:30 PM, every day.
+          {finalCopy.lead}
         </p>
       </div>
       <div class="cluster">
@@ -352,7 +344,7 @@ const description =
         <TrustChips />
       </div>
       <p class="form-note" style="color: var(--c-on-navy-soft);">
-        {business.pricing.serviceCall} service call, waived when you proceed with the repair · Free
+        {business.pricing.serviceCall} service call, {business.pricing.serviceCallWaiver} · Free
         estimates {license ? `· ${license}` : ''}
       </p>
     </div>

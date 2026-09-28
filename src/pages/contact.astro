@@ -1,26 +1,35 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import ContactForm from '../components/ContactForm.astro';
 import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
 import { business, licenseDisplay } from '../config/business';
+import { need } from '../lib/site-content';
+
+const contact = await getEntry('site', 'contact');
+if (!contact) throw new Error('[content] src/content/site/contact.md is missing');
 
 const license = licenseDisplay();
 
-const title = 'Request Service | Sunshine Climate Solutions';
-const description =
-  'Request HVAC service in Tampa Bay — or call or text (727) 661-5200. $50 service call, waived when you proceed with the repair. Free estimates. Open 7:30 AM – 7:30 PM, every day.';
+const hero = need(contact.data.hero, 'contact.md → hero');
+const waysHeading = need(contact.data.waysHeading, 'contact.md → waysHeading');
+const hoursHeading = need(contact.data.hoursHeading, 'contact.md → hoursHeading');
+const pricingHeading = need(contact.data.pricingHeading, 'contact.md → pricingHeading');
+const processCopy = need(contact.data.process, 'contact.md → process');
+
+const title = contact.data.metaTitle;
+const description = contact.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
     <div class="container page-hero-inner">
-      <p class="eyebrow">Contact</p>
-      <h1>Request service</h1>
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.heading}</h1>
       <p class="lead">
-        Tell us what's going on and where you are — we'll contact you to confirm availability.
-        Submitting a request does not book an appointment.
+        {hero.lead}
       </p>
       <div class="cluster" style="margin-top: var(--sp-xs);">
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-contact-hero">
@@ -43,7 +52,7 @@ const description =
   <section class="section" aria-labelledby="request-heading">
     <div class="container home-duo">
       <div class="stack stack--lg">
-        <h2 id="request-heading" style="font-size: var(--text-h2);">Ways to reach us</h2>
+        <h2 id="request-heading" style="font-size: var(--text-h2);">{waysHeading}</h2>
         <div class="stack">
           <a class="card card-hover" href={business.phone.href} data-cta="call-contact-card">
             <span class="card-icon"><Icon name="phone" /></span>
@@ -67,12 +76,12 @@ const description =
         </div>
 
         <div>
-          <h2 style="font-size: var(--text-h3);">Hours</h2>
+          <h2 style="font-size: var(--text-h3);">{hoursHeading}</h2>
           <p class="muted">{business.hours.display}, {business.hours.days.toLowerCase()}. US Eastern time.</p>
         </div>
 
         <div>
-          <h2 style="font-size: var(--text-h3);">Pricing, up front</h2>
+          <h2 style="font-size: var(--text-h3);">{pricingHeading}</h2>
           <p class="muted">
             {business.pricing.serviceCall} service call — waived when you proceed with the repair ·
             {business.pricing.estimates.toLowerCase()}.
@@ -99,8 +108,8 @@ const description =
   <section class="section section--alt" aria-labelledby="process-heading">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">What happens next</p>
-        <h2 id="process-heading">After you reach out</h2>
+        <p class="eyebrow">{processCopy.eyebrow}</p>
+        <h2 id="process-heading">{processCopy.heading}</h2>
       </div>
       <Steps />
     </div>

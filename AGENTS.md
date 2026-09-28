@@ -28,6 +28,9 @@ with the owner; never silently work around this file.
   value fails the build with a clear error instead of publishing):
   - `services` (`src/content/services/*.md`) → pages at `/services/<id>/`, cards, footer links.
   - `faqs` (`src/content/faqs/*.md`) → grouped FAQ page by `category`.
+  - `site` (`src/content/site/*.md`) → editable copy for the home, about, contact,
+    service-area, and TAB pages (one file per page; business facts still come from
+    `business.ts`; only supported token is `{serviceCall}`).
   - `projects` (`src/content/projects/*.md`) → portfolio; **intentionally empty**; the Our Work
     page and its nav/footer links are hidden until at least one genuine entry exists.
   - `reviews` (`src/content/reviews/*.md`) → testimonials; **intentionally empty**; review
@@ -74,6 +77,7 @@ intentional** while those collections are empty — not errors.
 | To change… | Edit |
 | --- | --- |
 | Any business fact (phone, email, hours, pricing, counties, brands, payments, license, flags) | `src/config/business.ts` |
+| Home/about/contact/service-area/TAB page copy or SEO | `src/content/site/<page>.md` |
 | Service pages | `src/content/services/*.md` |
 | FAQs | `src/content/faqs/*.md` |
 | Portfolio entries (photos + story) | `src/content/projects/*.md` + images in `src/content/projects/images/` |
