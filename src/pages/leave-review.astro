@@ -40,11 +40,11 @@ const description = review.data.metaDescription;
           loading="lazy"
         />
         <img
-          class="google-reviews-badge"
-          src="/images/google-reviews-symbol.png"
-          alt="Google Reviews"
-          width="504"
-          height="406"
+          class="google-cta-mark"
+          src="/brand/google-g.svg"
+          alt=""
+          width="48"
+          height="48"
           loading="lazy"
         />
         <a
@@ -62,7 +62,7 @@ const description = review.data.metaDescription;
 
       <div class="review-social">
         <p class="muted">You can also find us on</p>
-        <SocialLinks />
+        <SocialLinks exclude={['yelp']} />
       </div>
     </div>
   </section>

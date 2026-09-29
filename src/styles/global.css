@@ -1417,18 +1417,36 @@ body.nav-open {
   flex: none;
 }
 
-/* Owner-supplied social brand logos — height-balanced, unmodified. */
+/* Owner-supplied social brand logos — height-balanced, unmodified.
+   The Yelp wordmark is black; on dark surfaces it gets a light tile so its
+   colors stay exactly as supplied. */
 .social-logo {
   flex: none;
   height: 1.35rem;
   width: auto;
 }
 
-/* Supplied Google Reviews lockup (official brand colors, unmodified) —
-   shown above the prominent CTA on /leave-review/. */
-.google-reviews-badge {
-  width: min(11rem, 60vw);
-  height: auto;
+.social-logo--tile-on-dark {
+  height: 1.6rem;
+  padding: 3px 6px;
+  box-sizing: border-box;
+}
+
+.on-dark .social-logo--tile-on-dark {
+  background: #fff;
+  border-radius: 6px;
+}
+
+/* Official Google "G" mark (Google-hosted asset, unmodified) shown above the
+   prominent review CTA on /leave-review/ — a compliant alternative to the
+   unverified supplied lockup. */
+.google-cta-mark {
+  width: 3rem;
+  height: 3rem;
+  background: #fff;
+  border-radius: 50%;
+  padding: 7px;
+  box-sizing: border-box;
 }
 
 .on-dark .social-links a {

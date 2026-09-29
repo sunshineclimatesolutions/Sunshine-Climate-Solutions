@@ -52,9 +52,12 @@ export const business = {
   // Verified social profiles (owner-confirmed URLs). Rendered by
   // SocialLinks.astro (footer, contact, leave-review) and included in the
   // HVACBusiness sameAs structured data — never hard-code these elsewhere.
+  // Yelp is a neutral business-directory link only: never solicit Yelp
+  // reviews and never add Yelp review-request CTAs.
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61594915980759',
     nextdoor: 'https://nextdoor.com/page/sunshine-climate-solutions/',
+    yelp: 'https://www.yelp.com/biz/sunshine-climate-solutions-brooksville',
   },
 
   serviceArea: {

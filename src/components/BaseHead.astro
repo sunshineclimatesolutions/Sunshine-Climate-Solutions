@@ -43,7 +43,7 @@ const jsonLd = {
   priceRange: '$$',
   founder: { '@type': 'Person', name: business.owner.name },
   // Verified public profiles (config-driven; no invented profiles).
-  sameAs: [business.reviewsUrl, business.social.facebook, business.social.nextdoor].filter(Boolean),
+  sameAs: [business.reviewsUrl, ...Object.values(business.social)].filter(Boolean),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',

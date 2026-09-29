@@ -1,17 +1,21 @@
 ---
-// Verified social profile links (Facebook, Nextdoor) — rendered from the
-// centralized config in src/config/business.ts; never hard-code URLs here.
-// Logos are the owner-supplied brand graphics (public/images/), used
-// unmodified and height-balanced; the visible platform label carries the
-// meaning (logos are decorative, alt="").
+// Verified social/directory profile links (Facebook, Nextdoor, Yelp) —
+// rendered from the centralized config in src/config/business.ts; never
+// hard-code URLs here. Logos are owner-supplied brand graphics
+// (public/images/), used unmodified and height-balanced; the visible platform
+// label carries the meaning (logos are decorative, alt="").
+// Yelp is presented as a neutral business-directory link only — no Yelp
+// review solicitation anywhere (see business.ts).
 import { business } from '../config/business';
 
 interface Props {
   /** Optional compact modifier for tighter placements (footer). */
   compact?: boolean;
+  /** Platform labels to omit in a specific placement (e.g. ['yelp']). */
+  exclude?: string[];
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, exclude = [] } = Astro.props;
 
 const profiles = [
   {
@@ -20,6 +24,7 @@ const profiles = [
     img: '/images/Facebook_logo.webp',
     width: 128,
     height: 128,
+    tileOnDark: false,
   },
   {
     href: business.social.nextdoor,
@@ -27,8 +32,18 @@ const profiles = [
     img: '/images/nextdoor_logo.png',
     width: 256,
     height: 133,
+    tileOnDark: false,
   },
-].filter((profile) => Boolean(profile.href));
+  {
+    href: business.social.yelp,
+    label: 'Yelp',
+    img: '/images/yelp-logo-3519.png',
+    width: 280,
+    height: 113,
+    // Black wordmark — needs a light tile on navy surfaces to stay legible.
+    tileOnDark: true,
+  },
+].filter((profile) => profile.href && !exclude.includes(profile.label.toLowerCase()));
 ---
 
 {
@@ -43,7 +58,7 @@ const profiles = [
             data-cta={`social-${profile.label.toLowerCase()}`}
           >
             <img
-              class="social-logo"
+              class={`social-logo${profile.tileOnDark ? ' social-logo--tile-on-dark' : ''}`}
               src={profile.img}
               alt=""
               width={profile.width}
