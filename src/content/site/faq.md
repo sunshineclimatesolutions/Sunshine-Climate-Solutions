@@ -20,8 +20,11 @@ conditions:
     alt: 'Close view of a visibly soiled coil photographed during an inspection'
     caption: 'Visibly soiled coil — photographed during an inspection.'
   approach: >-
-    With a condition like this, we check what the measurements show across the
-    air path, explain what it means in plain language, and talk through whether
-    cleaning or service makes sense — with the decision in your hands.
+    A restricted or dirty coil is one potentially straightforward cause of
+    inadequate cooling or low airflow — and where cleaning or maintenance is the
+    right answer after diagnosing, it's often not a costly fix. It isn't always
+    the cause, though, and some coils are difficult to access or badly impacted.
+    We measure first, explain what we find, and talk through the options before
+    anything is recommended.
   ctaLabel: Discuss your system
 ---

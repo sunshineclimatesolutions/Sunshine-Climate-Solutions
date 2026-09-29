@@ -32,6 +32,55 @@ fs.writeFileSync(
 );
 console.log(`favicon.svg written (${Math.round(fs.statSync('public/favicon.svg').size / 1024)} KB, ${fm.width}x${fm.height})`);
 
+// 1b. Search-engine favicon set — static PNG + ICO (Google's documented
+//     favicon formats), built from the AUTHENTIC dark mark on a white square
+//     with padding. Stable public URLs: /favicon.ico, /favicon-48.png,
+//     /favicon-96.png, /brand/icon-192.png.
+const squareIcon = async (size) => {
+  const inner = Math.round(size * 0.72);
+  const mark = await sharp(darkFull).resize({ width: inner, height: inner, fit: 'inside' }).toBuffer();
+  const m = await sharp(mark).metadata();
+  return sharp({ create: { width: size, height: size, channels: 4, background: '#ffffff' } })
+    .composite([{ input: mark, left: Math.round((size - m.width) / 2), top: Math.round((size - m.height) / 2) }])
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+};
+const png16 = await squareIcon(16);
+const png32 = await squareIcon(32);
+const png48 = await squareIcon(48);
+const png96 = await squareIcon(96);
+const png192 = await squareIcon(192);
+fs.writeFileSync('public/favicon-48.png', png48);
+fs.writeFileSync('public/favicon-96.png', png96);
+fs.writeFileSync('public/brand/icon-192.png', png192);
+// ICO container with PNG-embedded entries (16, 32, 48) — dependency-free.
+{
+  const entries = [[16, png16], [32, png32], [48, png48]];
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0);
+  header.writeUInt16LE(1, 2);
+  header.writeUInt16LE(entries.length, 4);
+  let offset = 6 + entries.length * 16;
+  const dirs = [];
+  for (const [size, buf] of entries) {
+    const d = Buffer.alloc(16);
+    d.writeUInt8(size === 256 ? 0 : size, 0);
+    d.writeUInt8(size === 256 ? 0 : size, 1);
+    d.writeUInt8(0, 2);
+    d.writeUInt8(0, 3);
+    d.writeUInt16LE(1, 4);
+    d.writeUInt16LE(32, 6);
+    d.writeUInt32LE(buf.length, 8);
+    d.writeUInt32LE(offset, 12);
+    dirs.push(d);
+    offset += buf.length;
+  }
+  fs.writeFileSync('public/favicon.ico', Buffer.concat([header, ...dirs, ...entries.map(([, b]) => b)]));
+}
+for (const f of ['public/favicon.ico', 'public/favicon-48.png', 'public/favicon-96.png', 'public/brand/icon-192.png']) {
+  console.log(`${f} written (${Math.round(fs.statSync(f).size / 1024)} KB)`);
+}
+
 const browser = await chromium.launch();
 try {
   const lightDataUrl = `data:image/png;base64,${b64(lightFull)}`;

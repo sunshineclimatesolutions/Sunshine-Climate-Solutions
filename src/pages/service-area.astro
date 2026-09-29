@@ -14,7 +14,6 @@ const counties = need(area.data.counties, 'service-area.md → counties');
 const beyond = need(area.data.beyond, 'service-area.md → beyond');
 const coverage = need(area.data.coverage, 'service-area.md → coverage');
 const ctaBand = need(area.data.ctaBand, 'service-area.md → ctaBand');
-const mapBand = area.data.mapBand; // optional until map copy approved
 
 const title = area.data.metaTitle;
 const description = area.data.metaDescription;
@@ -22,7 +21,7 @@ const description = area.data.metaDescription;
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
-    <div class="container page-hero-inner">
+    <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
       <p class="lead">
@@ -31,41 +30,32 @@ const description = area.data.metaDescription;
     </div>
   </section>
 
+  <!-- Counties 2×2 beside the map (September 2026 design order). -->
   <section class="section" aria-labelledby="area-counties-heading">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">{counties.eyebrow}</p>
-        <h2 id="area-counties-heading">{counties.heading}</h2>
-      </div>
-      <div class="area-list">
-        {
-          counties.list.map((county) => (
-            <div class="card area-card">
-              <h3>
-                <Icon name="map-pin" /> {county.name}
-              </h3>
-              <ul>
-                {county.communities.map((community) => (
-                  <li>{community}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="callout" style="margin-top: var(--sp-xl);">
-        <strong>{beyond.strong}</strong>
-        <span>
-          {business.serviceArea.centralFloridaNote} {beyond.suffix}
-        </span>
-      </div>
-    </div>
-  </section>
-
-  {mapBand && (
-    <section class="section section--alt" aria-labelledby="area-map-heading">
-      <div class="container map-band">
+      <div class="area-duo">
+        <div>
+          <div class="section-heading" style="margin-bottom: var(--sp-sm);">
+            <p class="eyebrow">{counties.eyebrow}</p>
+            <h2 id="area-counties-heading">{counties.heading}</h2>
+          </div>
+          <div class="area-list area-list--two">
+            {
+              counties.list.map((county) => (
+                <div class="card area-card">
+                  <h3>
+                    <Icon name="map-pin" /> {county.name}
+                  </h3>
+                  <ul>
+                    {county.communities.map((community) => (
+                      <li>{community}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
         <figure class="service-map-full">
           <img
             src="/images/service-area-map.svg"
@@ -79,34 +69,37 @@ const description = area.data.metaDescription;
             <span class="map-source">County boundaries: U.S. Census Bureau.</span>
           </figcaption>
         </figure>
-        <div class="map-band-copy">
-          <h2 id="area-map-heading">{mapBand.heading}</h2>
-          <p class="lead">
-            {mapBand.lead}
-          </p>
-          <div class="cluster">
-            <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-area-map">
-              <Icon name="phone" /> Call {business.phone.display}
-            </a>
-            <a class="btn btn--outline-navy btn--lg" href="/contact/" data-cta="request-area-map">
-              {mapBand.ctaLabel}
-            </a>
-          </div>
-        </div>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <section class="section section--alt" aria-labelledby="area-check-heading">
+  <!-- Beyond Tampa Bay — centered light-gray callout with a call option. -->
+  <section class="section section--alt" aria-labelledby="area-beyond-heading">
     <div class="container">
-      <div class="section-heading">
+      <div class="section-heading section-heading--center">
+        <h2 id="area-beyond-heading">{beyond.strong}</h2>
+        <p class="lead">
+          {business.serviceArea.centralFloridaNote} {beyond.suffix}
+        </p>
+      </div>
+      <div class="cluster" style="justify-content: center;">
+        <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-area-beyond">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="area-check-heading">
+    <div class="container">
+      <div class="section-heading section-heading--center">
         <p class="eyebrow">{coverage.eyebrow}</p>
         <h2 id="area-check-heading">{coverage.heading}</h2>
         <p class="lead">
           {coverage.lead}
         </p>
       </div>
-      <div class="cluster">
+      <div class="cluster" style="justify-content: center;">
         <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-area">
           <Icon name="phone" /> Call {business.phone.display}
         </a>

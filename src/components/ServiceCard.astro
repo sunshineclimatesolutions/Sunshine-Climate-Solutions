@@ -1,19 +1,27 @@
 ---
 import Icon from './Icon.astro';
+import ServiceIcon from './ServiceIcon.astro';
 
 interface Props {
   href: string;
   title: string;
-  icon: string;
+  /** Fallback single-color icon name (Icon.astro) when no custom icon given. */
+  icon?: string | undefined;
+  /** Custom multi-color ServiceIcon name (September 2026 design order). */
+  serviceIcon?: string | undefined;
   summary: string;
-  cta?: string;
+  cta?: string | undefined;
+  /** Center short card copy (design order). */
+  center?: boolean | undefined;
 }
 
-const { href, title, icon, summary, cta = 'Learn more' } = Astro.props;
+const { href, title, icon, serviceIcon, summary, cta = 'Learn more', center = false } = Astro.props;
 ---
 
-<a class="card card-hover" href={href}>
-  <span class="card-icon"><Icon name={icon} /></span>
+<a class={`card card-hover${center ? ' card--center' : ''}`} href={href}>
+  <span class={`card-icon${serviceIcon ? ' card-icon--custom' : ''}`}>
+    {serviceIcon ? <ServiceIcon name={serviceIcon as never} /> : <Icon name={icon ?? 'wrench'} />}
+  </span>
   <h3>{title}</h3>
   <p>{summary}</p>
   <span class="card-cta">

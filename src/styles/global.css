@@ -915,8 +915,16 @@ body.nav-open {
 .steps {
   display: grid;
   gap: var(--sp-md);
-  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  /* September 2026 design order: steps 1/2 on the first row, 3/4 on the
+     second (2×2 desktop/tablet); sequential vertical order on mobile. */
+  grid-template-columns: 1fr;
   counter-reset: step;
+}
+
+@media (min-width: 40em) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .step {
@@ -1891,6 +1899,147 @@ body.nav-open {
   gap: var(--sp-2xs);
   max-width: 56rem;
   margin-bottom: var(--sp-md);
+}
+
+/* ── September 2026 design change order — centering + layouts ── */
+
+/* Centered section headings/leads for short copy (long prose stays left). */
+.section-heading--center {
+  text-align: center;
+  justify-items: center;
+  margin-inline: auto;
+}
+
+/* Centered hero copy (homepage). */
+.hero-inner--center {
+  text-align: center;
+  justify-items: center;
+  margin-inline: auto;
+}
+
+/* Centered band layouts (gold offer band, TAB ribbon, maintenance ribbon). */
+.band--center {
+  text-align: center;
+}
+
+.band--center .container {
+  display: grid;
+  justify-items: center;
+  gap: var(--sp-sm);
+}
+
+.band--center h2 {
+  font-size: var(--text-h2);
+}
+
+.band--center p {
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+.band--center .cluster {
+  justify-content: center;
+}
+
+/* Centered card content for short selling points. */
+.card--center {
+  text-align: center;
+  align-items: center;
+}
+
+/* Custom multi-color icons on a neutral tile. */
+.card-icon--custom {
+  background: #fff;
+  border: 1px solid var(--c-line);
+}
+
+.card-icon--custom .service-icon {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+/* Six-card service grid: 3×2 desktop, 2 columns tablet, 1 column mobile. */
+.grid--six {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .grid--six {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .grid--six {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Counties 2×2 beside the service-area map (homepage + service-area page). */
+.area-duo {
+  display: grid;
+  gap: var(--sp-lg);
+  align-items: start;
+}
+
+@media (min-width: 48em) {
+  .area-duo {
+    grid-template-columns: 1.15fr 1fr;
+  }
+}
+
+.area-list--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.area-duo .service-map-compact {
+  margin: 0;
+  max-width: 100%;
+}
+
+/* Wider centered page heroes (services hub, service area, about, faq, contact). */
+.page-hero-inner--center {
+  text-align: center;
+  justify-items: center;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+/* About page: value/credential cards in 2-column pairs, larger and
+   consistent; stacked individually on narrow mobile. */
+.about-cards {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .about-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.about-cards .card {
+  padding: var(--sp-lg);
+  text-align: center;
+  align-items: center;
+}
+
+/* Contact page: centered info column (short copy); form stays left-aligned. */
+.contact-info {
+  text-align: center;
+}
+
+.contact-info .card {
+  text-align: center;
+  align-items: center;
+}
+
+/* FAQ page: centered category headings; question text/answers stay left. */
+.faq-group-heading {
+  text-align: center;
 }
 
 .section-heading h2 {

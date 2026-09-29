@@ -40,7 +40,7 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
-    <div class="container page-hero-inner">
+    <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">FAQ</p>
       <h1>Frequently asked questions</h1>
       <p class="lead">
@@ -59,7 +59,7 @@ const description =
           return (
             <div class="stack" style="margin-bottom: var(--sp-xl);">
               <div>
-                <h2>{group.heading}</h2>
+                <h2 class="faq-group-heading">{group.heading}</h2>
                 {group.blurb && <p class="muted">{group.blurb}</p>}
               </div>
               <div class="faq-list">
@@ -88,7 +88,7 @@ const description =
   {conditions && (
     <section class="section section--alt" aria-labelledby="conditions-heading">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading section-heading--center">
           <p class="eyebrow">{conditions.eyebrow}</p>
           <h2 id="conditions-heading">{conditions.heading}</h2>
           <p class="lead">

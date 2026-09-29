@@ -74,10 +74,4 @@ ctaBand:
   text: >-
     Requests are confirmed with you before anything is booked — submit the short
     form or call directly.
-mapBand:
-  heading: Service across Hernando, Pasco, Pinellas & Hillsborough counties
-  lead: >-
-    Not sure whether your address is covered? Call or text and we'd confirm
-    availability.
-  ctaLabel: Request service
 ---

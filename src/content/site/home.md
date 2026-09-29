@@ -12,14 +12,12 @@ metaDescription: >-
   Solutions.
 
 hero:
-  eyebrow: Sunshine Climate Solutions
-  headline: Honest AC repair.
-  headlineAccent: Clear answers.
+  headline: Honest HVAC.
+  headlineAccent: Clear solutions.
   headlineTail: Local service.
   lead: >-
-    Owner-operated heating and cooling service across Tampa Bay and surrounding
-    communities. Clear explanations, straightforward options, and a repair-first
-    approach when it makes sense.
+    Independently owned heating and cooling service across Tampa Bay, with
+    straightforward options and a repair-first approach.
 
 services:
   eyebrow: Services

@@ -23,7 +23,7 @@ const description = about.data.metaDescription;
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
-    <div class="container page-hero-inner">
+    <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
       <p class="lead">
@@ -36,7 +36,7 @@ const description = about.data.metaDescription;
   <section class="section section--alt" aria-labelledby="about-business-heading">
     <div class="container">
       <h2 id="about-business-heading" class="visually-hidden">Business information</h2>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));">
+      <div class="about-cards">
         <div class="card">
           <h3 style="font-size: var(--text-lg);">{infoTitles.call}</h3>
           <p>

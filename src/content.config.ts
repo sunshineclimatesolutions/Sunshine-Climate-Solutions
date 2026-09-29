@@ -128,7 +128,9 @@ const site = defineCollection({
 
     hero: z
       .object({
-        eyebrow: z.string(),
+        // Eyebrow intentionally optional: the September 2026 design change
+        // order removes the small dashed label above the hero headline.
+        eyebrow: z.string().optional(),
         // Either a single heading, or (home only) a split headline:
         // headline + headlineAccent + headlineTail.
         heading: z.string().optional(),
@@ -293,15 +295,7 @@ const site = defineCollection({
         ctaLabel: z.string(),
       })
       .optional(),
-
-    // service-area.md — full county-map band copy.
-    mapBand: z
-      .object({
-        heading: z.string(),
-        lead: z.string(),
-        ctaLabel: z.string(),
-      })
-      .optional(),
+
 
     // tab.md — field measurement and system verification photos.
     visuals: z

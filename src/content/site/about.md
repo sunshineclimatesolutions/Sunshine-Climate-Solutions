@@ -65,11 +65,11 @@ story:
   - heading: The technical edge
     paragraphs:
       - >-
-        Weak airflow, hot rooms, and control-board gremlins are where sloppy
-        diagnostics usually end in a new system. They're also where we're
-        strongest: measuring the whole air path, tracing electrical faults
-        methodically, and explaining what we find so clearly that you could make
-        the decision without us in the room.
+        Weak airflow, hot rooms, and intermittent electrical or control-board
+        faults are where sloppy diagnostics usually end in a new system. They're
+        also where we're strongest: measuring the whole air path, tracing
+        electrical faults methodically, and explaining what we find so clearly
+        that you could make the decision without us in the room.
 
 ctaBand:
   title: Work with the owner directly

@@ -3,10 +3,20 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
+import ServiceIcon from '../../components/ServiceIcon.astro';
 import CtaBand from '../../components/CtaBand.astro';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const projects = await getCollection('projects');
+
+// Custom multi-color icons (September 2026 design change order).
+const serviceIcons: Record<string, string> = {
+  'ac-repair-diagnostics': 'wrench-silver',
+  'replacement-installation': 'ac-fan',
+  'ac-maintenance': 'sparkles-blue',
+  'airflow-ductwork': 'airflow-blue',
+  'commercial-service-maintenance': 'briefcase-black',
+};
 
 const title = 'HVAC Services & AC Repair in Tampa Bay';
 const description =
@@ -15,7 +25,7 @@ const description =
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
-    <div class="container page-hero-inner">
+    <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">Services</p>
       <h1>Heating and cooling services across Tampa Bay</h1>
       <p class="lead">
@@ -34,17 +44,20 @@ const description =
             <ServiceCard
               href={`/services/${service.id}/`}
               title={service.data.title}
-              icon={service.data.icon}
+              serviceIcon={serviceIcons[service.id]}
               summary={service.data.summary}
+              center
             />
           ))
         }
         <a
-          class="card card-hover"
+          class="card card-hover card--center"
           href="/tab-commissioning-support/"
           style="background: var(--c-navy); border-color: var(--c-navy);"
         >
-          <span class="card-icon"><Icon name="activity" /></span>
+          <span class="card-icon" style="background: #fff;">
+            <ServiceIcon name="checklist" />
+          </span>
           <h3 style="color: #fff;">Testing, Adjusting & Balancing</h3>
           <p style="color: var(--c-on-navy-soft);">
             Air and hydronic TAB, duct traverses, outside-air verification, building-pressure
@@ -64,9 +77,9 @@ const description =
         <p class="eyebrow">Maintenance</p>
         <h2 id="maintenance-heading">Maintenance without mystery</h2>
         <p class="muted" style="margin-top: var(--sp-xs);">
-          We provide maintenance for residential and light commercial systems — and since every
-          system is different, we quote it for your equipment instead of publishing invented
-          package prices. Ask what a maintenance visit includes for your system.
+          Our <a href="/services/ac-maintenance/">$75 Premium AC Maintenance</a> visit covers
+          routine coil cleaning, condensate drain flushing, blower-compartment cleaning and a
+          full system check — quoted per system, per visit, with no invented package prices.
         </p>
       </div>
       <div>

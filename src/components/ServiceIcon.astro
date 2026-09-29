@@ -1,0 +1,200 @@
+---
+// Original inline service/diagnostic icons (multi-color, 48x48, consistent
+// stroke style). Colors follow the September 2026 design change order:
+// silver wrench, gray AC unit with gentle fan (reduced-motion safe), blue
+// sparkles, blue airflow, black briefcase, checklist with green ticks,
+// blue-lens magnifier, electric-yellow bolt, brown clipboard, red badge with
+// green check. Decorative only — always accompanied by text.
+interface Props {
+  name:
+    | 'wrench-silver'
+    | 'ac-fan'
+    | 'sparkles-blue'
+    | 'airflow-blue'
+    | 'briefcase-black'
+    | 'checklist'
+    | 'magnifier'
+    | 'lightning'
+    | 'clipboard-brown'
+    | 'badge-red';
+  size?: number;
+}
+const { name, size = 48 } = Astro.props;
+---
+
+<svg
+  class="service-icon"
+  width={size}
+  height={size}
+  viewBox="0 0 48 48"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  {
+    name === 'wrench-silver' && (
+      <g>
+        <path
+          d="M30.5 6.5a10 10 0 0 0-9.1 13.9L8.6 33.2a3.6 3.6 0 0 0 5.1 5.1l12.8-12.8a10 10 0 0 0 13.9-9.1l-5.9 5.9-5.7-1.4-1.4-5.7z"
+          fill="#C3CBD4"
+          stroke="#5B6672"
+          stroke-width="2.4"
+          stroke-linejoin="round"
+        />
+        <circle cx="12.4" cy="34.6" r="1.4" fill="#5B6672" />
+      </g>
+    )
+  }
+  {
+    name === 'ac-fan' && (
+      <g>
+        <rect x="5" y="12" width="38" height="24" rx="4" fill="#C3CBD4" stroke="#5B6672" stroke-width="2.4" />
+        <line x1="9" y1="36.5" x2="39" y2="36.5" stroke="#5B6672" stroke-width="2.4" stroke-linecap="round" />
+        <circle cx="24" cy="24" r="8.2" fill="#EDF1F5" stroke="#5B6672" stroke-width="2.2" />
+        <g class="service-icon__fan">
+          <path d="M24 24c0-4.5 1.6-6.6 4.2-6.2 2.3.4 2.9 3.4 1.1 5.6-1.2 1.5-3.2 1.9-5.3.6z" fill="#8A949E" />
+          <path d="M24 24c3.9-2.2 6.4-2.4 7.2-.1.7 2.2-1.6 4.1-4.4 3.6-1.9-.3-3.2-1.8-2.8-3.5z" fill="#8A949E" transform="rotate(120 24 24)" />
+          <path d="M24 24c3.9-2.2 6.4-2.4 7.2-.1.7 2.2-1.6 4.1-4.4 3.6-1.9-.3-3.2-1.8-2.8-3.5z" fill="#8A949E" transform="rotate(240 24 24)" />
+        </g>
+        <circle cx="24" cy="24" r="2" fill="#5B6672" />
+      </g>
+    )
+  }
+  {
+    name === 'sparkles-blue' && (
+      <g>
+        <path
+          d="M19 7l2.6 7.4L29 17l-7.4 2.6L19 27l-2.6-7.4L9 17l7.4-2.6z"
+          fill="#4FA3E8"
+          stroke="#2E7FD8"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M33 22l1.9 5.3 5.3 1.9-5.3 1.9-1.9 5.3-1.9-5.3-5.3-1.9 5.3-1.9z"
+          fill="#8CC6F2"
+          stroke="#2E7FD8"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+      </g>
+    )
+  }
+  {
+    name === 'airflow-blue' && (
+      <g stroke="#2E7FD8" stroke-width="3" stroke-linecap="round" fill="none">
+        <path d="M6 16h20a5 5 0 1 0-5-5" />
+        <path d="M6 25h28a5 5 0 1 1-5 5" />
+        <path d="M6 34h16a4.5 4.5 0 1 1-4.5 4.5" />
+      </g>
+    )
+  }
+  {
+    name === 'briefcase-black' && (
+      <g>
+        <rect x="6" y="15" width="36" height="24" rx="3.5" fill="#1A1A1A" />
+        <path d="M18 15v-3.4A2.6 2.6 0 0 1 20.6 9h6.8a2.6 2.6 0 0 1 2.6 2.6V15" stroke="#1A1A1A" stroke-width="3.4" />
+        <line x1="6" y1="26" x2="42" y2="26" stroke="#4A4A4A" stroke-width="2.4" />
+        <rect x="21" y="23.5" width="6" height="5" rx="1.2" fill="#8A949E" />
+      </g>
+    )
+  }
+  {
+    name === 'checklist' && (
+      <g>
+        <rect x="9" y="5" width="30" height="38" rx="3.5" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.6" />
+        <g>
+          <rect x="13.5" y="12.5" width="7" height="7" rx="1.4" fill="none" stroke="#1A1A1A" stroke-width="2.2" />
+          <path d="M15 16.2l1.8 1.8 3.2-3.6" stroke="#2E9E4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="24.5" y1="16" x2="35" y2="16" stroke="#1A1A1A" stroke-width="2.6" stroke-linecap="round" />
+        </g>
+        <g>
+          <rect x="13.5" y="22.5" width="7" height="7" rx="1.4" fill="none" stroke="#1A1A1A" stroke-width="2.2" />
+          <path d="M15 26.2l1.8 1.8 3.2-3.6" stroke="#2E9E4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="24.5" y1="26" x2="35" y2="26" stroke="#1A1A1A" stroke-width="2.6" stroke-linecap="round" />
+        </g>
+        <g>
+          <rect x="13.5" y="32.5" width="7" height="7" rx="1.4" fill="none" stroke="#1A1A1A" stroke-width="2.2" />
+          <path d="M15 36.2l1.8 1.8 3.2-3.6" stroke="#2E9E4F" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <line x1="24.5" y1="36" x2="35" y2="36" stroke="#1A1A1A" stroke-width="2.6" stroke-linecap="round" />
+        </g>
+      </g>
+    )
+  }
+  {
+    name === 'magnifier' && (
+      <g>
+        <circle cx="21" cy="20" r="12" fill="#BFE0FF" stroke="#2E7FD8" stroke-width="3.2" />
+        <path d="M17 14.5a6.5 6.5 0 0 1 5-2.6" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" fill="none" />
+        <line x1="30" y1="29" x2="41" y2="40" stroke="#1A1A1A" stroke-width="5" stroke-linecap="round" />
+      </g>
+    )
+  }
+  {
+    name === 'lightning' && (
+      <path
+        d="M27 4L11 27h9.5L21 44l16-23h-9.5z"
+        fill="#FFD400"
+        stroke="#C9A500"
+        stroke-width="2.4"
+        stroke-linejoin="round"
+      />
+    )
+  }
+  {
+    name === 'clipboard-brown' && (
+      <g>
+        <rect x="10" y="8" width="28" height="36" rx="3.5" fill="#8B5E3C" stroke="#6B4726" stroke-width="2.4" />
+        <rect x="17" y="4.5" width="14" height="7" rx="2.2" fill="#9AA3AD" stroke="#5B6672" stroke-width="2" />
+        <line x1="16" y1="20" x2="32" y2="20" stroke="#EAD9C8" stroke-width="2.6" stroke-linecap="round" />
+        <line x1="16" y1="27" x2="32" y2="27" stroke="#EAD9C8" stroke-width="2.6" stroke-linecap="round" />
+        <line x1="16" y1="34" x2="27" y2="34" stroke="#EAD9C8" stroke-width="2.6" stroke-linecap="round" />
+      </g>
+    )
+  }
+  {
+    name === 'badge-red' && (
+      <g>
+        <path
+          d="M24 4l15 5.5V22c0 9.5-6.3 16.6-15 20-8.7-3.4-15-10.5-15-20V9.5z"
+          fill="#D0342C"
+          stroke="#A8231D"
+          stroke-width="2.4"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M17 23.5l5 5 9.5-10.5"
+          stroke="#7ED957"
+          stroke-width="4"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+    )
+  }
+</svg>
+
+<style>
+  /* Gentle fan spin for the replacements icon — decorative only, disabled
+     under reduced motion, never required to understand the service. */
+  .service-icon__fan {
+    transform-origin: 24px 24px;
+    animation: service-icon-spin 6s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-icon__fan {
+      animation: none;
+    }
+  }
+
+  @keyframes service-icon-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

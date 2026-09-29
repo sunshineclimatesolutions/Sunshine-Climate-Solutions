@@ -26,13 +26,13 @@ const description = contact.data.metaDescription;
 
 <BaseLayout title={title} description={description}>
   <section class="page-hero on-dark">
-    <div class="container page-hero-inner">
+    <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
       <p class="lead">
         {hero.lead}
       </p>
-      <div class="cluster" style="margin-top: var(--sp-xs);">
+      <div class="cluster" style="margin-top: var(--sp-xs); justify-content: center;">
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-contact-hero">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
@@ -52,7 +52,7 @@ const description = contact.data.metaDescription;
 
   <section class="section" aria-labelledby="request-heading">
     <div class="container home-duo">
-      <div class="stack stack--lg">
+      <div class="stack stack--lg contact-info">
         <h2 id="request-heading" style="font-size: var(--text-h2);">{waysHeading}</h2>
         <div class="stack">
           <a class="card card-hover" href={business.phone.href} data-cta="call-contact-card">
