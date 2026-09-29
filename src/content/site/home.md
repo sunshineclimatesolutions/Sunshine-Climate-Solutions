@@ -7,10 +7,9 @@
 # - After editing, run `npm run verify`.
 metaTitle: Sunshine Climate Solutions | HVAC Service in Spring Hill & Tampa Bay
 metaDescription: >-
-  Owner-operated HVAC company based in Spring Hill, serving Hernando, Pasco,
-  Pinellas and Hillsborough counties. AC repair, replacements, airflow and
-  ductwork troubleshooting, and light-commercial service. Free estimates. Call or
-  text (727) 661-5200.
+  Spring Hill AC repair, installation and $75 maintenance. Serving Hernando,
+  Pasco, Pinellas and Hillsborough counties. Call or text Sunshine Climate
+  Solutions.
 
 hero:
   eyebrow: Sunshine Climate Solutions
