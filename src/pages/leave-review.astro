@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Logo from '../components/Logo.astro';
-import Icon from '../components/Icon.astro';
+import SocialLinks from '../components/SocialLinks.astro';
 import { business } from '../config/business';
 import { need } from '../lib/site-content';
 
@@ -39,17 +39,30 @@ const description = review.data.metaDescription;
           alt="QR code that opens the Sunshine Climate Solutions Google review form"
           loading="lazy"
         />
+        <img
+          class="google-reviews-badge"
+          src="/images/google-reviews-symbol.png"
+          alt="Google Reviews"
+          width="504"
+          height="406"
+          loading="lazy"
+        />
         <a
-          class="btn btn--gold btn--lg"
+          class="btn btn--gold btn--lg review-cta"
           href={business.reviewsSubmissionUrl}
           rel="noopener"
           data-cta="leave-review-button"
         >
-          <Icon name="star" /> {reviewCta.buttonLabel}
+          {reviewCta.buttonLabel}
         </a>
         <p class="muted" style="margin-top: var(--sp-sm); text-align: center;">
           {reviewCta.qrNote}
         </p>
+      </div>
+
+      <div class="review-social">
+        <p class="muted">You can also find us on</p>
+        <SocialLinks />
       </div>
     </div>
   </section>

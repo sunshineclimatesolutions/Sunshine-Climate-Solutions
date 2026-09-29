@@ -17,7 +17,7 @@ hero:
     share your experience.
 
 reviewCta:
-  buttonLabel: Leave a Google Review
+  buttonLabel: Review Us on Google
   qrNote: >-
     Point your phone camera at the code, or tap the button — either way it takes
     about a minute.

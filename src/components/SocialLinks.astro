@@ -1,0 +1,60 @@
+---
+// Verified social profile links (Facebook, Nextdoor) — rendered from the
+// centralized config in src/config/business.ts; never hard-code URLs here.
+// Logos are the owner-supplied brand graphics (public/images/), used
+// unmodified and height-balanced; the visible platform label carries the
+// meaning (logos are decorative, alt="").
+import { business } from '../config/business';
+
+interface Props {
+  /** Optional compact modifier for tighter placements (footer). */
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const profiles = [
+  {
+    href: business.social.facebook,
+    label: 'Facebook',
+    img: '/images/Facebook_logo.webp',
+    width: 128,
+    height: 128,
+  },
+  {
+    href: business.social.nextdoor,
+    label: 'Nextdoor',
+    img: '/images/nextdoor_logo.png',
+    width: 256,
+    height: 133,
+  },
+].filter((profile) => Boolean(profile.href));
+---
+
+{
+  profiles.length > 0 && (
+    <ul class={`social-links${compact ? ' social-links--compact' : ''}`}>
+      {profiles.map((profile) => (
+        <li>
+          <a
+            href={profile.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta={`social-${profile.label.toLowerCase()}`}
+          >
+            <img
+              class="social-logo"
+              src={profile.img}
+              alt=""
+              width={profile.width}
+              height={profile.height}
+              loading="lazy"
+            />
+            {profile.label}
+            <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

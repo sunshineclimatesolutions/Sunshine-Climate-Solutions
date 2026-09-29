@@ -1384,6 +1384,95 @@ body.nav-open {
   color: var(--c-gold);
 }
 
+/* ── Social links (footer, contact, leave-review) ─────────────── */
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3xs) var(--sp-sm);
+  align-items: center;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--r-sm);
+}
+
+.social-links a:hover {
+  color: var(--c-gold-strong);
+}
+
+.social-links .icon {
+  flex: none;
+}
+
+/* Owner-supplied social brand logos — height-balanced, unmodified. */
+.social-logo {
+  flex: none;
+  height: 1.35rem;
+  width: auto;
+}
+
+/* Supplied Google Reviews lockup (official brand colors, unmodified) —
+   shown above the prominent CTA on /leave-review/. */
+.google-reviews-badge {
+  width: min(11rem, 60vw);
+  height: auto;
+}
+
+.on-dark .social-links a {
+  color: var(--c-on-navy-soft);
+}
+
+.on-dark .social-links a:hover {
+  color: var(--c-gold);
+}
+
+/* Official Google "G" mark (public/brand/google-g.svg) on a white tile so it
+   stays legible on navy and gold surfaces. Asset used unmodified. */
+.google-g {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: #fff;
+  border-radius: 50%;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+/* Leave-review page: make the Google review CTA particularly prominent.
+   Responsive: never overflows narrow viewports (360px). */
+.review-cta {
+  min-height: 3.75rem;
+  max-width: 100%;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  font-size: var(--text-lg);
+  text-align: center;
+}
+
+.review-social {
+  margin-top: var(--sp-xl);
+  display: grid;
+  gap: var(--sp-2xs);
+  justify-items: center;
+  text-align: center;
+}
+
+.review-social .social-links {
+  justify-content: center;
+}
+
 /* ── Photographic proof cards ────────────────────────────────── */
 
 .photo-grid {

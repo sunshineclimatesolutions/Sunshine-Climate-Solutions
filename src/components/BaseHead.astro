@@ -42,7 +42,8 @@ const jsonLd = {
   logo: new URL('/brand/icon-512.png', site).href,
   priceRange: '$$',
   founder: { '@type': 'Person', name: business.owner.name },
-  sameAs: [business.reviewsUrl],
+  // Verified public profiles (config-driven; no invented profiles).
+  sameAs: [business.reviewsUrl, business.social.facebook, business.social.nextdoor].filter(Boolean),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',

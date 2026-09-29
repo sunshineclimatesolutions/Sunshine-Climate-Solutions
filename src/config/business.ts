@@ -49,6 +49,14 @@ export const business = {
   reviewsSubmissionUrl:
     'https://g.page/r/CTXPJRFuZT-tEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr',
 
+  // Verified social profiles (owner-confirmed URLs). Rendered by
+  // SocialLinks.astro (footer, contact, leave-review) and included in the
+  // HVACBusiness sameAs structured data — never hard-code these elsewhere.
+  social: {
+    facebook: 'https://www.facebook.com/profile.php?id=61594915980759',
+    nextdoor: 'https://nextdoor.com/page/sunshine-climate-solutions/',
+  },
+
   serviceArea: {
     counties: ['Hernando County', 'Pasco County', 'Pinellas County', 'Hillsborough County'],
     summary: 'Tampa Bay and surrounding communities.',
