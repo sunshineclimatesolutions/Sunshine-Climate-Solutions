@@ -42,8 +42,10 @@ const jsonLd = {
   logo: new URL('/brand/icon-512.png', site).href,
   priceRange: '$$',
   founder: { '@type': 'Person', name: business.owner.name },
-  // Verified public profiles (config-driven; no invented profiles).
-  sameAs: [business.reviewsUrl, ...Object.values(business.social)].filter(Boolean),
+  // Verified public business profiles only (config-driven; no invented
+  // profiles). Google review links live in business.reviewsUrl /
+  // reviewsSubmissionUrl and are intentionally NOT part of sameAs.
+  sameAs: Object.values(business.social).filter(Boolean),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
