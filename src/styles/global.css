@@ -564,7 +564,9 @@ ol {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  min-height: 3rem;
+  /* Fixed against the taller (web-font) render so the font swap cannot
+     reflow the strip and shift the page (CLS). */
+  min-height: 3.3rem;
   color: var(--c-navy);
   font-family: var(--font-head);
   font-weight: 700;
