@@ -1,8 +1,9 @@
 # September 2026 Aesthetic Overhaul + GA4/GTM + Gulf of America — Final Implementation Report
 
 **Branch:** `feat/scs-light-aesthetic-overhaul-sep-2026` · **Base/HEAD at start:** `008177f`
-(= `main`) · **Status:** implemented, verified, committed locally — **not merged, not pushed,
-not deployed; no Cloudflare, DNS or Google-dashboard changes made.**
+(= `main`) · **Status:** implemented, verified, committed and **pushed to this feature branch
+only** (owner-authorized for external audit) — **not merged, not deployed; no Cloudflare, DNS or
+Google-dashboard changes made.**
 
 This session recovered the interrupted aesthetic-overhaul work from the working tree (an
 image-context limit ended the previous session; no work was lost), completed the GA4/GTM +
@@ -110,14 +111,17 @@ Per `Sunshine_GA4_GTM_Ready_to_Implement.md`. Confirmed IDs only: GTM `GTM-MBGJ8
 | Map generator assertions | **PASS** — Gulf label ≥10px on both variants, old name cannot return, Census names match `business.ts` |
 | Visual inspection (sampled, image-context policy ≤3/request) | Reviewed: home (1440/768/390), services hub, all maps (before + after, full + compact), service-area, TAB, about, FAQ, contact (after fix), privacy, leave-review, a maintenance service page, thank-you, 404, consent banner + preferences (390/1440). No layout defects found beyond those fixed. |
 
-Screenshot sets on disk for owner review (not committed — generated artifacts):
+Screenshot sets (committed to this branch for owner + external audit review; superseded rounds
+remain on disk, untracked):
 
-- `docs/verification/screenshots/aesthetic/after-final/` — **105 files**: all 16 routes at
-  390/768/1440, 15 section close-ups × 3 widths, special widths (360/412/940), consent banner +
-  preferences states, `overflow-report.txt` (none), `console-errors.txt` (only the expected 404
-  test-route line).
-- `docs/verification/screenshots/aesthetic/maps-before/` and `maps-after/` — 13 files each.
-- Superseded earlier rounds retained on disk: `before/` and `after/` (101 files each).
+- `docs/verification/screenshots/aesthetic/after-final/` — **105 files, committed**: all 16
+  routes at 390/768/1440, 15 section close-ups × 3 widths, special widths (360/412/940), consent
+  banner + preferences states, `overflow-report.txt` (none), `console-errors.txt` (only the
+  expected 404 test-route line).
+- `docs/verification/screenshots/aesthetic/maps-before/` and `maps-after/` — 13 files each,
+  **committed** (the Gulf of America change-order pairs).
+- Superseded earlier rounds retained on disk only (untracked): `before/` and `after/`
+  (101 files each).
 
 ## 5. Changed files in this commit
 
@@ -141,9 +145,11 @@ tool output).
 **Docs/config:** `AGENTS.md` (analytics rules), `.env.example`, `docs/GTM-GA4-SETUP.md` (new),
 `docs/SERVICE-AREA-MAP.md`, `docs/VERIFICATION.md`, `docs/PORTFOLIO-APPROVAL.md`.
 
-**Deliberately NOT committed:** `docs/verification/screenshots/aesthetic/**` (51 MB / 333
-generated files, kept on disk for review) and `Local Disk (C).lnk` (unrelated junk shortcut in
-the working directory, not created by this work).
+**Committed for review in the follow-up commit:** `docs/verification/screenshots/aesthetic/`
+`after-final/` + `maps-before/` + `maps-after/` (131 files, 18.8 MB — no personal data, form
+submissions or credentials). **Deliberately NOT committed:** the superseded `before/` and
+`after/` rounds (kept on disk) and `Local Disk (C).lnk` (unrelated junk shortcut in the working
+directory, not created by this work).
 
 ## 6. Owner approval gates (STOP here)
 
@@ -154,8 +160,9 @@ the working directory, not created by this work).
 3. **Privacy/consent wording review** and the three open questions (opt-in vs opt-out posture,
    GA4 data retention, vendor/DPA documentation).
 
-No merge to `main`, no push, no deploy, no Cloudflare/DNS change has been made. Pushing `main`
-triggers production; that requires explicit owner authorization.
+No merge to `main`, no production deploy, no Cloudflare/DNS change has been made. The feature
+branch itself has been pushed for external inspection only; pushing `main` triggers production
+and still requires explicit owner authorization.
 
 ## 7. Known gaps / deferred
 
