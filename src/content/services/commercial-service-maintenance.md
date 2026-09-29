@@ -25,9 +25,9 @@ order: 4
 - Diagnostics with the same method we use on homes: measure first, explain findings, get approval
 - Coordination that respects your tenants, your schedule, and your budget
 
-Owner Aaron Thomas has worked residential and commercial installation, service, and maintenance —
+The owner has worked residential and commercial installation, service, and maintenance —
 including with engineering companies and smaller contractors — and brings project coordination
-and mentoring experience to every job he runs.
+and mentoring experience to every job.
 
 ## For contractors: subcontracted installation & overflow
 

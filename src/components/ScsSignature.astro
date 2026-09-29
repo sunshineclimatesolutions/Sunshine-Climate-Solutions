@@ -1,0 +1,66 @@
+---
+// SCS "technical signature" — one original first-party emblem for restrained
+// repeat usage (September 2026 aesthetic overhaul):
+//   a precision gauge with airflow strokes entering from the left and a
+//   single gold sensor lead + node referencing the SCS gold stripe.
+// Decorative only (aria-hidden). The gauge adapts via currentColor; the blue
+// airflow strokes and gold trace are fixed illustration colors. No external
+// library, no paid art, no motion.
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 72, class: className } = Astro.props;
+---
+
+<svg
+  class={`scs-signature${className ? ` ${className}` : ''}`}
+  width={size}
+  height={size}
+  viewBox="0 0 72 72"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- airflow strokes entering the instrument -->
+  <path d="M4 22c6-4 12-4 17 0" stroke="#3e6e96" stroke-width="3" stroke-linecap="round"
+  ></path>
+  <path
+    d="M4 31c6-4 12-4 17 0"
+    stroke="#3e6e96"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.68"></path>
+  <path
+    d="M4 40c6-4 12-4 17 0"
+    stroke="#3e6e96"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.42"></path>
+
+  <!-- precision gauge -->
+  <circle cx="38" cy="30" r="18" stroke="currentColor" stroke-width="3"></circle>
+  <path
+    d="M38 14v4M54 30h-4M38 46v-4M22 30h4"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"></path>
+  <path d="M38 30l8-10" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+  <circle cx="38" cy="30" r="2.4" fill="currentColor"></circle>
+
+  <!-- sensor lead + gold node (SCS stripe reference) -->
+  <path
+    d="M38 48v4l8 8h5"
+    stroke="#f4b631"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"></path>
+  <circle cx="54" cy="60" r="3" fill="#f4b631"></circle>
+</svg>
+
+<style>
+  .scs-signature {
+    flex: none;
+    display: block;
+  }
+</style>

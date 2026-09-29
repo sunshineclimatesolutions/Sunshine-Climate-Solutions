@@ -7,7 +7,8 @@ import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
 import PhotoCard from '../components/PhotoCard.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
-import { business, licenseDisplay } from '../config/business';
+import ScsSignature from '../components/ScsSignature.astro';
+import { business } from '../config/business';
 import { need } from '../lib/site-content';
 
 const home = await getEntry('site', 'home');
@@ -16,7 +17,6 @@ if (!home) throw new Error('[content] src/content/site/home.md is missing');
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const projects = await getCollection('projects');
 const reviews = await getCollection('reviews');
-const license = licenseDisplay();
 
 const hero = need(home.data.hero, 'home.md → hero');
 const headlineAccent = need(hero.headlineAccent, 'home.md → hero.headlineAccent');
@@ -56,34 +56,21 @@ const description = home.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Hero: text-led, centered; no eyebrow label (design order). -->
-  <section class="hero on-dark">
-    <div class="hero-deco" aria-hidden="true">
-      <svg viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="200" cy="200" r="150"></circle>
-        <circle cx="200" cy="200" r="110" stroke-dasharray="4 14"></circle>
-        <circle cx="200" cy="200" r="55"></circle>
-        <line x1="200" y1="375" x2="200" y2="350"></line>
-        <line x1="25" y1="200" x2="50" y2="200"></line>
-        <line x1="375" y1="200" x2="350" y2="200"></line>
-        <line x1="306" y1="94" x2="324" y2="76"></line>
-        <line x1="94" y1="306" x2="76" y2="324"></line>
-        <line x1="306" y1="306" x2="324" y2="324"></line>
-        <line x1="94" y1="94" x2="76" y2="76"></line>
-      </svg>
-    </div>
+  <!-- Hero: light editorial, centered; no eyebrow label, no dark slab. -->
+  <section class="hero">
     <div class="container hero-inner hero-inner--center">
       <h1>
-        {hero.headline} <span class="accent">{headlineAccent}</span> {headlineTail}
+        {hero.headline} <span class="accent">{headlineAccent}</span>
+        {headlineTail && ` ${headlineTail}`}
       </h1>
       <p class="lead">
         {hero.lead}
       </p>
-      <div class="hero-actions" style="justify-content: center;">
+      <div class="hero-actions">
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-hero">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light btn--lg" href="/contact/" data-cta="request-hero">
+        <a class="btn btn--navy btn--lg" href="/contact/" data-cta="request-hero">
           Request Service
         </a>
         <a class="hero-alt" href={business.phone.sms} data-cta="text-hero">
@@ -177,7 +164,7 @@ const description = home.data.metaDescription;
           {diagnostics.lead}
         </p>
       </div>
-      <div class="grid">
+      <div class="grid--four">
         {
           diagnostics.cards.map((card) => (
             <div class="card card--center">
@@ -201,9 +188,10 @@ const description = home.data.metaDescription;
     </div>
   </section>
 
-  <!-- TAB / professional ribbon (centered, compact). -->
-  <section class="cta-band on-dark band--center" aria-labelledby="home-tab-heading">
+  <!-- TAB / professional band: pale slate-blue technical band, compact. -->
+  <section class="band--technical band--center" aria-labelledby="home-tab-heading">
     <div class="container">
+      <ScsSignature size={44} />
       <p class="eyebrow">{tabBand.eyebrow}</p>
       <h2 id="home-tab-heading">{tabBand.heading}</h2>
       <p>
@@ -212,36 +200,40 @@ const description = home.data.metaDescription;
       {tabBand.note && <p style="font-size: var(--text-sm);">{tabBand.note}</p>}
       <div class="cluster">
         <a
-          class="btn btn--gold btn--lg"
+          class="btn btn--navy btn--lg"
           href="/contact/?service=tab-commissioning-support"
           data-cta="request-tab-proposal"
         >
           <Icon name="clipboard" /> {tabBand.ctaLabel}
         </a>
-        <a class="btn btn--outline-light" href="/tab-commissioning-support/" data-cta="tab-learn-more">
+        <a
+          class="btn btn--outline-navy"
+          href="/tab-commissioning-support/"
+          data-cta="tab-learn-more"
+        >
           {tabBand.secondaryLabel}
         </a>
       </div>
     </div>
   </section>
 
-  <!-- $75 maintenance ribbon (centered; call + schedule underneath). -->
+  <!-- $75 maintenance spotlight: light gold-tint panel, compact. -->
   {
     maintenanceBand && (
-      <section class="cta-band on-dark band--center" aria-labelledby="cta-maintenance-heading">
+      <section class="band--maintenance band--center" aria-labelledby="cta-maintenance-heading">
         <div class="container">
           <h2 id="cta-maintenance-heading">{maintenanceBand.title}</h2>
           <p>{maintenanceBand.text}</p>
           <div class="cluster">
-            <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-maintenance">
-              <Icon name="phone" /> Call {business.phone.display}
-            </a>
             <a
-              class="btn btn--outline-light btn--lg"
+              class="btn btn--navy btn--lg"
               href="/contact/?service=premium-ac-maintenance"
               data-cta="request-maintenance"
             >
               {maintenanceBand.ctaLabel}
+            </a>
+            <a class="hero-alt" href={business.phone.href} data-cta="call-maintenance">
+              <Icon name="phone" /> Call {business.phone.display}
             </a>
           </div>
         </div>
@@ -310,10 +302,10 @@ const description = home.data.metaDescription;
         <figure class="service-map-compact">
           <img
             src="/images/service-area-map-compact.svg"
-            alt="Compact map of west-central Florida highlighting the four counties Sunshine Climate Solutions serves. County names are listed alongside."
+            alt="Compact map of west-central Florida with Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, and the Gulf of America to the west."
             loading="lazy"
-            width="1674"
-            height="2219"
+            width="1278"
+            height="1469"
           />
           <figcaption>Serving Hernando, Pasco, Pinellas and Hillsborough counties.</figcaption>
         </figure>
@@ -347,7 +339,7 @@ const description = home.data.metaDescription;
       }
       <div class="cluster" style="justify-content: center;">
         <a
-          class="btn btn--gold btn--lg"
+          class="btn btn--navy btn--lg"
           href={business.reviewsUrl}
           data-cta="reviews-google-home"
           rel="noopener"
@@ -376,14 +368,10 @@ const description = home.data.metaDescription;
     </div>
   </section>
 
-  <!-- Final contact -->
-  <section
-    class="section on-dark band--center"
-    style="background: var(--c-navy);"
-    aria-labelledby="home-contact-heading"
-  >
+  <!-- Final contact: the single short charcoal feature band on this page. -->
+  <section class="band--charcoal band--center on-dark" aria-labelledby="home-contact-heading">
     <div class="container">
-      <h2 id="home-contact-heading" style="color: #fff;">{finalCopy.heading}</h2>
+      <h2 id="home-contact-heading">{finalCopy.heading}</h2>
       <p class="lead">
         {finalCopy.lead}
       </p>
@@ -398,13 +386,7 @@ const description = home.data.metaDescription;
           <Icon name="message" /> Text Us
         </a>
       </div>
-      <div class="on-dark">
-        <TrustChips />
-      </div>
-      <p class="form-note" style="color: var(--c-on-navy-soft);">
-        {business.pricing.serviceCall} service call, {business.pricing.serviceCallWaiver} · Free
-        estimates {license ? `· ${license}` : ''}
-      </p>
+      <TrustChips />
     </div>
   </section>
 
@@ -418,12 +400,12 @@ const description = home.data.metaDescription;
             {brands.lead && <p class="lead">{brands.lead}</p>}
           </div>
           <ul class="brand-list" style="justify-content: center;">
-            <li class="brand-box"><img src="/images/brand-carrier.png" alt="Carrier" loading="lazy" width="360" height="162" /></li>
-            <li class="brand-box"><img src="/images/brand-goodman.png" alt="Goodman" loading="lazy" width="360" height="182" /></li>
-            <li class="brand-box"><img src="/images/brand-lennox.png" alt="Lennox" loading="lazy" width="360" height="128" /></li>
-            <li class="brand-box"><img src="/images/brand-rheem.png" alt="Rheem" loading="lazy" width="360" height="360" /></li>
-            <li class="brand-box"><img src="/images/brand-ruud.png" alt="Ruud" loading="lazy" width="360" height="229" /></li>
-            <li class="brand-box"><img src="/images/brand-trane.png" alt="Trane" loading="lazy" width="292" height="360" /></li>
+            <li class="brand-box"><img src="/images/brand-carrier.png" alt="Carrier" loading="lazy" width="348" height="150" /></li>
+            <li class="brand-box"><img src="/images/brand-goodman.png" alt="Goodman" loading="lazy" width="322" height="135" /></li>
+            <li class="brand-box"><img src="/images/brand-lennox.png" alt="Lennox" loading="lazy" width="326" height="93" /></li>
+            <li class="brand-box"><img src="/images/brand-rheem.png" alt="Rheem" loading="lazy" width="320" height="315" /></li>
+            <li class="brand-box"><img src="/images/brand-ruud.png" alt="Ruud" loading="lazy" width="348" height="217" /></li>
+            <li class="brand-box"><img src="/images/brand-trane.png" alt="Trane" loading="lazy" width="280" height="348" /></li>
           </ul>
         </div>
       </section>

@@ -22,13 +22,11 @@ const {
 const headingId = `cta-${context}-heading`;
 ---
 
-<section class="cta-band on-dark" aria-labelledby={headingId}>
+<section class="cta-band band--center on-dark" aria-labelledby={headingId}>
   <div class="container cta-band-inner">
-    <div>
-      <h2 id={headingId}>{title}</h2>
-      {text && <p>{text}</p>}
-    </div>
-    <div class="cta-band-actions">
+    <h2 id={headingId}>{title}</h2>
+    {text && <p>{text}</p>}
+    <div class="cluster">
       <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta={`call-cta-${context}`}>
         <Icon name="phone" /> Call {business.phone.display}
       </a>

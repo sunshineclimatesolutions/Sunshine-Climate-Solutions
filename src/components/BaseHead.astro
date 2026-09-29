@@ -27,6 +27,13 @@ const robots = noindex || preview ? 'noindex, follow' : 'index, follow';
 const umamiId = business.analytics.umami.websiteId;
 const umamiEnabled = Boolean(umamiId) && !preview;
 
+// Google Tag Manager (GA4). Same preview guard as Umami so test traffic never
+// reaches Google. Consent Mode v2 defaults are set (all denied) BEFORE the
+// container snippet loads; only the visitor's explicit choice can grant
+// analytics storage, and advertising consent is never granted by this site.
+const gtmId = business.analytics.gtm.containerId;
+const gtmEnabled = Boolean(gtmId) && !preview;
+
 const pageTitle = title.includes(business.name) ? title : `${title} | ${business.name}`;
 
 const jsonLd = {
@@ -41,7 +48,9 @@ const jsonLd = {
   image: new URL('/brand/icon-512.png', site).href,
   logo: new URL('/brand/icon-512.png', site).href,
   priceRange: '$$',
-  founder: { '@type': 'Person', name: business.owner.name },
+  // The owner's name is intentionally NOT published: the optional `founder`
+  // Person property is omitted rather than replaced with a fictitious name
+  // (September 2026 anonymity directive).
   // Verified public business profiles only (config-driven; no invented
   // profiles). Google review links live in business.reviewsUrl /
   // reviewsSubmissionUrl and are intentionally NOT part of sameAs.
@@ -75,7 +84,7 @@ const jsonLd = {
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 <meta name="robots" content={robots} />
-<meta name="theme-color" content="#10263d" />
+<meta name="theme-color" content="#2d4256" />
 
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" href="/favicon-48.png" sizes="48x48" />
@@ -109,18 +118,79 @@ const jsonLd = {
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 {
-  umamiEnabled && (
+  gtmEnabled && (
     <>
-      <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id={umamiId} />
+      {/* Consent Mode v2 defaults must run before the GTM container snippet.
+          Everything optional starts denied; a stored analytics choice from a
+          previous visit is re-applied immediately. Any parse/storage failure
+          fails closed (consent stays denied). */}
       <script
         is:inline
-        set:html={`document.addEventListener('click', function (event) {
-  var link = event.target.closest('a[href^="tel:"], a[href^="sms:"]');
-  if (!link || !window.umami) return;
-  var href = link.getAttribute('href') || '';
-  window.umami.track(href.indexOf('tel:') === 0 ? 'call-click' : 'text-click');
-}, { capture: true });`}
+        set:html={`(function () {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500,
+  });
+  try {
+    var stored = JSON.parse(window.localStorage.getItem('scs-consent-v1') || 'null');
+    if (stored && stored.analytics === true) {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (error) { /* fail closed */ }
+})();`}
+      />
+      {/* Google Tag Manager container (one container, no standalone gtag.js). */}
+      <script
+        is:inline
+        set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`}
       />
     </>
+  )
+}
+
+{
+  (umamiEnabled || gtmEnabled) && (
+    <script
+      is:inline
+      set:html={`document.addEventListener('click', function (event) {
+  var link = event.target.closest('a[href]');
+  if (!link) return;
+  var href = link.getAttribute('href') || '';
+  var slot = link.getAttribute('data-cta') || '';
+
+  // GTM data-layer events: fixed names + allowlisted CTA slot only. Never the
+  // href, phone number, or any form content. Consent Mode gates the tags.
+  var eventName = '';
+  if (href.indexOf('tel:') === 0) eventName = 'scs_call_click';
+  else if (href.indexOf('sms:') === 0) eventName = 'scs_text_click';
+  else if (slot.indexOf('request-') === 0) eventName = 'scs_request_click';
+  if (eventName) {
+    var payload = { event: eventName };
+    if (slot) payload.cta_slot = slot;
+    if (window.dataLayer) window.dataLayer.push(payload);
+  }
+
+  // Umami stays cookieless and unchanged (fixed names only).
+  if (!window.umami) return;
+  if (href.indexOf('tel:') === 0) window.umami.track('call-click');
+  else if (href.indexOf('sms:') === 0) window.umami.track('text-click');
+}, { capture: true });`}
+    />
+  )
+}
+
+{
+  umamiEnabled && (
+    <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id={umamiId} />
   )
 }

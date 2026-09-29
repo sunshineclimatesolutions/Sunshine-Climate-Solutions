@@ -20,7 +20,7 @@ if (showOurWork) nav.splice(1, 0, { href: '/our-work/', label: 'Our Work' });
 const current = Astro.url.pathname;
 ---
 
-<header class="site-header on-dark">
+<header class="site-header">
   <div class="container header-row">
     <Logo />
     <nav class="header-nav" aria-label="Primary">
@@ -37,7 +37,7 @@ const current = Astro.url.pathname;
         <Icon name="phone" />
         <span>{business.phone.display}</span>
       </a>
-      <a class="btn btn--gold btn--sm" href="/contact/" data-cta="request-header">
+      <a class="btn btn--navy btn--sm" href="/contact/" data-cta="request-header">
         Request Service
       </a>
       <button

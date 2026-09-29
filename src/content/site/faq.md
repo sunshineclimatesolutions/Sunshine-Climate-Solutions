@@ -9,8 +9,8 @@ metaDescription: >-
   work.
 
 conditions:
-  eyebrow: Conditions we investigate
-  heading: Problems aren't always where they first appear
+  eyebrow: Conditions We Investigate
+  heading: Problems Aren't Always Where They First Appear
   lead: >-
     Airflow restrictions, duct connections and equipment condition can affect
     performance. We assess the system, explain what the measurements show and

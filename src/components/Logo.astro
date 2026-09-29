@@ -1,20 +1,28 @@
 ---
 // Approved Logo 2 (brand-source/originals/logo2.jpg): bold, angular SCS
-// letters with a gold stripe. This component shows the LIGHT variant (white
-// letters, gold stripe) for the navy header/footer. The full business name
-// renders as text beside the mark. Assets: public/brand/logo-light.png
-// (regenerate via the process documented in brand-source/ and
-// scripts/generate-brand-images.mjs).
+// letters with a gold stripe. Two supplied variants:
+//   /brand/logo-dark.png  — dark letters, for LIGHT surfaces (default)
+//   /brand/logo-light.png — white letters, for DARK surfaces (variant="dark-surface")
+// The full business name renders as text beside the mark. Regenerate assets via
+// the process documented in brand-source/ and scripts/generate-brand-images.mjs.
 interface Props {
   size?: 'md' | 'lg';
+  /** Set on charcoal/navy surfaces (mobile menu, any dark band). */
+  onDarkSurface?: boolean;
 }
-const { size = 'md' } = Astro.props;
+const { size = 'md', onDarkSurface = false } = Astro.props;
+const mark = onDarkSurface ? '/brand/logo-light.png' : '/brand/logo-dark.png';
 ---
 
-<a href="/" class="logo" data-cta="logo-home" aria-label="Sunshine Climate Solutions — home">
+<a
+  href="/"
+  class={`logo${onDarkSurface ? ' logo--on-dark' : ''}`}
+  data-cta="logo-home"
+  aria-label="Sunshine Climate Solutions — home"
+>
   <img
     class={`logo-mark${size === 'lg' ? ' logo-mark--lg' : ''}`}
-    src="/brand/logo-light.png"
+    src={mark}
     width="331"
     height="96"
     alt=""

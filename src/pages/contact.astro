@@ -25,7 +25,7 @@ const description = contact.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
@@ -36,7 +36,7 @@ const description = contact.data.metaDescription;
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-contact-hero">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-contact-hero">
+        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-contact-hero">
           <Icon name="message" /> Text Us
         </a>
         <a

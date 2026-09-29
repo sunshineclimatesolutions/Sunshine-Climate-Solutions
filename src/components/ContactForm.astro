@@ -7,15 +7,19 @@ import { business } from '../config/business';
 // call/text/email instead (see .env.example and docs/CONTENT-GUIDE.md).
 const formEnabled = Boolean(business.web3forms.accessKey);
 
-const serviceOptions = [
-  'AC repair / diagnostic',
-  'Premium AC Maintenance',
-  'Replacement / installation estimate',
-  'Airflow / ductwork issue',
-  'Commercial service / maintenance',
-  'TAB / commissioning support',
-  'Something else',
-];
+// Closed allowlist: the GA4 event parameter is the normalized category from
+// this map — never the visitor's free text (see docs/GTM-GA4-SETUP.md).
+const serviceCategories: Record<string, string> = {
+  'AC repair / diagnostic': 'repair',
+  'Premium AC Maintenance': 'maintenance',
+  'Replacement / installation estimate': 'installation',
+  'Airflow / ductwork issue': 'airflow',
+  'Commercial service / maintenance': 'commercial',
+  'TAB / commissioning support': 'tab',
+  'Something else': 'other',
+};
+
+const serviceOptions = Object.keys(serviceCategories);
 
 const timeWindows = [
   'Morning (7:30 AM – 11:00 AM)',
@@ -110,7 +114,13 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
             <option value="" disabled selected>
               Select a service…
             </option>
-            {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+            {
+              serviceOptions.map((option) => (
+                <option value={option} data-category={serviceCategories[option]}>
+                  {option}
+                </option>
+              ))
+            }
           </select>
           <p class="field-error" id="f-service-error" hidden>
             <Icon name="alert-circle" size={15} />
@@ -275,6 +285,17 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
       else statusEl.setAttribute('data-state', state);
     };
 
+    // Form-start: a single-fire, privacy-safe signal on first interaction
+    // (no per-field or per-keypress events, no field values).
+    let formStarted = false;
+    const trackFormStart = (): void => {
+      if (formStarted) return;
+      formStarted = true;
+      window.dataLayer?.push({ event: 'scs_form_start' });
+    };
+    form.addEventListener('focusin', trackFormStart);
+    form.addEventListener('input', trackFormStart);
+
     let sending = false;
 
     form.addEventListener('submit', async (event: SubmitEvent) => {
@@ -325,6 +346,22 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
           // Analytics: fixed-name event only, fired strictly after Web3Forms
           // confirms — never on failures, never with any form contents.
           window.umami?.track('form-success');
+
+          // GA4 (via GTM): a single-use, session-scoped receipt created ONLY
+          // here. /thank-you/ consumes it to push `scs_form_confirmed` (GA4
+          // `generate_lead`) after the redirect, so delivery cannot be lost to
+          // navigation and manual thank-you visits are never counted. The
+          // payload is an allowlisted category — no form contents.
+          try {
+            const category = serviceSelect?.selectedOptions[0]?.dataset.category ?? 'other';
+            window.sessionStorage.setItem(
+              'scs-lead-receipt',
+              JSON.stringify({ service_category: category, cta_slot: 'form-submit' }),
+            );
+          } catch {
+            // Storage unavailable — GA4 simply does not receive the event.
+          }
+
           setStatus('Request received — thank you!', 'success');
           window.location.assign(form.dataset.redirect ?? '/thank-you/');
           return;

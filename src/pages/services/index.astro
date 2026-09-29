@@ -24,10 +24,10 @@ const description =
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">Services</p>
-      <h1>Heating and cooling services across Tampa Bay</h1>
+      <h1>Heating and Cooling Services Across Tampa Bay</h1>
       <p class="lead">
         Repairs come first. If replacement is genuinely the better call, you’ll hear why — with
         plain-language findings, straightforward options, and a free estimate.
@@ -38,7 +38,7 @@ const description =
   <section class="section section--alt" aria-labelledby="services-list-heading">
     <div class="container">
       <h2 id="services-list-heading" class="visually-hidden">Service details</h2>
-      <div class="grid grid--wide">
+      <div class="grid--six">
         {
           services.map((service) => (
             <ServiceCard
@@ -50,20 +50,16 @@ const description =
             />
           ))
         }
-        <a
-          class="card card-hover card--center"
-          href="/tab-commissioning-support/"
-          style="background: var(--c-navy); border-color: var(--c-navy);"
-        >
-          <span class="card-icon" style="background: #fff;">
+        <a class="card card-hover card--center" href="/tab-commissioning-support/">
+          <span class="card-icon card-icon--custom">
             <ServiceIcon name="checklist" />
           </span>
-          <h3 style="color: #fff;">Testing, Adjusting & Balancing</h3>
-          <p style="color: var(--c-on-navy-soft);">
+          <h3>Testing, Adjusting &amp; Balancing</h3>
+          <p>
             Air and hydronic TAB, duct traverses, outside-air verification, building-pressure
             checks, and commissioning support for professional teams.
           </p>
-          <span class="card-cta" style="color: var(--c-gold);">
+          <span class="card-cta">
             Explore TAB support <Icon name="arrow-right" size={18} />
           </span>
         </a>
@@ -73,18 +69,18 @@ const description =
 
   <section class="section" aria-labelledby="maintenance-heading">
     <div class="container home-duo">
-      <div>
+      <div class="panel">
         <p class="eyebrow">Maintenance</p>
-        <h2 id="maintenance-heading">Maintenance without mystery</h2>
+        <h2 id="maintenance-heading">Maintenance Without Mystery</h2>
         <p class="muted" style="margin-top: var(--sp-xs);">
           Our <a href="/services/ac-maintenance/">$75 Premium AC Maintenance</a> visit covers
           routine coil cleaning, condensate drain flushing, blower-compartment cleaning and a
           full system check — quoted per system, per visit, with no invented package prices.
         </p>
       </div>
-      <div>
-        <p class="eyebrow">Contractors & property managers</p>
-        <h2>Technical help, on your terms</h2>
+      <div class="panel">
+        <p class="eyebrow">Contractors & Property Managers</p>
+        <h2>Technical Help, on Your Terms</h2>
         <p class="muted" style="margin-top: var(--sp-xs);">
           We support contractors with subcontracted installation and overflow service, and
           professional teams with

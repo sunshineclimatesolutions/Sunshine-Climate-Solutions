@@ -10,16 +10,16 @@ metaDescription: >-
 
 hero:
   eyebrow: Contact
-  heading: Request service
+  heading: Request Service
   lead: >-
     Tell us what's going on and where you are — we'll contact you to confirm
     availability. Submitting a request does not book an appointment.
 
-waysHeading: Ways to reach us
+waysHeading: Ways to Reach Us
 hoursHeading: Hours
-pricingHeading: Pricing, up front
+pricingHeading: Pricing, Up Front
 
 process:
-  eyebrow: What happens next
-  heading: After you reach out
+  eyebrow: What Happens Next
+  heading: After You Reach Out
 ---

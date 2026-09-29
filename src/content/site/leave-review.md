@@ -9,8 +9,8 @@ metaDescription: >-
   HVAC service.
 
 hero:
-  eyebrow: Thank you
-  heading: We'd appreciate your review
+  eyebrow: Thank You
+  heading: We'd Appreciate Your Review
   lead: >-
     Reviews from real customers are the best way a small, owner-operated
     business earns trust. If we've earned yours, it takes about a minute to

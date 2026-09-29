@@ -24,7 +24,7 @@ const description = tab.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
@@ -33,13 +33,13 @@ const description = tab.data.metaDescription;
       </p>
       <div class="cluster" style="margin-top: var(--sp-xs);">
         <a
-          class="btn btn--gold btn--lg"
+          class="btn btn--navy btn--lg"
           href="/contact/?service=tab-commissioning-support"
           data-cta="request-tab-page"
         >
           <Icon name="clipboard" /> {heroCtaLabel}
         </a>
-        <a class="btn btn--outline-light" href={business.phone.href} data-cta="call-tab-page">
+        <a class="btn btn--outline-navy" href={business.phone.href} data-cta="call-tab-page">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
       </div>
@@ -52,7 +52,7 @@ const description = tab.data.metaDescription;
         <p class="eyebrow">{servicesCopy.eyebrow}</p>
         <h2 id="tab-services-heading">{servicesCopy.heading}</h2>
       </div>
-      <div class="grid">
+      <div class="grid--seven">
         {
           servicesCopy.cards.map((item) => (
             <div class="card">

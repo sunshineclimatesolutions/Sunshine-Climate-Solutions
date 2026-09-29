@@ -20,7 +20,7 @@ const description = area.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
@@ -30,7 +30,7 @@ const description = area.data.metaDescription;
     </div>
   </section>
 
-  <!-- Counties 2×2 beside the map (September 2026 design order). -->
+  <!-- Counties 2×2 beside the labeled map (September 2026 aesthetic overhaul). -->
   <section class="section" aria-labelledby="area-counties-heading">
     <div class="container">
       <div class="area-duo">
@@ -59,7 +59,7 @@ const description = area.data.metaDescription;
         <figure class="service-map-full">
           <img
             src="/images/service-area-map.svg"
-            alt="Map of west-central Florida showing Hernando, Pasco, Pinellas and Hillsborough counties highlighted, with neighboring counties and the Gulf of Mexico for context."
+            alt="Map of west-central Florida showing Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, with neighboring counties and the Gulf of America for context."
             loading="lazy"
             width="1674"
             height="2219"
@@ -73,39 +73,34 @@ const description = area.data.metaDescription;
     </div>
   </section>
 
-  <!-- Beyond Tampa Bay — centered light-gray callout with a call option. -->
+  <!-- Beyond Tampa Bay + coverage check as matched-height panels. -->
   <section class="section section--alt" aria-labelledby="area-beyond-heading">
-    <div class="container">
-      <div class="section-heading section-heading--center">
+    <div class="container home-duo">
+      <div class="panel">
         <h2 id="area-beyond-heading">{beyond.strong}</h2>
-        <p class="lead">
+        <p>
           {business.serviceArea.centralFloridaNote} {beyond.suffix}
         </p>
+        <div class="cluster" style="margin-top: var(--sp-2xs);">
+          <a class="btn btn--navy" href={business.phone.href} data-cta="call-area-beyond">
+            <Icon name="phone" /> Call {business.phone.display}
+          </a>
+        </div>
       </div>
-      <div class="cluster" style="justify-content: center;">
-        <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-area-beyond">
-          <Icon name="phone" /> Call {business.phone.display}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="area-check-heading">
-    <div class="container">
-      <div class="section-heading section-heading--center">
+      <div class="panel">
         <p class="eyebrow">{coverage.eyebrow}</p>
         <h2 id="area-check-heading">{coverage.heading}</h2>
-        <p class="lead">
+        <p>
           {coverage.lead}
         </p>
-      </div>
-      <div class="cluster" style="justify-content: center;">
-        <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-area">
-          <Icon name="phone" /> Call {business.phone.display}
-        </a>
-        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-area">
-          <Icon name="message" /> Text your address
-        </a>
+        <div class="cluster" style="margin-top: var(--sp-2xs);">
+          <a class="btn btn--navy" href={business.phone.href} data-cta="call-area">
+            <Icon name="phone" /> Call {business.phone.display}
+          </a>
+          <a class="btn btn--outline-navy" href={business.phone.sms} data-cta="text-area">
+            <Icon name="message" /> Text your address
+          </a>
+        </div>
       </div>
     </div>
   </section>

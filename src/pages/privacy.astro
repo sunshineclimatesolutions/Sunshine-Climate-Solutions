@@ -4,16 +4,16 @@ import { business } from '../config/business';
 
 const title = 'Privacy | Sunshine Climate Solutions';
 const description =
-  'How Sunshine Climate Solutions handles information you send us: what the request form collects, how Web3Forms processes it, how cookieless analytics are used, and how to reach us instead.';
+  'How Sunshine Climate Solutions handles information you send us: what the request form collects, how Web3Forms processes it, how optional Google Analytics and cookieless analytics are used, and how to reach us instead.';
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">Privacy</p>
-      <h1>How your information is handled</h1>
+      <h1>How Your Information Is Handled</h1>
       <p class="lead">
-        Short version: this website runs no advertising scripts, uses cookieless, aggregate-only analytics, and the only personal information we collect is what you choose to send us.
+        Short version: this website runs no advertising or remarketing, Google Analytics is optional and off until you allow it, a cookieless analytics service measures visits without identifying you, and the only personal information we collect is what you choose to send us.
       </p>
     </div>
   </section>
@@ -49,11 +49,34 @@ const description =
 
         <h2>Analytics</h2>
         <p>
-          This site uses Umami Cloud, a lightweight analytics service, to understand how the site
-          is used: which pages are visited and how often visitors use the call, text and request
-          actions. These are recorded as simple counts under fixed event names (for example,
-          "call-click"). No form contents, phone numbers, names or other personal information are
-          ever sent to Umami.
+          This site uses two analytics services: an optional one that runs only with your
+          permission, and a cookieless one that never identifies you.
+        </p>
+        <h3>Google Analytics (optional — off until you allow it)</h3>
+        <p>
+          We use Google Analytics 4, loaded through Google Tag Manager, to understand which pages
+          are visited and how often visitors use the call, text and request actions. It starts
+          switched off. On your first visit a banner asks whether you allow it, and nothing is
+          sent to Google unless you choose "Allow analytics". You can change your choice at any
+          time with the "Analytics preferences" link in the footer of every page.
+        </p>
+        <p>
+          When allowed, Google Analytics uses cookies (named <code>_ga</code> and similar) and
+          receives limited technical data — the page viewed, your approximate location derived
+          from your IP address, and your device and browser type — to produce reports for us.
+          Our event tracking sends fixed event names and a service category only; your name,
+          phone number, email, ZIP code and anything you type into the form are never sent to
+          Google. Advertising and personalization features are always denied: this site runs no
+          ads and no remarketing. For details, see Google's privacy policy at{' '}
+          <a href="https://policies.google.com/privacy" rel="noopener">policies.google.com/privacy</a>.
+        </p>
+        <h3>Umami (cookieless)</h3>
+        <p>
+          This site also uses Umami Cloud, a lightweight analytics service, to understand how the
+          site is used: which pages are visited and how often visitors use the call, text and
+          request actions. These are recorded as simple counts under fixed event names (for
+          example, "call-click"). No form contents, phone numbers, names or other personal
+          information are ever sent to Umami.
         </p>
         <p>
           Umami does not use cookies and does not track visitors across websites. Like any web
@@ -62,9 +85,8 @@ const description =
           documentation at <a href="https://umami.is" rel="noopener">umami.is</a>.
         </p>
         <p>
-          Beyond analytics, this site loads no advertising scripts and sets no tracking cookies.
-          Fonts are served from this website's own files, so there are no third-party font or
-          embedded-content requests.
+          Beyond analytics, this site loads no advertising scripts. Fonts are served from this
+          website's own files, so there are no third-party font or embedded-content requests.
         </p>
 
         <h2>Communication you start</h2>

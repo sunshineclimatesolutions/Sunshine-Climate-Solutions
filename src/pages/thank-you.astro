@@ -9,10 +9,10 @@ const description = 'Your service request was received. We will contact you to c
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner">
-      <p class="eyebrow">Thank you</p>
-      <h1>Request received</h1>
+      <p class="eyebrow">Thank You</p>
+      <h1>Request Received</h1>
       <p class="lead">
         Thanks — your request went through. We'll contact you to confirm availability during
         business hours (7:30 AM – 7:30 PM, every day).
@@ -24,7 +24,7 @@ const description = 'Your service request was received. We will contact you to c
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-thank-you">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-thank-you">
+        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-thank-you">
           <Icon name="message" /> Text Us
         </a>
         <a class="hero-alt" href="/" data-cta="home-thank-you">
@@ -55,4 +55,27 @@ const description = 'Your service request was received. We will contact you to c
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    // GA4 (via GTM) confirmed-lead event. The receipt below is created only by
+    // ContactForm.astro after Web3Forms confirms acceptance, is single-use, and
+    // lives in sessionStorage — a manual or repeat visit to this URL counts
+    // nothing and pushes no event.
+    (function () {
+      try {
+        var raw = window.sessionStorage.getItem('scs-lead-receipt');
+        if (!raw) return;
+        window.sessionStorage.removeItem('scs-lead-receipt');
+        var receipt = JSON.parse(raw);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'scs_form_confirmed',
+          service_category: receipt.service_category || 'other',
+          cta_slot: receipt.cta_slot || 'form-submit',
+        });
+      } catch (error) {
+        // Fail closed: malformed or unavailable storage sends nothing.
+      }
+    })();
+  </script>
 </BaseLayout>

@@ -3,35 +3,48 @@ import { getCollection } from 'astro:content';
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import SocialLinks from './SocialLinks.astro';
+import ScsSignature from './ScsSignature.astro';
 import { business, licenseDisplay } from '../config/business';
 
 const projects = await getCollection('projects');
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const year = new Date().getFullYear();
 const license = licenseDisplay();
+
+// The persistent way to revisit the analytics consent choice. Shown only when
+// the consent interface exists (GTM configured, not a preview build).
+const consentUi = Boolean(business.analytics.gtm.containerId) &&
+  import.meta.env.PUBLIC_PREVIEW_MODE !== 'true';
 ---
 
-<footer class="site-footer on-dark">
+<footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <Logo size="lg" />
-        <p>
-          Owner-operated heating and cooling service for Tampa Bay homes and businesses. Clear
-          explanations, straightforward options, and a repair-first approach.
-        </p>
+        <div class="footer-brand-top">
+          <p>
+            Owner-operated heating and cooling service for Tampa Bay homes and businesses. Clear
+            explanations, straightforward options, and a repair-first approach.
+          </p>
+          <ScsSignature size={56} class="footer-signature" />
+        </div>
         <a
           class="footer-reviews"
           href={business.reviewsUrl}
           data-cta="reviews-footer"
           rel="noopener"
         >
-          <img class="google-g" src="/brand/google-g.svg" alt="" width="22" height="22" />
-          {business.reviewsLabel}
+          <img class="google-g" src="/brand/google-g.svg" alt="" width="26" height="26" />
+          Read Our Google Reviews
         </a>
-        <a class="footer-leave-review" href="/leave-review/" data-cta="leave-review-footer">
-          Been a customer? Leave a Google review
-        </a>
+        <div class="footer-review-invite">
+          <p>Been a Customer? We’d Appreciate Your Honest Review.</p>
+          <a class="footer-review-cta" href="/leave-review/" data-cta="leave-review-footer">
+            <img class="google-g" src="/brand/google-g.svg" alt="" width="26" height="26" />
+            Leave a Google Review
+          </a>
+        </div>
         <SocialLinks compact />
         <p class="license-line">
           <Icon name="badge" /> Licensed and insured · EPA Section 608 certified
@@ -61,6 +74,13 @@ const license = licenseDisplay();
           <li><a href="/faq/">FAQ</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/privacy/">Privacy</a></li>
+          {consentUi && (
+            <li>
+              <button type="button" class="footer-consent" data-consent-open>
+                Analytics preferences
+              </button>
+            </li>
+          )}
         </ul>
       </div>
 
@@ -88,13 +108,12 @@ const license = licenseDisplay();
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer-bottom">
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
       <p>© {year} {business.legalName}. All rights reserved.</p>
-      <p>
-        {business.pricing.serviceCall} service call, waived with repair · {business.pricing.estimates.toLowerCase()}
-      </p>
-      {license && <p class="license">{license}</p>}
+      {license ? <p class="license">{license}</p> : <p>Independently Owned · Repair-First</p>}
     </div>
   </div>
 </footer>

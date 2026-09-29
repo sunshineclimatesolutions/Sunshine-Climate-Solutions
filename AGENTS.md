@@ -43,11 +43,22 @@ with the owner; never silently work around this file.
   success is acknowledged only after the provider confirms; every failure path has an honest
   message and a call/text alternative; a missing key renders an honest fallback, never a fake
   success.
-- Analytics: Umami Cloud (cookieless, aggregate only) loads from `BaseHead.astro` when
-  `business.analytics.umami.websiteId` is set and never in preview mode. Events are fixed-name
-  only — `call-click`, `text-click`, `form-success` (fired strictly after Web3Forms confirms).
-  **Never send form contents, phone numbers, names, or any personal information to analytics.**
-  The privacy page discloses this; keep it accurate if analytics change.
+- Analytics: two services, both configured in `business.analytics` and loaded from
+  `BaseHead.astro`/`ConsentBanner.astro`, never in preview mode.
+  - **Umami Cloud** (cookieless, aggregate only) — always on when configured. Events are
+    fixed-name only: `call-click`, `text-click`, `form-success` (fired strictly after Web3Forms
+    confirms).
+  - **Google Analytics 4 via Google Tag Manager** (`GTM-MBGJ8SLD`; GA4 `G-EQ9CBESN23` is
+    configured inside the GTM container — never load gtag.js directly). Consent Mode v2 starts
+    all-denied; only an explicit "Allow analytics" choice in the consent banner grants
+    `analytics_storage`, and advertising consent is never granted while the site runs no ads.
+    Data-layer events are fixed-name only: `scs_call_click`, `scs_text_click`,
+    `scs_request_click`, `scs_form_start`, and `scs_form_confirmed` (maps to GA4
+    `generate_lead`) which is emitted on `/thank-you/` only from a single-use session receipt
+    written after Web3Forms confirms — never on manual thank-you visits.
+  - **Never send form contents, phone numbers, names, or any personal information to any
+    analytics service.** Dashboard setup and the conversion spec live in `docs/GTM-GA4-SETUP.md`;
+    the privacy page discloses both services — keep it accurate if analytics change.
 
 ## Commands
 

@@ -7,7 +7,7 @@ metaDescription: >-
   checks; and commissioning support for professional teams.
 
 hero:
-  eyebrow: For contractors, engineers & property teams
+  eyebrow: For Contractors, Engineers & Property Teams
   heading: Testing, Adjusting & Balancing, and Commissioning Support
   lead: >-
     Measurement-driven TAB and commissioning support across Tampa Bay — with the
@@ -16,8 +16,8 @@ hero:
   ctaLabel: Request a TAB Proposal
 
 services:
-  eyebrow: Scope of work
-  heading: What we provide
+  eyebrow: Scope of Work
+  heading: What We Provide
   cards:
     - icon: wind
       title: Air & hydronic TAB
@@ -63,8 +63,8 @@ callout:
     any work is accepted — no assumptions, no surprises.
 
 process:
-  eyebrow: How a TAB project works
-  heading: From request to report
+  eyebrow: How a TAB Project Works
+  heading: From Request to Report
   steps:
     - title: Scope review
       text: >-
@@ -86,13 +86,13 @@ process:
         recommend looking at next.
 
 ctaBand:
-  title: Have a project in mind?
+  title: Have a Project in Mind?
   text: >-
     Send the scope and we'll talk through requirements, schedule, and deliverables
     before anything is accepted.
   requestLabel: Request a TAB Proposal
 visuals:
-  eyebrow: From the field
+  eyebrow: From the Field
   heading: Field measurement and system verification
   lead: >-
     Selected photographs from airflow measurement, mechanical-equipment and

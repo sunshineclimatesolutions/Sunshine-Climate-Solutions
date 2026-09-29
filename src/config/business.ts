@@ -99,6 +99,17 @@ export const business = {
       websiteId:
         import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? '2635b6ca-2d10-4742-8838-9e6ec879a5a7',
     },
+
+    // Google Tag Manager container that loads Google Analytics 4 (the GA4
+    // measurement ID G-EQ9CBESN23 is configured INSIDE the container — the site
+    // never loads gtag.js directly). Public client-side identifier, safe to
+    // commit like the Umami site ID. Override with PUBLIC_GTM_CONTAINER_ID; an
+    // empty string disables GTM and the consent interface entirely.
+    // Consent Mode v2 defaults are denied and only the visitor's explicit
+    // analytics choice is ever granted (see ConsentBanner.astro).
+    gtm: {
+      containerId: import.meta.env.PUBLIC_GTM_CONTAINER_ID ?? 'GTM-MBGJ8SLD',
+    },
   },
 
   flags: {

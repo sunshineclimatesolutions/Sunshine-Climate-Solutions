@@ -1,8 +1,27 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: IndexNow integration (branch `indexnow-integration`):
-root key file, dependency-free submission script, deployment-triggered workflow.**
+verification continues. **Last updated: September 2026 aesthetic overhaul + GA4/GTM consent
+integration + Gulf of America map correction (branch `feat/scs-light-aesthetic-overhaul-sep-2026`,
+HEAD `008177f` + working tree).**
+
+## September 2026 aesthetic overhaul + GA4/GTM + Gulf of America — verification
+
+| Check | Result |
+| --- | --- |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 16 pages |
+| `scripts/links.mjs` | **PASS** — 819 internal URLs, 0 broken |
+| `scripts/smoke.mjs` (360/1440) | **PASS** — conversions, action bar, validation, nav intact; 0px overflow |
+| `scripts/a11y.mjs` (axe-core) | **PASS** — 26 scans, 0 violations (consent banner included) |
+| `scripts/gtm-consent.mjs` (new) | **PASS — 56/56** — consent defaults/update ordering, banner + preferences, no ad consent, click events, single-fire form start, receipt-based `generate_lead`, manual thank-you never counts, provider failure never counts, no PII in the data layer, preview-mode build guard |
+| `scripts/verify-layout.mjs` (new) | **PASS — 582/582** — 15 routes × 390/768/1440: no overflow, one h1, Archivo/Public Sans typography, ≥44px buttons, all images loaded with alt, token colors, centered heroes, grid column invariants (6-card 3/2/1, counties 2×2, steps 2×2), form errors hidden pre-submit |
+| `scripts/verify-maps.mjs` (new) | **PASS — 36/36** — both SVGs (public + dist) display GULF OF AMERICA, never the former label, all four county labels, accessible title/desc, page alt text updated |
+| Map generator guard | **PASS** — regeneration asserts the Gulf label on both variants at ≥10px rendered and fails if the old name appears |
+| Preview-mode gate | **PASS** — `PUBLIC_PREVIEW_MODE=true` build contains no GTM, no consent UI, noindex + Disallow-all |
+| Screenshots | `docs/verification/screenshots/aesthetic/` — `maps-before/` vs `maps-after/` (map change-order pairs at 390/768/1440), `after-final/` (full 16-route set + section close-ups + consent banner/preferences states at 390/1440); superseded `before/`+`after/` retained on disk |
+| Defects found & fixed in review | (1) **Pre-existing on main:** `.field-error { display:flex }` defeated the `hidden` attribute — every contact-form validation message rendered permanently; fixed with `.field-error[hidden]{display:none}` + regression check. (2) New consent component: preferences panel visible on first load; fixed with `.consent-preferences[hidden]{display:none}` + test check. (3) Screenshot route for 404 lacked the trailing slash and captured Astro's built-in page; corrected to the real custom 404 |
+| **Owner visual approval** | **PENDING** — final screenshots on disk for review; agent inspection limited by image-context policy |
+| **GTM workspace + publish / deployment** | **PENDING** — owner dashboard steps in `docs/GTM-GA4-SETUP.md`; no deploy without approval |
 
 ## IndexNow — verification
 

@@ -1,0 +1,145 @@
+---
+import { business } from '../config/business';
+
+// Consent interface for optional Google Analytics (GA4 via GTM).
+// Rendered only when a GTM container is configured and never in preview builds.
+// Fail-closed: the banner ships hidden; consent is granted only by an explicit
+// visitor choice (never inferred from scrolling or page views). Advertising
+// storage is never offered because this site runs no ads or remarketing.
+const gtmEnabled =
+  Boolean(business.analytics.gtm.containerId) &&
+  import.meta.env.PUBLIC_PREVIEW_MODE !== 'true';
+---
+
+{
+  gtmEnabled && (
+    <div
+      class="consent-banner"
+      role="region"
+      aria-labelledby="consent-heading"
+      data-consent-banner
+      hidden
+    >
+      <div class="container consent-inner">
+        <div class="consent-copy">
+          <h2 id="consent-heading" tabindex="-1" data-consent-heading>
+            Optional analytics
+          </h2>
+          <p>
+            May we use Google Analytics to understand how this site is used? It runs only if you
+            allow it, never sends form contents, and no advertising or cross-site tracking is
+            used. <a href="/privacy/">Privacy details</a>.
+          </p>
+        </div>
+        <div class="consent-actions">
+          <button type="button" class="btn btn--gold" data-consent-accept>Allow analytics</button>
+          <button type="button" class="btn btn--outline-navy" data-consent-reject>Reject</button>
+          <button
+            type="button"
+            class="btn btn--outline-navy"
+            data-consent-manage
+            aria-expanded="false"
+            aria-controls="consent-preferences"
+          >
+            Preferences
+          </button>
+        </div>
+        <div class="consent-preferences" id="consent-preferences" data-consent-prefs hidden>
+          <label class="consent-pref">
+            <input type="checkbox" data-consent-analytics-toggle />
+            <span>Analytics storage (Google Analytics)</span>
+          </label>
+          <p class="consent-note">
+            Advertising and personalization storage stay denied — this site runs no ads or
+            remarketing.
+          </p>
+          <button type="button" class="btn btn--navy" data-consent-save>Save preferences</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  const KEY = 'scs-consent-v1';
+
+  interface StoredChoice {
+    analytics?: boolean;
+    v?: number;
+  }
+
+  const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
+
+  if (banner) {
+    const prefs = banner.querySelector<HTMLElement>('[data-consent-prefs]');
+    const toggle = banner.querySelector<HTMLInputElement>('[data-consent-analytics-toggle]');
+    const manage = banner.querySelector<HTMLButtonElement>('[data-consent-manage]');
+    const heading = banner.querySelector<HTMLElement>('[data-consent-heading]');
+
+    const read = (): StoredChoice | null => {
+      try {
+        const raw = window.localStorage.getItem(KEY);
+        return raw ? (JSON.parse(raw) as StoredChoice) : null;
+      } catch {
+        return null;
+      }
+    };
+
+    const apply = (analytics: boolean): void => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: analytics ? 'granted' : 'denied',
+        });
+      }
+    };
+
+    const decide = (analytics: boolean): void => {
+      try {
+        window.localStorage.setItem(KEY, JSON.stringify({ analytics, v: 1 }));
+      } catch {
+        // Storage unavailable — the choice still applies for this page view.
+      }
+      apply(analytics);
+      banner.hidden = true;
+    };
+
+    const openPreferences = (focusHeading: boolean): void => {
+      banner.hidden = false;
+      if (prefs && toggle && manage) {
+        toggle.checked = read()?.analytics === true;
+        prefs.hidden = false;
+        manage.setAttribute('aria-expanded', 'true');
+      }
+      if (focusHeading) heading?.focus();
+    };
+
+    banner.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-consent-accept]')) {
+        decide(true);
+      } else if (target.closest('[data-consent-reject]')) {
+        decide(false);
+      } else if (target.closest('[data-consent-save]')) {
+        decide(toggle?.checked === true);
+      } else if (target.closest('[data-consent-manage]')) {
+        const expanded = manage?.getAttribute('aria-expanded') === 'true';
+        if (prefs && manage) {
+          prefs.hidden = expanded;
+          manage.setAttribute('aria-expanded', String(!expanded));
+          if (!expanded && toggle) toggle.checked = read()?.analytics === true;
+        }
+      }
+    });
+
+    // Persistent entry points (e.g. footer "Analytics preferences").
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (target.closest('[data-consent-open]')) openPreferences(true);
+    });
+
+    // First visit (no stored choice): ask. Reopening is always explicit.
+    if (!read()) {
+      banner.hidden = false;
+    }
+  }
+</script>

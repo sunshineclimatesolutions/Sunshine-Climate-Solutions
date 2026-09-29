@@ -9,15 +9,15 @@ metaDescription: >-
   Call or text (727) 661-5200.
 
 hero:
-  eyebrow: Service area
-  heading: Serving Tampa Bay, county by county
+  eyebrow: Service Area
+  heading: Serving Tampa Bay, County by County
   lead: >-
     Owner-operated heating and cooling service across Hernando, Pasco, Pinellas,
     and Hillsborough counties — Tampa Bay and surrounding communities.
 
 counties:
-  eyebrow: Counties we serve
-  heading: Where we work
+  eyebrow: Counties We Serve
+  heading: Where We Work
   list:
     - name: Hernando County
       communities:
@@ -62,7 +62,7 @@ beyond:
     Florida is worth a conversation.
 
 coverage:
-  eyebrow: Coverage check
+  eyebrow: Coverage Check
   heading: Not sure if you're covered?
   lead: >-
     Call or text your address and we'll give you a straight answer before you spend
@@ -70,7 +70,7 @@ coverage:
     area, we'll tell you that too.
 
 ctaBand:
-  title: Ready to schedule?
+  title: Ready to Schedule?
   text: >-
     Requests are confirmed with you before anything is booked — submit the short
     form or call directly.

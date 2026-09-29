@@ -82,7 +82,13 @@ a {
 }
 
 a:hover {
-  color: var(--c-gold-strong);
+  color: var(--c-navy-deep);
+  text-decoration-thickness: 2px;
+}
+
+.on-dark a:hover,
+.theme-dark a:hover {
+  color: var(--c-gold);
 }
 
 ul,
@@ -194,9 +200,11 @@ ol {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-head);
-  font-size: var(--text-sm);
+  justify-content: center;
+  gap: 0.75rem;
+  /* Public Sans semibold for typographic contrast against Archivo headings. */
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
@@ -210,12 +218,16 @@ ol {
   color: var(--c-gold);
 }
 
-.eyebrow::before {
+/* Symmetrical short rules on BOTH sides of the label (September 2026
+   aesthetic overhaul — replaces the previous lopsided one-sided dash). */
+.eyebrow::before,
+.eyebrow::after {
   content: '';
-  inline-size: 1.75rem;
+  inline-size: clamp(1.75rem, 2.5vw, 2.5rem);
   block-size: 2px;
   background: currentColor;
   border-radius: 1px;
+  flex: none;
 }
 
 .lead {
@@ -332,10 +344,15 @@ ol {
 }
 
 /* ── Chips / trust signals ──────────────────────────────────── */
+/* Centered as one intentional group (September 2026 aesthetic overhaul):
+   a constrained symmetric wrap, never a left-hanging last badge. */
 .chips {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem 0.625rem;
+  max-width: 56rem;
+  margin-inline: auto;
 }
 
 .chip {
@@ -345,7 +362,7 @@ ol {
   padding: 0.45rem 0.85rem;
   border-radius: var(--r-full);
   border: 1px solid var(--c-line);
-  background: var(--c-bg);
+  background: var(--c-card);
   color: var(--c-ink);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -372,7 +389,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: var(--sp-xs);
-  background: var(--c-bg);
+  background: var(--c-card);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   padding: var(--sp-md);
@@ -388,7 +405,7 @@ ol {
 }
 
 .card-hover:hover {
-  border-color: var(--c-line-strong);
+  border-color: var(--c-line-hover);
   box-shadow: var(--sh-md);
   transform: translateY(-2px);
   color: inherit;
@@ -430,13 +447,16 @@ ol {
 }
 
 .card-hover:hover .card-cta {
-  color: var(--c-gold-strong);
+  color: var(--c-navy-deep);
 }
 
 /* ── Header ─────────────────────────────────────────────────── */
+/* Light header treatment (September 2026 aesthetic overhaul): the dark
+   logo variant on a near-white surface, charcoal text, gold as accent. */
 .site-header {
-  background: var(--c-navy);
-  color: var(--c-on-navy);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
 }
 
 .header-row {
@@ -458,19 +478,20 @@ ol {
   min-height: 2.75rem;
   padding: 0.375rem 0.625rem;
   border-radius: var(--r-sm);
-  color: #d7e2ec;
+  color: var(--c-ink-soft);
   font-weight: 600;
   font-size: var(--text-sm);
   text-decoration: none;
 }
 
 .header-nav a:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--c-ink);
+  background: rgba(45, 66, 86, 0.07);
 }
 
 .header-nav a[aria-current='page'] {
-  color: var(--c-gold);
+  color: var(--c-ink);
+  box-shadow: inset 0 -2px 0 var(--c-gold);
 }
 
 .header-actions {
@@ -489,7 +510,7 @@ ol {
   align-items: center;
   gap: 0.5rem;
   min-height: 2.75rem;
-  color: var(--c-gold);
+  color: var(--c-ink);
   font-family: var(--font-head);
   font-weight: 800;
   font-size: 1.0625rem;
@@ -498,17 +519,18 @@ ol {
 }
 
 .header-phone:hover {
-  color: var(--c-gold-strong);
+  color: var(--c-navy-deep);
 }
 
 .header-phone .icon {
   width: 1.1rem;
   height: 1.1rem;
+  color: var(--c-gold-strong);
 }
 
 /* Below desktop, phone + Request Service live in the gold contact strip and
    the sticky action bar — hiding them here keeps the top row compact. */
-@media (max-width: 56.249em) {
+@media (max-width: 63.999em) {
   .header-actions .header-phone,
   .header-actions .btn {
     display: none;
@@ -523,12 +545,12 @@ ol {
   border: 0;
   border-radius: var(--r-sm);
   background: transparent;
-  color: var(--c-on-navy);
+  color: var(--c-ink);
   cursor: pointer;
 }
 
 .nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(45, 66, 86, 0.07);
 }
 
 .nav-toggle .icon {
@@ -567,10 +589,12 @@ ol {
   /* Fixed against the taller (web-font) render so the font swap cannot
      reflow the strip and shift the page (CLS). */
   min-height: 3.3rem;
-  color: var(--c-navy);
+  /* Never fragment the phone number at 360–412px (Sept 2026 overhaul). */
+  font-size: clamp(0.8125rem, 3.6vw, 1rem);
+  white-space: nowrap;
+  color: var(--c-navy-deep);
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: var(--text-md);
   text-decoration: none;
 }
 
@@ -584,14 +608,15 @@ ol {
 
 .strip-call strong {
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .strip-request {
   flex: 1;
-  border-inline-start: 1px solid rgba(16, 38, 61, 0.35);
+  border-inline-start: 1px solid rgba(45, 66, 86, 0.35);
 }
 
-@media (min-width: 56.25em) {
+@media (min-width: 64em) {
   .site-header {
     position: sticky;
     top: 0;
@@ -713,17 +738,19 @@ body.nav-open {
 }
 
 /* ── Logo ───────────────────────────────────────────────────── */
+/* Default variant sits on light surfaces (dark logo art, charcoal text);
+   .logo--on-dark is for the mobile menu overlay and any charcoal surface. */
 .logo {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  color: var(--c-on-navy);
+  color: var(--c-ink);
   text-decoration: none;
   min-height: 2.75rem;
 }
 
 .logo:hover {
-  color: var(--c-on-navy);
+  color: var(--c-ink);
 }
 
 .logo-mark {
@@ -743,50 +770,59 @@ body.nav-open {
 
 .logo-name span {
   display: block;
-  color: var(--c-gold);
+  color: var(--c-ink-soft);
   font-size: 0.9375rem;
 }
 
+.logo--on-dark {
+  color: var(--c-on-navy);
+}
+
+.logo--on-dark:hover {
+  color: var(--c-on-navy);
+}
+
+.logo--on-dark .logo-name span {
+  color: var(--c-gold);
+}
+
 /* ── Hero ───────────────────────────────────────────────────── */
+/* Light editorial hero (September 2026 aesthetic overhaul): charcoal
+   headline on paper background, gold as a controlled highlight only. */
 .hero {
   position: relative;
   overflow: clip;
-  background: var(--c-navy);
-  color: var(--c-on-navy);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
 }
 
 .hero-inner {
   position: relative;
-  padding-block: clamp(2.75rem, 7vw, 5.5rem);
+  padding-block: clamp(2.25rem, 5vw, 3.75rem);
   display: grid;
   gap: var(--sp-md);
-  max-width: 46rem;
-}
-
-.hero-deco {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.hero-deco svg {
-  position: absolute;
-  right: clamp(-6rem, -2vw, -3rem);
-  top: -4rem;
-  width: clamp(14rem, 30vw, 30rem);
-  height: auto;
-  opacity: 0.4;
-  color: var(--c-gold);
+  max-width: 52rem;
 }
 
 .hero h1 {
   font-size: var(--text-hero-h1);
-  color: var(--c-on-navy);
-  max-width: 15ch;
+  color: var(--c-ink);
+  max-width: 24ch;
 }
 
+/* Controlled gold highlight on the final phrase — a marker underline keeps
+   the text itself at full charcoal contrast (gold small text on light
+   surfaces fails WCAG AA; the underline is decorative). */
 .hero h1 .accent {
-  color: var(--c-gold);
+  color: inherit;
+  background-image: linear-gradient(
+    transparent 68%,
+    rgba(244, 182, 49, 0.85) 68%,
+    rgba(244, 182, 49, 0.85) 94%,
+    transparent 94%
+  );
+  padding-inline: 0.04em;
 }
 
 .hero-actions {
@@ -800,11 +836,24 @@ body.nav-open {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--c-on-navy);
+  color: var(--c-ink);
   font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .hero-alt:hover {
+  color: var(--c-navy-deep);
+}
+
+/* On the charcoal bands the tertiary link flips to light (Sept 2026). */
+.on-dark .hero-alt,
+.band--charcoal .hero-alt {
+  color: var(--c-on-navy);
+}
+
+.on-dark .hero-alt:hover,
+.band--charcoal .hero-alt:hover {
   color: var(--c-gold);
 }
 
@@ -813,6 +862,7 @@ body.nav-open {
   height: 1.1rem;
 }
 
+/* $50 service-call info bar — refined gold-tint panel, not a button. */
 .offer-chip {
   display: inline-flex;
   flex-wrap: wrap;
@@ -820,48 +870,50 @@ body.nav-open {
   gap: 0.3rem 0.75rem;
   padding: 0.7rem 1.1rem;
   border-radius: var(--r-md);
-  background: rgba(244, 182, 49, 0.12);
-  border: 1px solid rgba(244, 182, 49, 0.55);
-  color: #f7ce6b;
+  background: var(--c-gold-tint);
+  border: 1px solid #e8d6a8;
+  color: var(--c-ink-soft);
   font-weight: 600;
   font-size: var(--text-sm);
 }
 
 .offer-chip strong {
-  color: var(--c-gold);
+  color: var(--c-ink);
   font-family: var(--font-head);
 }
 
 .offer-chip .dot {
-  color: rgba(247, 206, 107, 0.7);
+  color: var(--c-gold-strong);
 }
 
 /* ── Inner page hero ────────────────────────────────────────── */
+/* Light compact hero shared by every inner page (Sept 2026 overhaul). */
 .page-hero {
-  background: var(--c-navy);
-  color: var(--c-on-navy);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  border-bottom: 1px solid var(--c-line);
 }
 
 .page-hero-inner {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  padding-block: clamp(2rem, 4.5vw, 3.25rem);
   display: grid;
   gap: var(--sp-sm);
-  max-width: 46rem;
+  max-width: 52rem;
 }
 
 .page-hero h1 {
   font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
-  color: var(--c-on-navy);
+  color: var(--c-ink);
 }
 
 /* ── CTA band ───────────────────────────────────────────────── */
 .cta-band {
-  background: var(--c-navy-raised);
+  background: var(--c-navy);
   color: var(--c-on-navy);
 }
 
 .cta-band-inner {
-  padding-block: clamp(2rem, 5vw, 3.5rem);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-md) var(--sp-xl);
@@ -885,28 +937,86 @@ body.nav-open {
   gap: var(--sp-sm);
 }
 
-/* Gold offer band (home) */
+/* Pale slate-blue technical band (homepage TAB) with a discreet dark rule. */
+.band--technical {
+  background: var(--c-bg-soft);
+  border-top: 3px solid var(--c-navy);
+  color: var(--c-ink);
+}
+
+/* Light gold-tint offer spotlight (homepage maintenance; service panels). */
+.band--maintenance {
+  background: var(--c-gold-tint);
+  border-block: 1px solid #e8d6a8;
+  color: var(--c-ink);
+}
+
+/* The single comparatively short charcoal feature band allowed per page
+   (homepage final CTA). */
+.band--charcoal {
+  background: var(--c-navy);
+  color: var(--c-on-navy);
+}
+
+.band--charcoal h2 {
+  color: var(--c-on-navy);
+}
+
+.band--charcoal p {
+  color: var(--c-on-navy-soft);
+}
+
+.band--maintenance .container,
+.band--technical .container,
+.band--charcoal .container {
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+  display: grid;
+  gap: var(--sp-sm);
+}
+
+.band--maintenance h2,
+.band--technical h2 {
+  color: var(--c-ink);
+  font-size: var(--text-h2);
+}
+
+.band--maintenance p,
+.band--technical p {
+  color: var(--c-ink-soft);
+  max-width: 58ch;
+}
+
+.band--technical .scs-signature {
+  margin-inline: auto;
+  opacity: 0.9;
+}
+
+.band--charcoal .scs-signature {
+  margin-inline: auto;
+}
+
+/* Gold offer band (home) — kept for the single $50 promotion, compact. */
 .band--gold {
   background: var(--c-gold);
-  color: var(--c-navy);
+  color: var(--c-navy-deep);
 }
 
 .band--gold .band-inner {
-  padding-block: clamp(2.25rem, 6vw, 4rem);
+  padding-block: clamp(1.5rem, 3.5vw, 2.25rem);
   display: grid;
-  gap: var(--sp-md);
+  gap: var(--sp-sm);
 }
 
 .band--gold h2 {
-  color: var(--c-navy);
+  color: var(--c-navy-deep);
   font-size: var(--text-h2);
-  max-width: 22ch;
+  max-width: 26ch;
 }
 
 .band--gold p {
-  color: #3a4d61;
+  color: #3f4f60;
   font-size: var(--text-lg);
-  max-width: 52ch;
+  max-width: 58ch;
 }
 
 .band--gold .btn--navy {
@@ -932,7 +1042,7 @@ body.nav-open {
 .step {
   display: grid;
   gap: var(--sp-2xs);
-  background: var(--c-bg);
+  background: var(--c-card);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
   padding: var(--sp-md);
@@ -962,7 +1072,7 @@ body.nav-open {
 
 /* ── Forms ──────────────────────────────────────────────────── */
 .form-card {
-  background: var(--c-bg);
+  background: var(--c-card);
   border: 1px solid var(--c-line);
   border-radius: var(--r-xl);
   padding: clamp(1.25rem, 4vw, 2.25rem);
@@ -1008,7 +1118,7 @@ body.nav-open {
   padding: 0.6rem 0.85rem;
   border: 1px solid var(--c-line-strong);
   border-radius: var(--r-md);
-  background: var(--c-bg);
+  background: var(--c-card);
   color: var(--c-ink);
 }
 
@@ -1019,7 +1129,7 @@ body.nav-open {
 
 .field select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2310263d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23203549' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   padding-right: 2.5rem;
@@ -1044,6 +1154,12 @@ body.nav-open {
   color: var(--c-danger);
   font-size: 0.8125rem;
   font-weight: 600;
+}
+
+/* display:flex above must not defeat the `hidden` attribute: validation
+   messages stay invisible until the form script reveals them. */
+.field-error[hidden] {
+  display: none;
 }
 
 .field-error .icon {
@@ -1129,7 +1245,7 @@ body.nav-open {
 }
 
 .faq-item {
-  background: var(--c-bg);
+  background: var(--c-card);
   border: 1px solid var(--c-line);
   border-radius: var(--r-lg);
 }
@@ -1265,9 +1381,12 @@ body.nav-open {
 }
 
 /* ── Footer ─────────────────────────────────────────────────── */
+/* Light editorial footer (September 2026 aesthetic overhaul): dark text on
+   the paper surface, one slim charcoal bottom strip. */
 .site-footer {
-  background: var(--c-navy-deep);
-  color: #b9c8d8;
+  background: var(--c-bg);
+  color: var(--c-ink-soft);
+  border-top: 1px solid var(--c-line);
   font-size: 0.9375rem;
 }
 
@@ -1297,8 +1416,22 @@ body.nav-open {
 }
 
 .footer-brand p {
-  color: var(--c-on-navy-soft);
+  color: var(--c-ink-soft);
   max-width: 34ch;
+}
+
+.footer-brand-top {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+}
+
+/* The custom technical signature sits beside the brand description without
+   competing with the real logo. */
+.footer-signature {
+  color: var(--c-navy);
+  margin-left: auto;
+  opacity: 0.9;
 }
 
 .footer-heading {
@@ -1307,7 +1440,7 @@ body.nav-open {
   font-weight: 700;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--c-ink);
   margin-bottom: var(--sp-xs);
 }
 
@@ -1324,12 +1457,12 @@ body.nav-open {
   gap: 0.45rem;
   min-height: 2.5rem;
   padding-block: 0.35rem;
-  color: #cfdce8;
+  color: var(--c-ink-soft);
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: var(--c-gold);
+  color: var(--c-navy-deep);
 }
 
 .footer-links .icon,
@@ -1337,7 +1470,7 @@ body.nav-open {
   width: 1rem;
   height: 1rem;
   flex: none;
-  color: var(--c-gold);
+  color: var(--c-gold-strong);
 }
 
 .footer-contact {
@@ -1351,19 +1484,19 @@ body.nav-open {
   gap: 0.45rem;
   min-height: 2.5rem;
   padding-block: 0.35rem;
-  color: #cfdce8;
+  color: var(--c-ink-soft);
   text-decoration: none;
 }
 
 .footer-contact a:hover {
-  color: var(--c-gold);
+  color: var(--c-navy-deep);
 }
 
 .footer-contact .fc-meta {
   display: grid;
   gap: 0.15rem;
   padding-block: 0.35rem;
-  color: var(--c-on-navy-soft);
+  color: var(--c-ink-soft);
   font-size: var(--text-sm);
 }
 
@@ -1371,27 +1504,42 @@ body.nav-open {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--c-gold) !important;
+  min-height: 2.75rem;
+  color: var(--c-navy) !important;
   font-family: var(--font-head);
   font-weight: 700;
 }
 
-.footer-reviews .icon {
-  width: 1.1rem;
-  height: 1.1rem;
-  fill: currentColor;
+.footer-reviews:hover {
+  color: var(--c-navy-deep) !important;
 }
 
-/* Quiet link for existing customers — must not compete with the read-reviews
-   call or new-customer conversion links. */
-.footer-leave-review {
+/* Compliant honest-review invitation for existing customers. */
+.footer-review-invite {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+}
+
+.footer-review-invite p {
   font-size: var(--text-sm);
-  color: var(--c-on-navy-soft);
-  margin-top: var(--sp-2xs);
+  color: var(--c-ink-soft);
+  max-width: 30ch;
 }
 
-.footer-leave-review:hover {
-  color: var(--c-gold);
+.footer-review-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--c-navy);
+  text-decoration: none;
+}
+
+.footer-review-cta:hover {
+  color: var(--c-navy-deep);
 }
 
 /* ── Social links (footer, contact, leave-review) ─────────────── */
@@ -1427,24 +1575,25 @@ body.nav-open {
   flex: none;
 }
 
-/* Owner-supplied social brand logos — height-balanced, unmodified.
+/* Owner-supplied social brand logos — enlarged and height-balanced
+   (26–32px visual range, Sept 2026 overhaul), aspect ratios untouched.
    The Yelp wordmark is black; on dark surfaces it gets a light tile so its
    colors stay exactly as supplied. */
 .social-logo {
   flex: none;
-  height: 1.35rem;
+  height: 1.75rem;
   width: auto;
 }
 
 .social-logo--tile-on-dark {
-  height: 1.6rem;
-  padding: 3px 6px;
+  height: 1.75rem;
   box-sizing: border-box;
 }
 
 .on-dark .social-logo--tile-on-dark {
   background: #fff;
   border-radius: 6px;
+  padding: 3px 6px;
 }
 
 /* Official Google "G" mark (Google-hosted asset, unmodified) shown above the
@@ -1468,11 +1617,11 @@ body.nav-open {
 }
 
 /* Official Google "G" mark (public/brand/google-g.svg) on a white tile so it
-   stays legible on navy and gold surfaces. Asset used unmodified. */
+   stays legible on light and gold surfaces. Asset used unmodified. */
 .google-g {
   flex: none;
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.625rem;
+  height: 1.625rem;
   background: #fff;
   border-radius: 50%;
   padding: 2px;
@@ -1514,7 +1663,8 @@ body.nav-open {
 
 .photo-card img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: var(--r-lg) var(--r-lg) 0 0;
 }
 
@@ -1522,6 +1672,8 @@ body.nav-open {
   padding: var(--sp-md);
   display: grid;
   gap: var(--sp-2xs);
+  flex: 1;
+  align-content: start;
 }
 
 .photo-card figcaption h3 {
@@ -1530,6 +1682,10 @@ body.nav-open {
 
 .photo-card figcaption p {
   color: var(--c-ink-soft);
+}
+
+.photo-card .card-cta {
+  margin-top: auto;
 }
 
 .photo-card .photo-caption {
@@ -1581,7 +1737,7 @@ body.nav-open {
 .brand-box {
   display: grid;
   place-items: center;
-  background: var(--c-bg);
+  background: var(--c-card);
   border: 1px solid var(--c-line);
   border-radius: var(--r-md);
   padding: var(--sp-sm) var(--sp-md);
@@ -1600,7 +1756,7 @@ body.nav-open {
 
 .service-map-compact {
   margin: var(--sp-md) 0 0;
-  max-width: 17rem;
+  max-width: 21rem;
 }
 
 .service-map-compact img,
@@ -1707,20 +1863,24 @@ body.nav-open {
   border-radius: var(--r-lg);
 }
 
+/* Slim charcoal bottom strip (copyright + conditional license). */
 .footer-bottom {
-  border-top: 1px solid var(--c-line-navy);
-  padding-block: var(--sp-sm);
+  background: var(--c-navy);
+  color: var(--c-on-navy-soft);
+  font-size: 0.8125rem;
+}
+
+.footer-bottom-inner {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem var(--sp-md);
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8125rem;
-  color: #8fa3b6;
+  padding-block: 0.65rem;
 }
 
 .footer-bottom .license {
-  color: #cfdce8;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -1774,13 +1934,116 @@ body.nav-open {
   color: var(--c-gold);
 }
 
-@media (min-width: 56.25em) {
-  .action-bar {
-    display: none;
+.footer-links button.footer-consent {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding-block: 0.35rem;
+  padding-inline: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--c-ink-soft);
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-links button.footer-consent:hover {
+  color: var(--c-navy-deep);
+}
+
+/* ── Consent banner (GA4 via GTM) ───────────────────────────── */
+.consent-banner[hidden],
+.consent-preferences[hidden] {
+  display: none;
+}
+
+.consent-banner {
+  position: fixed;
+  inset-inline: 0;
+  bottom: calc(var(--actionbar-h) + env(safe-area-inset-bottom));
+  z-index: var(--z-consent);
+  background: var(--c-card);
+  border-top: 1px solid var(--c-line);
+  box-shadow: var(--sh-lg);
+  padding-block: var(--sp-sm) var(--sp-md);
+}
+
+.consent-inner {
+  display: grid;
+  gap: var(--sp-sm);
+}
+
+.consent-copy h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--sp-3xs);
+}
+
+.consent-copy p {
+  max-width: 62ch;
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2xs);
+}
+
+.consent-preferences {
+  display: grid;
+  gap: var(--sp-sm);
+  justify-items: start;
+  border-top: 1px solid var(--c-line);
+  padding-top: var(--sp-sm);
+}
+
+.consent-pref {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+  min-height: 2.75rem;
+  font-weight: 600;
+  color: var(--c-ink);
+  cursor: pointer;
+}
+
+.consent-pref input {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--c-navy);
+}
+
+.consent-note {
+  max-width: 62ch;
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 48em) {
+  .consent-inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--sp-md);
+  }
+
+  .consent-preferences {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 56.249em) {
+@media (min-width: 64em) {
+  .action-bar {
+    display: none;
+  }
+
+  .consent-banner {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 63.999em) {
   body {
     padding-bottom: calc(var(--actionbar-h) + env(safe-area-inset-bottom));
   }
@@ -1903,6 +2166,26 @@ body.nav-open {
   margin-bottom: var(--sp-md);
 }
 
+/* Matched-height editorial panels (services hub maintenance/technical pair,
+   service-area beyond/coverage pair). */
+.panel {
+  display: grid;
+  gap: var(--sp-2xs);
+  align-content: start;
+  background: var(--c-card);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+}
+
+.panel h2 {
+  font-size: var(--text-h3);
+}
+
+.panel p {
+  color: var(--c-ink-soft);
+}
+
 /* ── September 2026 design change order — centering + layouts ── */
 
 /* Centered section headings/leads for short copy (long prose stays left). */
@@ -1917,6 +2200,12 @@ body.nav-open {
   text-align: center;
   justify-items: center;
   margin-inline: auto;
+  max-width: 56rem;
+}
+
+.hero-inner--center .hero-actions,
+.hero-inner--center .chips {
+  justify-content: center;
 }
 
 /* Centered band layouts (gold offer band, TAB ribbon, maintenance ribbon). */
@@ -1951,13 +2240,34 @@ body.nav-open {
 
 /* Custom multi-color icons on a neutral tile. */
 .card-icon--custom {
-  background: #fff;
+  background: var(--c-card);
   border: 1px solid var(--c-line);
 }
 
 .card-icon--custom .service-icon {
   width: 1.9rem;
   height: 1.9rem;
+}
+
+/* Diagnostics strengths grid (September 2026 overhaul): explicit four-up
+   class — FOUR across on wide desktop, balanced 2×2 at medium widths,
+   1 column on mobile. Never the old 3+1 orphan. */
+.grid--four {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40em) {
+  .grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 57.5em) {
+  .grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* Six-card service grid: 3×2 desktop, 2 columns tablet, 1 column mobile. */
@@ -1976,6 +2286,43 @@ body.nav-open {
 @media (min-width: 64em) {
   .grid--six {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* TAB seven-card scope grid — balanced rows, never a 3+3+1 orphan:
+   4 across + 3 wider on desktop; 2 columns with a full-width final card
+   on tablet; single column on mobile. */
+.grid--seven {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid--seven > * {
+  grid-column: span 12;
+}
+
+@media (min-width: 40em) {
+  .grid--seven > * {
+    grid-column: span 6;
+  }
+
+  .grid--seven > *:last-child {
+    grid-column: span 12;
+  }
+}
+
+@media (min-width: 64em) {
+  .grid--seven > * {
+    grid-column: span 3;
+  }
+
+  .grid--seven > *:nth-child(n + 5) {
+    grid-column: span 4;
+  }
+
+  .grid--seven > *:last-child {
+    grid-column: span 4;
   }
 }
 

@@ -1,33 +1,39 @@
 /* ─────────────────────────────────────────────────────────────
    Design tokens — Sunshine Climate Solutions
    Documented in docs/DESIGN-SYSTEM.md. Change values here only.
+   September 2026 aesthetic overhaul: "SCS Modern" light system.
+   Base page is light cool paper; charcoal blue is reserved for
+   structure (buttons, headings, selected bands); gold is a sparing
+   accent. Contrast pairs verified in docs/DESIGN-SYSTEM.md.
    ───────────────────────────────────────────────────────────── */
 :root {
   /* Color — brand */
-  --c-navy: #10263d;
-  --c-navy-deep: #0b1a2b;
-  --c-navy-raised: #1b3550;
-  --c-gold: #f4b631;
+  --c-navy: #2d4256; /* deep charcoal blue: headings, primary buttons, premium bands */
+  --c-navy-deep: #203549; /* strongest: action bar, bottom strips, major type */
+  --c-navy-raised: #3a5268; /* raised surface on charcoal bands */
+  --c-gold: #f4b631; /* approved SCS stripe gold (matches the mark) */
   --c-gold-strong: #e9a41b;
-  --c-gold-tint: #fbf3df;
+  --c-gold-tint: #fff5df;
 
   /* Color — surfaces and text */
-  --c-bg: #ffffff;
-  --c-bg-soft: #f4f6f8;
-  --c-ink: #14283c;
-  --c-ink-soft: #44586c;
+  --c-bg: #f7f9fc; /* base page: light, slightly cool paper */
+  --c-bg-soft: #e7eef4; /* alternate surface / technical bands */
+  --c-card: #ffffff; /* crisp content cards */
+  --c-ink: #203549; /* strong heading + body text */
+  --c-ink-soft: #34485b; /* body slate / muted text on light */
   --c-on-navy: #ffffff;
-  --c-on-navy-soft: #c9d6e3;
-  --c-line: #d8e0e8;
-  --c-line-strong: #b9c6d2;
-  --c-line-navy: #2a4763;
+  --c-on-navy-soft: #ccd9e4;
+  --c-line: #cfdce6; /* hairline */
+  --c-line-hover: #aec1d1; /* card hover borders */
+  --c-line-strong: #6e8aa1; /* input/interactive borders (3:1+ on light surfaces) */
+  --c-line-navy: #4a6379;
   --c-danger: #b3261e;
   --c-danger-bg: #fbedeb;
   --c-success: #1e6b3c;
   --c-success-bg: #ebf5ef;
 
   /* Focus indicators (visible on both light and dark surfaces) */
-  --focus-color-light: #10263d;
+  --focus-color-light: #203549;
   --focus-color-dark: #f4b631;
   --focus-width: 3px;
   --focus-offset: 2px;
@@ -79,15 +85,16 @@
   --r-full: 999px;
 
   /* Shadows (used sparingly) */
-  --sh-sm: 0 1px 2px rgba(16, 38, 61, 0.08), 0 1px 6px rgba(16, 38, 61, 0.06);
-  --sh-md: 0 6px 18px rgba(16, 38, 61, 0.1);
-  --sh-lg: 0 16px 40px rgba(16, 38, 61, 0.16);
+  --sh-sm: 0 1px 2px rgba(32, 53, 73, 0.07), 0 1px 6px rgba(32, 53, 73, 0.05);
+  --sh-md: 0 6px 18px rgba(32, 53, 73, 0.09);
+  --sh-lg: 0 16px 40px rgba(32, 53, 73, 0.14);
 
   /* Layering */
   --z-header: 20;
   --z-actionbar: 30;
   --z-nav: 40;
   --z-skip: 50;
+  --z-consent: 60;
 
   /* Motion */
   --ease-out: cubic-bezier(0.2, 0.1, 0, 1);

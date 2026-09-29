@@ -22,7 +22,7 @@ const { Content } = await render(service);
   title={service.data.metaTitle ?? `${service.data.title} in Tampa Bay`}
   description={service.data.metaDescription}
 >
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">Services</p>
       <h1>{service.data.title}</h1>
@@ -31,7 +31,7 @@ const { Content } = await render(service);
         <a class="btn btn--gold" href={business.phone.href} data-cta={`call-hero-${service.id}`}>
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light" href="/contact/" data-cta={`request-hero-${service.id}`}>
+        <a class="btn btn--navy" href="/contact/" data-cta={`request-hero-${service.id}`}>
           Request Service
         </a>
       </div>

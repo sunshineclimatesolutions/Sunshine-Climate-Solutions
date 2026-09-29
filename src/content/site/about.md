@@ -3,15 +3,15 @@
 # Business facts (phone, hours, pricing, license) render from
 # src/config/business.ts — never duplicate them here.
 # The {serviceCall} token is replaced from business.pricing at build time.
-metaTitle: About Sunshine Climate Solutions | Aaron Thomas, Owner
+metaTitle: About Sunshine Climate Solutions | Owner-Operated HVAC in Tampa Bay
 metaDescription: >-
-  Owner-operated HVAC service in Tampa Bay. Aaron Thomas — five years of hands-on
-  HVAC experience, EPA Section 608 certified, repair-first. Learn why Sunshine
+  Owner-operated HVAC service in Tampa Bay. Five years of hands-on HVAC
+  experience, EPA Section 608 certified, repair-first. Learn why Sunshine
   Climate Solutions exists.
 
 hero:
   eyebrow: About
-  heading: Owner-operated, on purpose
+  heading: Owner-Operated, on Purpose
   lead: >-
     Sunshine Climate Solutions exists to give Tampa Bay homeowners and businesses
     HVAC service grounded in integrity, transparency, and genuine care.
@@ -24,20 +24,20 @@ infoTitles:
 
 # Story sections render in order; the first heading anchors the section.
 story:
-  - heading: Why Sunshine Climate Solutions exists
+  - heading: Why Sunshine Climate Solutions Exists
     paragraphs:
       - >-
-        Aaron Thomas started Sunshine Climate Solutions because he was tired of
-        seeing homeowners pressured into equipment they didn't need. Too many
-        people get walked through a script that ends at a replacement — even when
-        a sound repair would serve them better for years.
+        Sunshine Climate Solutions was started because too many homeowners get
+        pressured into equipment they don't need. Too many people get walked
+        through a script that ends at a replacement — even when a sound repair
+        would serve them better for years.
       - >-
-        So he built a different kind of company: one where the person who shows up
-        is the person whose name is on the business, the findings get explained in
-        plain language, and the customer — not the commission — drives the
-        decision. That's the whole idea: service grounded in integrity,
-        transparency, and genuine care.
-  - heading: How we work
+        So it was built as a different kind of company: one where the person who
+        shows up is the person whose name is on the business, the findings get
+        explained in plain language, and the customer — not the commission —
+        drives the decision. That's the whole idea: service grounded in
+        integrity, transparency, and genuine care.
+  - heading: How We Work
     list:
       - You work directly with the owner on every job.
       - Findings and options are explained before anything is recommended.
@@ -49,7 +49,7 @@ story:
       - >-
         Transparent pricing: {serviceCall} service call, waived when you proceed
         with the repair. Free estimates.
-  - heading: About Aaron Thomas
+  - heading: About the Owner
     list:
       - >-
         Five years of hands-on HVAC experience — residential and commercial
@@ -62,7 +62,7 @@ story:
         Particular strength in airflow diagnostics and electrical / control-board
         troubleshooting.
     footnote: The company is licensed and insured, and open 7:30 AM – 7:30 PM every day.
-  - heading: The technical edge
+  - heading: The Technical Edge
     paragraphs:
       - >-
         Weak airflow, hot rooms, and intermittent electrical or control-board
@@ -72,7 +72,7 @@ story:
         that you could make the decision without us in the room.
 
 ctaBand:
-  title: Work with the owner directly
+  title: Work With the Owner Directly
   text: >-
     Call, text, or send a request — you'll get clear answers and straight options,
     every time.

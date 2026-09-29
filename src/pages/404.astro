@@ -8,10 +8,10 @@ const description = 'That page does not exist. Call or text (727) 661-5200, or u
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero on-dark">
+  <section class="page-hero">
     <div class="container page-hero-inner">
       <p class="eyebrow">404</p>
-      <h1>That page isn't here</h1>
+      <h1>That Page Isn't Here</h1>
       <p class="lead">
         The page you're looking for doesn't exist or moved. The good news: everything important is
         a tap away — including a real human at {business.phone.display}.
@@ -20,7 +20,7 @@ const description = 'That page does not exist. Call or text (727) 661-5200, or u
         <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-404">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light btn--lg" href={business.phone.sms} data-cta="text-404">
+        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-404">
           <Icon name="message" /> Text Us
         </a>
         <a class="hero-alt" href="/" data-cta="home-404">
@@ -32,7 +32,7 @@ const description = 'That page does not exist. Call or text (727) 661-5200, or u
 
   <section class="section">
     <div class="container">
-      <div class="grid">
+      <div class="grid--four">
         <a class="card card-hover" href="/services/">
           <span class="card-icon"><Icon name="wrench" /></span>
           <h3 style="font-size: var(--text-lg);">Services</h3>
