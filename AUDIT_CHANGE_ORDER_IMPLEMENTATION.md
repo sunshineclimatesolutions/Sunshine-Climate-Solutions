@@ -95,6 +95,29 @@ Hero remains text-led (fast LCP); custom icons are small inline SVGs (no request
 **No production deployment, DNS, Cloudflare settings, analytics, or paid services were changed.**
 Work is committed on the feature branch only.
 
+## Release-readiness audit (final pass)
+
+- **Deployment infrastructure verified from GitHub**: Cloudflare **Workers Builds** app on
+  `sunshineclimatesolutions/Sunshine-Climate-Solutions`; production branch `main`; project
+  `sunshine-climate-solutions` (Workers service). Production builds succeed on every `main`
+  push. **Non-production branch builds fail** (pre-existing — the old `pages-cms` branch shows
+  the same failure), so no branch preview URL is available; previews are local-build based.
+- **CLS regression found and fixed by this audit**: font-swap reflow (header strip grew
+  48→52.8px when Archivo loaded; the new hero headline wrapped differently) caused CLS up to
+  0.36 on some pages. Fixes: fixed strip height (`3.3rem`) + **metric-matched fallback fonts**
+  (`size-adjust` in `fonts.css`, ratios measured empirically). Result (lab, Slow-4G + 4× CPU):
+  homepage 0.184 → **0.077**, maintenance 0.362 → **0.033**, contact 0.003 — all under the 0.1
+  "good" threshold (residual is a minor first-visit font-swap artifact).
+- **Conversion paths** (mobile + desktop, provider intercepted — zero real leads):
+  tel/sms links, service request, maintenance request, TAB proposal payloads all correct;
+  preselects verified; success redirects work. **22/22 PASS.**
+- **Pricing consistency**: all 22 `$50` mentions pair the fee with the waiver (no refund
+  language anywhere); all 10 `$75` mentions are per-system/per-visit, no subscription framing.
+  **10/10 PASS.**
+- **Favicon**: generated from the authentic Logo 2 master; navy+gold pixels verified; ICO =
+  3 PNG entries; served `image/x-icon` + `image/png`. Metadata/canonical/robots/sitemap/
+  structured data unchanged by this release (BaseHead diff = 3 favicon link lines only).
+
 ## Post-deploy manual steps (after Aaron authorizes)
 
 1. Merge/publish the branch (push to `main` triggers Cloudflare + IndexNow for changed pages).
