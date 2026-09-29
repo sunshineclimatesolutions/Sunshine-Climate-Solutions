@@ -1,8 +1,19 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: Umami Cloud analytics integrated on top of the
-published $75 Premium AC Maintenance release (branch `umami-release`).**
+verification continues. **Last updated: IndexNow integration (branch `indexnow-integration`):
+root key file, dependency-free submission script, deployment-triggered workflow.**
+
+## IndexNow — verification
+
+| Check | Result |
+| --- | --- |
+| Key file | `public/<key>.txt` (32-char lowercase-hex key, content = filename) — present in `dist/` after build; served locally as HTTP 200 `text/plain`, 32 bytes |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 16 pages |
+| `scripts/links.mjs` | **PASS** — 669 internal URLs, 0 broken |
+| Script dry-run (`--range 694ee5c..HEAD --dry-run`) | **PASS** — derived exactly the 7 genuinely-changed canonical URLs from git history (not the sitemap); live verification passed for all (HTTP 200, indexable); no submission sent |
+| Automation | `.github/workflows/indexnow.yml` — runs on push to `main` only, waits for the live pages, one batched POST to the shared endpoint; no secrets; does not build/deploy |
+| Live key file + real submission | recorded in the release report after deployment |
 
 ## Umami Cloud analytics — verification
 

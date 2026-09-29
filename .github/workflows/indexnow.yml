@@ -1,0 +1,38 @@
+# IndexNow notifications — runs ONLY after a push to the production branch.
+# Waits until the changed pages are actually live (Cloudflare deploy), then
+# submits the changed canonical URLs to the shared IndexNow endpoint.
+# The IndexNow key is public by design (served at /<key>.txt) — no secrets used.
+# This workflow does not deploy, build, or modify the website.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  submit-changed-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history for commit-range diff)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Submit changed URLs to IndexNow
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "No usable previous commit — skipping (first push)."
+            exit 0
+          fi
+          node scripts/indexnow.mjs --range "$BEFORE..$AFTER" --base https://sunshineclimatesolutions.com --wait

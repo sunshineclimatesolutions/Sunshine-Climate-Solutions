@@ -64,6 +64,7 @@ with the owner; never silently work around this file.
 | `node scripts/a11y.mjs` | axe-core WCAG scan (needs preview server) |
 | `node scripts/links.mjs` | Broken internal-link check on `dist/` (run after build) |
 | `node scripts/photo.mjs <path>` | Photo guardrails: dimensions/size/format check; `--resize 2000 --write` downscales in place |
+| `node scripts/indexnow.mjs --range <from>..<to>` | Submit changed canonical URLs to IndexNow (auto-runs on pushes to `main` via `.github/workflows/indexnow.yml`; see `docs/INDEXNOW.md`) |
 
 Build notices like "The collection 'projects' does not exist or is empty" are **expected and
 intentional** while those collections are empty — not errors.
