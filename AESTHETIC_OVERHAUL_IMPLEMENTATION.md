@@ -1,5 +1,9 @@
 # September 2026 Aesthetic Overhaul + GA4/GTM + Gulf of America — Final Implementation Report
 
+> **Note:** the consent implementation and photographic-gallery details in this report were
+> corrected afterwards — see `FINAL_CORRECTIONS_IMPLEMENTATION.md` (Basic Consent Mode; gallery
+> `height`/`aspect-ratio` fix). Everything else here remains accurate.
+
 **Branch:** `feat/scs-light-aesthetic-overhaul-sep-2026` · **Base/HEAD at start:** `008177f`
 (= `main`) · **Status:** implemented, verified, committed and **pushed to this feature branch
 only** (owner-authorized for external audit) — **not merged, not deployed; no Cloudflare, DNS or

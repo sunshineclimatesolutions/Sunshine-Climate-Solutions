@@ -16,8 +16,9 @@ interface Props {
 const { title, description, noindex = false } = Astro.props;
 
 // Same enable rule as BaseHead: no GTM (and no consent UI) in preview builds.
-const gtmId = business.analytics.gtm.containerId;
-const gtmEnabled = Boolean(gtmId) && import.meta.env.PUBLIC_PREVIEW_MODE !== 'true';
+const gtmEnabled =
+  Boolean(business.analytics.gtm.containerId) &&
+  import.meta.env.PUBLIC_PREVIEW_MODE !== 'true';
 ---
 
 <!doctype html>
@@ -26,19 +27,9 @@ const gtmEnabled = Boolean(gtmId) && import.meta.env.PUBLIC_PREVIEW_MODE !== 'tr
     <BaseHead title={title} description={description} noindex={noindex} />
   </head>
   <body>
-    {
-      gtmEnabled && (
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-            height="0"
-            width="0"
-            style="display:none;visibility:hidden"
-            title="Google Tag Manager"
-          />
-        </noscript>
-      )
-    }
+    {/* Basic Consent Mode: no GTM <noscript> iframe. Loading the container
+        without JavaScript would transmit before any consent choice, so it is
+        intentionally omitted (Google's noscript snippet is optional). */}
     <a class="skip-link" href="#main">Skip to main content</a>
     <Header />
     <main id="main">

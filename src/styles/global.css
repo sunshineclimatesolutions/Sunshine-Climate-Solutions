@@ -1661,8 +1661,14 @@ body.nav-open {
   overflow: clip;
 }
 
+/* The `height: auto` reset is required: the responsive <img> carries the
+   source width/height attributes (e.g. 1500x2000), which act as presentational
+   hints. Without it the used height stays at the attribute value and the
+   4:3 aspect-ratio is ignored — producing 2000px-tall, narrow images. */
 .photo-card img {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--r-lg) var(--r-lg) 0 0;
@@ -1791,9 +1797,11 @@ body.nav-open {
   margin-top: var(--sp-lg);
 }
 
+/* Equal columns: both field photographs share one consistent card shape, so
+   the gallery reads as a balanced pair on desktop and stacks on mobile. */
 @media (min-width: 48em) {
   .tab-visuals {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

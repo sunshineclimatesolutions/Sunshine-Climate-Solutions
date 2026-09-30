@@ -84,7 +84,13 @@ const description = tab.data.metaDescription;
           </div>
           <div class="tab-visuals">
             {visuals.photos.map((photo) => (
-              <PhotoCard image={photo.image} alt={photo.alt} title={photo.caption} caption="" />
+              <PhotoCard
+                image={photo.image}
+                alt={photo.alt}
+                title={photo.caption}
+                caption=""
+                position={photo.position}
+              />
             ))}
           </div>
         </div>

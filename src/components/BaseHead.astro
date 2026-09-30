@@ -119,14 +119,19 @@ const jsonLd = {
 
 {
   gtmEnabled && (
-    <>
-      {/* Consent Mode v2 defaults must run before the GTM container snippet.
-          Everything optional starts denied; a stored analytics choice from a
-          previous visit is re-applied immediately. Any parse/storage failure
-          fails closed (consent stays denied). */}
-      <script
-        is:inline
-        set:html={`(function () {
+    <script
+      is:inline
+      set:html={`(function () {
+  // ── Basic Consent Mode (September 2026 correction) ────────────────────────
+  // The GTM container and GA4 are NOT loaded, and no request is made to
+  // Google, until the visitor explicitly allows analytics. Consent Mode v2
+  // defaults (all denied, advertising always denied) are established first,
+  // then a stored or newly given permission is applied BEFORE GTM loads.
+  // Any storage/parse failure fails closed: nothing loads.
+  var GTM_ID = '${gtmId}';
+  var GA4_ID = 'G-EQ9CBESN23';
+  var KEY = 'scs-consent-v1';
+
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = gtag;
@@ -135,26 +140,96 @@ const jsonLd = {
     ad_user_data: 'denied',
     ad_personalization: 'denied',
     analytics_storage: 'denied',
-    wait_for_update: 500,
   });
-  try {
-    var stored = JSON.parse(window.localStorage.getItem('scs-consent-v1') || 'null');
-    if (stored && stored.analytics === true) {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
+
+  var granted = false;
+  var gtmLoaded = false;
+
+  function readStored() {
+    try {
+      var stored = JSON.parse(window.localStorage.getItem(KEY) || 'null');
+      if (stored && typeof stored.analytics === 'boolean') return stored.analytics;
+    } catch (error) { /* fail closed */ }
+    return null;
+  }
+
+  function writeStored(analytics) {
+    try {
+      window.localStorage.setItem(KEY, JSON.stringify({ analytics: !!analytics, v: 1 }));
+    } catch (error) { /* the in-memory state still applies */ }
+  }
+
+  function loadGtm() {
+    if (gtmLoaded || document.querySelector('script[src*="googletagmanager.com/gtm.js"]')) {
+      gtmLoaded = true;
+      return;
     }
-  } catch (error) { /* fail closed */ }
+    gtmLoaded = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    document.head.appendChild(script);
+  }
+
+  // A confirmed form submission (Web3Forms success) leaves a single-use
+  // receipt. It is transmitted at most once, only with permission:
+  //  - permission already given: fire now and consume it;
+  //  - permission refused: drop it (never transmit);
+  //  - undecided: keep it pending for the consent choice on this visit.
+  function firePendingLead() {
+    try {
+      var raw = window.sessionStorage.getItem('scs-lead-receipt');
+      if (!raw) return;
+      if (readStored() === false) {
+        window.sessionStorage.removeItem('scs-lead-receipt');
+        return;
+      }
+      if (!granted) return;
+      window.sessionStorage.removeItem('scs-lead-receipt');
+      var receipt = JSON.parse(raw);
+      window.dataLayer.push({
+        event: 'scs_form_confirmed',
+        service_category: receipt.service_category || 'other',
+        cta_slot: receipt.cta_slot || 'form-submit',
+      });
+    } catch (error) { /* fail closed */ }
+  }
+
+  function allow() {
+    granted = true;
+    writeStored(true);
+    window['ga-disable-' + GA4_ID] = false;
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    loadGtm();
+    firePendingLead();
+  }
+
+  function deny() {
+    granted = false;
+    writeStored(false);
+    gtag('consent', 'update', { analytics_storage: 'denied' });
+    // Stop any already-loaded Google tag from collecting further data.
+    window['ga-disable-' + GA4_ID] = true;
+    // Withdrawal/refusal also drops any pending confirmed lead.
+    try { window.sessionStorage.removeItem('scs-lead-receipt'); } catch (error) { /* no-op */ }
+  }
+
+  // Single shared consent API for the banner, the event trackers and the
+  // thank-you receipt consumer. Advertising consent is never granted.
+  window.scsConsent = {
+    granted: function () { return granted; },
+    choice: readStored,
+    allow: allow,
+    deny: deny,
+    firePendingLead: firePendingLead
+  };
+
+  // Returning consenting visitors: apply the granted state BEFORE loading GTM
+  // (no repeat prompt). Everyone else stays unloaded and denied.
+  if (readStored() === true) allow();
 })();`}
-      />
-      {/* Google Tag Manager container (one container, no standalone gtag.js). */}
-      <script
-        is:inline
-        set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${gtmId}');`}
-      />
-    </>
+    />
   )
 }
 
@@ -169,15 +244,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   var slot = link.getAttribute('data-cta') || '';
 
   // GTM data-layer events: fixed names + allowlisted CTA slot only. Never the
-  // href, phone number, or any form content. Consent Mode gates the tags.
+  // href, phone number, or any form content. Basic Consent Mode: events are
+  // only pushed after analytics permission, so nothing from before permission
+  // can ever be replayed when GTM loads.
   var eventName = '';
   if (href.indexOf('tel:') === 0) eventName = 'scs_call_click';
   else if (href.indexOf('sms:') === 0) eventName = 'scs_text_click';
   else if (slot.indexOf('request-') === 0) eventName = 'scs_request_click';
-  if (eventName) {
+  if (eventName && window.scsConsent && window.scsConsent.granted()) {
     var payload = { event: eventName };
     if (slot) payload.cta_slot = slot;
-    if (window.dataLayer) window.dataLayer.push(payload);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
   }
 
   // Umami stays cookieless and unchanged (fixed names only).

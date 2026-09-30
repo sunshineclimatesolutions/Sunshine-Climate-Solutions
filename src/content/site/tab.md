@@ -102,6 +102,7 @@ visuals:
     - image: './images/airflow-measurement-at-grille.jpg'
       alt: 'Instrument taking an airflow reading at a supply grille during TAB field work'
       caption: 'Airflow measurement at a supply grille.'
+      position: '50% 48%'
     - image: './images/rooftop-mechanical-equipment.jpg'
       alt: 'Rooftop mechanical equipment on a commercial project site'
       caption: 'Rooftop mechanical equipment on a commercial site.'

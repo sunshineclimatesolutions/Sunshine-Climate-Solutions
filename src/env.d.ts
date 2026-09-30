@@ -15,6 +15,15 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
+/** Basic Consent Mode API defined by BaseHead.astro before GTM is loaded. */
+interface ScsConsentApi {
+  granted: () => boolean;
+  choice: () => boolean | null;
+  allow: () => void;
+  deny: () => void;
+  firePendingLead: () => void;
+}
+
 /** Analytics bridges loaded by the site (see BaseHead.astro / ConsentBanner.astro). */
 interface Window {
   umami?: {
@@ -24,4 +33,6 @@ interface Window {
   dataLayer?: unknown[];
   /** Consent Mode v2 bridge defined before the GTM container snippet. */
   gtag?: (...args: unknown[]) => void;
+  /** Shared consent API (only present when GTM is enabled, never in preview). */
+  scsConsent?: ScsConsentApi;
 }

@@ -272,6 +272,8 @@ const site = defineCollection({
               text: z.string(),
               linkLabel: z.string(),
               linkHref: z.string(),
+              // Optional focal point for the fixed 4:3 card crop.
+              position: z.string().optional(),
             }),
           )
           .max(3),
@@ -309,6 +311,8 @@ const site = defineCollection({
               image: image(),
               alt: z.string(),
               caption: z.string(),
+              // Optional focal point for the fixed 4:3 card crop.
+              position: z.string().optional(),
             }),
           )
           .max(3),
@@ -326,6 +330,8 @@ const site = defineCollection({
           image: image(),
           alt: z.string(),
           caption: z.string(),
+          // Optional focal point for the fixed 4:3 card crop.
+          position: z.string().optional(),
         }),
         approach: z.string(),
         ctaLabel: z.string(),

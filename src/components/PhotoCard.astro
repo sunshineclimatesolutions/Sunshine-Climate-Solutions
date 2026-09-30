@@ -14,9 +14,12 @@ interface Props {
   caption?: string;
   linkLabel?: string | undefined;
   linkHref?: string | undefined;
+  // Optional focal point for the fixed-ratio card crop — any CSS
+  // object-position value, e.g. "50% 60%". Default: center.
+  position?: string | undefined;
 }
 
-const { image, alt, title, text, caption, linkLabel, linkHref } = Astro.props;
+const { image, alt, title, text, caption, linkLabel, linkHref, position } = Astro.props;
 ---
 
 <figure class="photo-card card">
@@ -26,6 +29,7 @@ const { image, alt, title, text, caption, linkLabel, linkHref } = Astro.props;
     widths={[400, 800]}
     sizes="(min-width: 48em) 30vw, 92vw"
     loading="lazy"
+    style={position ? `object-position: ${position}` : undefined}
   />
   <figcaption>
     <h3>{title}</h3>

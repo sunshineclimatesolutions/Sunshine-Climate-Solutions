@@ -286,12 +286,16 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
     };
 
     // Form-start: a single-fire, privacy-safe signal on first interaction
-    // (no per-field or per-keypress events, no field values).
+    // (no per-field or per-keypress events, no field values). The flag is set
+    // even before consent so a pre-permission interaction is never replayed;
+    // the event itself is only pushed with permission (Basic Consent Mode).
     let formStarted = false;
     const trackFormStart = (): void => {
       if (formStarted) return;
       formStarted = true;
-      window.dataLayer?.push({ event: 'scs_form_start' });
+      if (window.scsConsent?.granted()) {
+        window.dataLayer?.push({ event: 'scs_form_start' });
+      }
     };
     form.addEventListener('focusin', trackFormStart);
     form.addEventListener('input', trackFormStart);

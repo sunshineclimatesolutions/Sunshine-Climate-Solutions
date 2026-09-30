@@ -52,13 +52,17 @@ const description =
           This site uses two analytics services: an optional one that runs only with your
           permission, and a cookieless one that never identifies you.
         </p>
-        <h3>Google Analytics (optional — off until you allow it)</h3>
+        <h3>Google Analytics (optional — not loaded until you allow it)</h3>
         <p>
-          We use Google Analytics 4, loaded through Google Tag Manager, to understand which pages
-          are visited and how often visitors use the call, text and request actions. It starts
-          switched off. On your first visit a banner asks whether you allow it, and nothing is
-          sent to Google unless you choose "Allow analytics". You can change your choice at any
-          time with the "Analytics preferences" link in the footer of every page.
+          We use Google Analytics 4, delivered through Google Tag Manager, to understand which
+          pages are visited and how often visitors use the call, text and request actions. It is
+          entirely optional and starts unloaded: the Google Tag Manager container itself is not
+          requested from Google until you choose "Allow analytics", so no analytics request
+          reaches Google before that choice. On your first visit a banner asks; you can change
+          your mind at any time with the "Analytics preferences" link in the footer of every
+          page. Choosing "Reject" — or withdrawing permission later — keeps or returns analytics
+          to the denied state and stops further measurement. A confirmed service request is
+          counted only when analytics has been allowed.
         </p>
         <p>
           When allowed, Google Analytics uses cookies (named <code>_ga</code> and similar) and

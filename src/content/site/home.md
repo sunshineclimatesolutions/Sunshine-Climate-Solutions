@@ -128,18 +128,21 @@ proof:
       text: 'Line-set concealment and a disconnect installed cleanly beside the outdoor unit.'
       linkLabel: AC installation services
       linkHref: '/services/replacement-installation/'
+      position: '50% 45%'
     - image: './images/custom-ductboard-supply-plenum.jpg'
       alt: 'Custom ductboard supply plenum fitted during an HVAC installation'
       title: Custom Ductboard Supply Plenum
       text: 'A custom ductboard supply plenum, measured, cut and fitted for the installation.'
       linkLabel: Airflow services
       linkHref: '/services/airflow-ductwork/'
+      position: '50% 62%'
     - image: './images/airflow-measurement-at-grille.jpg'
       alt: 'Instrument taking an airflow reading at a supply grille during commercial/TAB field work'
       title: Measurements, not guesswork
       text: 'Field airflow measurement at a supply grille during commercial/TAB work.'
       linkLabel: 'TAB & commissioning support'
       linkHref: '/tab-commissioning-support/'
+      position: '50% 48%'
 
 brands:
   heading: Equipment Brands We Service

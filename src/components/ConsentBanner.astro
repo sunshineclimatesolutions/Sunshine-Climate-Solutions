@@ -61,13 +61,9 @@ const gtmEnabled =
 }
 
 <script>
-  const KEY = 'scs-consent-v1';
-
-  interface StoredChoice {
-    analytics?: boolean;
-    v?: number;
-  }
-
+  // The consent state lives in the Basic Consent Mode API defined by
+  // BaseHead.astro (window.scsConsent). This component only renders and
+  // collects the visitor's choice — it never loads Google tags itself.
   const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
 
   if (banner) {
@@ -75,38 +71,19 @@ const gtmEnabled =
     const toggle = banner.querySelector<HTMLInputElement>('[data-consent-analytics-toggle]');
     const manage = banner.querySelector<HTMLButtonElement>('[data-consent-manage]');
     const heading = banner.querySelector<HTMLElement>('[data-consent-heading]');
-
-    const read = (): StoredChoice | null => {
-      try {
-        const raw = window.localStorage.getItem(KEY);
-        return raw ? (JSON.parse(raw) as StoredChoice) : null;
-      } catch {
-        return null;
-      }
-    };
-
-    const apply = (analytics: boolean): void => {
-      if (typeof window.gtag === 'function') {
-        window.gtag('consent', 'update', {
-          analytics_storage: analytics ? 'granted' : 'denied',
-        });
-      }
-    };
+    const consent = window.scsConsent;
 
     const decide = (analytics: boolean): void => {
-      try {
-        window.localStorage.setItem(KEY, JSON.stringify({ analytics, v: 1 }));
-      } catch {
-        // Storage unavailable — the choice still applies for this page view.
-      }
-      apply(analytics);
+      if (!consent) return;
+      if (analytics) consent.allow();
+      else consent.deny();
       banner.hidden = true;
     };
 
     const openPreferences = (focusHeading: boolean): void => {
       banner.hidden = false;
       if (prefs && toggle && manage) {
-        toggle.checked = read()?.analytics === true;
+        toggle.checked = consent?.choice() === true;
         prefs.hidden = false;
         manage.setAttribute('aria-expanded', 'true');
       }
@@ -126,7 +103,7 @@ const gtmEnabled =
         if (prefs && manage) {
           prefs.hidden = expanded;
           manage.setAttribute('aria-expanded', String(!expanded));
-          if (!expanded && toggle) toggle.checked = read()?.analytics === true;
+          if (!expanded && toggle) toggle.checked = consent?.choice() === true;
         }
       }
     });
@@ -138,7 +115,7 @@ const gtmEnabled =
     });
 
     // First visit (no stored choice): ask. Reopening is always explicit.
-    if (!read()) {
+    if (consent?.choice() == null) {
       banner.hidden = false;
     }
   }

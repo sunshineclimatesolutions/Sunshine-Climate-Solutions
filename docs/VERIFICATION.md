@@ -23,6 +23,24 @@ HEAD `008177f` + working tree).**
 | **Owner visual approval** | **PENDING** — final screenshots on disk for review; agent inspection limited by image-context policy |
 | **GTM workspace + publish / deployment** | **PENDING** — owner dashboard steps in `docs/GTM-GA4-SETUP.md`; no deploy without approval |
 
+## September 2026 final corrections — Basic Consent Mode, galleries, GTM import
+
+| Check | Result |
+| --- | --- |
+| Basic Consent Mode (site) | **Done** — GTM container and GA4 are not loaded and **no request reaches Google** until the visitor allows analytics; Consent Mode v2 defaults all-denied are set first, granted is applied *before* GTM loads; returning consent auto-loads; withdrawal/refusal returns to denied, sets the Google tag disable flag and drops any pending lead; the GTM `<noscript>` iframe was removed; events are only pushed with permission (no replay) |
+| `npm run verify` | **PASS** — 0 errors / 0 warnings / 0 hints, 16 pages |
+| `scripts/links.mjs` | **PASS** — 819 internal URLs, 0 broken |
+| `scripts/smoke.mjs` | **PASS** |
+| `scripts/a11y.mjs` | **PASS** — 26 scans, 0 violations |
+| `scripts/verify-layout.mjs` | **PASS — 582/582** |
+| `scripts/verify-maps.mjs` | **PASS — 36/36** |
+| `scripts/gtm-consent.mjs` (rewritten) | **PASS — 85/85** — no GTM request before permission; none after rejection; loads exactly once after permission; returning-consent auto-load; withdrawal + re-allow; no replay of pre-permission events; no duplicate events; one lead for confirmed submissions; zero leads on manual thank-you, failures and duplicates; Umami independent; no PII; preview-mode guard |
+| `scripts/verify-gtm-import.mjs` (new) | **PASS — 41/41** — one Google Tag for `G-EQ9CBESN23`, one GA4 event tag per approved event, `generate_lead` ← `scs_form_confirmed`, no second page-view tag, no dangling references, no duplicates |
+| Gallery root cause | **Found and fixed** — the responsive `<img>` carries source `width`/`height` attributes (e.g. 1500×2000) as presentational hints; `.photo-card img` never reset `height`, so the used height stayed at the attribute value and `aspect-ratio: 4/3` was ignored → 2000px-tall narrow images. Fix: `height: auto` (+ `display: block`), plus per-photo focal points and equal TAB columns |
+| Gallery evidence | `docs/verification/screenshots/aesthetic/galleries/` (home proof, TAB field, FAQ conditions × 390/768/1440); refreshed `after-final/home-*`, `after-final/tab-*`, `after-final/home-workmanship-*` |
+| GTM import file | `docs/gtm/SCS-GA4-container-import.json` — structurally validated against the current GTM export shape (`exportFormatVersion: 2`, `googtag`/`tagId`, `gaawe`/`eventSettingsTable`); manual steps remain the guaranteed path; owner guide in `docs/GTM-GA4-SETUP.md` |
+| **Published-container behavior** | **NOT verifiable here** — real tag firing, GA4 Realtime/DebugView and key-event marking require the owner's GTM publish + deployment |
+
 ## IndexNow — verification
 
 | Check | Result |
