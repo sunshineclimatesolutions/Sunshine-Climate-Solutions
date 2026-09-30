@@ -31,6 +31,11 @@
       "violations": []
     },
     {
+      "page": "spring-hill",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
       "page": "about",
       "viewport": "mobile",
       "violations": []
@@ -96,6 +101,11 @@
       "violations": []
     },
     {
+      "page": "spring-hill",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
       "page": "about",
       "viewport": "desktop",
       "violations": []
@@ -132,7 +142,7 @@
     }
   ],
   "summary": {
-    "scanned": 26,
+    "scanned": 28,
     "totalViolationGroups": 0,
     "byRule": {}
   }

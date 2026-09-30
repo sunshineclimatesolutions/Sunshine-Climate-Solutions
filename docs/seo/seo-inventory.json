@@ -1,0 +1,2231 @@
+{
+  "generatedAt": "2026-09-30T04:08:12.122Z",
+  "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
+  "pageCount": 17,
+  "sitemapUrls": [
+    "https://sunshineclimatesolutions.com/",
+    "https://sunshineclimatesolutions.com/about/",
+    "https://sunshineclimatesolutions.com/contact/",
+    "https://sunshineclimatesolutions.com/faq/",
+    "https://sunshineclimatesolutions.com/leave-review/",
+    "https://sunshineclimatesolutions.com/privacy/",
+    "https://sunshineclimatesolutions.com/service-area/",
+    "https://sunshineclimatesolutions.com/service-area/spring-hill-fl/",
+    "https://sunshineclimatesolutions.com/services/",
+    "https://sunshineclimatesolutions.com/services/ac-maintenance/",
+    "https://sunshineclimatesolutions.com/services/ac-repair-diagnostics/",
+    "https://sunshineclimatesolutions.com/services/airflow-ductwork/",
+    "https://sunshineclimatesolutions.com/services/commercial-service-maintenance/",
+    "https://sunshineclimatesolutions.com/services/replacement-installation/",
+    "https://sunshineclimatesolutions.com/tab-commissioning-support/"
+  ],
+  "robotsTxt": [
+    "User-agent: *",
+    "Allow: /",
+    "",
+    "Sitemap: https://sunshineclimatesolutions.com/sitemap-index.xml"
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "title": "Sunshine Climate Solutions | HVAC Service in Spring Hill & Tampa Bay",
+      "titleLength": 68,
+      "description": "Spring Hill AC repair, installation and $75 maintenance. Serving Hernando, Pasco, Pinellas and Hillsborough counties. Call or text Sunshine Climate Solutions.",
+      "descriptionLength": 158,
+      "canonical": "https://sunshineclimatesolutions.com/",
+      "robots": "index, follow",
+      "h1": [
+        "Honest HVAC. Expert Diagnostics. Clear Solutions."
+      ],
+      "h2Count": 15,
+      "h3Count": 18,
+      "h2s": [
+        "See the work behind the service",
+        "HVAC Service for Tampa Bay Homes and Businesses",
+        "Diagnostics Done Right — Airflow, Electrical, Control Boards",
+        "Testing, Adjusting & Balancing and Commissioning Support",
+        "$75 Premium AC Maintenance",
+        "$50 service call — waived when you proceed with the repair.",
+        "Work Directly With the Owner",
+        "Hear It from Customers",
+        "What Happens After You Reach Out",
+        "Ready When You Are",
+        "Equipment Brands We Service",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 894,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/linehide-and-disconnect.qCEnWj-r_nsnPu.webp",
+          "alt": "Refrigerant line-set concealment (line hide) and electrical disconnect installed beside an outdoor unit",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/custom-ductboard-supply-plenum.BejfWWCj_JITUx.webp",
+          "alt": "Custom ductboard supply plenum fitted during an HVAC installation",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/airflow-measurement-at-grille.B6mYclkM_hrADG.webp",
+          "alt": "Instrument taking an airflow reading at a supply grille during commercial/TAB field work",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/service-area-map-compact.svg",
+          "alt": "Compact map of west-central Florida with Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, and the Gulf of America to the west.",
+          "loading": "lazy",
+          "width": "1278",
+          "height": "1469",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-carrier.png",
+          "alt": "Carrier",
+          "loading": "lazy",
+          "width": "348",
+          "height": "150",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-goodman.png",
+          "alt": "Goodman",
+          "loading": "lazy",
+          "width": "322",
+          "height": "135",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-lennox.png",
+          "alt": "Lennox",
+          "loading": "lazy",
+          "width": "326",
+          "height": "93",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-rheem.png",
+          "alt": "Rheem",
+          "loading": "lazy",
+          "width": "320",
+          "height": "315",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-ruud.png",
+          "alt": "Ruud",
+          "loading": "lazy",
+          "width": "348",
+          "height": "217",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-trane.png",
+          "alt": "Trane",
+          "loading": "lazy",
+          "width": "280",
+          "height": "348",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 49,
+      "externalLinks": 5,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/contact/?service=premium-ac-maintenance",
+        "/contact/?service=tab-commissioning-support",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/service-area/spring-hill-fl/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/404.html",
+      "title": "Page Not Found | Sunshine Climate Solutions",
+      "titleLength": 43,
+      "description": "That page does not exist. Call or text (727) 661-5200, or use the links below to find what you need.",
+      "descriptionLength": 100,
+      "canonical": "https://sunshineclimatesolutions.com/404/",
+      "robots": "index, follow",
+      "h1": [
+        "That Page Isn't Here"
+      ],
+      "h2Count": 4,
+      "h3Count": 4,
+      "h2s": [
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 83,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 35,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/about/",
+      "title": "About Sunshine Climate Solutions | Owner-Operated HVAC in Tampa Bay",
+      "titleLength": 67,
+      "description": "Owner-operated HVAC service in Tampa Bay. Five years of hands-on HVAC experience, EPA Section 608 certified, repair-first. Learn why Sunshine Climate Solutions exists.",
+      "descriptionLength": 167,
+      "canonical": "https://sunshineclimatesolutions.com/about/",
+      "robots": "index, follow",
+      "h1": [
+        "Owner-Operated, on Purpose"
+      ],
+      "h2Count": 10,
+      "h3Count": 4,
+      "h2s": [
+        "Business information",
+        "Why Sunshine Climate Solutions Exists",
+        "How We Work",
+        "About the Owner",
+        "The Technical Edge",
+        "Work With the Owner Directly",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 405,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 31,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/contact/",
+      "title": "Request Service | Sunshine Climate Solutions",
+      "titleLength": 44,
+      "description": "Request HVAC service in Tampa Bay — or call or text (727) 661-5200. $50 service call, waived when you proceed with the repair. Free estimates. Open 7:30 AM – 7:30 PM, every day.",
+      "descriptionLength": 177,
+      "canonical": "https://sunshineclimatesolutions.com/contact/",
+      "robots": "index, follow",
+      "h1": [
+        "Request Service"
+      ],
+      "h2Count": 10,
+      "h3Count": 7,
+      "h2s": [
+        "Ways to Reach Us",
+        "Hours",
+        "Pricing, Up Front",
+        "Follow us",
+        "Request service",
+        "After You Reach Out",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 540,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 30,
+      "externalLinks": 7,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/faq/",
+      "title": "HVAC Service FAQs & Pricing | Sunshine Climate Solutions",
+      "titleLength": 56,
+      "description": "Straight answers about service-call pricing, free estimates, our Tampa Bay service area, brands, payments, warranty coverage, and how service requests work.",
+      "descriptionLength": 156,
+      "canonical": "https://sunshineclimatesolutions.com/faq/",
+      "robots": "index, follow",
+      "h1": [
+        "Frequently Asked Questions"
+      ],
+      "h2Count": 15,
+      "h3Count": 2,
+      "h2s": [
+        "Pricing & Estimates",
+        "Requests & Scheduling",
+        "Service Area",
+        "Repairs vs. Replacement",
+        "Brands",
+        "Payments",
+        "Warranty",
+        "Calls, Texts & Photos",
+        "Commercial, Contractors & TAB",
+        "Problems Aren't Always Where They First Appear",
+        "Ready to get started?",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 1429,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/dirty-coil-detail.DBcupP7M_1PlCyS.webp",
+          "alt": "Close view of a visibly soiled coil photographed during an inspection",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 41,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/contact/?service=tab-commissioning-support",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/leave-review/",
+      "title": "Leave a Review | Sunshine Climate Solutions",
+      "titleLength": 43,
+      "description": "Thank you for choosing Sunshine Climate Solutions. If we've earned it, your Google review helps other Tampa Bay homeowners find honest, owner-operated HVAC service.",
+      "descriptionLength": 164,
+      "canonical": "https://sunshineclimatesolutions.com/leave-review/",
+      "robots": "index, follow",
+      "h1": [
+        "We'd Appreciate Your Review"
+      ],
+      "h2Count": 5,
+      "h3Count": 0,
+      "h2s": [
+        "Leave a Google review",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 81,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/qr-review.png",
+          "alt": "QR code that opens the Sunshine Climate Solutions Google review form",
+          "loading": "lazy",
+          "width": "560",
+          "height": "560",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "48",
+          "height": "48",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 31,
+      "externalLinks": 7,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://g.page/r/CTXPJRFuZT-tEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr",
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/privacy/",
+      "title": "Privacy | Sunshine Climate Solutions",
+      "titleLength": 36,
+      "description": "How Sunshine Climate Solutions handles information you send us: what the request form collects, how Web3Forms processes it, how optional Google Analytics and cookieless analytics are used, and how to reach us instead.",
+      "descriptionLength": 217,
+      "canonical": "https://sunshineclimatesolutions.com/privacy/",
+      "robots": "index, follow",
+      "h1": [
+        "How Your Information Is Handled"
+      ],
+      "h2Count": 9,
+      "h3Count": 2,
+      "h2s": [
+        "What the request form collects",
+        "How form submissions are processed",
+        "Analytics",
+        "Communication you start",
+        "Questions",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 661,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 30,
+      "externalLinks": 7,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://policies.google.com/privacy",
+        "https://umami.is",
+        "https://web3forms.com",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/service-area/",
+      "title": "HVAC Service Areas in Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 60,
+      "description": "Sunshine Climate Solutions serves Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and surrounding communities. Not sure if you're covered? Call or text (727) 661-5200.",
+      "descriptionLength": 184,
+      "canonical": "https://sunshineclimatesolutions.com/service-area/",
+      "robots": "index, follow",
+      "h1": [
+        "Serving Tampa Bay, County by County"
+      ],
+      "h2Count": 8,
+      "h3Count": 4,
+      "h2s": [
+        "Where We Work",
+        "Beyond Tampa Bay?",
+        "Not sure if you're covered?",
+        "Ready to Schedule?",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 229,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/service-area-map.svg",
+          "alt": "Map of west-central Florida showing Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, with neighboring counties and the Gulf of America for context.",
+          "loading": "lazy",
+          "width": "1674",
+          "height": "2219",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 32,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/service-area/spring-hill-fl/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/service-area/spring-hill-fl/",
+      "title": "HVAC Service in Spring Hill, FL | Sunshine Climate Solutions",
+      "titleLength": 60,
+      "description": "Owner-operated HVAC service in Spring Hill, Florida — AC repair and diagnostics, $75 maintenance visits, replacement estimates, airflow and ductwork troubleshooting, and light commercial support. $50 service call, waived when you proceed with the repair.",
+      "descriptionLength": 254,
+      "canonical": "https://sunshineclimatesolutions.com/service-area/spring-hill-fl/",
+      "robots": "index, follow",
+      "h1": [
+        "HVAC Service in Spring Hill, Florida"
+      ],
+      "h2Count": 10,
+      "h3Count": 6,
+      "h2s": [
+        "Spring Hill, Weeki Wachee, Brooksville and Hernando Beach",
+        "What we do in Spring Hill",
+        "How a Spring Hill service call works",
+        "Communities we serve around Spring Hill",
+        "Spring Hill service questions",
+        "Talk to the owner about your Spring Hill system",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 789,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem"
+      ],
+      "jsonLdBlocks": 2,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 41,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/",
+      "title": "HVAC Services & AC Repair in Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 67,
+      "description": "AC repair and diagnostics, replacements and installations, airflow and ductwork troubleshooting, commercial service, and TAB/commissioning support across Tampa Bay. Free estimates.",
+      "descriptionLength": 180,
+      "canonical": "https://sunshineclimatesolutions.com/services/",
+      "robots": "index, follow",
+      "h1": [
+        "Heating and Cooling Services Across Tampa Bay"
+      ],
+      "h2Count": 8,
+      "h3Count": 6,
+      "h2s": [
+        "Service details",
+        "Maintenance Without Mystery",
+        "Technical Help, on Your Terms",
+        "Not sure what you need?",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 323,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 39,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/ac-maintenance/",
+      "title": "AC Maintenance in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 70,
+      "description": "$75 per system, per visit: routine coil cleaning, condensate drain flushing, blower-compartment cleaning, electrical testing and a full system check. Spring Hill based, serving Tampa Bay. Call (727) 661-5200.",
+      "descriptionLength": 208,
+      "canonical": "https://sunshineclimatesolutions.com/services/ac-maintenance/",
+      "robots": "index, follow",
+      "h1": [
+        "Premium AC Maintenance"
+      ],
+      "h2Count": 13,
+      "h3Count": 12,
+      "h2s": [
+        "The four cleaning services included in every visit",
+        "The full maintenance visit",
+        "What is not included",
+        "Access and equipment limitations",
+        "Maintenance vs. a service call",
+        "When maintenance makes sense",
+        "Maintenance FAQ",
+        "Next steps",
+        "Talk it through with the owner",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 1168,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem",
+        "Service"
+      ],
+      "jsonLdBlocks": 3,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 37,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/contact/?service=premium-ac-maintenance",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/ac-repair-diagnostics/",
+      "title": "AC Repair in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 65,
+      "description": "AC repair and diagnostics in Spring Hill and across Tampa Bay. Owner-operated, repair-first troubleshooting with clear pricing: $50 service call, waived when you proceed with the repair. Free estimates.",
+      "descriptionLength": 202,
+      "canonical": "https://sunshineclimatesolutions.com/services/ac-repair-diagnostics/",
+      "robots": "index, follow",
+      "h1": [
+        "AC Repair & Diagnostics"
+      ],
+      "h2Count": 12,
+      "h3Count": 0,
+      "h2s": [
+        "Problems we diagnose every week",
+        "How a repair visit works",
+        "What we typically repair",
+        "Repair-first, honestly",
+        "Brands we service",
+        "Staying ahead of breakdowns",
+        "Next steps",
+        "Talk it through with the owner",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 528,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem",
+        "Service"
+      ],
+      "jsonLdBlocks": 3,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 37,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/service-area/spring-hill-fl/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/airflow-ductwork/",
+      "title": "Airflow & Ductwork in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 74,
+      "description": "Airflow and ductwork troubleshooting in Spring Hill and across Tampa Bay: hot rooms, weak registers, humidity problems, duct leakage, and balancing. Owner-operated diagnostics with clear explanations and free estimates.",
+      "descriptionLength": 219,
+      "canonical": "https://sunshineclimatesolutions.com/services/airflow-ductwork/",
+      "robots": "index, follow",
+      "h1": [
+        "Airflow & Ductwork"
+      ],
+      "h2Count": 9,
+      "h3Count": 0,
+      "h2s": [
+        "Symptoms of airflow trouble",
+        "What we actually check",
+        "What fixes look like",
+        "Next steps",
+        "Talk it through with the owner",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 429,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem",
+        "Service"
+      ],
+      "jsonLdBlocks": 3,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 36,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/commercial-service-maintenance/",
+      "title": "Commercial Service & Maintenance in Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 74,
+      "description": "Light commercial HVAC service and maintenance in Tampa Bay, plus subcontracted installation, overflow service, and TAB/commissioning support for contractors and property teams.",
+      "descriptionLength": 176,
+      "canonical": "https://sunshineclimatesolutions.com/services/commercial-service-maintenance/",
+      "robots": "index, follow",
+      "h1": [
+        "Commercial Service & Maintenance"
+      ],
+      "h2Count": 9,
+      "h3Count": 0,
+      "h2s": [
+        "Who this is for",
+        "What we provide",
+        "For contractors: subcontracted installation &#x26; overflow",
+        "Next steps",
+        "Talk it through with the owner",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 342,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem",
+        "Service"
+      ],
+      "jsonLdBlocks": 3,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 36,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/services/replacement-installation/",
+      "title": "AC Replacement & Installation in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 85,
+      "description": "AC and heat pump replacement and installation in Spring Hill and across Tampa Bay. Free estimates, options explained in plain language, and honest repair-versus-replace advice from an owner-operated company.",
+      "descriptionLength": 207,
+      "canonical": "https://sunshineclimatesolutions.com/services/replacement-installation/",
+      "robots": "index, follow",
+      "h1": [
+        "Replacements & Installations"
+      ],
+      "h2Count": 11,
+      "h3Count": 0,
+      "h2s": [
+        "When replacement makes sense",
+        "How we quote a replacement",
+        "Brands we install",
+        "What to expect",
+        "Caring for your system after installation",
+        "Next steps",
+        "Talk it through with the owner",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 473,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place",
+        "BreadcrumbList",
+        "ListItem",
+        "Service"
+      ],
+      "jsonLdBlocks": 3,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 36,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/tab-commissioning-support/",
+      "title": "TAB & Commissioning Support in Tampa Bay | Sunshine Climate Solutions",
+      "titleLength": 69,
+      "description": "Air and hydronic testing, adjusting, and balancing; airflow measurements and balancing reports; duct traverses; outside-air verification; building-pressure checks; and commissioning support for professional teams.",
+      "descriptionLength": 213,
+      "canonical": "https://sunshineclimatesolutions.com/tab-commissioning-support/",
+      "robots": "index, follow",
+      "h1": [
+        "Testing, Adjusting & Balancing, and Commissioning Support"
+      ],
+      "h2Count": 8,
+      "h3Count": 13,
+      "h2s": [
+        "What We Provide",
+        "Field measurement and system verification",
+        "From Request to Report",
+        "Have a Project in Mind?",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 373,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/airflow-measurement-at-grille.B6mYclkM_hrADG.webp",
+          "alt": "Instrument taking an airflow reading at a supply grille during TAB field work",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/rooftop-mechanical-equipment.DBe036-P_WrCCp.webp",
+          "alt": "Rooftop mechanical equipment on a commercial project site",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 32,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/contact/?service=tab-commissioning-support",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    },
+    {
+      "route": "/thank-you/",
+      "title": "Request Received | Sunshine Climate Solutions",
+      "titleLength": 45,
+      "description": "Your service request was received. We will contact you to confirm availability.",
+      "descriptionLength": 79,
+      "canonical": "https://sunshineclimatesolutions.com/thank-you/",
+      "robots": "noindex, follow",
+      "h1": [
+        "Request Received"
+      ],
+      "h2Count": 4,
+      "h3Count": 3,
+      "h2s": [
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 196,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 31,
+      "externalLinks": 4,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+      ]
+    }
+  ]
+}
