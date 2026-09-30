@@ -36,7 +36,7 @@ GA4: `G-EQ9CBESN23` · GTM: `GTM-MBGJ8SLD`.
 | Print QR | Yard sign QR | https://sunshineclimatesolutions.com/?utm_source=print&utm_medium=qr&utm_campaign=yard_sign | Identify scans from yard signs. |
 | Referral card QR | Referral card QR | https://sunshineclimatesolutions.com/?utm_source=referral&utm_medium=qr&utm_campaign=customer_referral | Identify scans from customer referral cards. |
 
-## Service campaign links (28)
+## Service campaign links (29)
 
 ### /services/ac-repair-diagnostics/
 
@@ -97,6 +97,7 @@ GA4: `G-EQ9CBESN23` · GTM: `GTM-MBGJ8SLD`.
 
 | Channel | Placement | Campaign | Content | Final URL |
 | --- | --- | --- | --- | --- |
+| Google Business Profile | Appointment/contact link | gbp | contact_button | https://sunshineclimatesolutions.com/contact/?utm_source=google&utm_medium=organic&utm_campaign=gbp&utm_content=contact_button |
 | Facebook | Organic post | contact | post | https://sunshineclimatesolutions.com/contact/?utm_source=facebook&utm_medium=organic_social&utm_campaign=contact&utm_content=post |
 | Nextdoor | Organic post | contact | post | https://sunshineclimatesolutions.com/contact/?utm_source=nextdoor&utm_medium=organic_social&utm_campaign=contact&utm_content=post |
 | Email | Email signature (contact button) | signature | contact_button | https://sunshineclimatesolutions.com/contact/?utm_source=email&utm_medium=email&utm_campaign=signature&utm_content=contact_button |

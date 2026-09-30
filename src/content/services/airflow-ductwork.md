@@ -1,12 +1,13 @@
 ---
 title: Airflow & Ductwork
+metaTitle: Airflow & Ductwork in Spring Hill & Tampa Bay
 summary: >-
   Hot rooms, weak airflow, and humidity trouble usually have measurable causes. Airflow
   diagnostics are one of our core strengths — we check the whole air path, not just the box.
 metaDescription: >-
-  Airflow and ductwork troubleshooting in Tampa Bay: hot rooms, weak registers, humidity
-  problems, duct leakage, and balancing. Owner-operated diagnostics with clear explanations and
-  free estimates.
+  Airflow and ductwork troubleshooting in Spring Hill and across Tampa Bay: hot rooms, weak
+  registers, humidity problems, duct leakage, and balancing. Owner-operated diagnostics with
+  clear explanations and free estimates.
 icon: wind
 order: 3
 ---
@@ -34,7 +35,10 @@ Airflow work is measurement work. Guessing at duct problems gets expensive fast,
 - **Fan settings and equipment matchup** — the blower doing its part for your ducts
 
 This is a core strength of ours: airflow and electrical/control-board diagnostics, traced
-methodically to the real cause.
+methodically to the real cause. When the measurements point to the equipment or refrigerant
+side instead, that's covered under [AC repair & diagnostics](/services/ac-repair-diagnostics/),
+and the same measurement discipline is what we bring to
+[TAB and commissioning support](/tab-commissioning-support/) for professional teams.
 
 ## What fixes look like
 

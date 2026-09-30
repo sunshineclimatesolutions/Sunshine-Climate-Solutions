@@ -294,10 +294,15 @@ const description = home.data.metaDescription;
           <p class="muted" style="margin-top: var(--sp-sm); font-size: var(--text-sm);">
             {business.serviceArea.centralFloridaNote}
           </p>
-          <p style="margin-top: var(--sp-sm);">
+          <p class="cluster" style="margin-top: var(--sp-sm);">
             <a class="text-link" href="/service-area/">
               {areaCopy.linkLabel} <Icon name="arrow-right" size={18} />
             </a>
+            {areaCopy.hubLinkLabel && (
+              <a class="text-link" href="/service-area/spring-hill-fl/">
+                {areaCopy.hubLinkLabel} <Icon name="arrow-right" size={18} />
+              </a>
+            )}
           </p>
         </div>
         <figure class="service-map-compact">

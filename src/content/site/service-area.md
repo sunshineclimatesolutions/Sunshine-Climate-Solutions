@@ -52,6 +52,10 @@ counties:
         - Carrollwood
         - "Town 'n' Country"
         - Temple Terrace
+  hubNote: >-
+    Spring Hill is our home market — for Hernando County service details, coverage, and local
+    questions, start here:
+  hubLinkLabel: HVAC service in Spring Hill
 
 # The callout opens with business.serviceArea.centralFloridaNote (business.ts),
 # then this suffix sentence.

@@ -86,6 +86,17 @@ export const marketingLinks: MarketingLink[] = [
     whereToPaste: 'Google Business Profile → Edit profile → Contact → Website field',
   },
   {
+    id: 'gbp_contact',
+    channel: CHANNEL.gbp,
+    campaign: 'gbp',
+    placement: 'Appointment/contact link',
+    path: destinations.contact,
+    utm: { source: 'google', medium: 'organic', campaign: 'gbp', content: 'contact_button' },
+    purpose: 'Attribute GBP appointment/contact-link clicks that go straight to the request form.',
+    manual: false,
+    whereToPaste: 'Prepared link — use for the GBP appointment/contact link.',
+  },
+  {
     id: 'facebook_profile',
     channel: CHANNEL.facebook,
     campaign: 'profile',

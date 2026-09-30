@@ -84,6 +84,9 @@ with the owner; never silently work around this file.
 | `npm run marketing:links` | Generate/refresh UTM link docs + campaign QR codes from `src/config/marketing-links.ts` (see `docs/marketing/UTM-MASTER-LINKS.md`) |
 | `npm run marketing:qr` | Force-regenerate every campaign QR code (`public/marketing/qr/`) |
 | `npm run marketing:verify` | Validate the UTM registry, check generated docs for drift, decode-verify every QR, run attribution tests (needs preview server) |
+| `node scripts/seo-inventory.mjs` | Extract per-page SEO facts (title/H1/canonical/schema/links/images/words) into `docs/seo/seo-inventory.json` |
+| `node scripts/verify-seo.mjs` | SEO checks on the built output: uniqueness, canonicals, sitemap, schema, breadcrumbs, hub links (run after build) |
+| `node scripts/seo-screenshots.mjs before\|after` | SEO before/after page screenshots at 390/768/1440 into `docs/seo/screenshots/` |
 
 Build notices like "The collection 'projects' does not exist or is empty" are **expected and
 intentional** while those collections are empty — not errors.

@@ -1,0 +1,144 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { business } from '../../config/business';
+import { need } from '../../lib/site-content';
+
+// Primary-market location hub (September 2026 SEO pass). Copy lives in
+// src/content/site/spring-hill.md; business facts stay in business.ts.
+// No fabricated jobs, counts, response times or neighborhood projects.
+const entry = await getEntry('site', 'spring-hill');
+if (!entry) throw new Error('[content] src/content/site/spring-hill.md is missing');
+const hub = need(entry.data.cityHub, 'spring-hill.md → cityHub');
+
+const title = entry.data.metaTitle;
+const description = entry.data.metaDescription;
+
+const site = Astro.site ?? new URL(business.url);
+const canonical = new URL(Astro.url.pathname, site).href;
+
+// The visible breadcrumb trail matches this BreadcrumbList.
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site).href },
+      { '@type': 'ListItem', position: 2, name: 'Service Area', item: new URL('/service-area/', site).href },
+      { '@type': 'ListItem', position: 3, name: 'Spring Hill', item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={pageSchema}>
+  <section class="page-hero">
+    <div class="container page-hero-inner page-hero-inner--center">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/service-area/">Service Area</a></li>
+          <li aria-current="page">Spring Hill</li>
+        </ol>
+      </nav>
+      <h1>{hub.hero.heading}</h1>
+      <p class="lead">{hub.hero.lead}</p>
+      <div class="cluster" style="margin-top: var(--sp-xs); justify-content: center;">
+        <a class="btn btn--gold" href={business.phone.href} data-cta="call-spring-hill">
+          <Icon name="phone" /> Call {business.phone.display}
+        </a>
+        <a class="btn btn--navy" href="/contact/" data-cta="request-spring-hill">
+          Request Service
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="spring-hill-intro-heading">
+    <div class="container container--narrow">
+      <div class="prose">
+        <h2 id="spring-hill-intro-heading">{hub.intro.heading}</h2>
+        {hub.intro.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="spring-hill-services-heading">
+    <div class="container">
+      <div class="section-heading section-heading--center">
+        <h2 id="spring-hill-services-heading">{hub.serviceHighlights.heading}</h2>
+        {hub.serviceHighlights.lead && <p class="lead">{hub.serviceHighlights.lead}</p>}
+      </div>
+      <div class="grid--six">
+        {
+          hub.serviceHighlights.cards.map((card) => (
+            <div class="card">
+              <span class="card-icon">
+                <Icon name={card.icon} />
+              </span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+              <a class="text-link card-cta" href={card.linkHref}>
+                {card.linkLabel} <Icon name="arrow-right" size={18} />
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="spring-hill-local-heading">
+    <div class="container container--narrow">
+      <div class="prose">
+        <h2 id="spring-hill-local-heading">{hub.local.heading}</h2>
+        {hub.local.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="spring-hill-communities-heading">
+    <div class="container">
+      <div class="section-heading section-heading--center">
+        <h2 id="spring-hill-communities-heading">{hub.communities.heading}</h2>
+        {hub.communities.lead && <p class="lead">{hub.communities.lead}</p>}
+      </div>
+      <ul class="area-list area-list--two" style="max-width: 34rem; margin-inline: auto;">
+        {
+          hub.communities.list.map((community) => (
+            <li class="card" style="padding: 0.9rem 1.1rem;">
+              <strong style="font-family: var(--font-head);">{community}</strong>
+            </li>
+          ))
+        }
+      </ul>
+      <p style="text-align: center; margin-top: var(--sp-sm);">
+        <a class="text-link" href="/service-area/">
+          See the full service area <Icon name="arrow-right" size={18} />
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="spring-hill-faq-heading">
+    <div class="container container--narrow">
+      <div class="section-heading section-heading--center">
+        <h2 id="spring-hill-faq-heading">Spring Hill service questions</h2>
+      </div>
+      <div class="faq-list">
+        {
+          hub.faqs.map((faq) => (
+            <FaqItem question={faq.question}>
+              <p>{faq.answer}</p>
+            </FaqItem>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand context="spring-hill" title={hub.ctaBand.title} text={hub.ctaBand.text} />
+</BaseLayout>

@@ -188,7 +188,13 @@ const site = defineCollection({
       .object({ eyebrow: z.string(), heading: z.string(), blurb: z.string(), linkLabel: z.string() })
       .optional(),
     serviceArea: z
-      .object({ eyebrow: z.string(), heading: z.string(), linkLabel: z.string() })
+      .object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        linkLabel: z.string(),
+        // Optional link to the primary-market city hub (Spring Hill).
+        hubLinkLabel: z.string().optional(),
+      })
       .optional(),
 
     // home.md — reviews + final contact sections.
@@ -240,6 +246,9 @@ const site = defineCollection({
         eyebrow: z.string(),
         heading: z.string(),
         list: z.array(z.object({ name: z.string(), communities: z.array(z.string()) })),
+        // Optional primary-market hub note + link (Spring Hill).
+        hubNote: z.string().optional(),
+        hubLinkLabel: z.string().optional(),
       })
       .optional(),
     beyond: z.object({ strong: z.string(), suffix: z.string() }).optional(),
@@ -344,6 +353,37 @@ const site = defineCollection({
         title: z.string(),
         text: z.string().optional(),
         requestLabel: z.string().optional(),
+      })
+      .optional(),
+
+    // spring-hill.md — primary-market location hub (/service-area/spring-hill-fl/).
+    // Every claim must stay factual: no fabricated jobs, counts, response times
+    // or neighborhood projects (see docs/seo/LOCAL-PAGE-ROADMAP.md).
+    cityHub: z
+      .object({
+        hero: z.object({ heading: z.string(), lead: z.string() }),
+        intro: z.object({ heading: z.string(), paragraphs: z.array(z.string()) }),
+        serviceHighlights: z.object({
+          heading: z.string(),
+          lead: z.string().optional(),
+          cards: z.array(
+            z.object({
+              icon: siteIconEnum,
+              title: z.string(),
+              text: z.string(),
+              linkLabel: z.string(),
+              linkHref: z.string(),
+            }),
+          ),
+        }),
+        local: z.object({ heading: z.string(), paragraphs: z.array(z.string()) }),
+        communities: z.object({
+          heading: z.string(),
+          lead: z.string().optional(),
+          list: z.array(z.string()),
+        }),
+        faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
+        ctaBand: z.object({ title: z.string(), text: z.string().optional() }),
       })
       .optional(),
   }),

@@ -11,9 +11,10 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  schema?: object[];
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, schema = [] } = Astro.props;
 
 // Same enable rule as BaseHead: no GTM (and no consent UI) in preview builds.
 const gtmEnabled =
@@ -24,7 +25,7 @@ const gtmEnabled =
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} noindex={noindex} />
+    <BaseHead title={title} description={description} noindex={noindex} schema={schema} />
   </head>
   <body>
     {/* Basic Consent Mode: no GTM <noscript> iframe. Loading the container

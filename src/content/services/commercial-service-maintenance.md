@@ -27,7 +27,8 @@ order: 4
 
 The owner has worked residential and commercial installation, service, and maintenance —
 including with engineering companies and smaller contractors — and brings project coordination
-and mentoring experience to every job.
+and mentoring experience to every job. Coverage spans Hernando, Pasco, Pinellas, and
+Hillsborough counties — see the [service area](/service-area/) for details.
 
 ## For contractors: subcontracted installation & overflow
 

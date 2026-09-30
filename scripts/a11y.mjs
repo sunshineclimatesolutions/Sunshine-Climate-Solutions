@@ -17,6 +17,7 @@ const pages = [
   { name: 'service-ac-maintenance', path: '/services/ac-maintenance/' },
   { name: 'tab', path: '/tab-commissioning-support/' },
   { name: 'service-area', path: '/service-area/' },
+  { name: 'spring-hill', path: '/service-area/spring-hill-fl/' },
   { name: 'about', path: '/about/' },
   { name: 'faq', path: '/faq/' },
   { name: 'contact', path: '/contact/' },

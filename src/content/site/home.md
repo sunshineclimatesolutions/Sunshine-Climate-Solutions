@@ -97,9 +97,10 @@ aboutBand:
 
 serviceArea:
   eyebrow: Service Area
-  heading: Proudly Serving Tampa Bay
+  heading: Proudly Serving Spring Hill & Tampa Bay
   # The county cards render from business.serviceArea.counties (business.ts).
   linkLabel: View our service area
+  hubLinkLabel: HVAC service in Spring Hill
 
 reviews:
   eyebrow: Reviews

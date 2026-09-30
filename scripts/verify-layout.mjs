@@ -12,6 +12,7 @@ const routes = [
   '/', '/services/', '/services/ac-repair-diagnostics/', '/services/replacement-installation/',
   '/services/ac-maintenance/', '/services/airflow-ductwork/',
   '/services/commercial-service-maintenance/', '/tab-commissioning-support/', '/service-area/',
+  '/service-area/spring-hill-fl/',
   '/about/', '/faq/', '/contact/', '/leave-review/', '/privacy/', '/thank-you/',
 ];
 

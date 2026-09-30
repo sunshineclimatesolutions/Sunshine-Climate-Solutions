@@ -1,12 +1,13 @@
 ---
 title: Replacements & Installations
+metaTitle: AC Replacement & Installation in Spring Hill & Tampa Bay
 summary: >-
   When equipment has genuinely reached the end, we size and quote straightforward options — free
   estimates and honest advice about repair versus replace.
 metaDescription: >-
-  AC and heat pump replacement and installation across Tampa Bay. Free estimates, options
-  explained in plain language, and honest repair-versus-replace advice from an owner-operated
-  company.
+  AC and heat pump replacement and installation in Spring Hill and across Tampa Bay. Free
+  estimates, options explained in plain language, and honest repair-versus-replace advice from an
+  owner-operated company.
 icon: thermometer
 order: 2
 ---
@@ -34,6 +35,11 @@ then talk through what matters to you — reliability, comfort, budget.
 - Options explained in plain language, including what you actually get for the difference in price
 - The proposal covers the work included, so there are no surprises mid-job
 - Ask about the workmanship and manufacturer warranty coverage included with your proposal
+
+Ductwork is part of every replacement conversation: if the existing ducts can't support proper
+airflow, the new equipment won't fix comfort problems on its own. We explain what we find and
+what it means for the quote — see [airflow & ductwork](/services/airflow-ductwork/) for how
+that side is measured.
 
 ## Brands we install
 

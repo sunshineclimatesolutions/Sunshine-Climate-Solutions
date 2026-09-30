@@ -16,14 +16,50 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { Content } = await render(service);
+
+const site = Astro.site ?? new URL(business.url);
+const canonical = new URL(Astro.url.pathname, site).href;
+
+// Page-level structured data: the visible breadcrumb trail above matches this
+// BreadcrumbList, and the Service node describes what this page actually is.
+const pageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Services', item: new URL('/services/', site).href },
+      { '@type': 'ListItem', position: 2, name: service.data.title, item: canonical },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.data.title,
+    serviceType: service.data.title,
+    url: canonical,
+    provider: { '@id': new URL('/#business', site).href },
+    areaServed: [
+      { '@type': 'City', name: 'Spring Hill' },
+      ...business.serviceArea.counties.map((c) => ({ '@type': 'AdministrativeArea', name: c })),
+      { '@type': 'Place', name: 'Tampa Bay' },
+    ],
+  },
+];
 ---
 
 <BaseLayout
   title={service.data.metaTitle ?? `${service.data.title} in Tampa Bay`}
   description={service.data.metaDescription}
+  schema={pageSchema}
 >
   <section class="page-hero">
     <div class="container page-hero-inner">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/services/">Services</a></li>
+          <li aria-current="page">{service.data.title}</li>
+        </ol>
+      </nav>
       <p class="eyebrow">Services</p>
       <h1>{service.data.title}</h1>
       <p class="lead">{service.data.summary}</p>

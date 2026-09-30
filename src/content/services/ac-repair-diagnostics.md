@@ -56,8 +56,14 @@ Repairs fix what's wrong; maintenance is the preventive side — see
 [$75 Premium AC Maintenance](/services/ac-maintenance/) for routine coil cleaning,
 condensate drain flushing, blower-compartment cleaning and a full system check.
 
+Comfort complaints like weak airflow or one hot room often trace back to the duct system rather
+than the equipment itself — that's its own measurement path, covered under
+[airflow & ductwork](/services/airflow-ductwork/).
+
 ## Next steps
 
 - **Call or text (727) 661-5200** — photos of the unit or data plate are welcome by text.
 - **[Request service online](/contact/)** — we'll contact you to confirm availability.
+- Based in Spring Hill — see [HVAC service in Spring Hill](/service-area/spring-hill-fl/) for
+  local coverage details.
 - Open 7:30 AM – 7:30 PM, every day.

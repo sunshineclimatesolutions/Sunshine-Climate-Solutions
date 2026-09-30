@@ -5,9 +5,12 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  // Optional page-level structured data (Service, BreadcrumbList, …) rendered
+  // as additional JSON-LD blocks alongside the global HVACBusiness entity.
+  schema?: object[];
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, schema = [] } = Astro.props;
 
 const site = Astro.site ?? new URL(business.url);
 const path = Astro.url.pathname.endsWith('/')
@@ -72,6 +75,8 @@ const jsonLd = {
     },
   ],
   areaServed: [
+    // Primary market first (Spring Hill), then the confirmed service counties.
+    { '@type': 'City', name: 'Spring Hill' },
     ...business.serviceArea.counties.map((c) => ({ '@type': 'AdministrativeArea', name: c })),
     { '@type': 'Place', name: 'Tampa Bay' },
   ],
@@ -116,6 +121,12 @@ const jsonLd = {
 <meta name="twitter:card" content="summary_large_image" />
 
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+{
+  schema.map((node) => (
+    <script type="application/ld+json" set:html={JSON.stringify(node)} />
+  ))
+}
 
 {
   gtmEnabled && (

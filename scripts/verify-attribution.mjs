@@ -110,7 +110,13 @@ const check = (name, condition, detail = '') => {
 
   const sitemap = fs.readFileSync(path.join('dist', 'sitemap-0.xml'), 'utf8');
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  check('sitemap has 14 canonical URLs (16 pages minus 404 and thank-you)', locs.length === 14, String(locs.length));
+  // Indexable pages = every built index.html minus the noindexed thank-you page.
+  const indexablePages = htmlFiles.filter((f) => f.endsWith('index.html') && !f.includes('thank-you')).length;
+  check(
+    'sitemap matches the indexable page count',
+    locs.length === indexablePages,
+    `sitemap ${locs.length} vs indexable ${indexablePages}`,
+  );
   check('no sitemap URL carries query parameters or UTMs', locs.every((loc) => !loc.includes('?') && !loc.includes('utm_')));
 
   const robots = fs.readFileSync(path.join('dist', 'robots.txt'), 'utf8');

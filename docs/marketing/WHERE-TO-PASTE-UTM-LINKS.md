@@ -7,7 +7,7 @@ Every URL below is final and ready to copy. Nothing here changes the website.
 
 - **10 QR codes** in `public/marketing/qr/` — each encodes its own tagged URL
   and is decode-verified. Print the `-print.png` (3000px) or use the `.svg` for artwork.
-- **24 prepared campaign links** (social posts, emails, SMS, GBP posts) —
+- **25 prepared campaign links** (social posts, emails, SMS, GBP posts) —
   listed in `UTM-MASTER-LINKS.md`; copy the relevant one when you publish that post/email.
 - The website itself: no UTMs are added to internal links, canonicals, the sitemap,
   `tel:`/`sms:`/`mailto:` links, or the Google-review QR.
