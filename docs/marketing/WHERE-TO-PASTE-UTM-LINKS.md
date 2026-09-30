@@ -22,21 +22,61 @@ Every URL below is final and ready to copy. Nothing here changes the website.
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=facebook&utm_medium=organic_social&utm_campaign=profile`
 
-3. **Nextdoor** — Business page website field
+3. **Instagram** — Profile website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=instagram&utm_medium=organic_social&utm_campaign=profile`
+
+4. **TikTok** — Profile website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=tiktok&utm_medium=organic_social&utm_campaign=profile`
+
+5. **YouTube** — Channel links / About page
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=youtube&utm_medium=organic_video&utm_campaign=profile`
+
+6. **X** — Profile website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=x&utm_medium=organic_social&utm_campaign=profile`
+
+7. **Nextdoor** — Business page website field
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=nextdoor&utm_medium=organic_social&utm_campaign=profile`
 
-4. **Yelp** — Business page website field
+8. **Yelp** — Business page website field
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=yelp&utm_medium=referral&utm_campaign=profile`
 
-5. **Email** — Email signature
+9. **Gab** — Profile website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=gab&utm_medium=organic_social&utm_campaign=profile`
+
+10. **Bing Places** — Business listing website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=bing&utm_medium=organic&utm_campaign=places`
+
+11. **Apple Business Connect** — Business listing website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=apple_maps&utm_medium=organic&utm_campaign=business_connect`
+
+12. **Email** — Email signature
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=email&utm_medium=email&utm_campaign=signature`
 
-6. **SMS** — Saved SMS link
+13. **SMS** — Saved SMS link
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=sms&utm_medium=direct_message&utm_campaign=customer_outreach`
+
+## ⏳ PENDING — do NOT paste these yet
+
+These URLs are prepared so they are ready the moment the public profiles exist.
+They are intentionally **not** used on the website and must not be pasted
+anywhere until the blocker below is resolved.
+
+- **LinkedIn** — PENDING URL — do not paste anywhere until the owner supplies the final public Company Page URL
+  Prepared URL (inactive): `https://sunshineclimatesolutions.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=profile`
+
+- **Parler** — PENDING UNIQUE PUBLIC PROFILE URL — the owner’s current app.parler.com/profile route is generic; do not publish until a unique public profile URL exists
+  Prepared URL (inactive): `https://sunshineclimatesolutions.com/?utm_source=parler&utm_medium=organic_social&utm_campaign=profile`
 
 ## 🖨️ OWNER MANUAL STEP — print/place these QR assets
 

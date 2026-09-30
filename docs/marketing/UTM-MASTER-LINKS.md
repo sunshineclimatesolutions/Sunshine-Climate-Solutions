@@ -19,14 +19,21 @@ GA4: `G-EQ9CBESN23` · GTM: `GTM-MBGJ8SLD`.
   campaign ids if a future paid campaign needs one; it is deliberately omitted from
   QR URLs to keep them short and easy to scan.
 
-## Base channel links (12)
+## Base channel links (19)
 
 | Channel | Placement | Final URL | Purpose |
 | --- | --- | --- | --- |
 | Google Business Profile | Business profile website field | https://sunshineclimatesolutions.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp | Identify visits that start from the Google Business Profile listing. |
 | Facebook | Page website field | https://sunshineclimatesolutions.com/?utm_source=facebook&utm_medium=organic_social&utm_campaign=profile | Identify visits from the Facebook page profile link. |
+| Instagram | Profile website field | https://sunshineclimatesolutions.com/?utm_source=instagram&utm_medium=organic_social&utm_campaign=profile | Identify visits from the Instagram profile website link. |
+| TikTok | Profile website field | https://sunshineclimatesolutions.com/?utm_source=tiktok&utm_medium=organic_social&utm_campaign=profile | Identify visits from the TikTok profile website link. |
+| YouTube | Channel links / About page | https://sunshineclimatesolutions.com/?utm_source=youtube&utm_medium=organic_video&utm_campaign=profile | Identify visits from the YouTube channel links and video descriptions. |
+| X | Profile website field | https://sunshineclimatesolutions.com/?utm_source=x&utm_medium=organic_social&utm_campaign=profile | Identify visits from the X profile website link. |
 | Nextdoor | Business page website field | https://sunshineclimatesolutions.com/?utm_source=nextdoor&utm_medium=organic_social&utm_campaign=profile | Identify visits from the Nextdoor business page. |
 | Yelp | Business page website field | https://sunshineclimatesolutions.com/?utm_source=yelp&utm_medium=referral&utm_campaign=profile | Identify visits from the Yelp business page (directory referral). |
+| Gab | Profile website field | https://sunshineclimatesolutions.com/?utm_source=gab&utm_medium=organic_social&utm_campaign=profile | Identify visits from the Gab profile website link. |
+| Bing Places | Business listing website field | https://sunshineclimatesolutions.com/?utm_source=bing&utm_medium=organic&utm_campaign=places | Identify visits from the Bing Places listing once the profile is approved and live. |
+| Apple Business Connect | Business listing website field | https://sunshineclimatesolutions.com/?utm_source=apple_maps&utm_medium=organic&utm_campaign=business_connect | Identify visits from the Apple Business Connect / Apple Maps listing once approved and live. |
 | Email | Email signature | https://sunshineclimatesolutions.com/?utm_source=email&utm_medium=email&utm_campaign=signature | Identify visits from the company email signature. |
 | SMS | Saved SMS link | https://sunshineclimatesolutions.com/?utm_source=sms&utm_medium=direct_message&utm_campaign=customer_outreach | Identify visits from text-message outreach to customers. |
 | Truck QR | Vehicle decal QR | https://sunshineclimatesolutions.com/?utm_source=truck&utm_medium=qr&utm_campaign=vehicle_branding | Identify scans from the QR on the work vehicle. |
@@ -35,6 +42,16 @@ GA4: `G-EQ9CBESN23` · GTM: `GTM-MBGJ8SLD`.
 | Print QR | Flyer QR | https://sunshineclimatesolutions.com/?utm_source=print&utm_medium=qr&utm_campaign=flyer | Identify scans from printed flyers. |
 | Print QR | Yard sign QR | https://sunshineclimatesolutions.com/?utm_source=print&utm_medium=qr&utm_campaign=yard_sign | Identify scans from yard signs. |
 | Referral card QR | Referral card QR | https://sunshineclimatesolutions.com/?utm_source=referral&utm_medium=qr&utm_campaign=customer_referral | Identify scans from customer referral cards. |
+
+## Pending — prepared, do NOT publish yet (2)
+
+These URLs are prepared for when the public profiles exist. Do **not** paste
+them anywhere yet.
+
+| Channel | Placement | Prepared URL (not active) | Why pending |
+| --- | --- | --- | --- |
+| LinkedIn | Company Page website field | https://sunshineclimatesolutions.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=profile | PENDING — LinkedIn Company Page identity verification is not complete. |
+| Parler | Profile website field | https://sunshineclimatesolutions.com/?utm_source=parler&utm_medium=organic_social&utm_campaign=profile | PENDING — no unique public business-profile URL exists yet. |
 
 ## Service campaign links (29)
 

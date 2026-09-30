@@ -1,12 +1,24 @@
 ---
-// Verified social/directory profile links (Facebook, Nextdoor, Yelp) —
-// rendered from the centralized config in src/config/business.ts; never
-// hard-code URLs here. Logos are owner-supplied brand graphics
-// (public/images/), used unmodified and height-balanced; the visible platform
-// label carries the meaning (logos are decorative, alt="").
+// Verified social/directory profile links — rendered from the centralized
+// config in src/config/business.ts; never hard-code URLs here.
+//
+// Presentation (September 2026 social expansion):
+//  - Facebook / Nextdoor / Yelp keep their owner-supplied full-color brand
+//    graphics (public/images/), used unmodified and height-balanced.
+//  - Instagram / TikTok / YouTube / X use official Simple Icons glyphs inlined
+//    by SocialIcon.astro (local SVGs in public/images/social/, CC0) in the
+//    platform's primary brand color, so they sit consistently beside the
+//    existing colored logos.
+//  - Gab uses its official downloadable wordmark (public/images/social/gab.svg,
+//    from the Gab brand assets page), used unmodified.
+//  - Outbound profile links only: never append inbound campaign UTMs here.
+//  - The visible platform label carries the meaning (logos/glyphs are
+//    decorative, alt="" / aria-hidden). LinkedIn and Parler stay hidden until
+//    business.ts carries their final public URLs.
 // Yelp is presented as a neutral business-directory link only — no Yelp
 // review solicitation anywhere (see business.ts).
 import { business } from '../config/business';
+import SocialIcon from './SocialIcon.astro';
 
 interface Props {
   /** Optional compact modifier for tighter placements (footer). */
@@ -17,18 +29,68 @@ interface Props {
 
 const { compact = false, exclude = [] } = Astro.props;
 
-const profiles = [
+type Profile =
+  | {
+      href: string;
+      label: string;
+      kind: 'img';
+      img: string;
+      width: number;
+      height: number;
+      tileOnDark: boolean;
+    }
+  | {
+      href: string;
+      label: string;
+      kind: 'icon';
+      icon: string;
+      tileOnDark: boolean;
+    };
+
+const allProfiles: Profile[] = [
   {
     href: business.social.facebook,
     label: 'Facebook',
+    kind: 'img',
     img: '/images/Facebook_logo.webp',
     width: 128,
     height: 128,
     tileOnDark: false,
   },
   {
+    href: business.social.instagram,
+    label: 'Instagram',
+    kind: 'icon',
+    icon: 'instagram',
+    tileOnDark: false,
+  },
+  {
+    href: business.social.tiktok,
+    label: 'TikTok',
+    kind: 'icon',
+    icon: 'tiktok',
+    // Black glyph — needs a light tile on dark surfaces to stay legible.
+    tileOnDark: true,
+  },
+  {
+    href: business.social.youtube,
+    label: 'YouTube',
+    kind: 'icon',
+    icon: 'youtube',
+    tileOnDark: false,
+  },
+  {
+    href: business.social.x,
+    label: 'X',
+    kind: 'icon',
+    icon: 'x',
+    // Black glyph — needs a light tile on dark surfaces to stay legible.
+    tileOnDark: true,
+  },
+  {
     href: business.social.nextdoor,
     label: 'Nextdoor',
+    kind: 'img',
     img: '/images/nextdoor_logo.png',
     width: 256,
     height: 133,
@@ -37,13 +99,28 @@ const profiles = [
   {
     href: business.social.yelp,
     label: 'Yelp',
+    kind: 'img',
     img: '/images/yelp-logo-3519.png',
     width: 280,
     height: 113,
     // Black wordmark — needs a light tile on navy surfaces to stay legible.
     tileOnDark: true,
   },
-].filter((profile) => profile.href && !exclude.includes(profile.label.toLowerCase()));
+  {
+    href: business.social.gab,
+    label: 'Gab',
+    kind: 'img',
+    // Official Gab wordmark (Gab brand assets page), used unmodified.
+    img: '/images/social/gab.svg',
+    width: 50,
+    height: 30,
+    tileOnDark: false,
+  },
+];
+
+const profiles = allProfiles.filter(
+  (profile) => profile.href && !exclude.includes(profile.label.toLowerCase()),
+);
 ---
 
 {
@@ -57,14 +134,21 @@ const profiles = [
             rel="noopener noreferrer"
             data-cta={`social-${profile.label.toLowerCase()}`}
           >
-            <img
-              class={`social-logo${profile.tileOnDark ? ' social-logo--tile-on-dark' : ''}`}
-              src={profile.img}
-              alt=""
-              width={profile.width}
-              height={profile.height}
-              loading="lazy"
-            />
+            {profile.kind === 'img' ? (
+              <img
+                class={`social-logo${profile.tileOnDark ? ' social-logo--tile-on-dark' : ''}`}
+                src={profile.img}
+                alt=""
+                width={profile.width}
+                height={profile.height}
+                loading="lazy"
+              />
+            ) : (
+              <SocialIcon
+                name={profile.icon}
+                class={profile.tileOnDark ? 'social-logo--tile-on-dark' : ''}
+              />
+            )}
             {profile.label}
             <span class="visually-hidden">(opens in a new tab)</span>
           </a>

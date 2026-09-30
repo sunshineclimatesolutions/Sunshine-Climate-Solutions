@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T12:56:43.335Z",
+  "generatedAt": "2026-09-30T17:52:49.763Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 17,
   "sitemapUrls": [
@@ -201,11 +201,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 49,
-      "externalLinks": 5,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -226,10 +234,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -316,11 +329,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 35,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -338,10 +359,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -434,11 +460,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -456,10 +490,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -487,7 +526,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 540,
+      "wordCount": 570,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -530,6 +569,14 @@
           "hasAlt": true
         },
         {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
+        },
+        {
           "src": "/brand/logo-dark.png",
           "alt": "",
           "loading": "eager",
@@ -576,11 +623,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 30,
-      "externalLinks": 7,
+      "externalLinks": 17,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -598,10 +653,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -707,11 +767,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 41,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -730,10 +798,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -756,7 +829,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 81,
+      "wordCount": 111,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -815,6 +888,14 @@
           "hasAlt": true
         },
         {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
+        },
+        {
           "src": "/brand/logo-dark.png",
           "alt": "",
           "loading": "eager",
@@ -861,11 +942,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 7,
+      "externalLinks": 17,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -884,10 +973,15 @@
       ],
       "externalLinkTargets": [
         "https://g.page/r/CTXPJRFuZT-tEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr",
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -979,11 +1073,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 30,
-      "externalLinks": 7,
+      "externalLinks": 12,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1001,13 +1103,18 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://policies.google.com/privacy",
         "https://umami.is",
         "https://web3forms.com",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1106,11 +1213,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 32,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1129,10 +1244,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1227,11 +1347,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 41,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1249,10 +1377,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1343,11 +1476,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 39,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1365,10 +1506,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1467,11 +1613,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 37,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1490,10 +1644,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1591,11 +1750,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 37,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1614,10 +1781,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1712,11 +1884,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1734,10 +1914,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1832,11 +2017,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1854,10 +2047,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -1954,11 +2152,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1976,10 +2182,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -2086,11 +2297,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 32,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2109,10 +2328,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     },
     {
@@ -2199,11 +2423,19 @@
           "width": "280",
           "height": "113",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 4,
+      "externalLinks": 9,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2221,10 +2453,15 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
         "https://www.facebook.com/profile.php?id=61594915980759",
-        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville"
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
       ]
     }
   ]

@@ -1585,6 +1585,14 @@ body.nav-open {
   width: auto;
 }
 
+/* Inline social glyphs (Instagram, TikTok, YouTube, X) — same 1.75rem visual
+   height as the logo images so the row reads as one consistent set. */
+.social-icon {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
 .social-logo--tile-on-dark {
   height: 1.75rem;
   box-sizing: border-box;

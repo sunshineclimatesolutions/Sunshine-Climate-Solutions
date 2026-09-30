@@ -91,8 +91,13 @@ const linkUrl = (link) => {
   return url.href;
 };
 
-const baseLinks = marketingLinks.filter((link) => link.manual && link.path === destinations.home);
-const serviceLinks = marketingLinks.filter((link) => !baseLinks.includes(link));
+const baseLinks = marketingLinks.filter(
+  (link) => link.manual && link.path === destinations.home && !link.pending,
+);
+const pendingLinks = marketingLinks.filter((link) => link.pending);
+const serviceLinks = marketingLinks.filter(
+  (link) => !baseLinks.includes(link) && !link.pending,
+);
 const serviceQrLinks = new Set(
   qrAssets
     .map((asset) => byId.get(asset.linkId))
@@ -130,6 +135,20 @@ GA4: \`G-EQ9CBESN23\` · GTM: \`GTM-MBGJ8SLD\`.
 | Channel | Placement | Final URL | Purpose |
 | --- | --- | --- | --- |
 ${baseLinks
+  .map(
+    (link) =>
+      `| ${link.channel} | ${link.placement} | ${linkUrl(link)} | ${link.purpose} |`,
+  )
+  .join('\n')}
+
+## Pending — prepared, do NOT publish yet (${pendingLinks.length})
+
+These URLs are prepared for when the public profiles exist. Do **not** paste
+them anywhere yet.
+
+| Channel | Placement | Prepared URL (not active) | Why pending |
+| --- | --- | --- | --- |
+${pendingLinks
   .map(
     (link) =>
       `| ${link.channel} | ${link.placement} | ${linkUrl(link)} | ${link.purpose} |`,
@@ -232,10 +251,14 @@ const csvRows = marketingLinks.map((link) =>
 const masterCsv = `${csvHeader.join(',')}\n${csvRows.join('\n')}\n`;
 
 const pasteLinks = marketingLinks.filter(
-  (link) => link.manual && !serviceQrLinks.has(link.id) && link.utm.medium !== 'qr',
+  (link) =>
+    link.manual && !link.pending && !serviceQrLinks.has(link.id) && link.utm.medium !== 'qr',
 );
-const printQrLinks = marketingLinks.filter((link) => link.manual && link.utm.medium === 'qr');
+const printQrLinks = marketingLinks.filter(
+  (link) => link.manual && !link.pending && link.utm.medium === 'qr',
+);
 const preparedLinks = marketingLinks.filter((link) => !link.manual);
+const cheatPendingLinks = marketingLinks.filter((link) => link.pending);
 
 const cheatMd = `# Where to paste each marketing link — owner cheat sheet
 
@@ -258,6 +281,16 @@ ${pasteLinks
     (link, index) =>
       `${index + 1}. **${link.channel}** — ${link.placement}\n   Paste THIS URL:\n   \`${linkUrl(link)}\``,
   )
+  .join('\n\n')}
+
+## ⏳ PENDING — do NOT paste these yet
+
+These URLs are prepared so they are ready the moment the public profiles exist.
+They are intentionally **not** used on the website and must not be pasted
+anywhere until the blocker below is resolved.
+
+${cheatPendingLinks
+  .map((link) => `- **${link.channel}** — ${link.whereToPaste}\n  Prepared URL (inactive): \`${linkUrl(link)}\``)
   .join('\n\n')}
 
 ## 🖨️ OWNER MANUAL STEP — print/place these QR assets
@@ -402,7 +435,7 @@ if (CHECK_ONLY) {
   }
   console.log(`Wrote ${MASTER_MD}, ${MASTER_CSV}, ${CHEAT_MD}`);
   console.log(
-    `${marketingLinks.length} links across ${channelCount} channels · ${manualCount} owner manual steps · ${qrAssets.length} QR codes`,
+    `${marketingLinks.length} links (${pendingLinks.length} pending) across ${channelCount} channels · ${manualCount} owner manual steps · ${qrAssets.length} QR codes`,
   );
 }
 

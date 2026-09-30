@@ -58,13 +58,28 @@ export type MarketingLink = {
   manual: boolean;
   /** Exact owner action (CSV "Where Owner Must Paste It"). */
   whereToPaste: string;
+  /**
+   * Prepared but NOT active: the public profile URL does not exist yet (or is
+   * not final). Pending links never appear in the owner "paste this" cheat
+   * sheet as ready-to-use — they are listed in a separate PENDING section.
+   */
+  pending?: boolean;
 };
 
 const CHANNEL = {
   gbp: 'Google Business Profile',
   facebook: 'Facebook',
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+  x: 'X',
   nextdoor: 'Nextdoor',
   yelp: 'Yelp',
+  gab: 'Gab',
+  linkedin: 'LinkedIn',
+  parler: 'Parler',
+  bing: 'Bing Places',
+  apple: 'Apple Business Connect',
   email: 'Email',
   sms: 'SMS',
   truck: 'Truck QR',
@@ -108,6 +123,50 @@ export const marketingLinks: MarketingLink[] = [
     whereToPaste: 'Facebook Page → About → Website',
   },
   {
+    id: 'instagram_profile',
+    channel: CHANNEL.instagram,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'instagram', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'Identify visits from the Instagram profile website link.',
+    manual: true,
+    whereToPaste: 'Instagram → Edit profile → Website',
+  },
+  {
+    id: 'tiktok_profile',
+    channel: CHANNEL.tiktok,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'tiktok', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'Identify visits from the TikTok profile website link.',
+    manual: true,
+    whereToPaste: 'TikTok → Edit profile → Website',
+  },
+  {
+    id: 'youtube_profile',
+    channel: CHANNEL.youtube,
+    campaign: 'profile',
+    placement: 'Channel links / About page',
+    path: destinations.home,
+    utm: { source: 'youtube', medium: 'organic_video', campaign: 'profile' },
+    purpose: 'Identify visits from the YouTube channel links and video descriptions.',
+    manual: true,
+    whereToPaste: 'YouTube Studio → Customization → Basic info → Links (and video descriptions)',
+  },
+  {
+    id: 'x_profile',
+    channel: CHANNEL.x,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'x', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'Identify visits from the X profile website link.',
+    manual: true,
+    whereToPaste: 'X → Edit profile → Website',
+  },
+  {
     id: 'nextdoor_profile',
     channel: CHANNEL.nextdoor,
     campaign: 'profile',
@@ -128,6 +187,67 @@ export const marketingLinks: MarketingLink[] = [
     purpose: 'Identify visits from the Yelp business page (directory referral).',
     manual: true,
     whereToPaste: 'Yelp business page → Edit → Website',
+  },
+  {
+    id: 'gab_profile',
+    channel: CHANNEL.gab,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'gab', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'Identify visits from the Gab profile website link.',
+    manual: true,
+    whereToPaste: 'Gab → Edit profile → Links → Website',
+  },
+  {
+    id: 'bing_places',
+    channel: CHANNEL.bing,
+    campaign: 'places',
+    placement: 'Business listing website field',
+    path: destinations.home,
+    utm: { source: 'bing', medium: 'organic', campaign: 'places' },
+    purpose:
+      'Identify visits from the Bing Places listing once the profile is approved and live.',
+    manual: true,
+    whereToPaste: 'Bing Places → Business info → Website (after approval)',
+  },
+  {
+    id: 'apple_business_connect',
+    channel: CHANNEL.apple,
+    campaign: 'business_connect',
+    placement: 'Business listing website field',
+    path: destinations.home,
+    utm: { source: 'apple_maps', medium: 'organic', campaign: 'business_connect' },
+    purpose:
+      'Identify visits from the Apple Business Connect / Apple Maps listing once approved and live.',
+    manual: true,
+    whereToPaste: 'Apple Business Connect → Business details → Website (after approval)',
+  },
+  {
+    id: 'linkedin_profile',
+    channel: CHANNEL.linkedin,
+    campaign: 'profile',
+    placement: 'Company Page website field',
+    path: destinations.home,
+    utm: { source: 'linkedin', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'PENDING — LinkedIn Company Page identity verification is not complete.',
+    manual: true,
+    whereToPaste:
+      'PENDING URL — do not paste anywhere until the owner supplies the final public Company Page URL',
+    pending: true,
+  },
+  {
+    id: 'parler_profile',
+    channel: CHANNEL.parler,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'parler', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'PENDING — no unique public business-profile URL exists yet.',
+    manual: true,
+    whereToPaste:
+      'PENDING UNIQUE PUBLIC PROFILE URL — the owner’s current app.parler.com/profile route is generic; do not publish until a unique public profile URL exists',
+    pending: true,
   },
   {
     id: 'email_signature',

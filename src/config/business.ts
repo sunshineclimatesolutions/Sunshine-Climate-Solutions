@@ -54,10 +54,24 @@ export const business = {
   // HVACBusiness sameAs structured data — never hard-code these elsewhere.
   // Yelp is a neutral business-directory link only: never solicit Yelp
   // reviews and never add Yelp review-request CTAs.
+  // OUTBOUND links only: these are the clean public profile URLs. Never append
+  // inbound campaign UTMs here — the tracked website-return links live in
+  // src/config/marketing-links.ts and go INSIDE each platform's website field.
+  // LinkedIn and Parler are PREPARED but intentionally empty: do not publish a
+  // link until the owner supplies the final public Company Page URL (LinkedIn)
+  // and a unique public profile URL (Parler). Empty values are filtered out of
+  // the footer and sameAs automatically.
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61594915980759',
+    instagram: 'https://www.instagram.com/sunshine_climate_solutions/',
+    tiktok: 'https://www.tiktok.com/@sunshineclimatesolutions',
+    youtube: 'https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg',
+    x: 'https://x.com/SCS_FL_HVAC',
     nextdoor: 'https://nextdoor.com/page/sunshine-climate-solutions/',
     yelp: 'https://www.yelp.com/biz/sunshine-climate-solutions-brooksville',
+    gab: 'https://gab.com/Sunshine_Climate_Solutions',
+    linkedin: '',
+    parler: '',
   },
 
   serviceArea: {
