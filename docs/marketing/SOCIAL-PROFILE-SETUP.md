@@ -120,7 +120,7 @@ Checked 2026-09-30.
 | LinkedIn | Company Page cover | **1512×256** | LinkedIn Help — same page |
 | Gab | Avatar | Square 1:1, ≤5 MB — oversized files are downscaled to **400×400** | Gab Help — Optimum video/image upload specs: `https://help.gab.com/faq/optimum-video-image-specs-social` |
 | Gab | Profile header | 3:1, downscaled to 1500×500 (profile header 1330×440) | Gab Help — same page |
-| Parler | Profile picture | **No official published spec located (2026-09-30).** Use a 400×400 1:1 square when the profile exists. | — |
+| Parler | Profile picture | **No official published spec located (2026-09-30).** Use a 400×400 1:1 square. | — |
 
 Do not create a new SCS logo for any of these; use the avatar exports above or
 the existing `public/brand/` assets.
@@ -153,12 +153,7 @@ Website: [paste the YouTube tracked URL from WHERE-TO-PASTE-UTM-LINKS.md]
   is in progress. The UTM link is prepared in the registry
   (`linkedin_profile`, marked pending) and must not be pasted anywhere yet. No
   LinkedIn link is published on the website or in structured data.
-- **Parler — waiting on a unique public profile URL.** The owner's current
-  `app.parler.com/profile` route is generic, not a unique business-profile URL.
-  The UTM link is prepared in the registry (`parler_profile`, marked pending)
-  and must not be published. No Parler link is published on the website or in
-  structured data.
 
-When either URL is final, update `src/config/business.ts` (public URL), remove
-the `pending` flag in `src/config/marketing-links.ts`, and regenerate the
+When the LinkedIn URL is final, update `src/config/business.ts` (public URL),
+remove the `pending` flag in `src/config/marketing-links.ts`, and regenerate the
 marketing docs with `npm run marketing:links`.

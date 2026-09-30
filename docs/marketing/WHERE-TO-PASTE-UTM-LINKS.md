@@ -50,19 +50,23 @@ Every URL below is final and ready to copy. Nothing here changes the website.
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=gab&utm_medium=organic_social&utm_campaign=profile`
 
-10. **Bing Places** — Business listing website field
+10. **Parler** — Profile website field
+   Paste THIS URL:
+   `https://sunshineclimatesolutions.com/?utm_source=parler&utm_medium=organic_social&utm_campaign=profile`
+
+11. **Bing Places** — Business listing website field
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=bing&utm_medium=organic&utm_campaign=places`
 
-11. **Apple Business Connect** — Business listing website field
+12. **Apple Business Connect** — Business listing website field
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=apple_maps&utm_medium=organic&utm_campaign=business_connect`
 
-12. **Email** — Email signature
+13. **Email** — Email signature
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=email&utm_medium=email&utm_campaign=signature`
 
-13. **SMS** — Saved SMS link
+14. **SMS** — Saved SMS link
    Paste THIS URL:
    `https://sunshineclimatesolutions.com/?utm_source=sms&utm_medium=direct_message&utm_campaign=customer_outreach`
 
@@ -74,9 +78,6 @@ anywhere until the blocker below is resolved.
 
 - **LinkedIn** — PENDING URL — do not paste anywhere until the owner supplies the final public Company Page URL
   Prepared URL (inactive): `https://sunshineclimatesolutions.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=profile`
-
-- **Parler** — PENDING UNIQUE PUBLIC PROFILE URL — the owner’s current app.parler.com/profile route is generic; do not publish until a unique public profile URL exists
-  Prepared URL (inactive): `https://sunshineclimatesolutions.com/?utm_source=parler&utm_medium=organic_social&utm_campaign=profile`
 
 ## 🖨️ OWNER MANUAL STEP — print/place these QR assets
 

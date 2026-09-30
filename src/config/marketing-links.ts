@@ -200,6 +200,17 @@ export const marketingLinks: MarketingLink[] = [
     whereToPaste: 'Gab → Edit profile → Links → Website',
   },
   {
+    id: 'parler_profile',
+    channel: CHANNEL.parler,
+    campaign: 'profile',
+    placement: 'Profile website field',
+    path: destinations.home,
+    utm: { source: 'parler', medium: 'organic_social', campaign: 'profile' },
+    purpose: 'Identify visits from the Parler profile website link.',
+    manual: true,
+    whereToPaste: 'Parler → Edit profile → Links → Website',
+  },
+  {
     id: 'bing_places',
     channel: CHANNEL.bing,
     campaign: 'places',
@@ -234,19 +245,6 @@ export const marketingLinks: MarketingLink[] = [
     manual: true,
     whereToPaste:
       'PENDING URL — do not paste anywhere until the owner supplies the final public Company Page URL',
-    pending: true,
-  },
-  {
-    id: 'parler_profile',
-    channel: CHANNEL.parler,
-    campaign: 'profile',
-    placement: 'Profile website field',
-    path: destinations.home,
-    utm: { source: 'parler', medium: 'organic_social', campaign: 'profile' },
-    purpose: 'PENDING — no unique public business-profile URL exists yet.',
-    manual: true,
-    whereToPaste:
-      'PENDING UNIQUE PUBLIC PROFILE URL — the owner’s current app.parler.com/profile route is generic; do not publish until a unique public profile URL exists',
     pending: true,
   },
   {

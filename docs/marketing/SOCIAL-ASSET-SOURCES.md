@@ -14,6 +14,7 @@ Retrieved: **2026-09-30**.
 | YouTube | `youtube.svg` | `https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/youtube.svg` | Simple Icons | CC0 1.0; YouTube logo is a trademark of Google LLC; unmodified geometry, link use only. |
 | X | `x.svg` | `https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/x.svg` | Simple Icons | CC0 1.0; X logo is a trademark of X Corp.; unmodified geometry, link use only. |
 | Gab | `gab.svg` | `https://develop.gab.com/legacy/gab_logo.svg` (linked from the official brand page `https://develop.gab.com/about/assets`) | Gab AI Inc. — official brand asset download | Official downloadable wordmark, used unmodified per the Gab brand assets page ("By using the Gab resources on this site, you agree to follow our Terms of Service"). Gab brand green `#30CE7D` is documented on that page; the downloadable SVG itself is a blue (`#4361EE`) export and is used as supplied. |
+| Parler | `parler.svg` | `https://www.parler.com/icons/parler-social.svg` (asset served by the official site) | Parler (parler.com) — official site asset | Official Parler social icon (red `#E50038` rounded square with the white P mark), used unmodified for link purposes. The 2022 Parler wordmark is additionally published on Wikimedia Commons as a `PD-textlogo` (simple text logo, public domain); the icon stored here is the asset served by parler.com itself. |
 
 ### How the icons are rendered
 

@@ -57,10 +57,9 @@ export const business = {
   // OUTBOUND links only: these are the clean public profile URLs. Never append
   // inbound campaign UTMs here — the tracked website-return links live in
   // src/config/marketing-links.ts and go INSIDE each platform's website field.
-  // LinkedIn and Parler are PREPARED but intentionally empty: do not publish a
-  // link until the owner supplies the final public Company Page URL (LinkedIn)
-  // and a unique public profile URL (Parler). Empty values are filtered out of
-  // the footer and sameAs automatically.
+  // LinkedIn is PREPARED but intentionally empty: do not publish a link until
+  // the owner supplies the final public Company Page URL. Empty values are
+  // filtered out of the footer and sameAs automatically.
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61594915980759',
     instagram: 'https://www.instagram.com/sunshine_climate_solutions/',
@@ -70,8 +69,8 @@ export const business = {
     nextdoor: 'https://nextdoor.com/page/sunshine-climate-solutions/',
     yelp: 'https://www.yelp.com/biz/sunshine-climate-solutions-brooksville',
     gab: 'https://gab.com/Sunshine_Climate_Solutions',
+    parler: 'https://app.parler.com/Sunshine_Climate_Solutions',
     linkedin: '',
-    parler: '',
   },
 
   serviceArea: {

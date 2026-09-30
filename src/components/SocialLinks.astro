@@ -11,10 +11,12 @@
 //    existing colored logos.
 //  - Gab uses its official downloadable wordmark (public/images/social/gab.svg,
 //    from the Gab brand assets page), used unmodified.
+//  - Parler uses its official social icon (public/images/social/parler.svg,
+//    from the parler.com site assets), used unmodified.
 //  - Outbound profile links only: never append inbound campaign UTMs here.
 //  - The visible platform label carries the meaning (logos/glyphs are
-//    decorative, alt="" / aria-hidden). LinkedIn and Parler stay hidden until
-//    business.ts carries their final public URLs.
+//    decorative, alt="" / aria-hidden). LinkedIn stays hidden until
+//    business.ts carries its final public Company Page URL.
 // Yelp is presented as a neutral business-directory link only — no Yelp
 // review solicitation anywhere (see business.ts).
 import { business } from '../config/business';
@@ -114,6 +116,16 @@ const allProfiles: Profile[] = [
     img: '/images/social/gab.svg',
     width: 50,
     height: 30,
+    tileOnDark: false,
+  },
+  {
+    href: business.social.parler,
+    label: 'Parler',
+    kind: 'img',
+    // Official Parler social icon (parler.com site assets), used unmodified.
+    img: '/images/social/parler.svg',
+    width: 139,
+    height: 139,
     tileOnDark: false,
   },
 ];

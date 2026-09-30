@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T17:52:49.763Z",
+  "generatedAt": "2026-09-30T18:57:25.220Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 17,
   "sitemapUrls": [
@@ -209,11 +209,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 49,
-      "externalLinks": 10,
+      "externalLinks": 11,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -234,6 +242,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -337,11 +346,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 35,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -359,6 +376,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -468,11 +486,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -490,6 +516,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -526,7 +553,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 570,
+      "wordCount": 576,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -577,6 +604,14 @@
           "hasAlt": true
         },
         {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
+        },
+        {
           "src": "/brand/logo-dark.png",
           "alt": "",
           "loading": "eager",
@@ -631,11 +666,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 30,
-      "externalLinks": 17,
+      "externalLinks": 19,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -653,6 +696,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -775,11 +819,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 41,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -798,6 +850,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -829,7 +882,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 111,
+      "wordCount": 117,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -896,6 +949,14 @@
           "hasAlt": true
         },
         {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
+        },
+        {
           "src": "/brand/logo-dark.png",
           "alt": "",
           "loading": "eager",
@@ -950,11 +1011,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 17,
+      "externalLinks": 19,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -972,6 +1041,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://g.page/r/CTXPJRFuZT-tEAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
@@ -1081,11 +1151,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 30,
-      "externalLinks": 12,
+      "externalLinks": 13,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1103,6 +1181,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1221,11 +1300,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 32,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1244,6 +1331,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1355,11 +1443,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 41,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1377,6 +1473,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1484,11 +1581,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 39,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1506,6 +1611,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1621,11 +1727,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 37,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1644,6 +1758,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1758,11 +1873,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 37,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1781,6 +1904,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -1892,11 +2016,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -1914,6 +2046,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -2025,11 +2158,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2047,6 +2188,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -2160,11 +2302,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 36,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2182,6 +2332,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -2305,11 +2456,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 32,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2328,6 +2487,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
@@ -2431,11 +2591,19 @@
           "width": "50",
           "height": "30",
           "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
         }
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 31,
-      "externalLinks": 9,
+      "externalLinks": 10,
       "internalLinkTargets": [
         "/",
         "/about/",
@@ -2453,6 +2621,7 @@
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
