@@ -13,13 +13,31 @@ neutral directory (never solicited — see its policy).
 4. Never condition anything on the review's content or rating.
 5. Reply to every review — positive and negative — professionally and without arguing.
 
-## When to ask (technician / owner handoff)
+## When to ask (by completed work type)
 
-- **Best moment:** on-site, at the end of the visit, after explaining the findings and
-  confirming the customer is satisfied. Hand the review card / show the QR.
-- **Second-best:** the follow-up message 1–3 days after service (after the invoice settles).
-- **Never:** before the work starts; after an unresolved complaint; more than once without a
-  fresh visit.
+Ask after any of:
+
+- successful repair
+- completed maintenance
+- successful replacement
+- resolved comfort complaint
+- appropriate commercial completion
+
+**Best moment:** on-site, at the end of the visit, after explaining the findings and
+confirming the customer is satisfied. Hand the review card / show the QR.
+**Second-best:** the direct review link approximately 30–60 minutes after completion.
+**Never:** before the work starts; after an unresolved complaint; more than once without a
+fresh visit.
+
+## Structured process
+
+1. **Confirm the customer is satisfied.**
+2. **Send the direct review link approximately 30–60 minutes after completion.**
+3. **Send one polite reminder after approximately 2–3 days** if necessary.
+4. **Stop afterward.** No further requests on that job.
+
+Never gate reviews, require 5-star ratings, fabricate reviews, or offer improper incentives
+for positive reviews.
 
 ## Review QR / link workflow
 
@@ -50,6 +68,16 @@ Keep it short, no pressure, no incentive language.
 > rather fix it than have you settle.
 >
 > — Aaron, Sunshine Climate Solutions
+
+## Referral prompt
+
+After legitimate positive feedback (a review, a thank-you message, a repeat compliment),
+include one line:
+
+> "If you know anyone nearby who needs AC help, feel free to send them our number."
+
+Do not attach incentives that platform policies prohibit, and never fabricate referral
+activity.
 
 ## Response framework
 
