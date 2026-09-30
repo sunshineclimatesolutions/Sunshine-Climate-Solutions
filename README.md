@@ -98,6 +98,19 @@ instructions: **`docs/DEPLOYMENT.md`**.
 - `docs/DESIGN-SYSTEM.md` — design tokens and typography
 - `docs/LOGO-PROMPTS.md` — three ready-to-paste Ideogram prompts for the final logo
 
+### Canonical marketing system
+
+- `docs/seo/90-DAY-CONTENT-PLAN.md` — **strategy**: two engines, audiences, 12-week campaign
+  map, query/page ownership, CTAs, Field Proof requirements
+- `docs/marketing/CONTENT-OPERATING-SYSTEM.md` — **execution manual**: weekly production
+  workflow, platform roles, SOPs, follow-up, measurement, decision rules
+- `docs/marketing/90-DAY-CONTENT-CALENDAR.csv` — week-by-week execution tracker
+- `docs/marketing/WEEKLY-MARKETING-SCORECARD.md` — weekly KPI capture
+- `docs/marketing/REVIEW-GROWTH-SYSTEM.md` — review and referral workflow
+- `docs/marketing/UTM-MASTER-LINKS.md` / `docs/marketing/WHERE-TO-PASTE-UTM-LINKS.md` —
+  generated UTM link registry and owner cheat sheet (source of truth:
+  `src/config/marketing-links.ts`; regenerate with `npm run marketing:links`)
+
 ## Notes
 
 - Fonts (Archivo, Public Sans) are self-hosted under SIL OFL — see `public/fonts/`.

@@ -5,6 +5,15 @@ https://sunshineclimatesolutions.com · **Branch:** `feat/seo-local-audit` (base
 **Production HEAD at audit:** `1080de3` · **Status: NOT DEPLOYED — awaiting owner and
 professional auditor approval.**
 
+> **Historical snapshot (September 2026).** This report records the state at the audit date
+> above and is retained for reference. The active, canonical marketing system lives in
+> `docs/seo/90-DAY-CONTENT-PLAN.md` (strategy) and
+> `docs/marketing/CONTENT-OPERATING-SYSTEM.md` (execution), with the
+> `docs/marketing/90-DAY-CONTENT-CALENDAR.csv` tracker,
+> `docs/marketing/WEEKLY-MARKETING-SCORECARD.md` measurement, and
+> `docs/marketing/REVIEW-GROWTH-SYSTEM.md` review workflow. The 30/60/90 plan summaries in
+> this audit are historical and are superseded by the canonical plan.
+
 ## EXECUTIVE SUMMARY
 
 The site is technically clean and honestly written; it was simply not yet built for local

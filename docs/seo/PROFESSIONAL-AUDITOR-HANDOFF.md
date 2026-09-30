@@ -121,8 +121,11 @@ rationale; anchor rules. `INTERNAL-LINK-MAP.md`.
 
 ## 16. Content plan
 
-90-day plan mapped to questions/clusters/pages/CTAs (`90-DAY-CONTENT-PLAN.md`); five diagnostic
-FAQs already implemented.
+Canonical 90-day marketing system: strategy and 12-week campaign map in
+`90-DAY-CONTENT-PLAN.md`; execution manual (two engines, weekly workflow, SOPs, measurement,
+decision rules) in `docs/marketing/CONTENT-OPERATING-SYSTEM.md`; week-by-week tracker in
+`docs/marketing/90-DAY-CONTENT-CALENDAR.csv`; weekly KPIs in
+`docs/marketing/WEEKLY-MARKETING-SCORECARD.md`; five diagnostic FAQs already implemented.
 
 ## 17. Backlink / local-authority plan
 
