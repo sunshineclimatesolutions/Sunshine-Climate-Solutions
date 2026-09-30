@@ -81,6 +81,9 @@ with the owner; never silently work around this file.
 | `node scripts/links.mjs` | Broken internal-link check on `dist/` (run after build) |
 | `node scripts/photo.mjs <path>` | Photo guardrails: dimensions/size/format check; `--resize 2000 --write` downscales in place |
 | `node scripts/indexnow.mjs --range <from>..<to>` | Submit changed canonical URLs to IndexNow (auto-runs on pushes to `main` via `.github/workflows/indexnow.yml`; see `docs/INDEXNOW.md`) |
+| `npm run marketing:links` | Generate/refresh UTM link docs + campaign QR codes from `src/config/marketing-links.ts` (see `docs/marketing/UTM-MASTER-LINKS.md`) |
+| `npm run marketing:qr` | Force-regenerate every campaign QR code (`public/marketing/qr/`) |
+| `npm run marketing:verify` | Validate the UTM registry, check generated docs for drift, decode-verify every QR, run attribution tests (needs preview server) |
 
 Build notices like "The collection 'projects' does not exist or is empty" are **expected and
 intentional** while those collections are empty — not errors.
