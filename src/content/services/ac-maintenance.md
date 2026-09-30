@@ -6,9 +6,9 @@ summary: >-
   cleaning, condensate drain flushing, blower-compartment cleaning, electrical testing and
   an evaluation of your system's operation.
 metaDescription: >-
-  $75 per system, per visit: routine coil cleaning, condensate drain flushing,
-  blower-compartment cleaning, electrical testing and a full system check. Spring Hill
-  based, serving Tampa Bay. Call (727) 661-5200.
+  $75 per system, per visit: coil cleaning, drain flush, blower-compartment
+  cleaning, electrical testing and a full system check. Spring Hill based,
+  serving Tampa Bay.
 icon: shield
 order: 3
 ---

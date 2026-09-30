@@ -5,17 +5,20 @@ Method: built output inspection (`scripts/seo-inventory.mjs`), the project's aut
 (https://sunshineclimatesolutions.com, read-only), and the documented history in
 `docs/VERIFICATION.md`. No SEO-tool scores were chased; every finding states its business impact.
 
-Severity: **CRITICAL / HIGH / MEDIUM / LOW / INFORMATIONAL**
+Severity classes for **technical SEO defects**: CRITICAL / HIGH / MEDIUM / LOW / INFORMATIONAL.
+Two items below are deliberately **not** technical defects and use separate classes:
+**VERIFY (external)** = an inconsistency observed in public data that only the authenticated
+platform can confirm; **OPPORTUNITY (external)** = an external-distribution improvement.
 
 ## Findings
 
 | # | Severity | Finding | Impact | Action |
 | --- | --- | --- | --- | --- |
-| 1 | HIGH | **Google Business Profile pin appears to resolve near Tampa/Carrollwood (~28.11, -82.54), ~20 miles south of Spring Hill** (citation research, Sept 2026). For a service-area business Google may approximate the pin, but a wrong city anchor weakens Maps relevance for Spring Hill searches — the primary market. | Local pack visibility for the home market | **Owner action:** open the GBP, confirm/repair the service-area and address display. Repo cannot change this. |
-| 2 | HIGH | **No Bing Places / Apple Business Connect presence observed** (public search). Bing/Copilot and Siri/Apple Maps are blind to the business. | Lost non-Google local visibility | **Owner action:** create/claim both (guide: `docs/seo/OTHER-SEARCH-CHANNELS.md`). |
+| 1 | VERIFY (external) | **Public local-business data shows a locality/geographic inconsistency** (a public place reference resolving near Tampa/Carrollwood, plus a Yelp city of "brooksville") that should be checked against the authenticated Google Business Profile. **The actual GBP map pin has not been independently verified by this audit.** | Local relevance *if* confirmed in the authenticated profile | **Owner action:** open the authenticated Google Business Profile and verify the service-area/location settings. Do not move or change the pin based solely on third-party/local-search data. |
+| 2 | OPPORTUNITY (external) | **No Bing Places / Apple Business Connect presence observed** (public search). Missing presence on Bing Places / Apple Business Connect does not prevent Google organic ranking, but establishing the profiles expands search/map visibility and strengthens entity consistency. | Non-Google visibility (marketing opportunity, not a technical defect) | **Owner action:** create/claim both when convenient (guide: `docs/seo/OTHER-SEARCH-CHANNELS.md`). Production blocker: **no**. |
 | 3 | MEDIUM | **www host serves the site directly (HTTP 200, no host redirect).** Canonical tags correctly point to the apex, so duplicate-index risk is mitigated, but a redirect is the cleaner signal. | Minor duplicate-host dilution | **Owner action (optional):** add the documented `www → apex` Redirect Rule in Cloudflare (`docs/DEPLOYMENT.md`). Not changed here (no Cloudflare authorization). |
 | 4 | MEDIUM | **`/service-area/` was the thinnest indexable page (206 words).** Thin coverage pages are weak targets for coverage queries and waste internal-link equity. | Service-area query coverage | **Implemented:** primary-market hub `/service-area/spring-hill-fl/` (789 words, unique content) + hub links from homepage and service-area; service-area page retained as the county-level overview. |
-| 5 | MEDIUM | **Yelp listing slug says “brooksville” while every other citation says Spring Hill** (public observation). Inconsistent locality signals across citations. | Citation consistency / entity clarity | **Owner action:** correct the Yelp city/address display (no solicited Yelp reviews — policy). |
+| 5 | VERIFY (external) | **Yelp listing slug says “brooksville” while every other citation says Spring Hill** (public observation). Inconsistent locality signals across citations; the listing itself could not be read behind the login/403 wall. | Citation consistency / entity clarity | **Owner action:** open Yelp and verify/correct the locality if it is in fact wrong (no solicited Yelp reviews — policy). |
 | 6 | LOW | **404 page emits `meta robots: index, follow`** but is served with HTTP 404, so it cannot be indexed; canonical points at `/404/`. Harmless but untidy. | None material | Documented; no change (status code governs). |
 | 7 | LOW | **FAQ structured data not emitted.** Google restricts FAQ rich results to authoritative government/health sites; adding markup without eligible rich results adds risk with no gain. | None | Deliberate decision (`STRUCTURED-DATA-AUDIT.md`). |
 | 8 | INFORMATIONAL | **IndexNow is working** — `.github/workflows/indexnow.yml` succeeded on the latest `main` push (verified via GitHub Actions). Bing receives changed URLs automatically. | Non-Google freshness | Keep. |

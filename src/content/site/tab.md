@@ -2,9 +2,9 @@
 # TAB & commissioning page copy. Rendered by src/pages/tab-commissioning-support.astro.
 metaTitle: TAB & Commissioning Support in Tampa Bay | Sunshine Climate Solutions
 metaDescription: >-
-  Air and hydronic testing, adjusting, and balancing; airflow measurements and
-  balancing reports; duct traverses; outside-air verification; building-pressure
-  checks; and commissioning support for professional teams.
+  TAB and commissioning support for Tampa Bay teams: air and hydronic balancing,
+  airflow measurement, duct traverses, outside-air verification, and
+  building-pressure checks.
 
 hero:
   eyebrow: For Contractors, Engineers & Property Teams

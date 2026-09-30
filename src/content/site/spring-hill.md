@@ -1,9 +1,8 @@
 ﻿---
 metaTitle: HVAC Service in Spring Hill, FL
 metaDescription: >-
-  Owner-operated HVAC service in Spring Hill, Florida — AC repair and diagnostics, $75
-  maintenance visits, replacement estimates, airflow and ductwork troubleshooting, and light
-  commercial support. $50 service call, waived when you proceed with the repair.
+  HVAC service in Spring Hill, FL for AC repair, $75 maintenance, replacement, airflow and
+  ductwork. Owner-operated, repair-first service.
 cityHub:
   hero:
     heading: HVAC Service in Spring Hill, Florida
@@ -17,8 +16,8 @@ cityHub:
       - >-
         Spring Hill is our home market. We work on the same mix of systems found across Hernando
         County: split systems and heat pumps, packaged units, and the ductwork that connects
-        them — in the established neighborhoods around Spring Hill Drive and Mariner Boulevard
-        and out toward Weeki Wachee, Brooksville, and Hernando Beach.
+        them — for homes and businesses throughout Spring Hill and nearby Hernando County
+        communities such as Brooksville, Weeki Wachee, and Hernando Beach.
       - >-
         Local conditions shape how these systems behave. Long cooling seasons, high humidity,
         and hot attics put constant demand on equipment and ducts. That is why we measure

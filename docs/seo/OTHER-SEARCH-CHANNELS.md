@@ -2,6 +2,11 @@
 
 Google is not the whole search market. Status and owner actions for the rest.
 
+**Classification note:** missing presence on Bing Places / Apple Business Connect does not
+prevent Google organic ranking, but establishing the profiles expands search/map visibility and
+strengthens entity consistency. These are **external-distribution opportunities**, not
+technical SEO defects and not production blockers.
+
 ## Bing / Microsoft (Bing, Copilot, DuckDuckGo partially)
 
 - **IndexNow: working.** `.github/workflows/indexnow.yml` runs on every push to `main` and

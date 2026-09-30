@@ -4,9 +4,8 @@
 # src/config/business.ts (which drives the footer and homepage).
 metaTitle: HVAC Service Areas in Tampa Bay
 metaDescription: >-
-  Sunshine Climate Solutions serves Hernando, Pasco, Pinellas, and Hillsborough
-  counties — Tampa Bay and surrounding communities. Not sure if you're covered?
-  Call or text (727) 661-5200.
+  Serving Hernando, Pasco, Pinellas, and Hillsborough counties — Spring Hill and
+  Tampa Bay. Not sure if you're covered? Call or text (727) 661-5200.
 
 hero:
   eyebrow: Service Area

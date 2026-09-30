@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T04:08:12.122Z",
+  "generatedAt": "2026-09-30T12:56:43.335Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 17,
   "sitemapUrls": [
@@ -894,8 +894,8 @@
       "route": "/privacy/",
       "title": "Privacy | Sunshine Climate Solutions",
       "titleLength": 36,
-      "description": "How Sunshine Climate Solutions handles information you send us: what the request form collects, how Web3Forms processes it, how optional Google Analytics and cookieless analytics are used, and how to reach us instead.",
-      "descriptionLength": 217,
+      "description": "How Sunshine Climate Solutions handles your information: the request form, Web3Forms, optional Google Analytics, cookieless analytics, and how to reach us.",
+      "descriptionLength": 155,
       "canonical": "https://sunshineclimatesolutions.com/privacy/",
       "robots": "index, follow",
       "h1": [
@@ -1014,8 +1014,8 @@
       "route": "/service-area/",
       "title": "HVAC Service Areas in Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 60,
-      "description": "Sunshine Climate Solutions serves Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and surrounding communities. Not sure if you're covered? Call or text (727) 661-5200.",
-      "descriptionLength": 184,
+      "description": "Serving Hernando, Pasco, Pinellas, and Hillsborough counties — Spring Hill and Tampa Bay. Not sure if you're covered? Call or text (727) 661-5200.",
+      "descriptionLength": 146,
       "canonical": "https://sunshineclimatesolutions.com/service-area/",
       "robots": "index, follow",
       "h1": [
@@ -1139,8 +1139,8 @@
       "route": "/service-area/spring-hill-fl/",
       "title": "HVAC Service in Spring Hill, FL | Sunshine Climate Solutions",
       "titleLength": 60,
-      "description": "Owner-operated HVAC service in Spring Hill, Florida — AC repair and diagnostics, $75 maintenance visits, replacement estimates, airflow and ductwork troubleshooting, and light commercial support. $50 service call, waived when you proceed with the repair.",
-      "descriptionLength": 254,
+      "description": "HVAC service in Spring Hill, FL for AC repair, $75 maintenance, replacement, airflow and ductwork. Owner-operated, repair-first service.",
+      "descriptionLength": 136,
       "canonical": "https://sunshineclimatesolutions.com/service-area/spring-hill-fl/",
       "robots": "index, follow",
       "h1": [
@@ -1259,8 +1259,8 @@
       "route": "/services/",
       "title": "HVAC Services & AC Repair in Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 67,
-      "description": "AC repair and diagnostics, replacements and installations, airflow and ductwork troubleshooting, commercial service, and TAB/commissioning support across Tampa Bay. Free estimates.",
-      "descriptionLength": 180,
+      "description": "AC repair, maintenance, replacement, airflow and ductwork, commercial service, and TAB/commissioning support across Tampa Bay. Free estimates.",
+      "descriptionLength": 142,
       "canonical": "https://sunshineclimatesolutions.com/services/",
       "robots": "index, follow",
       "h1": [
@@ -1375,8 +1375,8 @@
       "route": "/services/ac-maintenance/",
       "title": "AC Maintenance in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 70,
-      "description": "$75 per system, per visit: routine coil cleaning, condensate drain flushing, blower-compartment cleaning, electrical testing and a full system check. Spring Hill based, serving Tampa Bay. Call (727) 661-5200.",
-      "descriptionLength": 208,
+      "description": "$75 per system, per visit: coil cleaning, drain flush, blower-compartment cleaning, electrical testing and a full system check. Spring Hill based, serving Tampa Bay.",
+      "descriptionLength": 165,
       "canonical": "https://sunshineclimatesolutions.com/services/ac-maintenance/",
       "robots": "index, follow",
       "h1": [
@@ -1500,8 +1500,8 @@
       "route": "/services/ac-repair-diagnostics/",
       "title": "AC Repair in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 65,
-      "description": "AC repair and diagnostics in Spring Hill and across Tampa Bay. Owner-operated, repair-first troubleshooting with clear pricing: $50 service call, waived when you proceed with the repair. Free estimates.",
-      "descriptionLength": 202,
+      "description": "AC repair and diagnostics in Spring Hill and across Tampa Bay. Repair-first troubleshooting; $50 service call, waived when you proceed with the repair.",
+      "descriptionLength": 151,
       "canonical": "https://sunshineclimatesolutions.com/services/ac-repair-diagnostics/",
       "robots": "index, follow",
       "h1": [
@@ -1624,8 +1624,8 @@
       "route": "/services/airflow-ductwork/",
       "title": "Airflow & Ductwork in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 74,
-      "description": "Airflow and ductwork troubleshooting in Spring Hill and across Tampa Bay: hot rooms, weak registers, humidity problems, duct leakage, and balancing. Owner-operated diagnostics with clear explanations and free estimates.",
-      "descriptionLength": 219,
+      "description": "Hot rooms, weak airflow, humidity, and duct problems in Spring Hill and across Tampa Bay — diagnosed with static pressure and measured airflow. Free estimates.",
+      "descriptionLength": 159,
       "canonical": "https://sunshineclimatesolutions.com/services/airflow-ductwork/",
       "robots": "index, follow",
       "h1": [
@@ -1862,10 +1862,10 @@
     },
     {
       "route": "/services/replacement-installation/",
-      "title": "AC Replacement & Installation in Spring Hill & Tampa Bay | Sunshine Climate Solutions",
-      "titleLength": 85,
-      "description": "AC and heat pump replacement and installation in Spring Hill and across Tampa Bay. Free estimates, options explained in plain language, and honest repair-versus-replace advice from an owner-operated company.",
-      "descriptionLength": 207,
+      "title": "AC Replacement & Installation in Spring Hill | Sunshine Climate Solutions",
+      "titleLength": 73,
+      "description": "AC and heat pump replacement and installation in Spring Hill and across Tampa Bay. Free estimates and honest repair-versus-replace advice.",
+      "descriptionLength": 138,
       "canonical": "https://sunshineclimatesolutions.com/services/replacement-installation/",
       "robots": "index, follow",
       "h1": [
@@ -1986,8 +1986,8 @@
       "route": "/tab-commissioning-support/",
       "title": "TAB & Commissioning Support in Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 69,
-      "description": "Air and hydronic testing, adjusting, and balancing; airflow measurements and balancing reports; duct traverses; outside-air verification; building-pressure checks; and commissioning support for professional teams.",
-      "descriptionLength": 213,
+      "description": "TAB and commissioning support for Tampa Bay teams: air and hydronic balancing, airflow measurement, duct traverses, outside-air verification, and building-pressure checks.",
+      "descriptionLength": 171,
       "canonical": "https://sunshineclimatesolutions.com/tab-commissioning-support/",
       "robots": "index, follow",
       "h1": [

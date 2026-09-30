@@ -12,10 +12,17 @@ search. This pass created the missing search architecture without violating the 
 truthfulness rules: a keyword universe and page map, five diagnostic FAQs, localized titles on
 the residential service pages, internal links between sibling intents, `Service` +
 `BreadcrumbList` structured data with visible breadcrumbs, and — most importantly — **one
-genuinely useful primary-market hub for Spring Hill** instead of a city-page farm. The
-highest-impact remaining problems are off-site and owner-controlled: a Google Business Profile
-pin that appears ~20 miles south of the market, missing Bing/Apple listings, and a Yelp city
-mismatch. No rankings are promised; no data was fabricated.
+genuinely useful primary-market hub for Spring Hill** instead of a city-page farm.
+
+### How to read this report (three separate tracks)
+
+| Track | What it covers | Current state |
+| --- | --- | --- |
+| **TECHNICAL SEO** | Crawlability, canonicals, sitemap/robots, titles/H1s, schema validity, links, performance hygiene | **Clean — no Critical/High defects.** One optional item (`www → apex` redirect; canonical already mitigates). Verified by `verify-seo` 25/25 and the full suite |
+| **LOCAL SEO** | Primary-market relevance, keyword-to-page ownership, hub/service content, local internal linking | **Improved this pass** (Spring Hill hub, localized titles, FAQs, breadcrumbs). Next gains depend on real query data |
+| **EXTERNAL PLATFORM / CITATION OPPORTUNITIES** | GBP locality consistency (unverified), Yelp locality, Bing Places / Apple Business Connect, chambers/directories | **Owner verification/opportunity items** — not production blockers; missing Bing/Apple presence does not prevent Google organic ranking but expands search/map visibility and entity consistency |
+
+No rankings are promised; no data was fabricated.
 
 ## CURRENT SEARCH POSITION
 
@@ -41,18 +48,31 @@ mismatch. No rankings are promised; no data was fabricated.
 
 ## WHAT IS HOLDING SCS BACK
 
-1. **GBP pin/location** appears ~20 miles off-market (owner fix; highest local impact).
-2. **No Bing Places / Apple Business Connect** presence (owner fix).
-3. **Thin citation footprint** overall (new business; expected).
-4. **Yelp city says "brooksville"** (owner fix).
-5. **Previously thin service-area page** and unlocalized residential titles (fixed in this pass).
-6. **No GSC/GBP measurement loop yet** (owner export enables it).
+**Technical SEO:** nothing material — the site is crawlable, canonical, schema-valid, and
+fast. The only optional technical item is the `www → apex` redirect (canonical already handles
+duplicate-host risk).
+
+**Local SEO:** previously thin service-area content and unlocalized residential titles (fixed
+in this pass); the remaining gap is measurement — there is no Search Console/GBP data loop
+yet, so priorities are strategic hypotheses rather than data-ranked.
+
+**External platform / citation opportunities (owner, not blockers):**
+1. **GBP locality consistency to verify** — public data shows a locality/geographic
+   inconsistency that should be checked against the authenticated profile. **The actual GBP
+   pin has not been independently verified by this audit**; do not move it based on
+   third-party data alone.
+2. **Yelp locality** — verify the city field; correct only if actually wrong.
+3. **Bing Places / Apple Business Connect** — worthwhile external-distribution opportunities;
+   missing presence does not prevent Google organic ranking.
+4. **Thin citation footprint** overall (new business; expected) — Facebook/Nextdoor field
+   completeness is the first step.
 
 ## FASTEST WINS (days)
 
-1. Fix GBP pin/service area + complete every profile field (UTM website link ready).
-2. Claim Bing Places + Apple Business Connect.
-3. Correct Yelp city; complete Facebook details.
+1. Verify the authenticated GBP service-area/location settings and complete every profile
+   field (UTM website link ready); correct only what the authenticated profile confirms.
+2. Verify/correct Yelp locality and complete Facebook/Nextdoor fields.
+3. Create Bing Places + Apple Business Connect (opportunities, not blockers).
 4. Start the review request habit at handoff (QR already exists).
 5. Owner exports GSC + GBP CSVs to backfill the keyword master.
 
@@ -87,9 +107,9 @@ mismatch. No rankings are promised; no data was fabricated.
 
 | Action | Expected mechanism | Potential impact | Effort | Priority | Implemented? | Owner action? | Auditor review? |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Fix GBP pin/service area | Correct geo-entity → Maps relevance | High | Low | P0 | No (external) | Yes | No |
-| Bing Places + Apple | Non-Google local surfaces | High | Low | P0 | No (external) | Yes | No |
-| Yelp city correction | Citation consistency | Medium | Low | P1 | No (external) | Yes | No |
+| Verify GBP service-area/location (authenticated) | Confirm or rule out the observed locality inconsistency; fix only if the profile itself shows a problem | Conditional (high if confirmed; none if already correct) | Low | P1 verify | No (external) | Yes | No |
+| Bing Places + Apple Business Connect | External distribution + entity consistency (does not affect Google organic ranking) | Opportunity (not a defect) | Low | P2 opportunity | No (external) | Yes | No |
+| Yelp locality verification/correction | Citation consistency | Medium if wrong | Low | P1 verify | No (external) | Yes | No |
 | Spring Hill hub | Primary-market landing page | High | Done | P0 | **Yes** | No | Yes |
 | Localized titles (airflow/replacement) | Intent + market match | Medium | Done | P1 | **Yes** | No | Yes (variants) |
 | Diagnostic FAQs | Question coverage + funnels | Medium | Done | P1 | **Yes** | No | No |

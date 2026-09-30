@@ -6,18 +6,26 @@ means no public evidence was found — it does not prove no unclaimed record exi
 
 ## Most important findings
 
-1. **Google Business Profile pin may be misplaced** (~28.11, -82.54 ≈ Tampa/Carrollwood, ~20 mi
-   south of Spring Hill). Highest-impact fix; owner must verify in the profile.
+1. **Locality/geographic inconsistency in public data — verify against the authenticated GBP.**
+   Public local-business data (a place reference resolving near Tampa/Carrollwood) and the Yelp
+   city field ("brooksville") disagree about locality. **The actual GBP map pin has not been
+   independently verified by this audit.** Open the authenticated Google Business Profile and
+   verify the service-area/location settings; do not move or change the pin based solely on
+   third-party/local-search data.
 2. **Yelp says "brooksville"** in the URL slug while every other citation says Spring Hill.
-   Correct the location display (never solicit Yelp reviews).
-3. **Bing Places and Apple Business Connect are absent** — the business is invisible to
-   Bing/Copilot and Siri/Apple Maps. Both offer free claiming.
+   Verify in the authenticated listing and correct if wrong (never solicit Yelp reviews).
+3. **Bing Places and Apple Business Connect are absent** — a local-distribution **opportunity**,
+   not a technical defect. Missing presence does not prevent Google organic ranking, but
+   establishing the profiles expands search/map visibility and strengthens entity consistency.
+   Both offer free claiming.
 4. **No street address is public anywhere** (consistent service-area operation; the state
    registry address is not on the site). Keep this consistent across platforms; do not publish
    an address unless the owner decides to.
-5. **Facebook details (phone/website/hours) are not visible** in the public snippet — fill them.
+5. **Facebook details (phone/website/hours) are not visible** in the public snippet — owner
+   should verify and fill them.
 6. **The LLC is new** (filed May 20, 2026) — the thin footprint is expected; the priority is
-   the core four (Google, Bing, Apple, Facebook) plus Nextdoor/Yelp consistency.
+   the core profiles (Google, Facebook) plus Nextdoor/Yelp consistency, then Bing/Apple as
+   opportunities.
 
 ## Consistency target (use these exact values)
 
@@ -30,16 +38,20 @@ means no public evidence was found — it does not prove no unclaimed record exi
 | Service area | Hernando, Pasco, Pinellas, Hillsborough counties; Spring Hill home market |
 | Category | HVAC contractor / air conditioning repair (closest match) |
 
-## Owner actions (in priority order)
+## Owner verification actions (in priority order)
 
-1. Google: verify pin/address/service area, categories, hours, phone, website (UTM link).
-2. Bing Places: create/claim (import from Google is supported).
-3. Apple Business Connect: create the location.
-4. Yelp: correct the city; complete phone/website/hours.
-5. Facebook: complete phone/website/hours/service area; use the canonical page URL.
-6. Nextdoor: keep current (already consistent).
+1. **Google (verify, do not move blindly):** open the authenticated profile; verify the
+   service-area/location settings, categories, hours (7:30 AM – 7:30 PM daily), phone, and
+   website (UTM link). Change the pin only if the authenticated profile itself shows a problem.
+2. **Yelp (verify):** confirm the locality; correct only if actually wrong; complete
+   phone/website/hours.
+3. **Facebook (verify):** confirm phone/website/hours/service area; use the canonical page URL.
+4. **Nextdoor:** verify current fields (already consistent in public view).
+5. **Bing Places (opportunity):** create/claim (Google import is supported).
+6. **Apple Business Connect (opportunity):** create the location.
 7. Decide on BBB / Angi / Thumbtack intentionally.
 8. Reconcile the public LinkedIn "Aaron's A/C Solutions" reference if it is stale branding.
 
 No third-party edits were made from this repository, and none should be made without owner
-authorization.
+authorization. Do not claim any external inconsistency is fixed until the owner has actually
+changed it.

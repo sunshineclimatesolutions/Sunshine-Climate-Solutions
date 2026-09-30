@@ -7,7 +7,7 @@ page is only justified when it can be genuinely useful beyond swapping a city na
 
 | City / market | Importance | Proximity | Demand signal | Competition | Current visibility | Unique content | Revenue | Local proof | Link value | Total /45 | Class |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Spring Hill** | 5 | 5 | 4 (observed queries; wrong-state pollution) | 4 | 2 (GBP pin issue) | 4 | 5 | 3 | 5 | **37** | **A — implemented** |
+| **Spring Hill** | 5 | 5 | 4 (observed queries; wrong-state pollution) | 4 | 2 (locality consistency to verify in GBP) | 4 | 5 | 3 | 5 | **37** | **A — implemented** |
 | Brooksville | 4 | 5 | 3 (observed) | 3 | 2 | 3 | 3 | 2 | 4 | 29 | B — deferred |
 | New Port Richey / Port Richey | 3 | 4 | 3 (observed) | 2 (templated-heavy) | 1 | 2 | 3 | 1 | 3 | 22 | B — deferred |
 | Wesley Chapel | 3 | 3 | 3 (observed) | 2 | 1 | 2 | 3 | 1 | 3 | 21 | B — deferred |
@@ -26,8 +26,19 @@ local proof. Demand is a qualitative signal only — no volume data was availabl
 Implemented: `/service-area/spring-hill-fl/` (789 words, unique content, six service cards,
 six local FAQs, community list, breadcrumbs, `BreadcrumbList` schema). Content is strictly
 factual: home market, system types, Florida climate context, pricing/process from
-`business.ts`, confirmed communities. No fabricated jobs, counts, response times, or
-neighborhood projects.
+`business.ts`, confirmed communities. No fabricated jobs, counts, response times,
+neighborhoods, or projects.
+
+**Hub quality re-check (final pass):**
+- Title/H1 target *local HVAC service* intent ("HVAC Service in Spring Hill"), not service head
+  terms — no cannibalization of repair/maintenance/replacement/airflow/commercial/TAB.
+- The six service cards link out to the owning pages; the hub does not reproduce their bodies.
+- The word "Spring Hill" appears naturally (title, H1, lead, intro, communities, FAQs) — not
+  stuffed; no exact-match repetition loops.
+- No hyperlocal claims: hyper-specific street/neighborhood references were removed in the
+  final pass; only owner-confirmed communities remain (Spring Hill, Brooksville, Weeki Wachee,
+  Hernando Beach).
+- Internal links: hub → services (6), hub → service area; homepage + service-area page → hub.
 
 ### CLASS B — support meaningfully, defer dedicated pages
 Brooksville, New Port Richey, Wesley Chapel, Tampa:

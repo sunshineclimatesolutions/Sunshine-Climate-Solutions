@@ -37,14 +37,24 @@ const routeFor = (file) => {
   return `/${rel.replace(/index\.html$/, '')}`;
 };
 
+// Decode HTML entities so length checks measure what search engines display.
+const decode = (text) =>
+  text
+    .replaceAll('&amp;', '&')
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&#x27;', "'")
+    .replaceAll('&quot;', '"');
+
 const data = pages.map((file) => {
   const html = fs.readFileSync(file, 'utf8');
   return {
     file,
     route: routeFor(file),
     html,
-    title: /<title>([^<]*)<\/title>/.exec(html)?.[1] ?? '',
-    description: /<meta name="description" content="([^"]*)"/.exec(html)?.[1] ?? '',
+    title: decode(/<title>([^<]*)<\/title>/.exec(html)?.[1] ?? ''),
+    description: decode(/<meta name="description" content="([^"]*)"/.exec(html)?.[1] ?? ''),
     canonical: /<link rel="canonical" href="([^"]+)"/.exec(html)?.[1] ?? '',
     robots: /<meta name="robots" content="([^"]+)"/.exec(html)?.[1] ?? '',
     h1s: [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) => m[1].replace(/<[^>]*>/g, '').trim()),
@@ -63,6 +73,16 @@ check('no duplicate meta descriptions', new Set(descriptions).size === descripti
 check('every page has exactly one H1', data.every((p) => p.h1s.length === 1), data.filter((p) => p.h1s.length !== 1).map((p) => p.route).join(', '));
 check('every H1 is non-empty', data.every((p) => p.h1s[0]?.length > 0));
 check('no duplicate H1s', new Set(data.map((p) => p.h1s[0])).size === data.length);
+check(
+  'titles stay within 80 characters',
+  data.every((p) => p.title.length <= 80),
+  data.filter((p) => p.title.length > 80).map((p) => `${p.route} (${p.title.length})`).join(', '),
+);
+check(
+  'meta descriptions stay within 185 characters',
+  data.every((p) => p.description.length <= 185),
+  data.filter((p) => p.description.length > 185).map((p) => `${p.route} (${p.description.length})`).join(', '),
+);
 
 // ── Canonicals + robots ─────────────────────────────────────────────────────
 check(
@@ -124,6 +144,38 @@ check(
 const hub = data.find((p) => p.route === '/service-area/spring-hill-fl/');
 check('Spring Hill hub exists and is in the sitemap', Boolean(hub) && sitemapPaths.includes('/service-area/spring-hill-fl/'));
 check('Spring Hill hub carries BreadcrumbList schema', Boolean(hub) && jsonLdTypes.get(hub.route).includes('BreadcrumbList'));
+
+// ── Structured-data integrity (no fabricated or unsupported markup) ─────────
+const allJsonLd = data.flatMap((p) => p.jsonLd);
+check('no AggregateRating markup anywhere', allJsonLd.every((b) => !b.includes('AggregateRating')));
+check('no Review markup anywhere', allJsonLd.every((b) => !/"@type"\s*:\s*"Review"/.test(b)));
+check('no postal address in any JSON-LD', allJsonLd.every((b) => !b.includes('PostalAddress') && !b.includes('"address"')));
+check('no geo coordinates in any JSON-LD', allJsonLd.every((b) => !b.includes('GeoCoordinates') && !b.includes('"geo"')));
+for (const page of servicePages) {
+  const serviceBlocks = page.jsonLd.filter((b) => b.includes('"@type":"Service"'));
+  check(`${page.route}: exactly one Service node`, serviceBlocks.length === 1, String(serviceBlocks.length));
+  check(
+    `${page.route}: Service node references the business entity`,
+    serviceBlocks.length === 1 && serviceBlocks[0].includes('/#business'),
+  );
+}
+// Breadcrumb schema must match the visible breadcrumb trail.
+for (const page of [...servicePages, hub].filter(Boolean)) {
+  const nav = /<nav class="breadcrumbs"[\s\S]*?<\/nav>/.exec(page.html)?.[0] ?? '';
+  const visibleItems = (nav.match(/<li/g) ?? []).length;
+  const crumbBlock = page.jsonLd.find((b) => b.includes('BreadcrumbList'));
+  let jsonItems = 0;
+  try {
+    jsonItems = (JSON.parse(crumbBlock).itemListElement ?? []).length;
+  } catch {
+    /* parse failures already reported above */
+  }
+  check(
+    `${page.route}: breadcrumb schema matches visible trail`,
+    visibleItems > 0 && visibleItems === jsonItems,
+    `visible ${visibleItems} vs schema ${jsonItems}`,
+  );
+}
 
 // ── Breadcrumbs visible where schema exists ─────────────────────────────────
 check(
