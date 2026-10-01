@@ -15,7 +15,7 @@ see the status matrix.
 
 | Layer | State | Evidence |
 | --- | --- | --- |
-| Site-installed (this branch) | **Done** | Basic Consent Mode + events verified in built HTML; `scripts/gtm-consent.mjs` 62/62 |
+| Site-installed (this branch) | **Done** | Basic Consent Mode + events verified in built HTML; `scripts/gtm-consent.mjs` 91/91 |
 | GTM workspace configured | **NOT done** | Owner: import file or manual steps below |
 | GTM published | **NOT done** | Owner presses Submit → Publish |
 | GA4 receiving data | **NOT verifiable yet** | Requires published container + deployment |
@@ -235,7 +235,7 @@ questions for the owner/advisor:
 
 - The real GTM container behavior (tags firing in Google's runtime) — requires the published
   container and a deployed site. All site-side behavior is covered by `scripts/gtm-consent.mjs`
-  with a stubbed container (62/62).
+  with a stubbed container (91/91).
 - The GTM import file against Google's importer — structurally validated only; the import
   preview is the final check.
 - Real Web3Forms delivery to the inbox — owner-verified only.
