@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T03:19:21.287Z",
+  "generatedAt": "2026-10-01T04:38:22.619Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 18,
   "sitemapUrls": [
@@ -2363,26 +2363,34 @@
       "route": "/support/",
       "title": "Support Sunshine Climate Solutions",
       "titleLength": 34,
-      "description": "Sunshine Climate Solutions is already operational. See what founder investment has built and how contributions support the next stage of responsible growth.",
-      "descriptionLength": 156,
+      "description": "Sunshine Climate Solutions is already operating. See what founder capital has built and the $20,000 plan to close the remaining growth gaps.",
+      "descriptionLength": 140,
       "canonical": "https://sunshineclimatesolutions.com/support/",
       "robots": "noindex, follow",
       "h1": [
-        "Support the Growth of Sunshine Climate Solutions"
+        "Help Build an HVAC Company Around Faith, Craftsmanship & Trust"
       ],
-      "h2Count": 8,
-      "h3Count": 0,
+      "h2Count": 16,
+      "h3Count": 32,
       "h2s": [
-        "Already Built",
-        "What Additional Capital Supports",
-        "Choose a Platform",
+        "This Isn't a Business Idea on Paper",
+        "Why Sunshine Climate Solutions Exists",
+        "Faith, Heritage & Community",
+        "Technical Credibility",
+        "What Has Already Been Invested",
+        "The $20,000 Growth Plan",
+        "Why Support Matters Now",
+        "What the Capital Unlocks",
+        "Choose How to Support",
         "Other Ways to Help",
+        "Transparency FAQ",
+        "Support the growth campaign",
         "Services",
         "Company",
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 248,
+      "wordCount": 1670,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -2398,6 +2406,30 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/airflow-measurement-at-grille.B6mYclkM_hrADG.webp",
+          "alt": "A technician's airflow measurement instrument held at a ceiling supply grille.",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/rooftop-mechanical-equipment.DBe036-P_WrCCp.webp",
+          "alt": "Rooftop commercial HVAC equipment with service access panels.",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/dirty-coil-detail.DBcupP7M_1PlCyS.webp",
+          "alt": "Close-up of a dirty evaporator or condenser coil surface.",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
           "hasAlt": true
         },
         {
@@ -2466,8 +2498,8 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
-      "externalLinks": 12,
+      "internalLinks": 31,
+      "externalLinks": 16,
       "internalLinkTargets": [
         "/",
         "/about/",

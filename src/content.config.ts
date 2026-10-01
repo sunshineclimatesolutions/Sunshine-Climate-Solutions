@@ -386,6 +386,91 @@ const site = defineCollection({
         ctaBand: z.object({ title: z.string(), text: z.string().optional() }),
       })
       .optional(),
+
+    // support.md — /support/ fundraising page (noindex, direct/referral only).
+    // Truthfulness rules: the $25,000 founder-investment figure and the $20,000
+    // planned allocation are owner-confirmed; never fabricate progress, donor
+    // counts, testimonials, or outcomes. Fundraiser URLs come from
+    // business.fundraising — never from this content file.
+    support: z
+      .object({
+        hero: z.object({
+          eyebrow: z.string(),
+          heading: z.string(),
+          lead: z.string(),
+          chips: z.array(z.string()),
+        }),
+        realBusiness: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          quote: z.string(),
+          quoteAttribution: z.string(),
+          categories: z.array(z.object({ title: z.string(), items: z.array(z.string()) })),
+        }),
+        whyExists: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          principle: z.array(z.string()),
+        }),
+        faith: z.object({
+          heading: z.string(),
+          quote: z.string(),
+          paragraphs: z.array(z.string()),
+        }),
+        credentials: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          cards: z.array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() })),
+        }),
+        investment: z.object({
+          heading: z.string(),
+          amount: z.string(),
+          amountLabel: z.string(),
+          paragraphs: z.array(z.string()),
+          photos: z
+            .array(z.object({ image: image(), alt: z.string(), caption: z.string() }))
+            .default([]),
+        }),
+        useOfFunds: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          totalLabel: z.string(),
+          disclosure: z.string(),
+          items: z.array(
+            z.object({
+              label: z.string(),
+              amount: z.number().int().positive(),
+              paysFor: z.string(),
+              whyItMatters: z.string(),
+            }),
+          ),
+        }),
+        whyNow: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          timeline: z.array(z.object({ when: z.string(), text: z.string() })),
+        }),
+        unlocks: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          items: z.array(z.object({ title: z.string(), text: z.string() })),
+        }),
+        platforms: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          gofundme: z.object({ name: z.string(), positioning: z.string(), ctaLabel: z.string() }),
+          givesendgo: z.object({ name: z.string(), positioning: z.string(), ctaLabel: z.string() }),
+        }),
+        otherWays: z.object({
+          heading: z.string(),
+          lead: z.string(),
+          items: z.array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() })),
+        }),
+        faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
+        closing: z.object({ quote: z.string(), attribution: z.string() }),
+        founderVideo: z.object({ heading: z.string(), lead: z.string() }).optional(),
+      })
+      .optional(),
   }),
 });
 

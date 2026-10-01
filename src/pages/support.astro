@@ -1,108 +1,467 @@
 ---
-// Fundraising / support page — intentionally restrained and noindexed.
+// /support/ — fundraising / founder story page. NOINDEX by design: it is a
+// direct/social/email/referral destination, not a search-acquisition page.
 //
-// This is NOT a service landing page. It exists for people who already know
-// the company from social, email, personal outreach, or community contacts.
-// Rules (owner-approved September 2026):
-//  - No fundraiser CTA appears in any service-conversion area; the service
-//    funnel stays CALL / TEXT / REQUEST SERVICE.
-//  - Fundraiser URLs come from business.fundraising — never hard-code them.
-//  - Never imply the business is failing, never frame this as rescue funding,
-//    never imply tax deductibility, equity, repayment, interest, or returns.
-//  - No fabricated customer counts, review counts, or dollar allocations.
+// Architecture: narrative copy lives in src/content/site/support.md (validated
+// by the site schema); fundraiser URLs come from business.fundraising; the
+// allocation amounts are structured data (numbers) so the proportional bars are
+// computed, never hand-drawn. Rules: never fabricate progress, donor counts,
+// testimonials, or outcomes; never imply tax deductibility, equity, repayment,
+// or investment returns; no service-funnel CTAs on this page beyond the normal
+// site chrome.
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import FaqItem from '../components/FaqItem.astro';
 import { business } from '../config/business';
+import { need } from '../lib/site-content';
 
-const title = 'Support Sunshine Climate Solutions';
-const description =
-  'Sunshine Climate Solutions is already operational. See what founder investment has built and how contributions support the next stage of responsible growth.';
+const supportEntry = await getEntry('site', 'support');
+if (!supportEntry) throw new Error('[content] src/content/site/support.md is missing');
+const s = need(supportEntry.data.support, 'support.md → support');
+
+const title = supportEntry.data.metaTitle;
+const description = supportEntry.data.metaDescription;
+
+const gofundme = business.fundraising.gofundme;
+const givesendgo = business.fundraising.givesendgo;
+const founderVideoUrl = business.fundraising.founderVideoUrl.trim();
+const founderVideo = s.founderVideo;
+
+const total = s.useOfFunds.items.reduce((sum, item) => sum + item.amount, 0);
+const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
+  <!-- ── 1. Hero ─────────────────────────────────────────────────────────── -->
   <section class="page-hero">
     <div class="container page-hero-inner">
-      <p class="eyebrow">Support the Mission</p>
-      <h1>Support the Growth of Sunshine Climate Solutions</h1>
-      <p class="lead">
-        Sunshine Climate Solutions has already been built through significant founder investment,
-        field experience, and personal labor. The company is operational; the current fundraising
-        effort is intended to strengthen the final areas needed to support responsible growth.
-      </p>
+      <p class="eyebrow">{s.hero.eyebrow}</p>
+      <h1>{s.hero.heading}</h1>
+      <p class="lead">{s.hero.lead}</p>
+      <div class="cluster support-cta-row">
+        <a
+          class="btn btn--gold btn--lg"
+          href={gofundme}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-support-platform="gofundme"
+        >
+          {s.platforms.gofundme.ctaLabel}
+        </a>
+        <a
+          class="btn btn--gold btn--lg"
+          href={givesendgo}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-support-platform="givesendgo"
+        >
+          {s.platforms.givesendgo.ctaLabel}
+        </a>
+        <button type="button" class="btn btn--outline-navy btn--lg" data-share-support>
+          Share This Campaign
+        </button>
+      </div>
+      <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
+      <div class="chips support-chips">
+        {
+          s.hero.chips.map((chip) => (
+            <span class="chip">
+              <Icon name="check" /> {chip}
+            </span>
+          ))
+        }
+      </div>
     </div>
   </section>
 
+  <!-- ── Optional founder video (renders only when configured) ───────────── -->
+  {
+    founderVideoUrl && founderVideo && (
+      <section class="section section--alt" aria-labelledby="support-video-heading">
+        <div class="container container--narrow">
+          <div class="section-heading">
+            <h2 id="support-video-heading">{founderVideo.heading}</h2>
+            <p class="lead">{founderVideo.lead}</p>
+          </div>
+          <a
+            class="btn btn--navy btn--lg"
+            href={founderVideoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="support-founder-video"
+          >
+            Watch the Founder Video
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ── 2. This is already a real business ──────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.realBusiness.heading}</h2>
+        <p class="lead">{s.realBusiness.lead}</p>
+      </div>
+      <blockquote class="support-quote">
+        <p>{s.realBusiness.quote}</p>
+        <footer>{s.realBusiness.quoteAttribution}</footer>
+      </blockquote>
+      <div class="grid support-categories">
+        {
+          s.realBusiness.categories.map((category) => (
+            <div class="card">
+              <h3>{category.title}</h3>
+              <ul class="support-list">
+                {category.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. Why Sunshine Climate Solutions exists ────────────────────────── -->
+  <section class="section section--alt">
+    <div class="container container--narrow">
+      <div class="section-heading">
+        <h2>{s.whyExists.heading}</h2>
+      </div>
+      <div class="prose">
+        {s.whyExists.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <ul class="support-principle">
+        {
+          s.whyExists.principle.map((line) => (
+            <li>
+              <Icon name="check" /> {line}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── 4. Faith, heritage & community ──────────────────────────────────── -->
   <section class="section">
     <div class="container container--narrow">
+      <div class="section-heading">
+        <h2>{s.faith.heading}</h2>
+      </div>
+      <blockquote class="support-quote">
+        <p>{s.faith.quote}</p>
+      </blockquote>
       <div class="prose">
-        <h2>Already Built</h2>
-        <p>Founder capital and field work have already gone into:</p>
-        <ul>
-          <li>~$25,000 of founder capital already invested</li>
-          <li>Service truck and professional HVAC tools</li>
-          <li>Diagnostic equipment and operating assets</li>
-          <li>Custom website and customer-acquisition infrastructure</li>
-          <li>Local marketing, analytics, and review infrastructure</li>
-          <li>Owner-operated field capability across residential and light-commercial work</li>
-        </ul>
+        {s.faith.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </section>
 
-        <h2>What Additional Capital Supports</h2>
-        <p>The fundraiser is intended to close remaining growth gaps in:</p>
-        <ul>
-          <li>Service inventory and job materials</li>
-          <li>Operating reserve</li>
-          <li>Local customer acquisition</li>
-          <li>Vehicle and field readiness</li>
-          <li>Diagnostic-equipment reserve</li>
-        </ul>
+  <!-- ── 5. Technical credibility ────────────────────────────────────────── -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.credentials.heading}</h2>
+        <p class="lead">{s.credentials.lead}</p>
+      </div>
+      <div class="grid">
+        {
+          s.credentials.cards.map((card) => (
+            <div class="card">
+              <span class="support-card-icon">
+                <Icon name={card.icon} />
+              </span>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-        <h2>Choose a Platform</h2>
-        <p>
-          Two campaigns support the same work. Both are run by the owner; neither is officially
-          preferred over the other — choose whichever fits you best.
-        </p>
-        <div class="cluster" style="margin-top: var(--sp-sm);">
+  <!-- ── 6. What has already been invested ───────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.investment.heading}</h2>
+      </div>
+      <div class="support-amount-block">
+        <p class="support-amount">{s.investment.amount}</p>
+        <p class="support-amount-label">{s.investment.amountLabel}</p>
+      </div>
+      <div class="prose">
+        {s.investment.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      {
+        s.investment.photos.length > 0 && (
+          <div class="support-photos">
+            {s.investment.photos.map((photo) => (
+              <figure class="support-photo">
+                <Image
+                  src={photo.image}
+                  alt={photo.alt}
+                  widths={[400, 800]}
+                  sizes="(min-width: 48em) 30vw, 92vw"
+                  loading="lazy"
+                />
+                <figcaption>{photo.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- ── 7. The $20,000 growth plan ──────────────────────────────────────── -->
+  <section class="section section--alt" id="use-of-funds">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Planned Use of Funds</p>
+        <h2>{s.useOfFunds.heading}</h2>
+        <p class="lead">{s.useOfFunds.lead}</p>
+      </div>
+      <div class="support-total">
+        <span class="support-total-amount">{fmt(total)}</span>
+        <span class="support-total-label">{s.useOfFunds.totalLabel}</span>
+      </div>
+      <ul class="support-alloc">
+        {
+          s.useOfFunds.items.map((item) => {
+            const share = Math.round((item.amount / total) * 100);
+            return (
+              <li class="card support-alloc-item">
+                <div class="support-alloc-head">
+                  <h3>{item.label}</h3>
+                  <span class="support-alloc-amount">{fmt(item.amount)}</span>
+                </div>
+                <div class="support-alloc-bar" aria-hidden="true">
+                  <span style={`width: ${share}%`} />
+                </div>
+                <p class="support-alloc-share">
+                  {share}% of the total · {fmt(item.amount)}
+                </p>
+                <p>
+                  <strong>What it pays for:</strong> {item.paysFor}
+                </p>
+                <p>
+                  <strong>Why it matters:</strong> {item.whyItMatters}
+                </p>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <p class="support-disclosure">{s.useOfFunds.disclosure}</p>
+    </div>
+  </section>
+
+  <!-- ── 8. Why support matters now ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.whyNow.heading}</h2>
+      </div>
+      <div class="prose">
+        {s.whyNow.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <div class="steps support-timeline">
+        {
+          s.whyNow.timeline.map((entry, index) => (
+            <div class="step">
+              <span class="step-num" aria-hidden="true">{index + 1}</span>
+              <h3>{entry.when}</h3>
+              <p>{entry.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 9. What the capital unlocks ─────────────────────────────────────── -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.unlocks.heading}</h2>
+        <p class="lead">{s.unlocks.lead}</p>
+      </div>
+      <div class="grid">
+        {
+          s.unlocks.items.map((item) => (
+            <div class="card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10. Choose how to support ───────────────────────────────────────── -->
+  <section class="section" id="support-now">
+    <div class="container">
+      <div class="section-heading section-heading--center">
+        <h2>{s.platforms.heading}</h2>
+        <p class="lead">{s.platforms.lead}</p>
+      </div>
+      <div class="support-platforms">
+        <div class="card support-platform-card">
+          <h3>{s.platforms.gofundme.name}</h3>
+          <p>{s.platforms.gofundme.positioning}</p>
           <a
             class="btn btn--gold btn--lg"
-            href={business.fundraising.gofundme}
+            href={gofundme}
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="gofundme"
           >
-            Support on GoFundMe
+            {s.platforms.gofundme.ctaLabel}
           </a>
+        </div>
+        <div class="card support-platform-card">
+          <h3>{s.platforms.givesendgo.name}</h3>
+          <p>{s.platforms.givesendgo.positioning}</p>
           <a
             class="btn btn--gold btn--lg"
-            href={business.fundraising.givesendgo}
+            href={givesendgo}
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="givesendgo"
           >
-            Support on GiveSendGo
+            {s.platforms.givesendgo.ctaLabel}
           </a>
         </div>
-        <p style="margin-top: var(--sp-sm); font-size: var(--text-sm); color: var(--c-ink-soft);">
-          GoFundMe: the general community fundraiser. GiveSendGo: the faith/community-oriented
-          fundraiser.
-        </p>
-        <p style="font-size: var(--text-sm); color: var(--c-ink-soft);">
-          Contributions are support for the business. They are not tax-deductible and do not
-          represent equity, repayment, interest, or investment returns.
-        </p>
-
-        <h2>Other Ways to Help</h2>
-        <ul>
-          <li>Share the fundraiser with people who may want to support the mission.</li>
-          <li>Recommend Sunshine Climate Solutions to someone who needs HVAC service.</li>
-          <li>
-            Support the company by choosing SCS when legitimate HVAC service is needed — call,
-            text, or <a href="/contact/">request service</a> like any other customer.
-          </li>
-          <li>
-            Leave an honest review after legitimate completed service. (Please don't ask
-            non-customers for reviews.)
-          </li>
-        </ul>
       </div>
     </div>
   </section>
+
+  <!-- ── 11. Other ways to help ──────────────────────────────────────────── -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-heading">
+        <h2>{s.otherWays.heading}</h2>
+        <p class="lead">{s.otherWays.lead}</p>
+      </div>
+      <div class="grid">
+        {
+          s.otherWays.items.map((item) => (
+            <div class="card">
+              <span class="support-card-icon">
+                <Icon name={item.icon} />
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 12. Transparency FAQ ────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-heading">
+        <h2>Transparency FAQ</h2>
+      </div>
+      <div class="faq-list">
+        {
+          s.faqs.map((faq) => (
+            <FaqItem question={faq.question}>
+              <p>{faq.answer}</p>
+            </FaqItem>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 13. Closing ─────────────────────────────────────────────────────── -->
+  <section class="band--charcoal band--center on-dark" aria-labelledby="support-closing-heading">
+    <div class="container container--narrow">
+      <h2 id="support-closing-heading" class="visually-hidden">Support the growth campaign</h2>
+      <blockquote class="support-quote support-quote--on-dark">
+        <p>{s.closing.quote}</p>
+        <footer>{s.closing.attribution}</footer>
+      </blockquote>
+      <div class="cluster support-cta-row support-cta-row--center">
+        <a
+          class="btn btn--gold btn--lg"
+          href={gofundme}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-support-platform="gofundme"
+        >
+          {s.platforms.gofundme.ctaLabel}
+        </a>
+        <a
+          class="btn btn--gold btn--lg"
+          href={givesendgo}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-support-platform="givesendgo"
+        >
+          {s.platforms.givesendgo.ctaLabel}
+        </a>
+        <button type="button" class="btn btn--outline-light btn--lg" data-share-support>
+          Share This Page
+        </button>
+      </div>
+      <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- Share: native Web Share API, clipboard fallback. No SDKs, no trackers,
+       no personal data; the canonical clean URL is shared. -->
+  <script is:inline>
+    (function () {
+      var statusNodes = document.querySelectorAll('[data-share-status]');
+      function announce(message) {
+        for (var i = 0; i < statusNodes.length; i++) statusNodes[i].textContent = message;
+      }
+      document.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-share-support]');
+        if (!button) return;
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var url = canonical ? canonical.href : window.location.href;
+        var shareData = {
+          title: document.title,
+          text: 'Sunshine Climate Solutions is already operating — help close the final growth gap.',
+          url: url,
+        };
+        if (navigator.share) {
+          navigator.share(shareData).then(
+            function () {
+              announce('Thanks for sharing this campaign.');
+            },
+            function () {
+              /* share cancelled — no message */
+            },
+          );
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(
+            function () {
+              announce('Campaign link copied to your clipboard.');
+            },
+            function () {
+              announce('Copy this link: ' + url);
+            },
+          );
+          return;
+        }
+        announce('Copy this link: ' + url);
+      });
+    })();
+  </script>
 </BaseLayout>

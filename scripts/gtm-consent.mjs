@@ -440,8 +440,10 @@ try {
       })),
     );
     check(
-      'support page exposes exactly gofundme + givesendgo with safe external links',
-      links.length === 2 &&
+      'support page exposes gofundme + givesendgo CTAs with safe external links',
+      links.length >= 2 &&
+        links.some((l) => l.platform === 'gofundme') &&
+        links.some((l) => l.platform === 'givesendgo') &&
         links.every(
           (l) =>
             (l.platform === 'gofundme' || l.platform === 'givesendgo') &&

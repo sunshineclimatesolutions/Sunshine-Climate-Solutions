@@ -495,16 +495,27 @@ The two owner-run campaigns (GoFundMe and GiveSendGo — URLs in
 `src/config/business.ts` → `fundraising`) are a **separate support layer**, not a service
 funnel. `/support/` is noindex and must never be mixed into service-conversion areas.
 
-**PRIMARY channels:**
+**Profile link vs fundraiser post link — keep them distinct:**
 
-- personal Facebook / direct network
-- SCS Facebook launch post
-- Instagram story/reel
+- **Business profile website fields** (Facebook, Instagram, YouTube, X, Gab, Parler, etc.)
+  keep pointing to the **normal tracked SCS homepage URL**. Do not replace every social
+  website field with `/support/`.
+- **Fundraiser-specific posts** use the platform-specific tracked `/support/` link from the
+  registry (list below).
+- If a platform allows multiple profile links, the owner may add a secondary
+  "Support SCS" link — but never replace the main business website.
+
+**PRIMARY fundraising channels:**
+
+- personal Facebook / direct personal network
+- SCS Facebook
+- Instagram
 - YouTube founder video
 - email / direct outreach
 
-**SECONDARY channels:**
+**SECONDARY:**
 
+- TikTok
 - X
 - Gab
 - Parler
@@ -513,10 +524,22 @@ funnel. `/support/` is noindex and must never be mixed into service-conversion a
 GoFundMe is the general-public/default campaign. GiveSendGo is the faith/community
 alternative. Do not imply one platform is officially preferred over the other.
 
+**Personal sharing vs business channels (intentional distinction):**
+
+- Direct GoFundMe sharing from Aaron's **personal** profile/DMs can be appropriate when the
+  goal is minimum friction for people who already know him.
+- The **SCS business channels** should generally use the branded `/support/` page so visitors
+  understand the story, see the founder investment, see both platforms, stay inside the SCS
+  trust ecosystem, and can be attributed by channel.
+
+**Keep customer acquisition active:** most SCS social output remains HVAC education, Field
+Proof, reviews, service information and real field work. Suggested initial ratio:
+approximately **15–25% fundraising content / 75–85% normal HVAC content** — a guide, not a
+mechanical quota.
+
 **Rules:**
 
-- Do not make every SCS post a fundraiser post — continue normal HVAC educational and Field
-  Proof content.
+- Do not make every SCS post a fundraiser post.
 - Fundraiser updates should communicate progress, business-building milestones, or use of
   funds — never rescue framing, never fabricated progress, and never claims of tax
   deductibility, equity, repayment, or investment returns.
@@ -525,11 +548,17 @@ alternative. Do not imply one platform is officially preferred over the other.
 - Do not spam all platforms with identical copy — adapt the framing per platform.
 - Inbound links to `/support/` use the prepared registry links (`facebook_support_post`,
   `instagram_support_post`, `youtube_support`, `x_support_post`, `gab_support_post`,
-  `parler_support_post`, `email_support`). The external fundraiser URLs are outbound
-  destinations and never enter the inbound UTM registry.
+  `parler_support_post`, `tiktok_support_video`, `nextdoor_support_post`, `email_support`).
+  The external fundraiser URLs are outbound destinations and never enter the inbound UTM
+  registry.
+- The separate print QR `public/marketing/qr/support-campaign.svg` (registry link
+  `print_support_qr`, `utm_source=print&utm_medium=qr&utm_campaign=support`) is for
+  fundraiser/community handouts only — it does not replace the truck, business-card, service
+  or review QRs.
 - Outbound fundraiser clicks fire the fixed `scs_support_click` event
   (`support_platform`: `gofundme` | `givesendgo`) under the existing consent architecture;
-  Umami records `support-gofundme-click` / `support-givesendgo-click`.
+  Umami records `support-gofundme-click` / `support-givesendgo-click`. This event measures
+  outbound intent, not donations.
 
 **Suggested campaign rhythm:**
 

@@ -5,9 +5,9 @@ Every URL below is final and ready to copy. Nothing here changes the website.
 
 ## ✅ ALREADY IMPLEMENTED IN THE REPO (nothing to do)
 
-- **10 QR codes** in `public/marketing/qr/` — each encodes its own tagged URL
+- **11 QR codes** in `public/marketing/qr/` — each encodes its own tagged URL
   and is decode-verified. Print the `-print.png` (3000px) or use the `.svg` for artwork.
-- **32 prepared campaign links** (social posts, emails, SMS, GBP posts) —
+- **34 prepared campaign links** (social posts, emails, SMS, GBP posts) —
   listed in `UTM-MASTER-LINKS.md`; copy the relevant one when you publish that post/email.
 - The website itself: no UTMs are added to internal links, canonicals, the sitemap,
   `tel:`/`sms:`/`mailto:` links, or the Google-review QR.
@@ -93,6 +93,7 @@ anywhere until the blocker below is resolved.
 | Maintenance QR | `public/marketing/qr/maintenance.svg` (or `maintenance-print.png`) | https://sunshineclimatesolutions.com/services/ac-maintenance/?utm_source=print&utm_medium=qr&utm_campaign=maintenance | Place public/marketing/qr/maintenance.svg wherever a maintenance-specific QR is needed |
 | Commercial HVAC QR | `public/marketing/qr/commercial-hvac.svg` (or `commercial-hvac-print.png`) | https://sunshineclimatesolutions.com/services/commercial-service-maintenance/?utm_source=print&utm_medium=qr&utm_campaign=commercial_hvac | Place public/marketing/qr/commercial-hvac.svg on commercial print pieces |
 | TAB / commissioning QR | `public/marketing/qr/tab-commissioning.svg` (or `tab-commissioning-print.png`) | https://sunshineclimatesolutions.com/tab-commissioning-support/?utm_source=print&utm_medium=qr&utm_campaign=tab_commissioning | Place public/marketing/qr/tab-commissioning.svg on contractor print pieces |
+| Support campaign QR | `public/marketing/qr/support-campaign.svg` (or `support-campaign-print.png`) | https://sunshineclimatesolutions.com/support/?utm_source=print&utm_medium=qr&utm_campaign=support | Place public/marketing/qr/support-campaign.svg on fundraiser/community handouts — separate from the truck, business-card, service and review QRs |
 
 ## ⚠️ Google Ads — do NOT use UTMs
 

@@ -53,7 +53,7 @@ them anywhere yet.
 | --- | --- | --- | --- |
 | LinkedIn | Company Page website field | https://sunshineclimatesolutions.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=profile | PENDING — LinkedIn Company Page identity verification is not complete. |
 
-## Service campaign links (36)
+## Service campaign links (39)
 
 ### /services/ac-repair-diagnostics/
 
@@ -129,10 +129,13 @@ them anywhere yet.
 | X | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=x&utm_medium=organic_social&utm_campaign=support&utm_content=post |
 | Gab | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=gab&utm_medium=organic_social&utm_campaign=support&utm_content=post |
 | Parler | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=parler&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| TikTok | Fundraiser video | support | video | https://sunshineclimatesolutions.com/support/?utm_source=tiktok&utm_medium=organic_social&utm_campaign=support&utm_content=video |
+| Nextdoor | Fundraiser neighborhood post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=nextdoor&utm_medium=organic_social&utm_campaign=support&utm_content=post |
 | Email | Fundraiser announcement email | support | announcement | https://sunshineclimatesolutions.com/support/?utm_source=email&utm_medium=email&utm_campaign=support&utm_content=announcement |
+| Print QR | Print QR to support page | support | — | https://sunshineclimatesolutions.com/support/?utm_source=print&utm_medium=qr&utm_campaign=support |
 
 
-## QR codes (10)
+## QR codes (11)
 
 Each QR encodes its exact tagged URL; all codes are decoded and verified against the
 intended URL when generated. Files: `public/marketing/qr/`.
@@ -149,6 +152,7 @@ intended URL when generated. Files: `public/marketing/qr/`.
 | Maintenance QR | `maintenance.svg`, `maintenance.png`, `maintenance-print.png` | https://sunshineclimatesolutions.com/services/ac-maintenance/?utm_source=print&utm_medium=qr&utm_campaign=maintenance | Place public/marketing/qr/maintenance.svg wherever a maintenance-specific QR is needed |
 | Commercial HVAC QR | `commercial-hvac.svg`, `commercial-hvac.png`, `commercial-hvac-print.png` | https://sunshineclimatesolutions.com/services/commercial-service-maintenance/?utm_source=print&utm_medium=qr&utm_campaign=commercial_hvac | Place public/marketing/qr/commercial-hvac.svg on commercial print pieces |
 | TAB / commissioning QR | `tab-commissioning.svg`, `tab-commissioning.png`, `tab-commissioning-print.png` | https://sunshineclimatesolutions.com/tab-commissioning-support/?utm_source=print&utm_medium=qr&utm_campaign=tab_commissioning | Place public/marketing/qr/tab-commissioning.svg on contractor print pieces |
+| Support campaign QR | `support-campaign.svg`, `support-campaign.png`, `support-campaign-print.png` | https://sunshineclimatesolutions.com/support/?utm_source=print&utm_medium=qr&utm_campaign=support | Place public/marketing/qr/support-campaign.svg on fundraiser/community handouts — separate from the truck, business-card, service and review QRs |
 
 ## Google Ads — automatic tagging only
 

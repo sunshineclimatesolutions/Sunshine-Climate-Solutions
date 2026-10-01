@@ -76,6 +76,29 @@ estimate as an estimate.
 | 11 | | | | | | | |
 | 12 | | | | | | | |
 
+## Fundraiser (support layer — keep separate from HVAC KPIs)
+
+Tracked weekly. The two outbound-click columns come from GA4 (`scs_support_click` with
+`support_platform`) / Umami (`support-gofundme-click`, `support-givesendgo-click`) once
+analytics permission is given; the contribution and outreach columns are manual entries from
+the fundraiser dashboards and the owner's own records. **Do not merge fundraiser
+contributions with HVAC operating revenue** — they are different money.
+
+| Week | Support page sessions | GoFundMe outbound clicks | GiveSendGo outbound clicks | GoFundMe contributions (manual) | GiveSendGo contributions (manual) | Total raised (manual) | Campaign shares / meaningful outreach (manual) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | | | | | | | |
+| 2 | | | | | | | |
+| 3 | | | | | | | |
+| 4 | | | | | | | |
+| 5 | | | | | | | |
+| 6 | | | | | | | |
+| 7 | | | | | | | |
+| 8 | | | | | | | |
+| 9 | | | | | | | |
+| 10 | | | | | | | |
+| 11 | | | | | | | |
+| 12 | | | | | | | |
+
 ## Content quality
 
 | Week | YouTube watch time | Video retention | Short completion rate | Website engagement | Landing-page conversion rate |

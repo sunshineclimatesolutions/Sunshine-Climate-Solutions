@@ -84,6 +84,10 @@ export const business = {
     gofundme:
       'https://www.gofundme.com/f/building-an-hvac-company-on-faith-heritage-integrity',
     givesendgo: 'https://www.givesendgo.com/support-american-hvac-in-our-communities',
+    // Optional founder video (YouTube). Leave EMPTY until the owner supplies an
+    // approved public URL — the support page renders the video section only
+    // when this is a valid URL and never shows an empty video shell.
+    founderVideoUrl: '',
   },
 
   serviceArea: {

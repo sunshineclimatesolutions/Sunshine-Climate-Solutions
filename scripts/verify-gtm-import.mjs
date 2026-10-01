@@ -1,11 +1,16 @@
 // Structural validation of the generated GTM container import file
-// (docs/gtm/SCS-GA4-container-import.json). This validates the file against
-// the documented GTM export/import shape (exportFormatVersion 2, API Version
-// resource, snake-case enum types) and the project's intended tag set:
+// (docs/gtm/SCS-GA4-container-import.json) and the minimal merge-only support
+// tracking patch (docs/gtm/SCS-support-tracking-patch.json). This validates the
+// files against the documented GTM export/import shape (exportFormatVersion 2,
+// API Version resource, snake-case enum types) and the project's intended tag
+// set:
 //   - exactly one Google Tag (googtag) for G-EQ9CBESN23
 //   - exactly one GA4 event tag per approved data-layer event
 //   - generate_lead mapped from scs_form_confirmed
+//   - scs_support_click mapped from CE - scs_support_click with only the
+//     allowlisted support_platform parameter
 //   - no second page-view tag, no duplicate names, no dangling references
+//   - the support patch contains ONLY the support resources (merge-safe)
 // It cannot validate against Google's importer (that runs only in the owner's
 // browser); the GTM import screen previews the file before anything is applied.
 //
@@ -13,6 +18,7 @@
 import fs from 'node:fs';
 
 const FILE = 'docs/gtm/SCS-GA4-container-import.json';
+const PATCH_FILE = 'docs/gtm/SCS-support-tracking-patch.json';
 const GA4_ID = 'G-EQ9CBESN23';
 const EXPECTED_EVENTS = new Map([
   ['scs_call_click', 'CE - scs_call_click'],
@@ -20,6 +26,7 @@ const EXPECTED_EVENTS = new Map([
   ['scs_request_click', 'CE - scs_request_click'],
   ['scs_form_start', 'CE - scs_form_start'],
   ['generate_lead', 'CE - scs_form_confirmed'],
+  ['scs_support_click', 'CE - scs_support_click'],
 ]);
 
 const failures = [];
@@ -122,10 +129,92 @@ check(
 check(
   'no extra custom-event triggers beyond the approved set',
   customEventNames.every((name) =>
-    ['scs_call_click', 'scs_text_click', 'scs_request_click', 'scs_form_start', 'scs_form_confirmed'].includes(name),
+    [
+      'scs_call_click',
+      'scs_text_click',
+      'scs_request_click',
+      'scs_form_start',
+      'scs_form_confirmed',
+      'scs_support_click',
+    ].includes(name),
   ),
   customEventNames.join(','),
 );
+
+// ── Support tracking resources (both the full import and the merge patch) ───
+const validateSupportResources = (cv, label) => {
+  const tagsIn = cv?.tag ?? [];
+  const triggersIn = cv?.trigger ?? [];
+  const variablesIn = cv?.variable ?? [];
+
+  const supportTags = tagsIn.filter((t) =>
+    (t.parameter ?? []).some((p) => p.key === 'eventName' && p.value === 'scs_support_click'),
+  );
+  check(`${label}: exactly one scs_support_click tag`, supportTags.length === 1, String(supportTags.length));
+  if (supportTags.length === 1) {
+    const tag = supportTags[0];
+    check(`${label}: support tag is a GA4 event tag (gaawe)`, tag.type === 'gaawe', tag.type);
+    const triggerId = (tag.firingTriggerId ?? [])[0];
+    const trigger = triggersIn.find((t) => t.triggerId === triggerId);
+    check(
+      `${label}: support tag fires from CE - scs_support_click`,
+      trigger?.name === 'CE - scs_support_click',
+      trigger?.name,
+    );
+    const settings = JSON.stringify(
+      (tag.parameter ?? []).find((p) => p.key === 'eventSettingsTable') ?? {},
+    );
+    check(
+      `${label}: support tag maps support_platform from {{DLV - support_platform}}`,
+      settings.includes('"support_platform"') && settings.includes('{{DLV - support_platform}}'),
+    );
+    check(
+      `${label}: support tag has no href/amount/PII parameters`,
+      !/href|amount|donor|email|phone|name|url/i.test(settings),
+      settings,
+    );
+  }
+
+  const supportTriggers = triggersIn.filter((t) => t.name === 'CE - scs_support_click');
+  check(`${label}: exactly one CE - scs_support_click trigger`, supportTriggers.length === 1, String(supportTriggers.length));
+  if (supportTriggers.length === 1) {
+    const eventName = supportTriggers[0].customEventFilter?.[0]?.parameter?.find((p) => p.key === 'arg1')?.value;
+    check(`${label}: support trigger watches scs_support_click`, eventName === 'scs_support_click', eventName);
+  }
+
+  const supportVariables = variablesIn.filter((v) => v.name === 'DLV - support_platform');
+  check(`${label}: exactly one DLV - support_platform variable`, supportVariables.length === 1, String(supportVariables.length));
+  if (supportVariables.length === 1) {
+    const variable = supportVariables[0];
+    const version = (variable.parameter ?? []).find((p) => p.key === 'dataLayerVersion')?.value;
+    const name = (variable.parameter ?? []).find((p) => p.key === 'name')?.value;
+    check(`${label}: support variable is a data-layer variable (v)`, variable.type === 'v', variable.type);
+    check(`${label}: support variable reads dataLayerVersion 2`, String(version) === '2', String(version));
+    check(`${label}: support variable name is support_platform`, name === 'support_platform', name);
+  }
+};
+
+validateSupportResources(cv, 'full import');
+
+// The patch must contain ONLY the support resources (merge-safe) and no
+// second Google base tag.
+let patch;
+try {
+  patch = JSON.parse(fs.readFileSync(PATCH_FILE, 'utf8'));
+} catch (error) {
+  check(`${PATCH_FILE} parses as JSON`, false, error.message);
+}
+if (patch) {
+  const pcv = patch.containerVersion;
+  check('patch: exportFormatVersion is 2', patch.exportFormatVersion === 2, String(patch.exportFormatVersion));
+  check('patch: container publicId is GTM-MBGJ8SLD', pcv?.container?.publicId === 'GTM-MBGJ8SLD');
+  check('patch: contains exactly 1 tag', (pcv?.tag ?? []).length === 1, String((pcv?.tag ?? []).length));
+  check('patch: contains exactly 1 trigger', (pcv?.trigger ?? []).length === 1, String((pcv?.trigger ?? []).length));
+  check('patch: contains exactly 1 variable', (pcv?.variable ?? []).length === 1, String((pcv?.variable ?? []).length));
+  check('patch: contains no Google base tag', !(pcv?.tag ?? []).some((t) => t.type === 'googtag'));
+  check('patch: contains no page-view trigger', !(pcv?.trigger ?? []).some((t) => t.type === 'PAGEVIEW'));
+  validateSupportResources(pcv, 'patch');
+}
 
 console.log(`\n${failures.length ? `FAILURES:\n${failures.join('\n')}` : 'ALL GTM IMPORT CHECKS PASSED'}`);
 if (failures.length) process.exitCode = 1;

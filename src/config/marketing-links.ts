@@ -731,6 +731,28 @@ export const marketingLinks: MarketingLink[] = [
     whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
   },
   {
+    id: 'tiktok_support_video',
+    channel: CHANNEL.tiktok,
+    campaign: 'support',
+    placement: 'Fundraiser video',
+    path: destinations.support,
+    utm: { source: 'tiktok', medium: 'organic_social', campaign: 'support', content: 'video' },
+    purpose: 'Attribute fundraiser videos on TikTok.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser video.',
+  },
+  {
+    id: 'nextdoor_support_post',
+    channel: CHANNEL.nextdoor,
+    campaign: 'support',
+    placement: 'Fundraiser neighborhood post',
+    path: destinations.support,
+    utm: { source: 'nextdoor', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on Nextdoor (selective use).',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
     id: 'email_support',
     channel: CHANNEL.email,
     campaign: 'support',
@@ -740,6 +762,18 @@ export const marketingLinks: MarketingLink[] = [
     purpose: 'Attribute fundraiser announcement emails.',
     manual: false,
     whereToPaste: 'Prepared link — copy it into the fundraiser email.',
+  },
+  {
+    id: 'print_support_qr',
+    channel: CHANNEL.print,
+    campaign: 'support',
+    placement: 'Print QR to support page',
+    path: destinations.support,
+    utm: { source: 'print', medium: 'qr', campaign: 'support' },
+    purpose: 'Identify scans from fundraiser/community handout QR codes.',
+    manual: true,
+    whereToPaste:
+      'Place public/marketing/qr/support-campaign.svg on fundraiser/community handouts — separate from the truck, business-card, service and review QRs',
   },
 ];
 
@@ -763,4 +797,5 @@ export const qrAssets: QrAsset[] = [
   { id: 'maintenance', label: 'Maintenance QR', linkId: 'print_maintenance_qr' },
   { id: 'commercial-hvac', label: 'Commercial HVAC QR', linkId: 'print_commercial_qr' },
   { id: 'tab-commissioning', label: 'TAB / commissioning QR', linkId: 'print_tab_qr' },
+  { id: 'support-campaign', label: 'Support campaign QR', linkId: 'print_support_qr' },
 ];
