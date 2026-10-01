@@ -1,5 +1,13 @@
 # Structured data / entity audit — September 2026
 
+> **Current scope update — October 2026:** the structured-data decisions below are unchanged —
+> the `HVACBusiness` entity still intentionally omits the `founder` Person property. However,
+> the owner has since approved publishing founder disclosures (name, background, faith/community
+> motivation, ~$25,000 founder investment) **on `/support/` only**. The "anonymity directive"
+> wording in this September 2026 audit therefore describes the **structured-data scope**, not a
+> site-wide identity policy. Do not expand owner disclosures to schema or other pages without
+> explicit owner approval (`AGENTS.md` → Business information integrity).
+
 ## Current state (baseline)
 
 Every page emits one global `HVACBusiness` JSON-LD block from `BaseHead.astro`:

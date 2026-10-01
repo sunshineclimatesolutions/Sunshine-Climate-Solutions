@@ -7,6 +7,22 @@ Static site built with [Astro](https://astro.build) (static output, strict TypeS
 - **Local preview:** http://localhost:4321
 - **Build output:** `dist/` (deploy this directory)
 
+## START HERE
+
+**Complete operating-system documentation: [`docs/OPERATIONS-HUB.md`](docs/OPERATIONS-HUB.md)** —
+architecture, business facts, website/deployment, search and local listings, social platforms,
+analytics, leads, fundraising, content/reviews, automation, onboarding and current status.
+
+Role-based entry points:
+
+| Role | Start here |
+| --- | --- |
+| Owner | [`docs/operations/PLATFORM-STATUS.md`](docs/operations/PLATFORM-STATUS.md) (outstanding actions) + [`docs/operations/MAINTENANCE-SCHEDULE.md`](docs/operations/MAINTENANCE-SCHEDULE.md) |
+| Marketer | [`docs/operations/MARKETER-START-HERE.md`](docs/operations/MARKETER-START-HERE.md) |
+| Developer | [`docs/operations/DEVELOPER-START-HERE.md`](docs/operations/DEVELOPER-START-HERE.md) + [`AGENTS.md`](AGENTS.md) |
+| SEO specialist | [`docs/seo/90-DAY-CONTENT-PLAN.md`](docs/seo/90-DAY-CONTENT-PLAN.md) + [`docs/seo/KEYWORD-TO-PAGE-MAP.md`](docs/seo/KEYWORD-TO-PAGE-MAP.md) |
+| Analytics specialist | [`docs/GTM-GA4-SETUP.md`](docs/GTM-GA4-SETUP.md) |
+
 ## Requirements
 
 - Node.js **20 or newer** (Node 22 LTS recommended). `node -v` to check.
@@ -89,7 +105,18 @@ instructions: **`docs/DEPLOYMENT.md`**.
 
 ## Docs index
 
+**Repository & operations**
+
 - **`AGENTS.md`** — permanent instructions for AI engineering agents (read first)
+- `docs/OPERATIONS-HUB.md` — complete operating-system entry point
+- `docs/operations/PLATFORM-STATUS.md` — live platform status register
+- `docs/operations/AUTOMATION-REGISTER.md` — automations and scripted workflows
+- `docs/operations/MARKETER-START-HERE.md` / `DEVELOPER-START-HERE.md` — role onboarding
+- `docs/operations/ACCESS-AND-OWNERSHIP.md` — access, roles, agency onboarding/offboarding
+- `docs/operations/MAINTENANCE-SCHEDULE.md` — daily/weekly/monthly/post-deploy cadence
+
+**Website & content**
+
 - `docs/CONTENT-GUIDE.md` — adding/editing services, FAQs, projects, reviews, page copy
 - `docs/IMAGE-GUIDE.md` — photo management, naming, alt text, before/after, guardrails
 - `docs/PRE-LAUNCH-CHECKLIST.md` — launch blockers and verification status
@@ -98,18 +125,38 @@ instructions: **`docs/DEPLOYMENT.md`**.
 - `docs/DESIGN-SYSTEM.md` — design tokens and typography
 - `docs/LOGO-PROMPTS.md` — three ready-to-paste Ideogram prompts for the final logo
 
-### Canonical marketing system
+**Marketing system (canonical)**
 
 - `docs/seo/90-DAY-CONTENT-PLAN.md` — **strategy**: two engines, audiences, 12-week campaign
   map, query/page ownership, CTAs, Field Proof requirements
 - `docs/marketing/CONTENT-OPERATING-SYSTEM.md` — **execution manual**: weekly production
   workflow, platform roles, SOPs, follow-up, measurement, decision rules
 - `docs/marketing/90-DAY-CONTENT-CALENDAR.csv` — week-by-week execution tracker
-- `docs/marketing/WEEKLY-MARKETING-SCORECARD.md` — weekly KPI capture
+- `docs/marketing/WEEKLY-MARKETING-SCORECARD.md` — weekly KPI capture (customer + fundraiser)
 - `docs/marketing/REVIEW-GROWTH-SYSTEM.md` — review and referral workflow
-- `docs/marketing/UTM-MASTER-LINKS.md` / `docs/marketing/WHERE-TO-PASTE-UTM-LINKS.md` —
-  generated UTM link registry and owner cheat sheet (source of truth:
-  `src/config/marketing-links.ts`; regenerate with `npm run marketing:links`)
+- `docs/marketing/SOCIAL-PROFILE-SETUP.md` — social bios, brand block, visual specs
+- `docs/marketing/SOCIAL-ASSET-SOURCES.md` — social icon/avatar provenance
+- `docs/marketing/UTM-MASTER-LINKS.md` / `.csv` / `WHERE-TO-PASTE-UTM-LINKS.md` — generated UTM
+  registry and owner cheat sheet (source of truth: `src/config/marketing-links.ts`; regenerate
+  with `npm run marketing:links`)
+
+**Analytics & automation**
+
+- `docs/GTM-GA4-SETUP.md` — consent architecture, event reference, GTM import files, current
+  status and diagnosis
+- `docs/gtm/SCS-GA4-container-import.json` / `SCS-support-tracking-patch.json` — structural GTM
+  import files (validated by `node scripts/verify-gtm-import.mjs`)
+- `docs/INDEXNOW.md` — IndexNow submission tooling and workflow
+- `.github/workflows/indexnow.yml` — the only repository workflow (runs on `main` pushes)
+
+**SEO & local search**
+
+- `docs/seo/KEYWORD-TO-PAGE-MAP.md`, `KEYWORD-MASTER.md`, `ON-PAGE-AUDIT.md`,
+  `INTERNAL-LINK-MAP.md`, `STRUCTURED-DATA-AUDIT.md`, `LOCAL-PAGE-ROADMAP.md`,
+  `TECHNICAL-SEO-AUDIT.md`, `SEO-BASELINE.md`, `RANK-MONITORING-PLAN.md`,
+  `WEEKLY-SEARCH-CONSOLE-SOP.md`, `GBP-OPTIMIZATION-CHECKLIST.md`,
+  `OTHER-SEARCH-CHANNELS.md`, `CITATION-AUDIT.md`, `LOCAL-LINK-OPPORTUNITIES.csv`
+- `SEO_MASTER_AUDIT_SEPT_2026.md` — historical September 2026 audit snapshot (annotated)
 
 ## Notes
 

@@ -3,6 +3,21 @@
 A 20–30 minute weekly process. Emphasize **clicks, impressions, and trends** over any single
 position; GSC average position is an average, not a universal rank.
 
+## Current property status — October 1, 2026 (owner-confirmed)
+
+- A **DOMAIN property** for `sunshineclimatesolutions.com` is verified and has begun recording
+  search activity. The canonical homepage was confirmed **indexed** through URL Inspection.
+- **Ownership/access arrangement:** the original verified owner manages the property through a
+  personal Google account; the SCS business Google account has subsequently been granted
+  ownership access. Personal account identifiers are intentionally not recorded anywhere in
+  this repository (see `docs/operations/ACCESS-AND-OWNERSHIP.md`).
+- **Do not create a duplicate Search Console property.** Use the existing domain property.
+- **GA4 ↔ Search Console association:** the correct domain property now appears in the GA4
+  linking wizard, but the association is **pending final confirmation** — do not record it as
+  complete until the owner confirms the submission or supplies the linked-products screen
+  (`docs/operations/PLATFORM-STATUS.md`).
+- Sitemap to verify: `https://sunshineclimatesolutions.com/sitemap-index.xml`.
+
 ## Weekly routine
 
 1. **Performance → Queries (last 7 / 28 days).** Record: clicks, impressions, CTR, position.

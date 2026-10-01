@@ -6,7 +6,9 @@ Astro static site. **Build command:** `npm run build` · **Output directory:** `
 > History: this site was originally set up and documented for Cloudflare Pages. The production
 > deployment is now the owner's **GitHub-connected Cloudflare project** (the owner identifies
 > it as Cloudflare Workers). The deployment is configured entirely in the **Cloudflare
-> dashboard** — this repository intentionally contains no wrangler file or CI workflows.
+> dashboard** — this repository intentionally contains no wrangler file or Cloudflare
+> deployment configuration. The only repository workflow is `.github/workflows/indexnow.yml`
+> (search-engine notifications after a push; it does not build or deploy).
 > **Agents must never change deployment settings, DNS, or the GitHub connection.**
 
 ## How deployment works
@@ -72,3 +74,42 @@ The zone already has Google Workspace email records (**MX and SPF/DKIM TXT**) an
 Any branch/PR deployment should carry `PUBLIC_PREVIEW_MODE=true` so all preview pages are
 `noindex` — safe to share. A noindex directive is not access control: preview URLs are public
 to anyone who has the link (they contain no secrets by design).
+
+### Current status — October 1, 2026
+
+**Preview builds are DISABLED by the owner** ("Builds for Preview branches" turned off in the
+Cloudflare dashboard). Production builds remain enabled, and the existing production
+deployment configuration is unchanged. **Future preview deployments require a separately
+approved configuration project** (Worker Previews with a Wrangler configuration matching the
+existing production Worker, including the required `previews` block). The failure explanation
+below is preserved for troubleshooting and history.
+
+### Historical failure (October 1, 2026) — preserved for troubleshooting
+
+Cloudflare Workers Builds ran **two separate steps** for a pull request:
+
+1. **Build step** — `npm run build` (Astro static build). **This succeeds** (18 pages built;
+   Cloudflare reports the build command completed successfully).
+2. **Preview deploy step** — Cloudflare then runs `npx wrangler preview`, which **fails** with:
+
+   > Your Wrangler configuration is missing a `previews` block to run this command.
+
+**Root cause:** this repository intentionally contains **no Wrangler configuration**
+(deployment settings live in the Cloudflare dashboard), so the preview-deploy command has no
+`previews` block to use. The failure is in the preview **deployment** step, not the Astro
+build and not the repository content (the same commit builds cleanly locally in both
+production and preview modes).
+
+**Impact:** only the PR **preview URL** is affected. The production site, the production build,
+and the merged content are unaffected — pushes to `main` continue to build and deploy normally.
+
+**Remediation options (owner / Cloudflare-side; this repository makes no change):**
+
+1. **Temporarily disable Cloudflare Preview Builds** for documentation-only PRs
+   (Cloudflare → Workers project → Settings → Builds & deployments). The PR can be reviewed and
+   merged without a preview URL; production deploys are unaffected.
+2. **For future branch previews, configure Worker Previews:** add a Wrangler configuration that
+   **matches the existing production Worker** and includes the required `previews` block so
+   `npx wrangler preview` can create preview versions. This is a deliberate
+   deployment-configuration change requiring owner approval — **do not add a `wrangler`
+   configuration to this repository without it.**

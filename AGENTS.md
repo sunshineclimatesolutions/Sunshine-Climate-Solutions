@@ -10,8 +10,9 @@ with the owner; never silently work around this file.
 - Marketing and service-request website for **Sunshine Climate Solutions LLC** (Tampa Bay HVAC).
 - Production: **https://sunshineclimatesolutions.com**. Hosting is the owner's GitHub-connected
   Cloudflare project (owner identifies it as Cloudflare Workers). This repository contains **no
-  deployment configuration** (no wrangler file, no CI workflows) — deployment settings live in
-  the Cloudflare dashboard.
+  Cloudflare deployment configuration** (no wrangler file) — deployment settings live in the
+  Cloudflare dashboard. The only repository workflow is `.github/workflows/indexnow.yml`, which
+  notifies search engines about changed URLs after a push to `main`; it does not build or deploy.
 - Repo: `sunshineclimatesolutions/Sunshine-Climate-Solutions`. **`main` is the production branch.**
 - Local dev server: http://localhost:4321. Build output: `dist/`.
 
@@ -20,7 +21,8 @@ with the owner; never silently work around this file.
 - **Astro 5, `output: 'static'`, strict TypeScript** (strictest preset). No client framework,
   no CSS framework, no CMS, no database. Do not add dependencies, databases, CMS platforms, or
   paid services without explicit owner approval.
-- `trailingSlash: 'always'`; `site` is the production domain; sitemap excludes 404/thank-you.
+- `trailingSlash: 'always'`; `site` is the production domain; sitemap excludes 404/thank-you
+  **and `/support/`** (noindex fundraiser page — do not add it back to the sitemap).
 - **`src/config/business.ts` is the single source of truth for every business fact** (phone,
   email, hours, pricing, service area, brands, payments, license, feature flags). Never
   hard-code any of those values anywhere else; components and pages import from this file.
@@ -29,8 +31,8 @@ with the owner; never silently work around this file.
   - `services` (`src/content/services/*.md`) → pages at `/services/<id>/`, cards, footer links.
   - `faqs` (`src/content/faqs/*.md`) → grouped FAQ page by `category`.
   - `site` (`src/content/site/*.md`) → editable copy for the home, about, contact,
-    service-area, and TAB pages (one file per page; business facts still come from
-    `business.ts`; only supported token is `{serviceCall}`).
+    service-area, spring-hill, TAB, FAQ, leave-review and support pages (one file per page;
+    business facts still come from `business.ts`; only supported token is `{serviceCall}`).
   - `projects` (`src/content/projects/*.md`) → portfolio; **intentionally empty**; the Our Work
     page and its nav/footer links are hidden until at least one genuine entry exists.
   - `reviews` (`src/content/reviews/*.md`) → testimonials; **intentionally empty**; review
@@ -93,6 +95,10 @@ with the owner; never silently work around this file.
 
 Build notices like "The collection 'projects' does not exist or is empty" are **expected and
 intentional** while those collections are empty — not errors.
+
+Full inventory of what runs automatically versus manually (deployment, IndexNow, generators,
+QA scripts, analytics events): `docs/operations/AUTOMATION-REGISTER.md`. Current external
+platform status (GTM/GA4/GBP/GSC/Bing/fundraising): `docs/operations/PLATFORM-STATUS.md`.
 
 ## Git safety and production deployment restrictions
 
@@ -177,6 +183,13 @@ Schemas and how-to: `docs/CONTENT-GUIDE.md`. After content edits run `npm run ve
 - Warranty wording stays exactly: "Ask about the workmanship and manufacturer warranty coverage
   included with your proposal."
 - The Web3Forms access key is a public client-side identifier by design — it is not a secret.
+- **Owner identity / founder disclosures:** the owner approved publishing founder disclosures
+  (name, background, faith/community motivation, ~$25,000 founder investment) **only on
+  `/support/`** (October 2026). The `HVACBusiness` structured data still intentionally omits
+  the `founder` Person property. Do not expand owner disclosures to other pages or schema, and
+  do not remove the approved `/support/` disclosures, without explicit owner approval. (The
+  September 2026 "anonymity directive" referenced in older comments/docs is superseded in part
+  by this approval; `docs/seo/STRUCTURED-DATA-AUDIT.md` records the current scope.)
 
 ## Verification and reporting requirements
 

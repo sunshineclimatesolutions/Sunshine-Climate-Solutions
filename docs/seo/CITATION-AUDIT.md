@@ -4,6 +4,23 @@ Read-only public research; nothing was submitted or edited on any platform. "Not
 means no public evidence was found — it does not prove no unclaimed record exists. Full rows:
 `CITATION-AUDIT.csv`.
 
+## Current status update — October 1, 2026 (owner-confirmed)
+
+The findings below remain the **September 2026 audit record**. Since then, owner-confirmed
+changes:
+
+- **Bing Places: published** and synchronized with Google Business Profile (the September
+  "not observed" condition is resolved). Bing Webmaster Tools is also active (Site Scan found
+  three over-long service titles — corrected and deployed).
+- **Google Business Profile: active**, with the **GA4 link created** through Google's
+  interface.
+- **Facebook page URL:** the page URL recorded in the CSV has since changed; the current URL is
+  configured in `src/config/business.ts` (post-audit note added to the CSV row).
+- **Still open (verify before acting):** the authenticated GBP service-area/location
+  verification, Yelp locality, Facebook field completeness, Apple Business Connect status, and
+  the stale LinkedIn "Aaron's A/C Solutions" reference.
+- Current platform register: `docs/operations/PLATFORM-STATUS.md`.
+
 ## Most important findings
 
 1. **Locality/geographic inconsistency in public data — verify against the authenticated GBP.**

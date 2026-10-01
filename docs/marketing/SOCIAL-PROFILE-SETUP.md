@@ -147,13 +147,47 @@ Website: [paste the YouTube tracked URL from WHERE-TO-PASTE-UTM-LINKS.md]
 [Relevant service page link — e.g. AC repair & diagnostics, maintenance, airflow & ductwork]
 ```
 
-## Pending platforms
+## Platform verification status — October 1, 2026
 
-- **LinkedIn — waiting on the public Company Page URL.** Identity verification
-  is in progress. The UTM link is prepared in the registry
-  (`linkedin_profile`, marked pending) and must not be pasted anywhere yet. No
-  LinkedIn link is published on the website or in structured data.
+### TikTok Business Account — OWNER-CONFIRMED
 
-When the LinkedIn URL is final, update `src/config/business.ts` (public URL),
-remove the `pending` flag in `src/config/marketing-links.ts`, and regenerate the
-marketing docs with `npm run marketing:links`.
+- **Business verification is fully completed as of 2026-10-01** (authenticated TikTok Business
+  Suite screenshots: "Verify your business — Good to go!"; the verified-business record shows
+  Sunshine Climate Solutions with accepted business documentation).
+- The configured company website is the tracked TikTok profile URL:
+  `https://sunshineclimatesolutions.com/?utm_source=tiktok&utm_medium=organic_social&utm_campaign=profile`
+- This is **business verification / verified business status** — **not** a public blue-check
+  verification unless separately confirmed.
+- Business Suite currently exposes features including: Analytics, Creative Hub, Leads Manager,
+  and message settings/labels. **Do not claim specific lead-generation or messaging features
+  are enabled** unless actually confirmed in the authenticated account.
+
+**Remaining owner actions (TikTok):**
+
+1. Review the TikTok **Leads Manager** configuration.
+2. Configure appropriate customer-message **labels / automation** where available.
+3. Verify whether the business **street address** is publicly visible. SCS is a service-area
+   business — do not intentionally publish a private operating address unless the owner wants
+   it public.
+
+### LinkedIn Company Page — PENDING
+
+- No public Company Page exists; no LinkedIn URL is published on the website or in structured
+  data.
+- **Known eligibility rule (official LinkedIn documentation, checked 2026-10-01):** the
+  personal account must have **more than one connection** — operationally, at least **two
+  accepted connections** — to create a Company Page. LinkedIn also documents possible
+  additional blockers: account age requirements, verified email, workplace verification, an
+  existing/conflicting Page or URL, and temporary Page-creation restrictions.
+- `business.social.linkedin` stays empty and the prepared UTM entry (`linkedin_profile`) stays
+  `pending`. Do not populate or publish a LinkedIn URL until the Page exists.
+
+**Owner action to unblock LinkedIn:**
+
+1. Establish at least two genuine accepted connections.
+2. Complete/verify the personal professional profile.
+3. Attempt Company Page creation.
+4. Once the Company Page is successfully created, supply the exact public URL.
+5. Only then update `src/config/business.ts` (`social.linkedin`) and publish the prepared
+   LinkedIn campaign links (remove the `pending` flag in `src/config/marketing-links.ts` and
+   regenerate with `npm run marketing:links`).
