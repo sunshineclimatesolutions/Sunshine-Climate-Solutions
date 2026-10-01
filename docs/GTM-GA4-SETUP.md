@@ -16,7 +16,7 @@ see the status matrix.
 | Layer | State | Evidence |
 | --- | --- | --- |
 | Site-installed (this branch) | **Done** | Basic Consent Mode + events verified in built HTML; `scripts/gtm-consent.mjs` 91/91 |
-| GTM workspace configured | **NOT done** | Owner: import file or manual steps below |
+| GTM workspace configured | **NOT done** | First import attempt (2026-10-01) was **rejected by Google's importer** — `vendorTemplate.parameter.measurementIdOverride` empty. Corrected in both JSON files (every GA4 Event tag now sets `G-EQ9CBESN23`); owner re-import is the acceptance test |
 | GTM published | **NOT done** | Owner presses Submit → Publish |
 | GA4 receiving data | **NOT verifiable yet** | Requires published container + deployment |
 | `generate_lead` key event | **NOT done** | Owner marks it after data arrives |
@@ -112,6 +112,28 @@ it manually instead of creating a duplicate. The patch contains no Google base t
 nothing. Structural checks run via `node scripts/verify-gtm-import.mjs` (validates both
 files).
 
+### Import failure history (2026-10-01)
+
+Google's container importer **rejected** the first version of
+`docs/gtm/SCS-support-tracking-patch.json` with the exact validation error:
+
+```text
+containerVersion.tag[0].vendorTemplate.parameter.measurementIdOverride: The value must not be empty.
+```
+
+**Root cause:** the generated GA4 Event (`gaawe`) tags did not carry the required nonempty
+`measurementIdOverride` parameter. Google's importer requires every GA4 Event tag to set a
+measurement ID override, even when a Google Tag for the same stream exists in the container.
+
+**Correction:** every `gaawe` tag in both JSON files now includes
+`{"type":"TEMPLATE","key":"measurementIdOverride","value":"G-EQ9CBESN23"}`, matching genuine
+GA4 Event export structures. `scripts/verify-gtm-import.mjs` now fails if any `gaawe` tag is
+missing a nonempty measurement ID — for the full import **and** the patch.
+
+**The live import in Google's UI is the final acceptance test.** Local structural checks
+passing does not prove the import succeeds; do not report the import as done until the owner
+has imported (and later published) the corrected file.
+
 ---
 
 ## Manual click-by-click (guaranteed path)
@@ -127,9 +149,13 @@ Do these in <https://tagmanager.google.com> for container `GTM-MBGJ8SLD`.
    This is the **only** Google Tag for this stream.
 3. **Lead tag.** Tags → New → **GA4 Event**. Event Name `generate_lead`. Event Parameters:
    `service_category` = `{{DLV - service_category}}`, `cta_slot` = `{{DLV - cta_slot}}`.
+   **Measurement ID override: `G-EQ9CBESN23`** — required; the importer rejects GA4 Event
+   tags with an empty measurement ID (`vendorTemplate.parameter.measurementIdOverride: The
+   value must not be empty`).
    Trigger: New Trigger → **Custom Event**, event name `scs_form_confirmed`, fires on All Custom
    Events. Name `GA4 - Event - generate_lead`. Save.
-4. **Intent tags.** Five more GA4 Event tags, same pattern:
+4. **Intent tags.** Five more GA4 Event tags, same pattern (each with **Measurement ID
+   override `G-EQ9CBESN23`**):
    - `GA4 - Event - scs_call_click` → event `scs_call_click`, parameter `cta_slot`
    - `GA4 - Event - scs_text_click` → event `scs_text_click`, parameter `cta_slot`
    - `GA4 - Event - scs_request_click` → event `scs_request_click`, parameter `cta_slot`
@@ -236,6 +262,8 @@ questions for the owner/advisor:
 - The real GTM container behavior (tags firing in Google's runtime) — requires the published
   container and a deployed site. All site-side behavior is covered by `scripts/gtm-consent.mjs`
   with a stubbed container (91/91).
-- The GTM import file against Google's importer — structurally validated only; the import
-  preview is the final check.
+- The GTM import file against Google's importer — structurally validated only. A real import
+  attempt failed once (2026-10-01, empty `measurementIdOverride`); the JSON has been corrected
+  and the local checker now guards that field, but **the owner's live import is the final
+  acceptance test**.
 - Real Web3Forms delivery to the inbox — owner-verified only.

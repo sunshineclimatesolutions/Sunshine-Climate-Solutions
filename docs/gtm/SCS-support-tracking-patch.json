@@ -50,6 +50,11 @@
                 ]
               }
             ]
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "G-EQ9CBESN23"
           }
         ],
         "fingerprint": "1759147200015",

@@ -141,6 +141,35 @@ check(
   customEventNames.join(','),
 );
 
+// ── GA4 Event tag measurement ID (real importer requirement) ────────────────
+// Google's container importer rejects gaawe tags whose measurement ID override
+// is missing or empty with:
+//   containerVersion.tag[n].vendorTemplate.parameter.measurementIdOverride:
+//   The value must not be empty.
+// Every GA4 Event tag must carry a nonempty measurementIdOverride TEMPLATE
+// parameter (genuine exports place it in the tag's top-level parameter list).
+const validateGa4EventTags = (cv, label) => {
+  const ga4EventTags = (cv?.tag ?? []).filter((t) => t.type === 'gaawe');
+  check(`${label}: GA4 event tags present`, ga4EventTags.length > 0, String(ga4EventTags.length));
+  for (const tag of ga4EventTags) {
+    const mid = (tag.parameter ?? []).find((p) => p.key === 'measurementIdOverride');
+    check(
+      `${label}: tag "${tag.name}" has a nonempty measurementIdOverride`,
+      mid?.type === 'TEMPLATE' && typeof mid.value === 'string' && mid.value.trim().length > 0,
+      JSON.stringify(mid ?? null),
+    );
+    if (mid && typeof mid.value === 'string' && mid.value.trim()) {
+      check(
+        `${label}: tag "${tag.name}" measurement ID is ${GA4_ID}`,
+        mid.value === GA4_ID,
+        mid.value,
+      );
+    }
+  }
+};
+
+validateGa4EventTags(cv, 'full import');
+
 // ── Support tracking resources (both the full import and the merge patch) ───
 const validateSupportResources = (cv, label) => {
   const tagsIn = cv?.tag ?? [];
@@ -214,6 +243,7 @@ if (patch) {
   check('patch: contains no Google base tag', !(pcv?.tag ?? []).some((t) => t.type === 'googtag'));
   check('patch: contains no page-view trigger', !(pcv?.trigger ?? []).some((t) => t.type === 'PAGEVIEW'));
   validateSupportResources(pcv, 'patch');
+  validateGa4EventTags(pcv, 'patch');
 }
 
 console.log(`\n${failures.length ? `FAILURES:\n${failures.join('\n')}` : 'ALL GTM IMPORT CHECKS PASSED'}`);
