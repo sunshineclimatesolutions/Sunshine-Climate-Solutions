@@ -1,0 +1,108 @@
+---
+// Fundraising / support page — intentionally restrained and noindexed.
+//
+// This is NOT a service landing page. It exists for people who already know
+// the company from social, email, personal outreach, or community contacts.
+// Rules (owner-approved September 2026):
+//  - No fundraiser CTA appears in any service-conversion area; the service
+//    funnel stays CALL / TEXT / REQUEST SERVICE.
+//  - Fundraiser URLs come from business.fundraising — never hard-code them.
+//  - Never imply the business is failing, never frame this as rescue funding,
+//    never imply tax deductibility, equity, repayment, interest, or returns.
+//  - No fabricated customer counts, review counts, or dollar allocations.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../config/business';
+
+const title = 'Support Sunshine Climate Solutions';
+const description =
+  'Sunshine Climate Solutions is already operational. See what founder investment has built and how contributions support the next stage of responsible growth.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Support the Mission</p>
+      <h1>Support the Growth of Sunshine Climate Solutions</h1>
+      <p class="lead">
+        Sunshine Climate Solutions has already been built through significant founder investment,
+        field experience, and personal labor. The company is operational; the current fundraising
+        effort is intended to strengthen the final areas needed to support responsible growth.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="prose">
+        <h2>Already Built</h2>
+        <p>Founder capital and field work have already gone into:</p>
+        <ul>
+          <li>~$25,000 of founder capital already invested</li>
+          <li>Service truck and professional HVAC tools</li>
+          <li>Diagnostic equipment and operating assets</li>
+          <li>Custom website and customer-acquisition infrastructure</li>
+          <li>Local marketing, analytics, and review infrastructure</li>
+          <li>Owner-operated field capability across residential and light-commercial work</li>
+        </ul>
+
+        <h2>What Additional Capital Supports</h2>
+        <p>The fundraiser is intended to close remaining growth gaps in:</p>
+        <ul>
+          <li>Service inventory and job materials</li>
+          <li>Operating reserve</li>
+          <li>Local customer acquisition</li>
+          <li>Vehicle and field readiness</li>
+          <li>Diagnostic-equipment reserve</li>
+        </ul>
+
+        <h2>Choose a Platform</h2>
+        <p>
+          Two campaigns support the same work. Both are run by the owner; neither is officially
+          preferred over the other — choose whichever fits you best.
+        </p>
+        <div class="cluster" style="margin-top: var(--sp-sm);">
+          <a
+            class="btn btn--gold btn--lg"
+            href={business.fundraising.gofundme}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-support-platform="gofundme"
+          >
+            Support on GoFundMe
+          </a>
+          <a
+            class="btn btn--gold btn--lg"
+            href={business.fundraising.givesendgo}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-support-platform="givesendgo"
+          >
+            Support on GiveSendGo
+          </a>
+        </div>
+        <p style="margin-top: var(--sp-sm); font-size: var(--text-sm); color: var(--c-ink-soft);">
+          GoFundMe: the general community fundraiser. GiveSendGo: the faith/community-oriented
+          fundraiser.
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--c-ink-soft);">
+          Contributions are support for the business. They are not tax-deductible and do not
+          represent equity, repayment, interest, or investment returns.
+        </p>
+
+        <h2>Other Ways to Help</h2>
+        <ul>
+          <li>Share the fundraiser with people who may want to support the mission.</li>
+          <li>Recommend Sunshine Climate Solutions to someone who needs HVAC service.</li>
+          <li>
+            Support the company by choosing SCS when legitimate HVAC service is needed — call,
+            text, or <a href="/contact/">request service</a> like any other customer.
+          </li>
+          <li>
+            Leave an honest review after legitimate completed service. (Please don't ask
+            non-customers for reviews.)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

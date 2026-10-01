@@ -47,7 +47,8 @@ with the owner; never silently work around this file.
   `BaseHead.astro`/`ConsentBanner.astro`, never in preview mode.
   - **Umami Cloud** (cookieless, aggregate only) — always on when configured. Events are
     fixed-name only: `call-click`, `text-click`, `form-success` (fired strictly after Web3Forms
-    confirms).
+    confirms), and `support-gofundme-click` / `support-givesendgo-click` (outbound fundraiser
+    clicks on `/support/`).
   - **Google Analytics 4 via Google Tag Manager** (`GTM-MBGJ8SLD`; GA4 `G-EQ9CBESN23` is
     configured inside the GTM container — never load gtag.js directly). **Basic Consent Mode:**
     the GTM container itself is not loaded and no Google request is made until the visitor
@@ -57,7 +58,9 @@ with the owner; never silently work around this file.
     further collection. Advertising consent is never granted while the site runs no ads, and
     the GTM `<noscript>` iframe is intentionally omitted. Data-layer events are fixed-name only
     and are only pushed with permission (nothing from before permission is ever replayed):
-    `scs_call_click`, `scs_text_click`, `scs_request_click`, `scs_form_start`, and
+    `scs_call_click`, `scs_text_click`, `scs_request_click`, `scs_form_start`,
+    `scs_support_click` (outbound fundraiser clicks on `/support/`; carries only the
+    allowlisted `support_platform` value `gofundme` or `givesendgo`), and
     `scs_form_confirmed` (maps to GA4 `generate_lead`) which is emitted on `/thank-you/` only
     from a single-use session receipt written after Web3Forms confirms — never on manual
     thank-you visits, failed submissions or duplicates.

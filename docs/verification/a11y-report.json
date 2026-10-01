@@ -61,6 +61,11 @@
       "violations": []
     },
     {
+      "page": "support",
+      "viewport": "mobile",
+      "violations": []
+    },
+    {
       "page": "thank-you",
       "viewport": "mobile",
       "violations": []
@@ -131,6 +136,11 @@
       "violations": []
     },
     {
+      "page": "support",
+      "viewport": "desktop",
+      "violations": []
+    },
+    {
       "page": "thank-you",
       "viewport": "desktop",
       "violations": []
@@ -142,7 +152,7 @@
     }
   ],
   "summary": {
-    "scanned": 28,
+    "scanned": 30,
     "totalViolationGroups": 0,
     "byRule": {}
   }

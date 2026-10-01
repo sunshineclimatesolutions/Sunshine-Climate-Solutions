@@ -110,8 +110,14 @@ const check = (name, condition, detail = '') => {
 
   const sitemap = fs.readFileSync(path.join('dist', 'sitemap-0.xml'), 'utf8');
   const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  // Indexable pages = every built index.html minus the noindexed thank-you page.
-  const indexablePages = htmlFiles.filter((f) => f.endsWith('index.html') && !f.includes('thank-you')).length;
+  // Indexable pages = every built index.html minus the noindexed thank-you and
+  // support pages (both are intentionally excluded from the sitemap).
+  const indexablePages = htmlFiles.filter(
+    (f) =>
+      f.endsWith('index.html') &&
+      !f.includes('thank-you') &&
+      path.basename(path.dirname(f)) !== 'support',
+  ).length;
   check(
     'sitemap matches the indexable page count',
     locs.length === indexablePages,

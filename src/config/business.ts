@@ -61,7 +61,7 @@ export const business = {
   // the owner supplies the final public Company Page URL. Empty values are
   // filtered out of the footer and sameAs automatically.
   social: {
-    facebook: 'https://www.facebook.com/profile.php?id=61594915980759',
+    facebook: 'https://www.facebook.com/profile.php?id=61594659104196',
     instagram: 'https://www.instagram.com/sunshine_climate_solutions/',
     tiktok: 'https://www.tiktok.com/@sunshineclimatesolutions',
     youtube: 'https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg',
@@ -71,6 +71,19 @@ export const business = {
     gab: 'https://gab.com/Sunshine_Climate_Solutions',
     parler: 'https://app.parler.com/Sunshine_Climate_Solutions',
     linkedin: '',
+  },
+
+  // Fundraising / support campaigns. These are OUTBOUND contribution
+  // destinations, NOT business identity profiles: never add them to
+  // business.social, the HVACBusiness sameAs structured data, the inbound UTM
+  // registry, or any service-funnel CTA. Rendered only by /support/ (and
+  // referenced from the About page's restrained support note and the footer's
+  // low-prominence link to /support/). Copy must never imply tax deductibility,
+  // equity, repayment, interest, or investment returns — see /support/.
+  fundraising: {
+    gofundme:
+      'https://www.gofundme.com/f/building-an-hvac-company-on-faith-heritage-integrity',
+    givesendgo: 'https://www.givesendgo.com/support-american-hvac-in-our-communities',
   },
 
   serviceArea: {

@@ -13,7 +13,7 @@ const routes = [
   '/services/ac-maintenance/', '/services/airflow-ductwork/',
   '/services/commercial-service-maintenance/', '/tab-commissioning-support/', '/service-area/',
   '/service-area/spring-hill-fl/',
-  '/about/', '/faq/', '/contact/', '/leave-review/', '/privacy/', '/thank-you/',
+  '/about/', '/faq/', '/contact/', '/leave-review/', '/privacy/', '/thank-you/', '/support/',
 ];
 
 const viewports = [

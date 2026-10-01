@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-30T18:57:25.220Z",
+  "generatedAt": "2026-10-01T03:19:21.287Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
-  "pageCount": 17,
+  "pageCount": 18,
   "sitemapUrls": [
     "https://sunshineclimatesolutions.com/",
     "https://sunshineclimatesolutions.com/about/",
@@ -220,7 +220,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 49,
+      "internalLinks": 50,
       "externalLinks": 11,
       "internalLinkTargets": [
         "/",
@@ -239,6 +239,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -246,7 +247,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -357,7 +358,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 35,
+      "internalLinks": 36,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -373,6 +374,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -380,7 +382,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -413,7 +415,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 405,
+      "wordCount": 419,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -497,7 +499,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 31,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -513,6 +515,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -520,7 +523,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -677,7 +680,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 30,
+      "internalLinks": 31,
       "externalLinks": 19,
       "internalLinkTargets": [
         "/",
@@ -693,6 +696,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -700,7 +704,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -830,7 +834,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 41,
+      "internalLinks": 42,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -847,6 +851,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -854,7 +859,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1022,7 +1027,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 31,
+      "internalLinks": 32,
       "externalLinks": 19,
       "internalLinkTargets": [
         "/",
@@ -1038,6 +1043,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1046,7 +1052,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1162,7 +1168,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 30,
+      "internalLinks": 31,
       "externalLinks": 13,
       "internalLinkTargets": [
         "/",
@@ -1178,6 +1184,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1188,7 +1195,7 @@
         "https://policies.google.com/privacy",
         "https://umami.is",
         "https://web3forms.com",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1311,7 +1318,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1328,6 +1335,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1335,7 +1343,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1454,7 +1462,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 41,
+      "internalLinks": 42,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1470,6 +1478,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1477,7 +1486,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1592,7 +1601,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 39,
+      "internalLinks": 40,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1608,6 +1617,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1615,7 +1625,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1738,7 +1748,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 37,
+      "internalLinks": 38,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1755,6 +1765,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1762,7 +1773,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -1884,7 +1895,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 37,
+      "internalLinks": 38,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1901,6 +1912,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -1908,7 +1920,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -2027,7 +2039,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 36,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2043,6 +2055,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -2050,7 +2063,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -2169,7 +2182,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 36,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2185,6 +2198,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -2192,7 +2206,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -2313,7 +2327,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 36,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2329,6 +2343,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -2336,7 +2351,148 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
+        "https://www.instagram.com/sunshine_climate_solutions/",
+        "https://www.tiktok.com/@sunshineclimatesolutions",
+        "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
+        "https://www.youtube.com/channel/UCo4t52rEplKxuGIupnUqWIg",
+        "https://x.com/SCS_FL_HVAC"
+      ]
+    },
+    {
+      "route": "/support/",
+      "title": "Support Sunshine Climate Solutions",
+      "titleLength": 34,
+      "description": "Sunshine Climate Solutions is already operational. See what founder investment has built and how contributions support the next stage of responsible growth.",
+      "descriptionLength": 156,
+      "canonical": "https://sunshineclimatesolutions.com/support/",
+      "robots": "noindex, follow",
+      "h1": [
+        "Support the Growth of Sunshine Climate Solutions"
+      ],
+      "h2Count": 8,
+      "h3Count": 0,
+      "h2s": [
+        "Already Built",
+        "What Additional Capital Supports",
+        "Choose a Platform",
+        "Other Ways to Help",
+        "Services",
+        "Company",
+        "Get in touch",
+        "Optional analytics"
+      ],
+      "wordCount": 248,
+      "schemaTypes": [
+        "HVACBusiness",
+        "OpeningHoursSpecification",
+        "City",
+        "AdministrativeArea",
+        "Place"
+      ],
+      "jsonLdBlocks": 1,
+      "images": [
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/logo-dark.png",
+          "alt": "",
+          "loading": "eager",
+          "width": "331",
+          "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/brand/google-g.svg",
+          "alt": "",
+          "loading": "eager",
+          "width": "26",
+          "height": "26",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
+          "hasAlt": true
+        }
+      ],
+      "imagesMissingAlt": 0,
+      "internalLinks": 32,
+      "externalLinks": 12,
+      "internalLinkTargets": [
+        "/",
+        "/about/",
+        "/contact/",
+        "/faq/",
+        "/leave-review/",
+        "/privacy/",
+        "/service-area/",
+        "/services/",
+        "/services/ac-maintenance/",
+        "/services/ac-repair-diagnostics/",
+        "/services/airflow-ductwork/",
+        "/services/commercial-service-maintenance/",
+        "/services/replacement-installation/",
+        "/support/",
+        "/tab-commissioning-support/"
+      ],
+      "externalLinkTargets": [
+        "https://app.parler.com/Sunshine_Climate_Solutions",
+        "https://gab.com/Sunshine_Climate_Solutions",
+        "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
+        "https://nextdoor.com/page/sunshine-climate-solutions/",
+        "https://www.facebook.com/profile.php?id=61594659104196",
+        "https://www.givesendgo.com/support-american-hvac-in-our-communities",
+        "https://www.gofundme.com/f/building-an-hvac-company-on-faith-heritage-integrity",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -2467,7 +2623,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2484,6 +2640,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -2491,7 +2648,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",
@@ -2602,7 +2759,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 31,
+      "internalLinks": 32,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2618,6 +2775,7 @@
         "/services/airflow-ductwork/",
         "/services/commercial-service-maintenance/",
         "/services/replacement-installation/",
+        "/support/",
         "/tab-commissioning-support/"
       ],
       "externalLinkTargets": [
@@ -2625,7 +2783,7 @@
         "https://gab.com/Sunshine_Climate_Solutions",
         "https://maps.app.goo.gl/5TD44KHGmZymgndh9",
         "https://nextdoor.com/page/sunshine-climate-solutions/",
-        "https://www.facebook.com/profile.php?id=61594915980759",
+        "https://www.facebook.com/profile.php?id=61594659104196",
         "https://www.instagram.com/sunshine_climate_solutions/",
         "https://www.tiktok.com/@sunshineclimatesolutions",
         "https://www.yelp.com/biz/sunshine-climate-solutions-brooksville",

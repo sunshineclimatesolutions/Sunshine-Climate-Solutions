@@ -271,10 +271,26 @@ const jsonLd = {
     window.dataLayer.push(payload);
   }
 
+  // Fundraiser support clicks (/support/): fixed event name + allowlisted
+  // platform only (gofundme | givesendgo). Never donor identity, donation
+  // amounts, hrefs, query strings, or page text. Same consent gate as every
+  // other GTM event.
+  var support = link.getAttribute('data-support-platform') || '';
+  if (
+    (support === 'gofundme' || support === 'givesendgo') &&
+    window.scsConsent &&
+    window.scsConsent.granted()
+  ) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'scs_support_click', support_platform: support });
+  }
+
   // Umami stays cookieless and unchanged (fixed names only).
   if (!window.umami) return;
   if (href.indexOf('tel:') === 0) window.umami.track('call-click');
   else if (href.indexOf('sms:') === 0) window.umami.track('text-click');
+  else if (support === 'gofundme' || support === 'givesendgo')
+    window.umami.track('support-' + support + '-click');
 }, { capture: true });`}
     />
   )

@@ -63,7 +63,9 @@ const data = pages.map((file) => {
   };
 });
 
-const indexable = data.filter((p) => p.route !== '/thank-you/' && p.route !== '/404.html');
+const indexable = data.filter(
+  (p) => p.route !== '/thank-you/' && p.route !== '/404.html' && p.route !== '/support/',
+);
 
 // ── Uniqueness ──────────────────────────────────────────────────────────────
 const titles = data.map((p) => p.title);
@@ -91,9 +93,19 @@ check(
   data.filter((p) => !p.canonical || p.canonical.includes('?')).map((p) => p.route).join(', '),
 );
 check(
-  'only /thank-you/ is noindex',
-  data.every((p) => (p.route === '/thank-you/' ? p.robots.includes('noindex') : p.robots === 'index, follow')),
-  data.filter((p) => p.robots !== 'index, follow' && p.route !== '/thank-you/').map((p) => p.route).join(', '),
+  'only /thank-you/ and /support/ are noindex',
+  data.every((p) =>
+    p.route === '/thank-you/' || p.route === '/support/'
+      ? p.robots.includes('noindex')
+      : p.robots === 'index, follow',
+  ),
+  data
+    .filter(
+      (p) =>
+        p.robots !== 'index, follow' && p.route !== '/thank-you/' && p.route !== '/support/',
+    )
+    .map((p) => p.route)
+    .join(', '),
 );
 
 // ── Sitemap agreement ───────────────────────────────────────────────────────

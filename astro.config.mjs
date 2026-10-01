@@ -9,7 +9,10 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('/thank-you'),
+      // /support/ is intentionally noindex (direct/referral-only fundraiser
+      // page — it must not compete with the HVAC service pages in search).
+      filter: (page) =>
+        !page.includes('/404') && !page.includes('/thank-you') && !page.includes('/support'),
     }),
   ],
 });

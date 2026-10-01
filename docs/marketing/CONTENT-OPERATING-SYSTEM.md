@@ -489,7 +489,59 @@ This is the core Sunshine Climate Solutions marketing operating system.
   channel/profile link (also used in video descriptions); other platforms have profile links
   until service-specific entries are added.
 
-## 23. Guardrails (non-negotiable)
+## 23. Fundraising distribution
+
+The two owner-run campaigns (GoFundMe and GiveSendGo — URLs in
+`src/config/business.ts` → `fundraising`) are a **separate support layer**, not a service
+funnel. `/support/` is noindex and must never be mixed into service-conversion areas.
+
+**PRIMARY channels:**
+
+- personal Facebook / direct network
+- SCS Facebook launch post
+- Instagram story/reel
+- YouTube founder video
+- email / direct outreach
+
+**SECONDARY channels:**
+
+- X
+- Gab
+- Parler
+- selective Nextdoor use
+
+GoFundMe is the general-public/default campaign. GiveSendGo is the faith/community
+alternative. Do not imply one platform is officially preferred over the other.
+
+**Rules:**
+
+- Do not make every SCS post a fundraiser post — continue normal HVAC educational and Field
+  Proof content.
+- Fundraiser updates should communicate progress, business-building milestones, or use of
+  funds — never rescue framing, never fabricated progress, and never claims of tax
+  deductibility, equity, repayment, or investment returns.
+- Do not run cold paid traffic directly to the fundraiser without a separately approved
+  campaign; paid customer-acquisition budget remains focused on generating HVAC customers.
+- Do not spam all platforms with identical copy — adapt the framing per platform.
+- Inbound links to `/support/` use the prepared registry links (`facebook_support_post`,
+  `instagram_support_post`, `youtube_support`, `x_support_post`, `gab_support_post`,
+  `parler_support_post`, `email_support`). The external fundraiser URLs are outbound
+  destinations and never enter the inbound UTM registry.
+- Outbound fundraiser clicks fire the fixed `scs_support_click` event
+  (`support_platform`: `gofundme` | `givesendgo`) under the existing consent architecture;
+  Umami records `support-gofundme-click` / `support-givesendgo-click`.
+
+**Suggested campaign rhythm:**
+
+| When | Focus |
+| --- | --- |
+| Launch | Founder story + campaign |
+| 3–4 days later | Use of funds / what support accomplishes |
+| Week 2 | Progress update |
+| Week 3 | Business proof / field work / review growth |
+| Week 4 | Founder update / milestone |
+
+## 24. Guardrails (non-negotiable)
 
 - No fabricated claims, measurements, reviews, job counts, availability, or savings.
 - Field measurements require context; never present one measurement as a universal standard.

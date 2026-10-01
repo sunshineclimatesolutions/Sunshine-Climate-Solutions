@@ -31,6 +31,7 @@ export const destinations = {
   commercial: '/services/commercial-service-maintenance/',
   tab: '/tab-commissioning-support/',
   contact: '/contact/',
+  support: '/support/',
 };
 
 export type UtmParams = {
@@ -656,6 +657,89 @@ export const marketingLinks: MarketingLink[] = [
     purpose: 'Identify scans from print pieces aimed at contractors / TAB clients.',
     manual: true,
     whereToPaste: 'Place public/marketing/qr/tab-commissioning.svg on contractor print pieces',
+  },
+
+  // ── Support-page campaigns (fundraiser sharing) ──────────────────────────
+  // Inbound links TO /support/ for fundraiser sharing. The external fundraiser
+  // destinations themselves are deliberately NOT in this registry — it is the
+  // source of truth for inbound links only; the external campaign URLs live in
+  // business.fundraising (see src/config/business.ts).
+  {
+    id: 'facebook_support_post',
+    channel: CHANNEL.facebook,
+    campaign: 'support',
+    placement: 'Fundraiser share post',
+    path: destinations.support,
+    utm: { source: 'facebook', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on Facebook.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
+    id: 'instagram_support_post',
+    channel: CHANNEL.instagram,
+    campaign: 'support',
+    placement: 'Fundraiser share post/story',
+    path: destinations.support,
+    utm: { source: 'instagram', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on Instagram.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
+    id: 'youtube_support',
+    channel: CHANNEL.youtube,
+    campaign: 'support',
+    placement: 'Founder video description',
+    path: destinations.support,
+    utm: { source: 'youtube', medium: 'organic_video', campaign: 'support', content: 'video' },
+    purpose: 'Attribute the founder video link to the support page.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it into the founder video description.',
+  },
+  {
+    id: 'x_support_post',
+    channel: CHANNEL.x,
+    campaign: 'support',
+    placement: 'Fundraiser share post',
+    path: destinations.support,
+    utm: { source: 'x', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on X.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
+    id: 'gab_support_post',
+    channel: CHANNEL.gab,
+    campaign: 'support',
+    placement: 'Fundraiser share post',
+    path: destinations.support,
+    utm: { source: 'gab', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on Gab.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
+    id: 'parler_support_post',
+    channel: CHANNEL.parler,
+    campaign: 'support',
+    placement: 'Fundraiser share post',
+    path: destinations.support,
+    utm: { source: 'parler', medium: 'organic_social', campaign: 'support', content: 'post' },
+    purpose: 'Attribute fundraiser sharing on Parler.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it when sharing the fundraiser.',
+  },
+  {
+    id: 'email_support',
+    channel: CHANNEL.email,
+    campaign: 'support',
+    placement: 'Fundraiser announcement email',
+    path: destinations.support,
+    utm: { source: 'email', medium: 'email', campaign: 'support', content: 'announcement' },
+    purpose: 'Attribute fundraiser announcement emails.',
+    manual: false,
+    whereToPaste: 'Prepared link — copy it into the fundraiser email.',
   },
 ];
 

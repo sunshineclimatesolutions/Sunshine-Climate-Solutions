@@ -406,6 +406,82 @@ try {
     await context.close();
   }
 
+  // ── 7b. Support page — fundraiser click events ───────────────────────────
+  section('Support page — fundraiser click events');
+  {
+    // Pre-permission: no GTM event; Umami records fixed names independently.
+    const { context } = await newContext();
+    const page = await context.newPage();
+    await page.goto(`${BASE}/support/`, { waitUntil: 'networkidle' });
+    await clicksBlocked(page);
+    await clickSelector(page, 'a[data-support-platform="gofundme"]');
+    check(
+      'support click before permission pushes no GTM event',
+      businessEvents(await readLayer(page)).length === 0,
+    );
+    const umamiPre = await page.evaluate(() => window.__umamiEvents || []);
+    check(
+      'Umami records the fundraiser click independently (fixed name)',
+      umamiPre.includes('support-gofundme-click'),
+      umamiPre.join(','),
+    );
+    await context.close();
+  }
+  {
+    // Permission given: fixed event + allowlisted platform only.
+    const { context } = await newContext({ stored: true });
+    const page = await context.newPage();
+    await page.goto(`${BASE}/support/`, { waitUntil: 'networkidle' });
+    const links = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('[data-support-platform]')).map((a) => ({
+        platform: a.getAttribute('data-support-platform'),
+        rel: a.getAttribute('rel') || '',
+        target: a.getAttribute('target') || '',
+      })),
+    );
+    check(
+      'support page exposes exactly gofundme + givesendgo with safe external links',
+      links.length === 2 &&
+        links.every(
+          (l) =>
+            (l.platform === 'gofundme' || l.platform === 'givesendgo') &&
+            l.rel.includes('noopener') &&
+            l.target === '_blank',
+        ),
+      JSON.stringify(links),
+    );
+    await clicksBlocked(page);
+    await clickSelector(page, 'a[data-support-platform="gofundme"]');
+    await clickSelector(page, 'a[data-support-platform="givesendgo"]');
+    await page.waitForTimeout(250);
+    const layer = await readLayer(page);
+    const supportEvents = businessEvents(layer).filter((e) => e.event === 'scs_support_click');
+    check(
+      'consented fundraiser clicks push scs_support_click with allowlisted platform only',
+      supportEvents.length === 2 &&
+        supportEvents.some((e) => e.support_platform === 'gofundme') &&
+        supportEvents.some((e) => e.support_platform === 'givesendgo') &&
+        supportEvents.every((e) => Object.keys(e).sort().join(',') === 'event,support_platform'),
+      JSON.stringify(supportEvents),
+    );
+    const serialized = JSON.stringify(layer);
+    check(
+      'support events carry no href, query string, or PII',
+      !serialized.includes('gofundme.com') &&
+        !serialized.includes('givesendgo.com') &&
+        !serialized.includes('http') &&
+        !serialized.includes('@'),
+    );
+    const umamiEvents = await page.evaluate(() => window.__umamiEvents || []);
+    check(
+      'Umami support fixed names recorded',
+      umamiEvents.includes('support-gofundme-click') &&
+        umamiEvents.includes('support-givesendgo-click'),
+      umamiEvents.join(','),
+    );
+    await context.close();
+  }
+
   // ── 8. Form start gating ─────────────────────────────────────────────────
   section('Form start gating');
   {

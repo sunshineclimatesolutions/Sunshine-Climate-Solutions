@@ -53,7 +53,7 @@ them anywhere yet.
 | --- | --- | --- | --- |
 | LinkedIn | Company Page website field | https://sunshineclimatesolutions.com/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=profile | PENDING — LinkedIn Company Page identity verification is not complete. |
 
-## Service campaign links (29)
+## Service campaign links (36)
 
 ### /services/ac-repair-diagnostics/
 
@@ -118,6 +118,18 @@ them anywhere yet.
 | Facebook | Organic post | contact | post | https://sunshineclimatesolutions.com/contact/?utm_source=facebook&utm_medium=organic_social&utm_campaign=contact&utm_content=post |
 | Nextdoor | Organic post | contact | post | https://sunshineclimatesolutions.com/contact/?utm_source=nextdoor&utm_medium=organic_social&utm_campaign=contact&utm_content=post |
 | Email | Email signature (contact button) | signature | contact_button | https://sunshineclimatesolutions.com/contact/?utm_source=email&utm_medium=email&utm_campaign=signature&utm_content=contact_button |
+
+### /support/
+
+| Channel | Placement | Campaign | Content | Final URL |
+| --- | --- | --- | --- | --- |
+| Facebook | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=facebook&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| Instagram | Fundraiser share post/story | support | post | https://sunshineclimatesolutions.com/support/?utm_source=instagram&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| YouTube | Founder video description | support | video | https://sunshineclimatesolutions.com/support/?utm_source=youtube&utm_medium=organic_video&utm_campaign=support&utm_content=video |
+| X | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=x&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| Gab | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=gab&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| Parler | Fundraiser share post | support | post | https://sunshineclimatesolutions.com/support/?utm_source=parler&utm_medium=organic_social&utm_campaign=support&utm_content=post |
+| Email | Fundraiser announcement email | support | announcement | https://sunshineclimatesolutions.com/support/?utm_source=email&utm_medium=email&utm_campaign=support&utm_content=announcement |
 
 
 ## QR codes (10)
