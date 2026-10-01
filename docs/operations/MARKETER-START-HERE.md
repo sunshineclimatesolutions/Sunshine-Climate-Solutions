@@ -44,7 +44,18 @@ Start with `docs/OPERATIONS-HUB.md` for the complete system map.
 
 - **Configured and published** (footer + structured data, from `business.ts`): Facebook,
   Instagram, TikTok, YouTube, X, Nextdoor, Yelp, Gab, Parler.
-- **Pending:** LinkedIn Company Page (no public URL — do not publish or infer one).
+- **TikTok:** business verification is **owner-confirmed completed (2026-10-01)** — verified
+  business status in Business Suite ("Verify your business — Good to go!"); the configured
+  website is the tracked TikTok UTM URL. This is business verification, **not** a public
+  blue-check. Business Suite exposes Analytics, Creative Hub, Leads Manager and message
+  settings/labels (availability only — do not claim lead-gen or messaging is enabled).
+  Follow-ups for the owner: review Leads Manager, configure message labels/automation, verify
+  street-address visibility (service-area business).
+- **Pending:** LinkedIn Company Page (no public URL — do not publish or infer one). Known
+  eligibility rule (official LinkedIn docs, checked 2026-10-01): the personal account needs
+  **more than one connection** (≥2 accepted connections) to create a Company Page; other
+  blockers may apply. Owner steps: build genuine connections → complete the personal profile →
+  create the Page → supply the public URL → only then update config and publish prepared links.
 - Bios, brand block and visual specs: `docs/marketing/SOCIAL-PROFILE-SETUP.md`.
 - Icon/asset provenance: `docs/marketing/SOCIAL-ASSET-SOURCES.md`.
 

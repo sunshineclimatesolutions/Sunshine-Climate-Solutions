@@ -134,7 +134,17 @@ Current platform status (verified vs owner-confirmed vs pending) is maintained o
 
 - **Configured public profiles** (footer + structured data, sourced from `business.ts`):
   Facebook, Instagram, TikTok, YouTube, X, Nextdoor, Yelp, Gab, Parler.
-- **Pending:** LinkedIn Company Page (no public URL — nothing is published).
+- **Pending:** LinkedIn Company Page (no public URL — nothing is published). Known eligibility
+  rule (official LinkedIn docs, checked 2026-10-01): the personal account needs **more than one
+  connection** (≥2 accepted connections) to create a Company Page; other blockers may apply.
+- **TikTok business verification: owner-confirmed completed (2026-10-01)** — verified business
+  status in TikTok Business Suite ("Verify your business — Good to go!"); the configured
+  website is the tracked TikTok profile URL. Business Suite exposes features including
+  Analytics, Creative Hub, Leads Manager and message settings/labels (availability only — not a
+  claim that lead-gen or messaging is enabled). This is **business verification, not a public
+  blue-check**. Remaining owner actions: review Leads Manager, configure message
+  labels/automation, verify street-address visibility (service-area business). Details:
+  `docs/marketing/SOCIAL-PROFILE-SETUP.md`.
 - **Setup and bios:** `docs/marketing/SOCIAL-PROFILE-SETUP.md`; **icon/asset provenance:**
   `docs/marketing/SOCIAL-ASSET-SOURCES.md`.
 - **Publishing rules and cadence:** `docs/marketing/CONTENT-OPERATING-SYSTEM.md` (platform role
@@ -330,14 +340,21 @@ Full details, triggers, failure behavior and recovery: `docs/operations/AUTOMATI
   Places published and synchronized from GBP.
 - Fundraising page live, noindexed, excluded from the sitemap, with Google + Umami outbound
   events working.
+- **TikTok business verification completed** (owner-confirmed 2026-10-01; business verification
+  status — not a public blue-check).
 
 **Pending or unverified (see `docs/operations/PLATFORM-STATUS.md` for the register):**
 
 - GA4 ↔ Search Console association — pending the owner's final confirmation of submission.
 - GA4 Enhanced Measurement form interactions disabled? Data retention 14 months? Web stream URL
   set to the canonical non-www domain? Custom Explorations created? (owner confirmations)
-- LinkedIn Company Page (no public URL) and Apple Business Connect status.
+- LinkedIn Company Page — pending; official eligibility rule checked 2026-10-01 (personal
+  account needs more than one connection, i.e. ≥2 accepted connections; other blockers may
+  apply). Owner steps in `docs/marketing/SOCIAL-PROFILE-SETUP.md`. Apple Business Connect
+  status also pending owner confirmation.
 - Publicly displayable contractor license number.
+- TikTok follow-ups: Leads Manager configuration, message labels/automation, street-address
+  visibility review.
 
 ## 15. Operational troubleshooting and escalation
 
