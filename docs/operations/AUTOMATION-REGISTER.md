@@ -29,12 +29,14 @@ Last reviewed: **October 1, 2026**
 | Owner responsibility | Review deployments; never change Cloudflare settings/DNS/GitHub connection from the repo |
 | Recovery / rollback | Revert the offending commit on `main` (forward-fix) — there is no repository-level deploy command; see `docs/DEPLOYMENT.md` |
 
-**Preview builds (pull requests):** Cloudflare also runs a preview deployment for PRs. The
-**Astro build step succeeds** (18 pages), but the subsequent preview deploy step
-(`npx wrangler preview`) currently **fails** with *"Your Wrangler configuration is missing a
-`previews` block to run this command"* because the repository intentionally contains no Wrangler
-configuration. This affects only the PR preview URL — not production. Remediation options
-(owner/Cloudflare-side): `docs/DEPLOYMENT.md` → Preview deployments.
+**Preview builds (pull requests): DISABLED by owner (2026-10-01).** "Builds for Preview
+branches" is turned off in the Cloudflare dashboard; production builds remain enabled and
+unchanged. Historical failure (preserved for troubleshooting): the **Astro build step
+succeeded** (18 pages), but the subsequent preview deploy step (`npx wrangler preview`) failed
+with *"Your Wrangler configuration is missing a `previews` block to run this command"* because
+the repository intentionally contains no Wrangler configuration. Future preview deployments
+require a separately approved configuration project — `docs/DEPLOYMENT.md` → Preview
+deployments.
 
 ### A2. IndexNow submissions
 

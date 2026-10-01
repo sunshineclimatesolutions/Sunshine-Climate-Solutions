@@ -75,9 +75,18 @@ Any branch/PR deployment should carry `PUBLIC_PREVIEW_MODE=true` so all preview 
 `noindex` — safe to share. A noindex directive is not access control: preview URLs are public
 to anyone who has the link (they contain no secrets by design).
 
-### Confirmed preview build failure (October 1, 2026)
+### Current status — October 1, 2026
 
-Cloudflare Workers Builds runs **two separate steps** for a pull request:
+**Preview builds are DISABLED by the owner** ("Builds for Preview branches" turned off in the
+Cloudflare dashboard). Production builds remain enabled, and the existing production
+deployment configuration is unchanged. **Future preview deployments require a separately
+approved configuration project** (Worker Previews with a Wrangler configuration matching the
+existing production Worker, including the required `previews` block). The failure explanation
+below is preserved for troubleshooting and history.
+
+### Historical failure (October 1, 2026) — preserved for troubleshooting
+
+Cloudflare Workers Builds ran **two separate steps** for a pull request:
 
 1. **Build step** — `npm run build` (Astro static build). **This succeeds** (18 pages built;
    Cloudflare reports the build command completed successfully).
