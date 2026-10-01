@@ -74,3 +74,33 @@ The zone already has Google Workspace email records (**MX and SPF/DKIM TXT**) an
 Any branch/PR deployment should carry `PUBLIC_PREVIEW_MODE=true` so all preview pages are
 `noindex` — safe to share. A noindex directive is not access control: preview URLs are public
 to anyone who has the link (they contain no secrets by design).
+
+### Confirmed preview build failure (October 1, 2026)
+
+Cloudflare Workers Builds runs **two separate steps** for a pull request:
+
+1. **Build step** — `npm run build` (Astro static build). **This succeeds** (18 pages built;
+   Cloudflare reports the build command completed successfully).
+2. **Preview deploy step** — Cloudflare then runs `npx wrangler preview`, which **fails** with:
+
+   > Your Wrangler configuration is missing a `previews` block to run this command.
+
+**Root cause:** this repository intentionally contains **no Wrangler configuration**
+(deployment settings live in the Cloudflare dashboard), so the preview-deploy command has no
+`previews` block to use. The failure is in the preview **deployment** step, not the Astro
+build and not the repository content (the same commit builds cleanly locally in both
+production and preview modes).
+
+**Impact:** only the PR **preview URL** is affected. The production site, the production build,
+and the merged content are unaffected — pushes to `main` continue to build and deploy normally.
+
+**Remediation options (owner / Cloudflare-side; this repository makes no change):**
+
+1. **Temporarily disable Cloudflare Preview Builds** for documentation-only PRs
+   (Cloudflare → Workers project → Settings → Builds & deployments). The PR can be reviewed and
+   merged without a preview URL; production deploys are unaffected.
+2. **For future branch previews, configure Worker Previews:** add a Wrangler configuration that
+   **matches the existing production Worker** and includes the required `previews` block so
+   `npx wrangler preview` can create preview versions. This is a deliberate
+   deployment-configuration change requiring owner approval — **do not add a `wrangler`
+   configuration to this repository without it.**
