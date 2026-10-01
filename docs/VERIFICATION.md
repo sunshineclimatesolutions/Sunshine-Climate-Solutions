@@ -1,9 +1,21 @@
 # Verification
 
 What has actually been tested, where, and what remains unverified. This file is updated as
-verification continues. **Last updated: September 2026 aesthetic overhaul + GA4/GTM consent
-integration + Gulf of America map correction (branch `feat/scs-light-aesthetic-overhaul-sep-2026`,
-HEAD `008177f` + working tree).**
+verification continues. **Last updated: October 2026 (external platform status addendum);
+the verification sections below remain dated records of their passes.**
+
+## October 2026 — external platform status (owner-confirmed)
+
+The site-side verification below is unchanged. Since those passes were recorded, the owner
+confirmed the external platform configuration through dashboards: GTM support-tracking patch
+imported and published; GA4 collecting events with `generate_lead` configured as a key event
+and all three custom dimensions created; Google Business Profile linked to GA4; Search Console
+domain property verified and recording; Bing Webmaster Tools active (long titles corrected) and
+Bing Places published/synchronized; fundraiser tracking live.
+
+**Current platform status — including what remains unverified — is maintained only in
+`docs/operations/PLATFORM-STATUS.md`.** The dated sections below are historical records and
+may show earlier states (e.g. "GTM workspace PENDING" at the time of that pass).
 
 ## September 2026 aesthetic overhaul + GA4/GTM + Gulf of America — verification
 

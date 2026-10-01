@@ -7,23 +7,41 @@ prevent Google organic ranking, but establishing the profiles expands search/map
 strengthens entity consistency. These are **external-distribution opportunities**, not
 technical SEO defects and not production blockers.
 
+## Current status — October 1, 2026 (owner-confirmed through dashboards)
+
+- **Bing Webmaster Tools: active.** Site Scan identified three over-long service-page titles;
+  those titles were shortened, deployed and verified (see the September service-title work in
+  `docs/seo/seo-inventory.json` and the title-length checks in `scripts/verify-seo.mjs`).
+  IndexNow submissions have succeeded (GitHub Actions runs).
+- **Bing Places: published and synchronized with Google Business Profile.** The owner has
+  demonstrated the listing is operational. Periodically audit the imported fields
+  (name/phone/hours/website) against `business.ts` — see the monthly listing audit in
+  `docs/operations/MAINTENANCE-SCHEDULE.md`.
+- **Apple Business Connect: status pending owner confirmation** (see
+  `docs/operations/PLATFORM-STATUS.md`).
+- Current platform register: `docs/operations/PLATFORM-STATUS.md`.
+
+The sections below retain their original September 2026 audit context; the current status above
+supersedes the "not observed / verify" instructions.
+
 ## Bing / Microsoft (Bing, Copilot, DuckDuckGo partially)
 
 - **IndexNow: working.** `.github/workflows/indexnow.yml` runs on every push to `main` and
-  submits changed canonical URLs; the latest run (commit `1080de3`) succeeded. The key file is
-  served from the site root.
-- **Bing Places: no listing observed.** Owner action: create/claim at
-  <https://www.bing.com/forbusiness> (Google import is supported). Use the same canonical NAP
-  as `CITATION-AUDIT.md` and the GBP UTM website link.
-- **Bing Webmaster Tools:** verify the domain (can import from GSC) and submit
-  `https://sunshineclimatesolutions.com/sitemap-index.xml`. IndexNow already covers freshness,
-  but the tools give query data for Bing.
+  submits changed canonical URLs; runs have succeeded repeatedly (see the Actions history).
+  The key file is served from the site root.
+- **Bing Places: published** (October 2026) and synchronized from GBP. Historical September
+  2026 observation: no listing was observed at audit time — that condition is resolved.
+- **Bing Webmaster Tools: active** (October 2026). Historical September 2026 instruction:
+  verify the domain and submit `https://sunshineclimatesolutions.com/sitemap-index.xml` —
+  completed; IndexNow already covers freshness, and the tools provide Bing query data.
 
 ## Apple (Siri, Apple Maps, Spotlight)
 
-- **Apple Business Connect: no listing observed.** Owner action: create the location at
-  <https://business.apple.com> (free). Use the same canonical NAP; no street address needs to
-  be public for a service-area business — Apple supports service-area businesses.
+- **Apple Business Connect: status pending owner confirmation** (October 2026). Historical
+  September 2026 observation: no listing was observed at audit time. If a listing exists or is
+  created, use the same canonical NAP; no street address needs to be public for a service-area
+  business — Apple supports service-area businesses. Entry point:
+  <https://business.apple.com>.
 
 ## Facebook / Meta
 

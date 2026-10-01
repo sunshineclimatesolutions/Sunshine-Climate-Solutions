@@ -6,7 +6,9 @@ Astro static site. **Build command:** `npm run build` · **Output directory:** `
 > History: this site was originally set up and documented for Cloudflare Pages. The production
 > deployment is now the owner's **GitHub-connected Cloudflare project** (the owner identifies
 > it as Cloudflare Workers). The deployment is configured entirely in the **Cloudflare
-> dashboard** — this repository intentionally contains no wrangler file or CI workflows.
+> dashboard** — this repository intentionally contains no wrangler file or Cloudflare
+> deployment configuration. The only repository workflow is `.github/workflows/indexnow.yml`
+> (search-engine notifications after a push; it does not build or deploy).
 > **Agents must never change deployment settings, DNS, or the GitHub connection.**
 
 ## How deployment works

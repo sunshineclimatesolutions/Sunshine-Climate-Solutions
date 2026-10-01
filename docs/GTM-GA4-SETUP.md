@@ -1,9 +1,9 @@
 # GTM + GA4 setup, conversion spec, and owner dashboard steps
 
-September 2026 (corrected). This is the operational sheet for the GA4-via-GTM integration.
-The site side is implemented in this repository; the Google dashboard side requires the owner's
-Google login. **Nothing is live until the GTM container is published and the site is deployed** —
-see the status matrix.
+September 2026 (corrected); **current status reviewed October 1, 2026**. This is the
+operational sheet for the GA4-via-GTM integration. The site side is implemented in this
+repository; the Google dashboard side is configured by the owner. See the status matrix and
+the CURRENT STATUS section below.
 
 - GTM container: `GTM-MBGJ8SLD` (configured in `src/config/business.ts`, overridable with
   `PUBLIC_GTM_CONTAINER_ID`, empty string disables GTM + consent UI)
@@ -16,10 +16,48 @@ see the status matrix.
 | Layer | State | Evidence |
 | --- | --- | --- |
 | Site-installed (this branch) | **Done** | Basic Consent Mode + events verified in built HTML; `scripts/gtm-consent.mjs` 91/91 |
-| GTM workspace configured | **NOT done** | First import attempt (2026-10-01) was **rejected by Google's importer** — `vendorTemplate.parameter.measurementIdOverride` empty. Corrected in both JSON files (every GA4 Event tag now sets `G-EQ9CBESN23`); owner re-import is the acceptance test |
-| GTM published | **NOT done** | Owner presses Submit → Publish |
-| GA4 receiving data | **NOT verifiable yet** | Requires published container + deployment |
-| `generate_lead` key event | **NOT done** | Owner marks it after data arrives |
+| GTM workspace configured | **Owner-confirmed done (2026-10-01)** | Support-tracking patch imported into a dedicated workspace; Google's import preview showed exactly 1 tag / 1 trigger / 1 variable added, 0 modifications, 0 deletions; both fundraiser-button tests passed. History: the first import attempt was rejected (`measurementIdOverride` empty) — corrected in both JSON files; see Import failure history |
+| GTM published | **Owner-confirmed done (2026-10-01)** | Owner confirmed the configuration was published |
+| GA4 receiving data | **Owner-confirmed (2026-10-01)** | `page_view`, `scs_call_click`, `scs_text_click`, `scs_request_click`, `scs_form_start` and other standard events arriving; `generate_lead` visible in the Realtime key-events report |
+| `generate_lead` key event | **Owner-confirmed done (2026-10-01)** | Marked as a key event in GA4 |
+| GA4 custom dimensions | **Owner-confirmed done (2026-10-01)** | All three event-scoped dimensions created (see CURRENT STATUS) |
+| GA4 ↔ Search Console association | **Pending final confirmation** | Domain property appears in the linking wizard; do not record as complete until the owner confirms the final submission |
+
+## CURRENT STATUS — October 1, 2026
+
+Owner-confirmed through dashboards (not independently observable from this repository):
+
+- **GTM:** the corrected support-tracking patch was imported into a dedicated workspace, tested
+  (both fundraiser buttons), and **published**.
+- **GA4:** the property is operational and collecting data. `generate_lead` was tested through
+  the existing website setup, appeared in the Realtime key-events report, and is configured as
+  a **key event**. Fundraiser event forwarding through GTM was tested and published.
+- **GA4 custom dimensions (event-scoped, all completed):**
+  - `Support platform` → `support_platform`
+  - `Service category` → `service_category`
+  - `CTA slot` → `cta_slot`
+- **Search Console:** the GA4 linking wizard now displays the correct verified domain property
+  for `sunshineclimatesolutions.com`.
+
+**Still requiring owner confirmation (not verified):**
+
+- Whether automatic Enhanced Measurement **form interactions** have been disabled (recommended
+  OFF — the validated custom flow replaces it).
+- Whether GA4 **data retention** was set to 14 months.
+- Whether the GA4 **web stream URL** was changed to the canonical non-www domain.
+- Whether the planned custom **Explorations** have been created.
+- The final **GA4 ↔ Search Console** association submission (the wizard step was reached; the
+  association is not recorded as complete here).
+
+**Do not claim** that fundraiser contributions or paying customers have been measured through
+GA4 — the analytics measure events, not money.
+
+**Import files:** `docs/gtm/SCS-GA4-container-import.json` (full container) and
+`docs/gtm/SCS-support-tracking-patch.json` (minimal merge patch) are retained for **fresh
+installations, disaster recovery and structural verification** (`node
+scripts/verify-gtm-import.mjs`). **Do not re-import them into the already-working container** —
+that would create duplicates. To change an existing container, edit it in the GTM UI (or
+import only genuinely missing resources with Merge after verifying they do not already exist).
 
 ## What the site does (Basic Consent Mode)
 
@@ -59,6 +97,58 @@ value to this event.
 
 No names, phone numbers, emails, ZIP codes, descriptions, donation amounts, donor identities,
 fundraiser URLs, query strings or other customer-provided data are ever pushed.
+
+### Event reference (current)
+
+| Event | Meaning | Parameters (allowlist) | Consent | GTM tag / trigger |
+| --- | --- | --- | --- | --- |
+| `scs_call_click` | Visitor clicked a `tel:` link (call **intent**, not an answered call) | `cta_slot` (any `data-cta` id) | GTM push only after analytics permission; Umami `call-click` independently | `GA4 - Event - scs_call_click` ← `CE - scs_call_click` |
+| `scs_text_click` | Visitor clicked an `sms:` link | `cta_slot` | same | `GA4 - Event - scs_text_click` ← `CE - scs_text_click` |
+| `scs_request_click` | Visitor clicked a request-service CTA (`data-cta` starting `request-`) | `cta_slot` | same | `GA4 - Event - scs_request_click` ← `CE - scs_request_click` |
+| `scs_form_start` | First interaction with the request form (single fire per session) | — | same | `GA4 - Event - scs_form_start` ← `CE - scs_form_start` |
+| `scs_form_confirmed` → GA4 **`generate_lead`** | Provider-confirmed submission, emitted once on `/thank-you/` from a single-use session receipt | `service_category` (`repair`, `maintenance`, `installation`, `airflow`, `commercial`, `tab`, `other`), `cta_slot` | same (permission required) | `GA4 - Event - generate_lead` ← `CE - scs_form_confirmed` |
+| `scs_support_click` | Outbound fundraiser platform click on `/support/` (**not** a donation) | `support_platform` (`gofundme`, `givesendgo`) | same; Umami `support-gofundme-click` / `support-givesendgo-click` independently | `GA4 - Event - scs_support_click` ← `CE - scs_support_click` |
+
+**Distinctions that must never be blurred:**
+
+- A phone-button click (`scs_call_click`) is **not** an answered call or a booked job.
+- A form start (`scs_form_start`) is **not** a submission.
+- A confirmed lead (`generate_lead`) is **not** a paying customer — it is a provider-confirmed
+  website inquiry.
+- A fundraiser outbound click (`scs_support_click`) is **not** a donation, donor or payment.
+- Donation totals and donor identities are never measured by the website; they are manual
+  entries in the weekly scorecard's fundraiser section.
+
+**Key event:** `generate_lead` (owner-confirmed configured). `scs_support_click` may optionally
+be marked as a key event, but it measures outbound intent — never assign it donation value.
+
+**Custom dimensions (all three created — owner-confirmed):** `Support platform`
+(`support_platform`), `Service category` (`service_category`), `CTA slot` (`cta_slot`), all
+event-scoped.
+
+### Verifying the live setup
+
+1. Open the site in a fresh session; before choosing anything, confirm **no request** to
+   `googletagmanager.com` (DevTools → Network).
+2. Choose **Allow analytics**; confirm the GTM container loads once and a `page_view` appears in
+   GA4 Realtime / DebugView.
+3. Click a call link, a text link and a request CTA → confirm the three events; start the form →
+   one `scs_form_start`.
+4. Submit a **real test request you control** (or use GTM Preview interception) → one
+   `generate_lead` on `/thank-you/`; reloading `/thank-you/` produces no second event.
+5. On `/support/`, click a fundraiser button → `scs_support_click` with the correct
+   `support_platform` value.
+6. Site-side regression: `node scripts/gtm-consent.mjs` (must pass 91/91).
+
+### Diagnosing a failed event
+
+| Symptom | Check |
+| --- | --- |
+| No events at all in GA4 | Consent not granted; container not published; wrong measurement ID; ad-blockers/browser privacy settings on the test browser |
+| GTM Preview shows the event but GA4 does not | GA4 event tag trigger mismatch; tag paused; measurement ID override wrong; Realtime lag (check DebugView) |
+| `generate_lead` missing | Form submission not provider-confirmed; receipt already consumed; analytics not permitted; `/thank-you/` visited manually (by design) |
+| `scs_support_click` missing | Button missing `data-support-platform`; consent not granted; support tag/trigger not published |
+| Duplicate events | Enhanced Measurement form interactions still ON (turn OFF) or a duplicated tag in the container |
 
 ---
 
