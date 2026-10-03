@@ -126,6 +126,33 @@ be marked as a key event, but it measures outbound intent — never assign it do
 (`support_platform`), `Service category` (`service_category`), `CTA slot` (`cta_slot`), all
 event-scoped.
 
+**Campaign attribution on lead emails (not analytics).** Successful service-request submissions
+also carry the visitor's **first-touch and latest-touch campaign metadata**, captured
+client-side by `src/lib/attribution.ts` and merged into the Web3Forms payload by
+`ContactForm.astro`. It appears only in the owner's email notification — **it is never pushed to
+the data layer, GTM, GA4 or Umami**, and it does not change `generate_lead` or any event.
+Fields: `first_utm_source|medium|campaign|content`, `latest_utm_source|medium|campaign|content`,
+`attribution_landing_page`, `attribution_referrer_origin`, `attribution_first_at`,
+`attribution_latest_at`.
+
+Consent and retention (October 2026 release requirement):
+
+- Capture and retention happen **only while the visitor's analytics consent is granted**. The
+  module subscribes to the site's consent API (`window.scsConsent.subscribe` — an additive hook;
+  the GTM consent logic itself is unchanged), so consent granted after load captures campaign
+  parameters still present in the URL.
+- Declining, ignoring, or withdrawing consent stores nothing and **deletes any previously
+  stored attribution records**.
+- Stored touches **expire after 90 days** and are removed on the next read.
+- Incoming campaign values are validated (`[a-z][a-z0-9_-]{0,63}`, no 7+ digit runs), so
+  arbitrary URL parameters cannot introduce names, emails or phone numbers.
+- Capture is best-effort — missing storage or no consent can never block, delay or prevent a
+  submission; no attribution is sent in that case. Advertising click identifiers are
+  deliberately not collected (no ad campaigns run).
+- Regression coverage: `scripts/verify-attribution.mjs` §4–5 (consent grant/decline/withdraw,
+  post-load consent, expiration, value validation, payload, missing storage).
+- Privacy disclosure: `/privacy/` → "Campaign attribution".
+
 ### Verifying the live setup
 
 1. Open the site in a fresh session; before choosing anything, confirm **no request** to

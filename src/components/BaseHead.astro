@@ -209,6 +209,17 @@ const jsonLd = {
     } catch (error) { /* fail closed */ }
   }
 
+  // Consent observers (e.g. campaign-attribution capture). Purely additive:
+  // listeners are notified after the consent state changes and can never break
+  // the consent flow (each call is isolated).
+  var listeners = [];
+
+  function notify(grantedState) {
+    for (var i = 0; i < listeners.length; i++) {
+      try { listeners[i](grantedState); } catch (error) { /* listener must never break consent */ }
+    }
+  }
+
   function allow() {
     granted = true;
     writeStored(true);
@@ -216,6 +227,7 @@ const jsonLd = {
     gtag('consent', 'update', { analytics_storage: 'granted' });
     loadGtm();
     firePendingLead();
+    notify(true);
   }
 
   function deny() {
@@ -226,6 +238,7 @@ const jsonLd = {
     window['ga-disable-' + GA4_ID] = true;
     // Withdrawal/refusal also drops any pending confirmed lead.
     try { window.sessionStorage.removeItem('scs-lead-receipt'); } catch (error) { /* no-op */ }
+    notify(false);
   }
 
   // Single shared consent API for the banner, the event trackers and the
@@ -235,7 +248,10 @@ const jsonLd = {
     choice: readStored,
     allow: allow,
     deny: deny,
-    firePendingLead: firePendingLead
+    firePendingLead: firePendingLead,
+    subscribe: function (listener) {
+      if (typeof listener === 'function') listeners.push(listener);
+    }
   };
 
   // Returning consenting visitors: apply the granted state BEFORE loading GTM

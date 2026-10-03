@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T05:01:24.698Z",
+  "generatedAt": "2026-10-03T19:04:49.704Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 18,
   "sitemapUrls": [
@@ -556,7 +556,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 576,
+      "wordCount": 454,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -1071,10 +1071,11 @@
       "h1": [
         "How Your Information Is Handled"
       ],
-      "h2Count": 9,
+      "h2Count": 10,
       "h3Count": 2,
       "h2s": [
         "What the request form collects",
+        "Campaign attribution",
         "How form submissions are processed",
         "Analytics",
         "Communication you start",
@@ -1084,7 +1085,7 @@
         "Get in touch",
         "Optional analytics"
       ],
-      "wordCount": 661,
+      "wordCount": 819,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",

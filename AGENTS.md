@@ -44,7 +44,13 @@ with the owner; never silently work around this file.
 - Contact form posts to Web3Forms (public client-side access key by design — safe to commit);
   success is acknowledged only after the provider confirms; every failure path has an honest
   message and a call/text alternative; a missing key renders an honest fallback, never a fake
-  success.
+  success. Submissions also carry best-effort first/latest campaign attribution (UTM values,
+  landing page, external referrer origin, timestamps) captured client-side by
+  `src/lib/attribution.ts` — **lead records only, never analytics**. Capture and retention are
+  gated on the visitor's analytics consent (declined/withdrawn stores nothing and clears stored
+  records; records expire after 90 days; values are validated campaign tokens). Attribution
+  failures or missing consent can never block a submission. Privacy disclosure: `/privacy/` →
+  "Campaign attribution".
 - Analytics: two services, both configured in `business.analytics` and loaded from
   `BaseHead.astro`/`ConsentBanner.astro`, never in preview mode.
   - **Umami Cloud** (cookieless, aggregate only) — always on when configured. Events are
