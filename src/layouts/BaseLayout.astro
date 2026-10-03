@@ -39,11 +39,12 @@ const gtmEnabled =
     <Footer />
     <MobileActionBar />
     {gtmEnabled && <ConsentBanner />}
-    {/* First/latest-touch campaign capture for LEAD RECORDS only (never
-        analytics); best-effort and non-blocking — see src/lib/attribution.ts. */}
+    {/* Consent-aware first/latest-touch campaign capture for LEAD RECORDS only
+        (never analytics); best-effort and non-blocking — see
+        src/lib/attribution.ts. Declined/withdrawn consent stores nothing. */}
     <script>
-      import { captureAttribution } from '../lib/attribution';
-      captureAttribution();
+      import { initAttribution } from '../lib/attribution';
+      initAttribution();
     </script>
   </body>
 </html>

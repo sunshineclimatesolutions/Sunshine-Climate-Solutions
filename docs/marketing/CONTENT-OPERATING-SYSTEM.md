@@ -341,10 +341,15 @@ only, never analytics. Fields: `first_utm_source|medium|campaign|content`,
 `latest_utm_source|medium|campaign|content`, `attribution_landing_page`,
 `attribution_referrer_origin`, `attribution_first_at`, `attribution_latest_at`. First-touch is
 never overwritten; latest-touch changes only on a genuinely new campaign link; internal
-navigation and ordinary direct visits never erase campaign context. Capture is best-effort —
-unavailable storage can never block a submission. Use these fields to fill the `Campaign`/`UTM`
-columns above and to compare first-touch (original discovery) with latest-touch (most recent
-meaningful campaign) when applying the decision rules in §18.
+navigation and ordinary direct visits never erase campaign context. **Consent-gated:** capture
+and retention apply only while the visitor's analytics consent is granted (consent granted after
+load captures URL parameters that are still present); declining or withdrawing consent stores
+nothing and deletes previously stored records; records expire after 90 days; incoming values are
+validated campaign tokens only. Capture is best-effort — unavailable storage or missing consent
+can never block a submission (in that case the email simply carries no attribution fields). Use
+these fields to fill the `Campaign`/`UTM` columns above and to compare first-touch (original
+discovery) with latest-touch (most recent meaningful campaign) when applying the decision rules
+in §18.
 
 ## 13. Estimate follow-up sequence (residential)
 
