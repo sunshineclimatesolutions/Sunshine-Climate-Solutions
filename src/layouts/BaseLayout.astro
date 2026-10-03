@@ -39,5 +39,11 @@ const gtmEnabled =
     <Footer />
     <MobileActionBar />
     {gtmEnabled && <ConsentBanner />}
+    {/* First/latest-touch campaign capture for LEAD RECORDS only (never
+        analytics); best-effort and non-blocking — see src/lib/attribution.ts. */}
+    <script>
+      import { captureAttribution } from '../lib/attribution';
+      captureAttribution();
+    </script>
   </body>
 </html>

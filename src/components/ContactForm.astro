@@ -207,6 +207,8 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
 }
 
 <script>
+  import { attributionFields } from '../lib/attribution';
+
   const form = document.getElementById('service-request-form') as HTMLFormElement | null;
 
   if (form) {
@@ -328,6 +330,14 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
 
       try {
         const data = Object.fromEntries(new FormData(form).entries());
+        // Campaign attribution (first/latest touch) is attached to the lead
+        // submission only — never to analytics. Best-effort: a failure here can
+        // never block, delay or prevent the request from being sent.
+        try {
+          Object.assign(data, attributionFields());
+        } catch {
+          /* attribution is optional; the request is still submitted */
+        }
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 20000);
         const response = await fetch(form.action, {

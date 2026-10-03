@@ -126,6 +126,18 @@ be marked as a key event, but it measures outbound intent — never assign it do
 (`support_platform`), `Service category` (`service_category`), `CTA slot` (`cta_slot`), all
 event-scoped.
 
+**Campaign attribution on lead emails (not analytics).** Successful service-request submissions
+also carry the visitor's **first-touch and latest-touch campaign metadata**, captured
+client-side by `src/lib/attribution.ts` and merged into the Web3Forms payload by
+`ContactForm.astro`. It appears only in the owner's email notification — **it is never pushed to
+the data layer, GTM, GA4 or Umami**, and it does not change `generate_lead` or any event.
+Fields: `first_utm_source|medium|campaign|content`, `latest_utm_source|medium|campaign|content`,
+`attribution_landing_page`, `attribution_referrer_origin`, `attribution_first_at`,
+`attribution_latest_at`. Capture is best-effort — missing/unavailable storage can never block,
+delay or prevent a submission. Advertising click identifiers are deliberately not collected in
+this phase (no ad campaigns run). Regression coverage: `scripts/verify-attribution.mjs` §4–5.
+Privacy disclosure: `/privacy/` → "Campaign attribution".
+
 ### Verifying the live setup
 
 1. Open the site in a fresh session; before choosing anything, confirm **no request** to

@@ -1,13 +1,18 @@
-// Campaign attribution verification (September 2026 UTM system).
-// Runs against a local preview server of the production-equivalent build and
-// proves the guarantees the marketing system relies on:
+// Campaign attribution verification (September 2026 UTM system; extended
+// October 2026 with lead-record attribution). Runs against a local preview
+// server of the production-equivalent build and proves the guarantees the
+// marketing system relies on:
 //   - GA4-compatible query parameters survive page load (incl. gclid/gbraid/
 //     wbraid/gad_* for Google Ads auto-tagging — nothing is stripped);
 //   - internal navigation neither manufactures nor preserves UTMs;
 //   - canonical URLs, the sitemap and tel:/sms:/mailto: links stay clean;
 //   - no UTM value or generated URL contains PII;
 //   - the site build itself contains no UTM parameters (inbound only);
-//   - consent behavior is unchanged on a UTM landing page.
+//   - consent behavior is unchanged on a UTM landing page;
+//   - lead attribution (first/latest touch) is captured on campaign landings,
+//     preserved across internal navigation and direct visits, updated only by
+//     genuinely new campaigns, attached to successful Web3Forms submissions
+//     without PII, and can never block a submission when storage is missing.
 //
 // Usage: run `npm run preview` first, then:
 //   node scripts/verify-attribution.mjs
@@ -207,6 +212,229 @@ try {
     await page.evaluate(() => location.search),
   );
   await context.close();
+
+  // ── 4. Lead attribution — first/latest touch on successful submissions ────
+  {
+    const attributionContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    await attributionContext.route('**://www.googletagmanager.com/**', (route) =>
+      route.fulfill({ status: 204, body: '' }),
+    );
+    await attributionContext.route('**://cloud.umami.is/**', (route) =>
+      route.fulfill({ status: 204, body: '' }),
+    );
+    const submissions = [];
+    await attributionContext.route('https://api.web3forms.com/submit', async (route) => {
+      submissions.push(route.request().postDataJSON());
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ success: true, message: 'ok' }),
+      });
+    });
+    const page = await attributionContext.newPage();
+    const readTouch = (key) =>
+      page.evaluate((k) => JSON.parse(window.localStorage.getItem(k) || 'null'), key);
+
+    // A. A campaign landing captures first and latest touch.
+    await page.goto(
+      `${BASE}/?utm_source=facebook&utm_medium=organic_social&utm_campaign=maintenance&utm_content=post`,
+      { waitUntil: 'networkidle' },
+    );
+    const firstA = await readTouch('scs-attribution-first');
+    const latestA = await readTouch('scs-attribution-latest');
+    check(
+      'campaign landing captures first-touch',
+      firstA?.source === 'facebook' &&
+        firstA?.medium === 'organic_social' &&
+        firstA?.campaign === 'maintenance' &&
+        firstA?.content === 'post',
+      JSON.stringify(firstA),
+    );
+    check('campaign landing sets latest-touch to the same campaign', latestA?.campaign === 'maintenance');
+
+    // B. Internal navigation preserves campaign context.
+    await page.click('.strip-request');
+    await page.waitForLoadState('networkidle');
+    const latestAfterNav = await readTouch('scs-attribution-latest');
+    check(
+      'internal navigation preserves latest-touch campaign',
+      latestAfterNav?.source === 'facebook' && latestAfterNav?.campaign === 'maintenance',
+      JSON.stringify(latestAfterNav),
+    );
+
+    // C. A genuinely new campaign updates latest-touch only.
+    await page.goto(
+      `${BASE}/?utm_source=instagram&utm_medium=organic_social&utm_campaign=ac_repair&utm_content=reel`,
+      { waitUntil: 'networkidle' },
+    );
+    const firstC = await readTouch('scs-attribution-first');
+    const latestC = await readTouch('scs-attribution-latest');
+    check(
+      'a new campaign updates latest-touch',
+      latestC?.source === 'instagram' && latestC?.campaign === 'ac_repair',
+      JSON.stringify(latestC),
+    );
+    check(
+      'a new campaign never overwrites first-touch',
+      firstC?.source === 'facebook' && firstC?.campaign === 'maintenance',
+      JSON.stringify(firstC),
+    );
+
+    // D. An ordinary direct visit does not erase campaign context.
+    await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
+    const latestD = await readTouch('scs-attribution-latest');
+    check(
+      'direct visit does not erase latest-touch campaign',
+      latestD?.source === 'instagram' && latestD?.campaign === 'ac_repair',
+      JSON.stringify(latestD),
+    );
+
+    // E. A successful submission carries first + latest attribution.
+    await page.goto(`${BASE}/contact/`, { waitUntil: 'networkidle' });
+    await page.evaluate(() => {
+      const set = (id, value) => {
+        const el = document.getElementById(id);
+        el.value = value;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      };
+      set('f-name', 'Attribution Verification');
+      set('f-phone', '7270000000');
+      set('f-zip', '34609');
+      set('f-desc', 'Automated attribution verification submission.');
+      const service = document.getElementById('f-service');
+      service.value = 'AC repair / diagnostic';
+      service.dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('service-request-form').requestSubmit();
+    });
+    await page.waitForTimeout(1500);
+    check(
+      'attribution submission delivers exactly one provider request',
+      submissions.length === 1,
+      String(submissions.length),
+    );
+    const payload = submissions[0] ?? {};
+    check(
+      'submission includes first-touch campaign fields',
+      payload.first_utm_source === 'facebook' && payload.first_utm_campaign === 'maintenance',
+      JSON.stringify({ first_utm_source: payload.first_utm_source, first_utm_campaign: payload.first_utm_campaign }),
+    );
+    check(
+      'submission includes latest-touch campaign fields',
+      payload.latest_utm_source === 'instagram' && payload.latest_utm_campaign === 'ac_repair',
+      JSON.stringify({ latest_utm_source: payload.latest_utm_source, latest_utm_campaign: payload.latest_utm_campaign }),
+    );
+    check(
+      'submission includes attribution landing page and timestamps',
+      typeof payload.attribution_landing_page === 'string' &&
+        payload.attribution_landing_page.length > 0 &&
+        typeof payload.attribution_first_at === 'string' &&
+        typeof payload.attribution_latest_at === 'string',
+      JSON.stringify({
+        landing: payload.attribution_landing_page,
+        firstAt: payload.attribution_first_at,
+        latestAt: payload.attribution_latest_at,
+      }),
+    );
+    const attributionOnly = Object.fromEntries(
+      Object.entries(payload).filter(
+        ([key]) =>
+          key.startsWith('first_') || key.startsWith('latest_') || key.startsWith('attribution_'),
+      ),
+    );
+    const attributionText = JSON.stringify(attributionOnly);
+    check(
+      'attribution fields contain no PII (no email/phone/name/form text)',
+      !attributionText.includes('@') &&
+        !/\d{7,}/.test(attributionText) &&
+        !attributionText.includes('Attribution Verification') &&
+        !attributionText.includes('Automated attribution'),
+      attributionText,
+    );
+    await attributionContext.close();
+  }
+
+  // ── 5. Missing storage — attribution must never block a submission ────────
+  {
+    const blockedContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    await blockedContext.addInitScript(() => {
+      try {
+        Object.defineProperty(window, 'localStorage', {
+          configurable: true,
+          get() {
+            throw new Error('storage disabled for test');
+          },
+        });
+      } catch {
+        window.__storageBlockFailed = true;
+      }
+    });
+    await blockedContext.route('**://www.googletagmanager.com/**', (route) =>
+      route.fulfill({ status: 204, body: '' }),
+    );
+    await blockedContext.route('**://cloud.umami.is/**', (route) =>
+      route.fulfill({ status: 204, body: '' }),
+    );
+    const blockedSubmissions = [];
+    await blockedContext.route('https://api.web3forms.com/submit', async (route) => {
+      blockedSubmissions.push(route.request().postDataJSON());
+      return route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ success: true, message: 'ok' }),
+      });
+    });
+    const page = await blockedContext.newPage();
+    const pageErrors = [];
+    page.on('pageerror', (error) => pageErrors.push(error.message));
+
+    await page.goto(
+      `${BASE}/?utm_source=facebook&utm_medium=organic_social&utm_campaign=maintenance`,
+      { waitUntil: 'networkidle' },
+    );
+    const storageBlocked = await page.evaluate(() => {
+      try {
+        void window.localStorage;
+        return false;
+      } catch {
+        return true;
+      }
+    });
+    check('storage can be disabled for the resilience test', storageBlocked);
+
+    await page.goto(`${BASE}/contact/`, { waitUntil: 'networkidle' });
+    await page.evaluate(() => {
+      const set = (id, value) => {
+        const el = document.getElementById(id);
+        el.value = value;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      };
+      set('f-name', 'Attribution Verification');
+      set('f-phone', '7270000000');
+      set('f-zip', '34609');
+      set('f-desc', 'Automated attribution verification submission.');
+      const service = document.getElementById('f-service');
+      service.value = 'AC repair / diagnostic';
+      service.dispatchEvent(new Event('change', { bubbles: true }));
+      document.getElementById('service-request-form').requestSubmit();
+    });
+    await page.waitForTimeout(1500);
+    check(
+      'submission still succeeds when storage is unavailable',
+      blockedSubmissions.length === 1,
+      String(blockedSubmissions.length),
+    );
+    const blockedPayload = blockedSubmissions[0] ?? {};
+    check(
+      'blocked storage omits attribution fields but keeps the request',
+      blockedPayload['Full Name'] === 'Attribution Verification' &&
+        !Object.keys(blockedPayload).some(
+          (key) => key.startsWith('first_utm_') || key.startsWith('attribution_'),
+        ),
+      JSON.stringify(Object.keys(blockedPayload)),
+    );
+    check('no page errors when storage is unavailable', pageErrors.length === 0, pageErrors.join(' | '));
+    await blockedContext.close();
+  }
 
   // Production canonical/sitemap spot-check (read-only, no writes).
   const liveCanonical = await (async () => {

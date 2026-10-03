@@ -334,6 +334,18 @@ when no UTM exists; never guess a source to make a channel look better. Do not p
 names, addresses, or phone numbers into analytics tools — attribution lives in the private
 lead sheet, not in GA4.
 
+**Website-attached campaign fields (implemented October 2026):** successful service-request
+submissions now carry the visitor's **first-touch and latest-touch** campaign metadata, captured
+client-side by `src/lib/attribution.ts` and delivered inside the Web3Forms email — lead records
+only, never analytics. Fields: `first_utm_source|medium|campaign|content`,
+`latest_utm_source|medium|campaign|content`, `attribution_landing_page`,
+`attribution_referrer_origin`, `attribution_first_at`, `attribution_latest_at`. First-touch is
+never overwritten; latest-touch changes only on a genuinely new campaign link; internal
+navigation and ordinary direct visits never erase campaign context. Capture is best-effort —
+unavailable storage can never block a submission. Use these fields to fill the `Campaign`/`UTM`
+columns above and to compare first-touch (original discovery) with latest-touch (most recent
+meaningful campaign) when applying the decision rules in §18.
+
 ## 13. Estimate follow-up sequence (residential)
 
 | Day | Action |
