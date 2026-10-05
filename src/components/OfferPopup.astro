@@ -33,7 +33,7 @@ import Icon from './Icon.astro';
     href="/contact/?offer=FIRST10#request-form"
     data-offer-cta
   >
-    Claim 10% Off
+    CLAIM 10% OFF
   </a>
   <p class="offer-popup-reassurance">
     No pressure. Just straightforward HVAC service from a local team.
@@ -157,7 +157,10 @@ import Icon from './Icon.astro';
       }
     });
 
+    let armed = false;
     const arm = (): void => {
+      if (armed) return;
+      armed = true;
       if (readState() !== null) return; // already shown/dismissed/claimed this session
       if (SUPPRESSED.includes(path)) return; // never on the conversion pages themselves
 
@@ -177,8 +180,22 @@ import Icon from './Icon.astro';
       }
     };
 
+    // Do not compete with the consent banner: while the visitor has not made a
+    // consent choice, the popup is not eligible. Eligibility begins the moment
+    // the choice is resolved (observer only — consent behavior itself is
+    // untouched, and builds without the consent API arm normally so the popup
+    // can never be permanently blocked).
+    const start = (): void => {
+      const consent = window.scsConsent;
+      if (consent && consent.choice() === null && typeof consent.subscribe === 'function') {
+        consent.subscribe(() => arm());
+        return;
+      }
+      arm();
+    };
+
     // Arm only after the page has loaded: zero render-blocking, zero CLS.
-    if (document.readyState === 'complete') arm();
-    else window.addEventListener('load', arm, { once: true });
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
   }
 </script>

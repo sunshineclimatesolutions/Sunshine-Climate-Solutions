@@ -67,7 +67,7 @@ try {
 
   // ── 2. Open (QA hook), Escape close, focus return, once-per-session ────────
   {
-    const { context, page } = await newContext({ width: 1440, height: 900 });
+    const { context, page } = await newContext({ width: 1440, height: 900 }, { consent: true });
     await page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
     check('popup opens via the QA delay hook', await popupOpen(page));
@@ -81,7 +81,7 @@ try {
         heading: document.getElementById('offer-popup-heading')?.textContent?.trim() ?? '',
       };
     });
-    check('CTA carries the offer text', controls.ctaText === 'Claim 10% Off', controls.ctaText);
+    check('CTA carries the offer text', controls.ctaText === 'CLAIM 10% OFF', controls.ctaText);
     check('heading matches the approved offer', controls.heading === 'Get 10% Off Your First Service Call', controls.heading);
     check('close control is at least 44px', controls.closeHeight >= 44, `${controls.closeHeight}px`);
     check('CTA is at least 44px tall', controls.ctaHeight >= 44, `${controls.ctaHeight}px`);
@@ -104,7 +104,7 @@ try {
 
   // ── 3. Backdrop click closes ───────────────────────────────────────────────
   {
-    const { context, page } = await newContext({ width: 1440, height: 900 });
+    const { context, page } = await newContext({ width: 1440, height: 900 }, { consent: true });
     await page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
     await page.mouse.click(4, 4);
@@ -115,7 +115,7 @@ try {
 
   // ── 4. Suppressed on conversion pages ──────────────────────────────────────
   {
-    const { context, page } = await newContext({ width: 390, height: 844 });
+    const { context, page } = await newContext({ width: 390, height: 844 }, { consent: true });
     await page.goto(`${BASE}/contact/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForTimeout(1000);
     check('popup is suppressed on /contact/', !(await popupOpen(page)));
@@ -124,7 +124,7 @@ try {
 
   // ── 6. Offer claim flow through the existing request form ─────────────────
   {
-    const { context, page } = await newContext({ width: 390, height: 844 });
+    const { context, page } = await newContext({ width: 390, height: 844 }, { consent: true });
     await context.route('https://api.web3forms.com/submit', (route) =>
       route.fulfill({
         status: 200,
@@ -176,14 +176,18 @@ try {
       submissions[0]?.['Offer Claimed'] === '10% Off Your First Service Call (FIRST10)',
       String(submissions[0]?.['Offer Claimed']),
     );
-    const receipt = await page.evaluate(() => {
-      try {
-        return JSON.parse(window.sessionStorage.getItem('scs-lead-receipt') || 'null');
-      } catch {
-        return null;
-      }
-    });
-    check('confirmed-lead receipt marks the popup as the cta slot', receipt?.cta_slot === 'popup-first10', JSON.stringify(receipt));
+    // With consent granted, /thank-you/ consumes the single-use receipt and
+    // pushes the confirmed-lead event; the popup slot must survive that path.
+    await page.waitForURL('**/thank-you/', { timeout: 10000 }).catch(() => {});
+    await page.waitForTimeout(400);
+    const confirmed = await page.evaluate(() =>
+      (window.dataLayer || []).filter((entry) => entry && entry.event === 'scs_form_confirmed'),
+    );
+    check(
+      'confirmed-lead event carries cta_slot popup-first10',
+      confirmed.length === 1 && confirmed[0]?.cta_slot === 'popup-first10',
+      JSON.stringify(confirmed),
+    );
     await context.close();
   }
 
@@ -227,9 +231,9 @@ try {
     await context.close();
   }
 
-  // ── 8. Analytics: no consent — Umami only, no GTM events ──────────────────
+  // ── 8. Analytics: consent declined — Umami only, no GTM events ────────────
   {
-    const { context, page } = await newContext({ width: 1440, height: 900 }, { recordUmami: true });
+    const { context, page } = await newContext({ width: 1440, height: 900 }, { consent: false, recordUmami: true });
     await page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
     const names = await eventNames(page);
@@ -238,14 +242,54 @@ try {
     await context.close();
   }
 
-  // ── 9. Mobile layout ───────────────────────────────────────────────────────
+  // ── 9. Consent coordination — never two competing overlays ────────────────
+  {
+    // Unresolved consent: the popup is not eligible while the banner awaits a choice.
+    const pending = await newContext({ width: 1440, height: 900 });
+    await pending.page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
+    await pending.page.waitForTimeout(1200);
+    const pendingState = await pending.page.evaluate(() => ({
+      open: document.getElementById('offer-popup')?.open === true,
+      bannerVisible: document.querySelector('[data-consent-banner]')?.hidden !== true,
+    }));
+    check('popup stays closed while consent is unresolved', !pendingState.open, JSON.stringify(pendingState));
+    check('consent banner is visible while unresolved', pendingState.bannerVisible, JSON.stringify(pendingState));
+
+    // Resolving the choice (allow) makes the popup eligible with the normal rules.
+    await pending.page.evaluate(() => document.querySelector('[data-consent-accept]')?.click());
+    await pending.page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
+    check('popup becomes eligible after the visitor allows analytics', await popupOpen(pending.page));
+    await pending.context.close();
+  }
+  {
+    // Reject also resolves the state and makes the popup eligible (no GTM events).
+    const rejected = await newContext({ width: 390, height: 844 }, { recordUmami: true });
+    await rejected.page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
+    await rejected.page.waitForTimeout(800);
+    check('popup stays closed while consent is unresolved (mobile)', !(await popupOpen(rejected.page)));
+    await rejected.page.evaluate(() => document.querySelector('[data-consent-reject]')?.click());
+    await rejected.page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
+    check('popup becomes eligible after the visitor rejects analytics', await popupOpen(rejected.page));
+    const rejectedEvents = await eventNames(rejected.page);
+    check(
+      'rejecting analytics still suppresses GTM popup events',
+      !rejectedEvents.some((name) => name.startsWith('scs_popup_')),
+    );
+    check('Umami still records popup-view after rejection', (await umamiEvents(rejected.page)).includes('popup-view'));
+    await rejected.context.close();
+  }
+
+  // ── 10. Mobile layout ──────────────────────────────────────────────────────
   for (const viewport of [
     { width: 320, height: 568, tag: '320' },
     { width: 375, height: 667, tag: '375' },
     { width: 390, height: 844, tag: '390' },
     { width: 430, height: 932, tag: '430' },
   ]) {
-    const { context, page, pageErrors } = await newContext({ width: viewport.width, height: viewport.height });
+    const { context, page, pageErrors } = await newContext(
+      { width: viewport.width, height: viewport.height },
+      { consent: true },
+    );
     await page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
     const layout = await page.evaluate(() => {
@@ -278,12 +322,15 @@ try {
     await context.close();
   }
 
-  // ── 10. Accessibility (axe, popup open) ────────────────────────────────────
+  // ── 11. Accessibility (axe, popup open) ────────────────────────────────────
   for (const viewport of [
     { width: 390, height: 844, tag: 'mobile' },
     { width: 1440, height: 900, tag: 'desktop' },
   ]) {
-    const { context, page } = await newContext({ width: viewport.width, height: viewport.height });
+    const { context, page } = await newContext(
+      { width: viewport.width, height: viewport.height },
+      { consent: true },
+    );
     await page.goto(`${BASE}/?popup=1`, { waitUntil: 'networkidle' });
     await page.waitForSelector('#offer-popup[open]', { timeout: 5000 });
     const results = await new AxeBuilder({ page }).withTags(['wcag2aa']).analyze();

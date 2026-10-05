@@ -53,11 +53,13 @@ with the owner; never silently work around this file.
   "Campaign attribution".
 - First-service-call offer popup (`src/components/OfferPopup.astro`, rendered by `BaseLayout`):
   native `<dialog>` with token-based styles; opens at most once per session after roughly 25 s
-  on desktop (or meaningful desktop exit intent) and 35 s on mobile; suppressed on `/contact/`,
-  `/thank-you/` and `/support/`; the CTA reuses the request form with the allowlisted
-  `offer=FIRST10` claim (`ContactForm.astro` attaches `Offer Claimed` and sets the confirmed-lead
-  `cta_slot` to `popup-first10`); it collects no personal data. `?popup=1` is a QA-only delay
-  override (eligibility and suppression still apply).
+  on desktop (or meaningful desktop exit intent) and 35 s on mobile — the timing only begins
+  once the visitor has resolved the consent banner's choice (observer only; consent behavior is
+  untouched), so the two overlays never compete; suppressed on `/contact/`, `/thank-you/` and
+  `/support/`; the CTA reuses the request form with the allowlisted `offer=FIRST10` claim
+  (`ContactForm.astro` attaches `Offer Claimed` and sets the confirmed-lead `cta_slot` to
+  `popup-first10`); it collects no personal data. `?popup=1` is a QA-only delay override
+  (eligibility and suppression still apply).
 - Analytics: two services, both configured in `business.analytics` and loaded from
   `BaseHead.astro`/`ConsentBanner.astro`, never in preview mode.
   - **Umami Cloud** (cookieless, aggregate only) — always on when configured. Events are
