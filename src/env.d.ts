@@ -22,6 +22,8 @@ interface ScsConsentApi {
   allow: () => void;
   deny: () => void;
   firePendingLead: () => void;
+  /** Additive observer hook (e.g. campaign attribution); optional by design. */
+  subscribe?: (listener: (granted: boolean) => void) => void;
 }
 
 /** Analytics bridges loaded by the site (see BaseHead.astro / ConsentBanner.astro). */

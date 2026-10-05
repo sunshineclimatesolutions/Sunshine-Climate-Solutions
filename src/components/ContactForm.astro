@@ -55,6 +55,10 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
 
       <p class="required-note">Required fields are marked with an asterisk (*).</p>
 
+      {/* Shown only when a claimed offer arrives (e.g. the 10%-off popup CTA
+          links to /contact/?offer=FIRST10). The note is unhidden client-side. */}
+      <p class="offer-claimed-note" data-offer-note hidden></p>
+
       <div class="form-grid">
         <div class="field">
           <label for="f-name">Full name <span aria-hidden="true">*</span></label>
@@ -216,6 +220,40 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
     const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const phoneDisplay = form.dataset.phone ?? '(727) 661-5200';
 
+    // Offer claim context — allowlisted ids only (currently the 10%-off
+    // first-service-call popup: /contact/?offer=FIRST10). The claim is kept in
+    // sessionStorage so navigating around before submitting does not lose it;
+    // it is attached to the Web3Forms submission (owner email) and changes the
+    // confirmed-lead cta_slot so GA4 can distinguish popup-originated leads.
+    const OFFERS: Record<string, { label: string; code: string }> = {
+      first10: { label: '10% Off Your First Service Call', code: 'FIRST10' },
+    };
+    const readOffer = (): { label: string; code: string } | null => {
+      try {
+        const fromUrl = (new URLSearchParams(window.location.search).get('offer') ?? '')
+          .trim()
+          .toLowerCase();
+        if (fromUrl && OFFERS[fromUrl]) {
+          try {
+            window.sessionStorage.setItem('scs-offer', fromUrl);
+          } catch {
+            /* claim still applies to this page view */
+          }
+          return OFFERS[fromUrl];
+        }
+        const stored = (window.sessionStorage.getItem('scs-offer') ?? '').trim().toLowerCase();
+        return stored && OFFERS[stored] ? OFFERS[stored] : null;
+      } catch {
+        return null;
+      }
+    };
+    const offer = readOffer();
+    const offerNote = form.querySelector<HTMLElement>('[data-offer-note]');
+    if (offer && offerNote) {
+      offerNote.textContent = `You're claiming ${offer.label.toLowerCase()}. We'll confirm the offer when we contact you.`;
+      offerNote.hidden = false;
+    }
+
     // Native validation attributes remain as the no-JS fallback; once this
     // script takes over, accessible custom validation runs instead.
     form.noValidate = true;
@@ -338,6 +376,7 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
         } catch {
           /* attribution is optional; the request is still submitted */
         }
+        if (offer) data['Offer Claimed'] = `${offer.label} (${offer.code})`;
         const controller = new AbortController();
         const timeout = window.setTimeout(() => controller.abort(), 20000);
         const response = await fetch(form.action, {
@@ -365,12 +404,17 @@ const noJsRedirect = new URL('/thank-you/', Astro.site ?? business.url).href;
           // here. /thank-you/ consumes it to push `scs_form_confirmed` (GA4
           // `generate_lead`) after the redirect, so delivery cannot be lost to
           // navigation and manual thank-you visits are never counted. The
-          // payload is an allowlisted category — no form contents.
+          // payload is an allowlisted category — no form contents. A claimed
+          // offer changes only the cta_slot id so popup-originated leads are
+          // distinguishable in reporting.
           try {
             const category = serviceSelect?.selectedOptions[0]?.dataset.category ?? 'other';
             window.sessionStorage.setItem(
               'scs-lead-receipt',
-              JSON.stringify({ service_category: category, cta_slot: 'form-submit' }),
+              JSON.stringify({
+                service_category: category,
+                cta_slot: offer ? 'popup-first10' : 'form-submit',
+              }),
             );
           } catch {
             // Storage unavailable — GA4 simply does not receive the event.

@@ -2762,3 +2762,120 @@ body.nav-open {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* -- First-service-call offer popup ("10% Off Your First Service Call") ------
+   Conversion layer rendered from OfferPopup.astro. Native <dialog> keeps
+   Escape/top-layer/focus semantics; styles follow the site tokens. Content is
+   hidden until the script opens it (no layout shift, no indexing impact). */
+
+.offer-popup {
+  width: min(30rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+  margin: auto;
+  padding: var(--sp-lg) var(--sp-md) var(--sp-md);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  background: var(--c-bg);
+  color: var(--c-ink);
+  box-shadow: var(--sh-lg);
+  text-align: center;
+}
+
+/* Defensive for any environment that renders <dialog> without support. */
+.offer-popup:not([open]) {
+  display: none;
+}
+
+.offer-popup::backdrop {
+  background: rgba(32, 53, 73, 0.55);
+}
+
+.offer-popup[open] {
+  animation: offer-popup-in var(--dur-med) var(--ease-out);
+}
+
+@keyframes offer-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .offer-popup[open] {
+    animation: none;
+  }
+}
+
+.offer-popup-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--c-ink-soft);
+  cursor: pointer;
+}
+
+.offer-popup-close:hover {
+  background: var(--c-bg-soft);
+  color: var(--c-ink);
+}
+
+.offer-popup-eyebrow {
+  margin: 0 0 var(--sp-2xs);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.offer-popup h2 {
+  margin: 0 0 var(--sp-sm);
+  font-size: var(--text-h3);
+}
+
+.offer-popup-copy {
+  margin: 0 0 var(--sp-md);
+  color: var(--c-ink-soft);
+}
+
+.offer-popup-cta {
+  width: 100%;
+}
+
+.offer-popup-reassurance {
+  margin: var(--sp-sm) 0 0;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+.offer-popup-terms {
+  margin: var(--sp-2xs) 0 0;
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+/* Visible acknowledgement when a claimed offer arrives on the request form. */
+.offer-claimed-note {
+  margin: 0 0 var(--sp-sm);
+  padding: var(--sp-2xs) var(--sp-sm);
+  border: 1px solid var(--c-gold);
+  border-radius: var(--r-sm);
+  background: var(--c-gold-tint);
+  color: var(--c-ink);
+  font-weight: 600;
+}

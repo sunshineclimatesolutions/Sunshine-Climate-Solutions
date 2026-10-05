@@ -51,12 +51,20 @@ with the owner; never silently work around this file.
   records; records expire after 90 days; values are validated campaign tokens). Attribution
   failures or missing consent can never block a submission. Privacy disclosure: `/privacy/` →
   "Campaign attribution".
+- First-service-call offer popup (`src/components/OfferPopup.astro`, rendered by `BaseLayout`):
+  native `<dialog>` with token-based styles; opens at most once per session after roughly 25 s
+  on desktop (or meaningful desktop exit intent) and 35 s on mobile; suppressed on `/contact/`,
+  `/thank-you/` and `/support/`; the CTA reuses the request form with the allowlisted
+  `offer=FIRST10` claim (`ContactForm.astro` attaches `Offer Claimed` and sets the confirmed-lead
+  `cta_slot` to `popup-first10`); it collects no personal data. `?popup=1` is a QA-only delay
+  override (eligibility and suppression still apply).
 - Analytics: two services, both configured in `business.analytics` and loaded from
   `BaseHead.astro`/`ConsentBanner.astro`, never in preview mode.
   - **Umami Cloud** (cookieless, aggregate only) — always on when configured. Events are
     fixed-name only: `call-click`, `text-click`, `form-success` (fired strictly after Web3Forms
-    confirms), and `support-gofundme-click` / `support-givesendgo-click` (outbound fundraiser
-    clicks on `/support/`).
+    confirms), `support-gofundme-click` / `support-givesendgo-click` (outbound fundraiser
+    clicks on `/support/`), and `popup-view` / `popup-dismiss` / `popup-cta-click` (the
+    first-service-call offer popup).
   - **Google Analytics 4 via Google Tag Manager** (`GTM-MBGJ8SLD`; GA4 `G-EQ9CBESN23` is
     configured inside the GTM container — never load gtag.js directly). **Basic Consent Mode:**
     the GTM container itself is not loaded and no Google request is made until the visitor
@@ -68,10 +76,13 @@ with the owner; never silently work around this file.
     and are only pushed with permission (nothing from before permission is ever replayed):
     `scs_call_click`, `scs_text_click`, `scs_request_click`, `scs_form_start`,
     `scs_support_click` (outbound fundraiser clicks on `/support/`; carries only the
-    allowlisted `support_platform` value `gofundme` or `givesendgo`), and
+    allowlisted `support_platform` value `gofundme` or `givesendgo`),
+    `scs_popup_view` / `scs_popup_dismiss` / `scs_popup_cta_click` (offer popup; carry only the
+    allowlisted `offer: 'first10'` value), and
     `scs_form_confirmed` (maps to GA4 `generate_lead`) which is emitted on `/thank-you/` only
     from a single-use session receipt written after Web3Forms confirms — never on manual
-    thank-you visits, failed submissions or duplicates.
+    thank-you visits, failed submissions or duplicates. A submitted offer claim sets the
+    receipt's `cta_slot` to `popup-first10` so popup-originated leads are distinguishable.
   - **Never send form contents, phone numbers, names, or any personal information to any
     analytics service.** Dashboard setup and the conversion spec live in `docs/GTM-GA4-SETUP.md`;
     the privacy page discloses both services — keep it accurate if analytics change.

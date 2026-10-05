@@ -130,8 +130,7 @@ event-scoped.
 also carry the visitor's **first-touch and latest-touch campaign metadata**, captured
 client-side by `src/lib/attribution.ts` and merged into the Web3Forms payload by
 `ContactForm.astro`. It appears only in the owner's email notification — **it is never pushed to
-the data layer, GTM, GA4 or Umami**, and it does not change `generate_lead` or any event.
-Fields: `first_utm_source|medium|campaign|content`, `latest_utm_source|medium|campaign|content`,
+the data layer, GTM, GA4 or Umami**, and it does not change `generate_lead` or any event.Fields: `first_utm_source|medium|campaign|content`, `latest_utm_source|medium|campaign|content`,
 `attribution_landing_page`, `attribution_referrer_origin`, `attribution_first_at`,
 `attribution_latest_at`.
 
@@ -152,6 +151,24 @@ Consent and retention (October 2026 release requirement):
 - Regression coverage: `scripts/verify-attribution.mjs` §4–5 (consent grant/decline/withdraw,
   post-load consent, expiration, value validation, payload, missing storage).
 - Privacy disclosure: `/privacy/` → "Campaign attribution".
+
+**Offer popup events (Umami now; GA4 requires owner GTM tags).** The first-service-call offer
+popup (`src/components/OfferPopup.astro`, "10% Off Your First Service Call") emits:
+
+- Data-layer events **only with consent**: `scs_popup_view`, `scs_popup_dismiss`,
+  `scs_popup_cta_click` (each carries only the allowlisted `offer: 'first10'`).
+- Umami fixed names, cookieless and independent of consent (matching the existing click-tracking
+  behavior): `popup-view`, `popup-dismiss`, `popup-cta-click`.
+
+**No GTM tags/triggers exist for the popup events** — the published container is not modified by
+this repository. Owner action if GA4 reporting on the popup is wanted: add three GA4 Event tags
+(`scs_popup_view`, `scs_popup_dismiss`, `scs_popup_cta_click`) with matching Custom Event
+triggers. Two of the suggested event names need no separate implementation:
+`popup_form_start` is covered by the existing `scs_form_start` once the visitor reaches the form,
+and `popup_conversion` is covered by `generate_lead` with `cta_slot = popup-first10` when a
+claimed offer is submitted (the popup CTA links to `/contact/?offer=FIRST10` and the claim is
+attached to the Web3Forms submission as `Offer Claimed`). Regression coverage:
+`scripts/verify-popup.mjs`.
 
 ### Verifying the live setup
 

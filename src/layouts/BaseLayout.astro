@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileActionBar from '../components/MobileActionBar.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
+import OfferPopup from '../components/OfferPopup.astro';
 import { business } from '../config/business';
 
 interface Props {
@@ -39,6 +40,9 @@ const gtmEnabled =
     <Footer />
     <MobileActionBar />
     {gtmEnabled && <ConsentBanner />}
+    {/* First-service-call offer popup — conversion layer only; content is not
+        needed for indexing and collects no personal information. */}
+    <OfferPopup />
     {/* Consent-aware first/latest-touch campaign capture for LEAD RECORDS only
         (never analytics); best-effort and non-blocking — see
         src/lib/attribution.ts. Declined/withdrawn consent stores nothing. */}

@@ -1,0 +1,184 @@
+---
+// First-service-call offer popup — "10% Off Your First Service Call".
+//
+// Markup only; behavior lives in the component script below. Native <dialog>
+// is used so Escape handling, focus containment and the top layer come from
+// the platform (no new dependencies, no layout shift, no page render impact).
+// Styles: src/styles/global.css → "First-service-call offer popup".
+//
+// Rules (owner-approved offer): no invented terms, dollar values, deadlines or
+// guarantees. The CTA reuses the existing request/contact flow and carries the
+// allowlisted offer id; the popup itself collects no personal information.
+import Icon from './Icon.astro';
+---
+
+<dialog
+  id="offer-popup"
+  class="offer-popup"
+  aria-labelledby="offer-popup-heading"
+  aria-describedby="offer-popup-copy"
+>
+  <button type="button" class="offer-popup-close" data-offer-close aria-label="Close offer">
+    <Icon name="x" />
+  </button>
+  <p class="offer-popup-eyebrow">New Customer Offer</p>
+  <h2 id="offer-popup-heading">Get 10% Off Your First Service Call</h2>
+  <p class="offer-popup-copy" id="offer-popup-copy">
+    Your AC shouldn&rsquo;t be a guessing game. Get 10% off your first service call and let
+    Sunshine Climate Solutions test the system, identify the problem, and explain what it
+    actually needs.
+  </p>
+  <a
+    class="btn btn--gold btn--lg offer-popup-cta"
+    href="/contact/?offer=FIRST10#request-form"
+    data-offer-cta
+  >
+    Claim 10% Off
+  </a>
+  <p class="offer-popup-reassurance">
+    No pressure. Just straightforward HVAC service from a local team.
+  </p>
+  <p class="offer-popup-terms">
+    New customers only. One discount per household. Restrictions may apply.
+  </p>
+</dialog>
+
+<script>
+  // Trigger rules:
+  //  - never on page load: desktop ≈25s or meaningful exit intent, mobile ≈35s
+  //  - at most once per session (sessionStorage); dismissal never reopens
+  //  - suppressed on pages that are already the conversion flow
+  //  - `?popup=1` is a QA/verification hook: it only shortens the delay
+  //    (eligibility + suppression still apply)
+  // Analytics: fixed-name data-layer events only with consent; Umami fixed
+  // names independently (matching the existing click-tracking behavior).
+  const dialog = document.getElementById('offer-popup') as HTMLDialogElement | null;
+
+  if (dialog) {
+    const SESSION_KEY = 'scs-offer-popup';
+    const SUPPRESSED = ['/contact/', '/thank-you/', '/support/'];
+    const path = location.pathname.endsWith('/') ? location.pathname : `${location.pathname}/`;
+    const isQaForced = new URLSearchParams(location.search).get('popup') === '1';
+
+    const readState = (): string | null => {
+      try {
+        return window.sessionStorage.getItem(SESSION_KEY);
+      } catch {
+        return null;
+      }
+    };
+    const writeState = (value: string): void => {
+      try {
+        window.sessionStorage.setItem(SESSION_KEY, value);
+      } catch {
+        /* session-only behavior when storage is unavailable */
+      }
+    };
+
+    const track = (gtmEvent: string, umamiEvent: string): void => {
+      try {
+        if (window.scsConsent?.granted()) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: gtmEvent, offer: 'first10' });
+        }
+      } catch {
+        /* analytics failure never affects the popup */
+      }
+      try {
+        window.umami?.track(umamiEvent);
+      } catch {
+        /* analytics failure never affects the popup */
+      }
+    };
+
+    let opened = false;
+    let lastFocus: Element | null = null;
+    let timer = 0;
+    let exitHandler: ((event: MouseEvent) => void) | null = null;
+
+    const cancelTriggers = (): void => {
+      window.clearTimeout(timer);
+      if (exitHandler) {
+        document.removeEventListener('mouseout', exitHandler);
+        exitHandler = null;
+      }
+    };
+
+    const openPopup = (): void => {
+      if (opened || dialog.open) return;
+      opened = true;
+      cancelTriggers();
+      writeState('shown');
+      lastFocus = document.activeElement;
+      dialog.showModal();
+      track('scs_popup_view', 'popup-view');
+    };
+
+    const closePopup = (reason: 'dismiss' | 'cta'): void => {
+      if (!dialog.open) return;
+      dialog.close();
+      if (reason === 'dismiss') {
+        writeState('dismissed');
+        track('scs_popup_dismiss', 'popup-dismiss');
+      }
+      if (lastFocus instanceof HTMLElement) lastFocus.focus();
+    };
+
+    dialog.querySelector('[data-offer-close]')?.addEventListener('click', () => closePopup('dismiss'));
+    dialog.querySelector('[data-offer-cta]')?.addEventListener('click', () => {
+      writeState('cta');
+      track('scs_popup_cta_click', 'popup-cta-click');
+    });
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closePopup('dismiss');
+    });
+    dialog.addEventListener('click', (event) => {
+      // Backdrop click: the dialog element itself is the click target only when
+      // the click lands outside its content box.
+      if (event.target === dialog) closePopup('dismiss');
+    });
+
+    // Keep Tab cycling inside the dialog (native dialog already makes the rest
+    // of the page inert; this covers the edges).
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      const focusables = dialog.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    const arm = (): void => {
+      if (readState() !== null) return; // already shown/dismissed/claimed this session
+      if (SUPPRESSED.includes(path)) return; // never on the conversion pages themselves
+
+      const desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const delay = isQaForced ? 50 : desktop ? 25000 : 35000;
+      const armedAt = Date.now();
+      timer = window.setTimeout(openPopup, delay);
+
+      if (desktop && !isQaForced) {
+        exitHandler = (event: MouseEvent): void => {
+          if (event.relatedTarget) return; // still inside the document
+          if (event.clientY > 0) return; // not leaving through the top edge
+          if (Date.now() - armedAt < 5000) return; // avoid an instant trigger
+          openPopup();
+        };
+        document.addEventListener('mouseout', exitHandler);
+      }
+    };
+
+    // Arm only after the page has loaded: zero render-blocking, zero CLS.
+    if (document.readyState === 'complete') arm();
+    else window.addEventListener('load', arm, { once: true });
+  }
+</script>
