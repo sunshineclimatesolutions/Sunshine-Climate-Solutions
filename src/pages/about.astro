@@ -3,13 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { getEntry } from 'astro:content';
-import { business, licenseDisplay } from '../config/business';
+import { business } from '../config/business';
 import { need, interpolateBusiness } from '../lib/site-content';
 
 const about = await getEntry('site', 'about');
 if (!about) throw new Error('[content] src/content/site/about.md is missing');
-
-const license = licenseDisplay();
 
 const hero = need(about.data.hero, 'about.md → hero');
 const infoTitles = need(about.data.infoTitles, 'about.md → infoTitles');
@@ -67,7 +65,7 @@ const description = about.data.metaDescription;
           </p>
           <p class="license-line" style="margin-top: var(--sp-2xs);">
             <Icon name="badge" /> Licensed and insured
-            {license ? ` · ${license}` : ''}
+            {business.licenseNumber ? ` · ${business.licenseNumber}` : ''}
           </p>
         </div>
       </div>

@@ -6,13 +6,11 @@ import ContactForm from '../components/ContactForm.astro';
 import TrustChips from '../components/TrustChips.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import Steps from '../components/Steps.astro';
-import { business, licenseDisplay } from '../config/business';
+import { business } from '../config/business';
 import { need } from '../lib/site-content';
 
 const contact = await getEntry('site', 'contact');
 if (!contact) throw new Error('[content] src/content/site/contact.md is missing');
-
-const license = licenseDisplay();
 
 const hero = need(contact.data.hero, 'contact.md → hero');
 const waysHeading = need(contact.data.waysHeading, 'contact.md → waysHeading');
@@ -76,9 +74,11 @@ const description = contact.data.metaDescription;
           surrounding communities. Central Florida projects are considered depending on scope.
         </p>
 
-        <p class="license-line">
-          <Icon name="badge" /> Licensed and insured {license ? `· ${license}` : ''}
-        </p>
+        {business.licenseNumber && (
+          <p class="license-line">
+            <Icon name="badge" /> Licensed and insured · {business.licenseNumber}
+          </p>
+        )}
 
         <TrustChips />
 
