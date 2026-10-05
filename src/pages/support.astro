@@ -64,15 +64,17 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
         </button>
       </div>
       <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
-      <div class="chips support-chips">
-        {
-          s.hero.chips.map((chip) => (
-            <span class="chip">
-              <Icon name="check" /> {chip}
-            </span>
-          ))
-        }
-      </div>
+      {
+        s.hero.chips.length > 0 && (
+          <div class="chips support-chips">
+            {s.hero.chips.map((chip) => (
+              <span class="chip">
+                <Icon name="check" /> {chip}
+              </span>
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 
@@ -106,10 +108,6 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
         <h2>{s.realBusiness.heading}</h2>
         <p class="lead">{s.realBusiness.lead}</p>
       </div>
-      <blockquote class="support-quote">
-        <p>{s.realBusiness.quote}</p>
-        <footer>{s.realBusiness.quoteAttribution}</footer>
-      </blockquote>
       <div class="grid support-categories">
         {
           s.realBusiness.categories.map((category) => (
@@ -286,28 +284,8 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
     </div>
   </section>
 
-  <!-- ── 9. What the capital unlocks ─────────────────────────────────────── -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section-heading">
-        <h2>{s.unlocks.heading}</h2>
-        <p class="lead">{s.unlocks.lead}</p>
-      </div>
-      <div class="grid">
-        {
-          s.unlocks.items.map((item) => (
-            <div class="card">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 10. Choose how to support ───────────────────────────────────────── -->
-  <section class="section" id="support-now">
+  <!-- ── 9. Choose how to support ────────────────────────────────────────── -->
+  <section class="section section--alt" id="support-now">
     <div class="container">
       <div class="section-heading section-heading--center">
         <h2>{s.platforms.heading}</h2>
@@ -315,6 +293,9 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
       </div>
       <div class="support-platforms">
         <div class="card support-platform-card">
+          <span class="support-card-icon">
+            <Icon name="heart" />
+          </span>
           <h3>{s.platforms.gofundme.name}</h3>
           <p>{s.platforms.gofundme.positioning}</p>
           <a
@@ -328,6 +309,9 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
           </a>
         </div>
         <div class="card support-platform-card">
+          <span class="support-card-icon">
+            <Icon name="users" />
+          </span>
           <h3>{s.platforms.givesendgo.name}</h3>
           <p>{s.platforms.givesendgo.positioning}</p>
           <a
@@ -351,7 +335,7 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
         <h2>{s.otherWays.heading}</h2>
         <p class="lead">{s.otherWays.lead}</p>
       </div>
-      <div class="grid">
+      <div class="grid--four">
         {
           s.otherWays.items.map((item) => (
             <div class="card">

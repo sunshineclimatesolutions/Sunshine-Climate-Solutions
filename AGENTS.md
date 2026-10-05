@@ -100,7 +100,7 @@ with the owner; never silently work around this file.
 | `npm run verify` | `check` + `build` — the minimum bar for any change |
 | `node scripts/smoke.mjs` | Real-browser smoke test (run `npm run preview` first; needs Playwright Chromium) |
 | `node scripts/screenshot.mjs` | Screenshots at 360/768/1440 for owner review |
-| `node scripts/screenshot-sections.mjs` | Section close-ups (proof, brands, maps, TAB, conditions) into `docs/verification/screenshots/sections/` |
+| `node scripts/screenshot-sections.mjs` | Section close-ups (workmanship, pricing, brands, maps, TAB, conditions) into `docs/verification/screenshots/sections/` |
 | `node scripts/a11y.mjs` | axe-core WCAG scan (needs preview server) |
 | `node scripts/links.mjs` | Broken internal-link check on `dist/` (run after build) |
 | `node scripts/photo.mjs <path>` | Photo guardrails: dimensions/size/format check; `--resize 2000 --write` downscales in place |

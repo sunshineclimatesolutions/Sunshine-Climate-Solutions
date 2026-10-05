@@ -11,9 +11,9 @@ const OUT = 'docs/verification/screenshots/sections';
 fs.mkdirSync(OUT, { recursive: true });
 
 const shots = [
-  ['/', 'section[aria-labelledby="home-proof-heading"]', 'home-proof'],
-  ['/', 'section[aria-labelledby="cta-maintenance-heading"]', 'home-maintenance'],
-  ['/', '.brand-strip', 'home-brands'],
+  ['/', 'section[aria-labelledby="home-workmanship-heading"]', 'home-workmanship'],
+  ['/', 'section[aria-labelledby="home-pricing-heading"]', 'home-pricing'],
+  ['/', 'section[aria-labelledby="brands-heading"]', 'home-brands'],
   ['/', '.footer-brand', 'footer-brand'],
   ['/contact/', '.social-links', 'contact-social'],
   ['/leave-review/', '.review-card', 'leave-review-cta'],

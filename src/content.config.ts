@@ -116,6 +116,10 @@ const siteIconEnum = z.enum([
   'activity',
   'badge',
   'sun',
+  'flag',
+  'share',
+  'users',
+  'heart',
 ]);
 
 const site = defineCollection({
@@ -137,7 +141,8 @@ const site = defineCollection({
         headline: z.string().optional(),
         headlineAccent: z.string().optional(),
         headlineTail: z.string().optional(),
-        lead: z.string(),
+        // Optional: pages that lead straight into an action (contact) omit it.
+        lead: z.string().optional(),
         ctaLabel: z.string().optional(),
       })
       .optional(),
@@ -153,6 +158,8 @@ const site = defineCollection({
           .array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() }))
           .default([]),
         tabCard: z.object({ title: z.string(), text: z.string(), ctaLabel: z.string() }).optional(),
+        // Optional definition-style line under the services heading.
+        servingNote: z.string().optional(),
         footnote: z.string().optional(),
       })
       .optional(),
@@ -180,13 +187,7 @@ const site = defineCollection({
       })
       .optional(),
 
-    // home.md — gold offer band (heading is composed from business.pricing).
-    offerBand: z.object({ text: z.string(), linkLabel: z.string() }).optional(),
-
-    // home.md — about + service-area duo section.
-    aboutBand: z
-      .object({ eyebrow: z.string(), heading: z.string(), blurb: z.string(), linkLabel: z.string() })
-      .optional(),
+    // home.md — service-area section (county/city cards render from business.ts).
     serviceArea: z
       .object({
         eyebrow: z.string(),
@@ -197,9 +198,16 @@ const site = defineCollection({
       })
       .optional(),
 
-    // home.md — reviews + final contact sections.
+    // home.md — reviews + final contact sections. `note` is the honest
+    // provenance line shown while no genuine review text is published.
     reviews: z
-      .object({ eyebrow: z.string(), heading: z.string(), workLink: z.string().optional() })
+      .object({
+        eyebrow: z.string(),
+        heading: z.string(),
+        note: z.string().optional(),
+        followLabel: z.string().optional(),
+        workLink: z.string().optional(),
+      })
       .optional(),
     final: z.object({ heading: z.string(), lead: z.string() }).optional(),
 
@@ -265,9 +273,10 @@ const site = defineCollection({
       })
       .optional(),
 
-    // home.md — "See the work behind the service" proof cards (maximum three,
-    // each a different proof category; factual captions only, no outcome claims).
-    proof: z
+    // home.md — "Quality Workmanship" section (maximum three cards, each a
+    // different work category with a small photo gallery; factual captions
+    // only, no outcome claims).
+    workmanship: z
       .object({
         eyebrow: z.string(),
         heading: z.string(),
@@ -275,16 +284,43 @@ const site = defineCollection({
         cards: z
           .array(
             z.object({
-              image: image(),
-              alt: z.string(),
               title: z.string(),
-              text: z.string(),
-              linkLabel: z.string(),
+              text: z.string().optional(),
               linkHref: z.string(),
-              // Optional focal point for the fixed 4:3 card crop.
-              position: z.string().optional(),
+              images: z
+                .array(
+                  z.object({
+                    image: image(),
+                    alt: z.string(),
+                    // Optional focal point for the fixed 4:3 card crop.
+                    position: z.string().optional(),
+                  }),
+                )
+                .min(1)
+                .max(4),
             }),
           )
+          .max(3),
+      })
+      .optional(),
+
+    // home.md — three-column pricing strip (maintenance / service call /
+    // estimates). Money values render from these strings; business.ts stays
+    // the source of truth for the underlying facts.
+    pricing: z
+      .object({
+        heading: z.string(),
+        items: z
+          .array(
+            z.object({
+              price: z.string(),
+              title: z.string(),
+              text: z.string(),
+              linkLabel: z.string().optional(),
+              linkHref: z.string().optional(),
+            }),
+          )
+          .min(2)
           .max(3),
       })
       .optional(),
@@ -298,14 +334,7 @@ const site = defineCollection({
       })
       .optional(),
 
-    // home.md — $75 Premium AC Maintenance promotion band.
-    maintenanceBand: z
-      .object({
-        title: z.string(),
-        text: z.string(),
-        ctaLabel: z.string(),
-      })
-      .optional(),
+
 
 
     // tab.md — field measurement and system verification photos.
@@ -398,13 +427,13 @@ const site = defineCollection({
           eyebrow: z.string(),
           heading: z.string(),
           lead: z.string(),
-          chips: z.array(z.string()),
+          chips: z.array(z.string()).default([]),
         }),
         realBusiness: z.object({
           heading: z.string(),
           lead: z.string(),
-          quote: z.string(),
-          quoteAttribution: z.string(),
+          quote: z.string().optional(),
+          quoteAttribution: z.string().optional(),
           categories: z.array(z.object({ title: z.string(), items: z.array(z.string()) })),
         }),
         whyExists: z.object({
@@ -450,11 +479,15 @@ const site = defineCollection({
           paragraphs: z.array(z.string()),
           timeline: z.array(z.object({ when: z.string(), text: z.string() })),
         }),
-        unlocks: z.object({
-          heading: z.string(),
-          lead: z.string(),
-          items: z.array(z.object({ title: z.string(), text: z.string() })),
-        }),
+        // Optional: the itemized allocation already communicates the operating
+        // consequences, so this section can be omitted when redundant.
+        unlocks: z
+          .object({
+            heading: z.string(),
+            lead: z.string(),
+            items: z.array(z.object({ title: z.string(), text: z.string() })),
+          })
+          .optional(),
         platforms: z.object({
           heading: z.string(),
           lead: z.string(),

@@ -4,4 +4,4 @@ category: commercial
 order: 2
 ---
 
-Yes. We handle subcontracted installation work and overflow service when your schedule is full, and we provide [TAB and commissioning support](/tab-commissioning-support/) for professional teams. Scope and expectations are agreed before we start.
+Yes — through [TAB and commissioning support](/tab-commissioning-support/) for professional teams: airflow measurement and balancing, duct traverses, outside-air verification, building-pressure checks, and performance investigation. Scope and expectations are agreed before we start.

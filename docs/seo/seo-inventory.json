@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T16:49:11.575Z",
+  "generatedAt": "2026-10-05T21:51:52.616Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 18,
   "sitemapUrls": [
@@ -37,19 +37,18 @@
       "h1": [
         "Honest HVAC. Expert Diagnostics. Clear Solutions."
       ],
-      "h2Count": 16,
-      "h3Count": 18,
+      "h2Count": 15,
+      "h3Count": 20,
       "h2s": [
-        "See the work behind the service",
-        "HVAC Service for Tampa Bay Homes and Businesses",
-        "Diagnostics Done Right — Airflow, Electrical, Control Boards",
+        "Pricing, Up Front",
+        "Quality Workmanship",
+        "HVAC Service for Tampa Bay Homes & Businesses",
+        "Why Trust Us With Your System",
         "Testing, Adjusting & Balancing and Commissioning Support",
-        "$75 Premium AC Maintenance",
-        "$50 service call — waived when you proceed with the repair.",
-        "Work Directly With the Owner",
+        "Proudly Serving Spring Hill & Tampa Bay",
         "Hear It from Customers",
-        "What Happens After You Reach Out",
-        "Ready When You Are",
+        "What Happens Next",
+        "Ready?",
         "Equipment Brands We Service",
         "Services",
         "Company",
@@ -57,7 +56,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 894,
+      "wordCount": 995,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -76,6 +75,14 @@
           "hasAlt": true
         },
         {
+          "src": "/_astro/custom-ductboard-supply-plenum.BejfWWCj_JITUx.webp",
+          "alt": "Custom ductboard supply plenum measured, cut and fitted during an HVAC installation",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
           "src": "/_astro/linehide-and-disconnect.qCEnWj-r_nsnPu.webp",
           "alt": "Refrigerant line-set concealment (line hide) and electrical disconnect installed beside an outdoor unit",
           "loading": "lazy",
@@ -84,11 +91,35 @@
           "hasAlt": true
         },
         {
-          "src": "/_astro/custom-ductboard-supply-plenum.BejfWWCj_JITUx.webp",
-          "alt": "Custom ductboard supply plenum fitted during an HVAC installation",
+          "src": "/_astro/condenser-installation-complete.BV87w0VK_Zi2Sp5.webp",
+          "alt": "New outdoor condenser unit set and leveled on a concrete pad with refrigerant lines connected",
+          "loading": "lazy",
+          "width": "1200",
+          "height": "1600",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/nitrogen-purge-during-brazing.By8m4xEg_Z26nTA9.webp",
+          "alt": "Nitrogen purge flowing through refrigerant lines during brazing, verified at a flow indicator",
           "loading": "lazy",
           "width": "1500",
           "height": "2000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/refrigerant-gauges-diagnostic.CBfI1Sre_ZKGQss.webp",
+          "alt": "Manifold gauges and a vacuum pump connected to an outdoor unit during a diagnostic service call",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/evacuation-micron-gauge.BbfG0Pzd_Z1wfgRx.webp",
+          "alt": "Digital vacuum gauge reading 412 microns during system evacuation",
+          "loading": "lazy",
+          "width": "1500",
+          "height": "1999",
           "hasAlt": true
         },
         {
@@ -100,11 +131,59 @@
           "hasAlt": true
         },
         {
+          "src": "/_astro/duct-design-cfm-layout.BKvQPZ5h_ZQx0qk.webp",
+          "alt": "Hand-drawn duct design layout with room-by-room airflow targets marked in CFM",
+          "loading": "lazy",
+          "width": "1499",
+          "height": "2000",
+          "hasAlt": true
+        },
+        {
           "src": "/images/service-area-map-compact.svg",
           "alt": "Compact map of west-central Florida with Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, and the Gulf of America to the west.",
           "loading": "lazy",
           "width": "1278",
           "height": "1469",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/Facebook_logo.webp",
+          "alt": "",
+          "loading": "lazy",
+          "width": "128",
+          "height": "128",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/nextdoor_logo.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "256",
+          "height": "133",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/yelp-logo-3519.png",
+          "alt": "",
+          "loading": "lazy",
+          "width": "280",
+          "height": "113",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/social/gab.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "50",
+          "height": "30",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/social/parler.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": "139",
+          "height": "139",
           "hasAlt": true
         },
         {
@@ -172,14 +251,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -222,16 +293,14 @@
       ],
       "imagesMissingAlt": 0,
       "internalLinks": 51,
-      "externalLinks": 11,
+      "externalLinks": 20,
       "internalLinkTargets": [
         "/",
         "/about/",
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
-        "/contact/?service=premium-ac-maintenance",
         "/contact/?service=tab-commissioning-support",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/service-area/spring-hill-fl/",
@@ -312,14 +381,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -361,7 +422,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 37,
+      "internalLinks": 36,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -369,7 +430,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -403,13 +463,13 @@
       "canonical": "https://sunshineclimatesolutions.com/about/",
       "robots": "index, follow",
       "h1": [
-        "Owner-Operated, on Purpose"
+        "Proud American Owner-Operated"
       ],
       "h2Count": 11,
       "h3Count": 4,
       "h2s": [
         "Business information",
-        "Why Sunshine Climate Solutions Exists",
+        "How SCS Was Founded",
         "How We Work",
         "About the Owner",
         "The Technical Edge",
@@ -420,7 +480,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 419,
+      "wordCount": 493,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -455,14 +515,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -504,7 +556,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 34,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -512,7 +564,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -548,22 +599,20 @@
       "h1": [
         "Request Service"
       ],
-      "h2Count": 11,
-      "h3Count": 7,
+      "h2Count": 9,
+      "h3Count": 4,
       "h2s": [
         "Ways to Reach Us",
-        "Hours",
-        "Pricing, Up Front",
         "Follow us",
         "Request service",
-        "After You Reach Out",
+        "What Happens Next",
         "Services",
         "Company",
         "Get in touch",
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 454,
+      "wordCount": 381,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -627,14 +676,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -687,7 +728,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
+      "internalLinks": 31,
       "externalLinks": 19,
       "internalLinkTargets": [
         "/",
@@ -695,7 +736,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -724,8 +764,8 @@
       "route": "/faq/",
       "title": "HVAC Service FAQs & Pricing | Sunshine Climate Solutions",
       "titleLength": 56,
-      "description": "Straight answers about service-call pricing, free estimates, our Tampa Bay service area, brands, payments, warranty coverage, and how service requests work.",
-      "descriptionLength": 156,
+      "description": "Answers about service-call pricing, free estimates, our Tampa Bay service area, brands, payments, warranty coverage, and how service requests work.",
+      "descriptionLength": 147,
       "canonical": "https://sunshineclimatesolutions.com/faq/",
       "robots": "index, follow",
       "h1": [
@@ -751,7 +791,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 1429,
+      "wordCount": 1431,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -783,14 +823,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -852,7 +884,6 @@
         "/contact/?offer=FIRST10#request-form",
         "/contact/?service=tab-commissioning-support",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -989,14 +1020,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -1038,7 +1061,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 33,
+      "internalLinks": 32,
       "externalLinks": 19,
       "internalLinkTargets": [
         "/",
@@ -1046,7 +1069,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -1133,14 +1155,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -1182,7 +1196,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
+      "internalLinks": 31,
       "externalLinks": 13,
       "internalLinkTargets": [
         "/",
@@ -1190,7 +1204,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -1242,7 +1255,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 229,
+      "wordCount": 228,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -1274,14 +1287,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -1334,7 +1339,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 34,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1342,7 +1347,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/service-area/spring-hill-fl/",
@@ -1431,14 +1435,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -1480,7 +1476,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 43,
+      "internalLinks": 42,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1488,7 +1484,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -1537,7 +1532,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 323,
+      "wordCount": 326,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -1561,14 +1556,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -1621,7 +1608,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 41,
+      "internalLinks": 40,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1629,7 +1616,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -1683,7 +1669,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 1168,
+      "wordCount": 1167,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -1710,14 +1696,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -1770,7 +1748,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 39,
+      "internalLinks": 38,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1779,7 +1757,6 @@
         "/contact/?offer=FIRST10#request-form",
         "/contact/?service=premium-ac-maintenance",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -1832,7 +1809,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 528,
+      "wordCount": 527,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -1859,14 +1836,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -1919,7 +1888,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 39,
+      "internalLinks": 38,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -1927,7 +1896,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/service-area/spring-hill-fl/",
@@ -2016,14 +1984,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -2065,7 +2025,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 38,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2073,7 +2033,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -2102,19 +2061,18 @@
       "route": "/services/commercial-service-maintenance/",
       "title": "Commercial HVAC Tampa Bay | Sunshine Climate Solutions",
       "titleLength": 54,
-      "description": "Light commercial HVAC service and maintenance in Tampa Bay, plus subcontracted installation, overflow service, and TAB/commissioning support for contractors and property teams.",
-      "descriptionLength": 176,
+      "description": "Light commercial HVAC service and maintenance in Tampa Bay for property managers and business owners — measured diagnostics and maintenance scopes agreed in advance.",
+      "descriptionLength": 165,
       "canonical": "https://sunshineclimatesolutions.com/services/commercial-service-maintenance/",
       "robots": "index, follow",
       "h1": [
         "Commercial Service & Maintenance"
       ],
-      "h2Count": 10,
+      "h2Count": 9,
       "h3Count": 0,
       "h2s": [
         "Who this is for",
         "What we provide",
-        "For contractors: subcontracted installation &#x26; overflow",
         "Next steps",
         "Talk it through with the owner",
         "Services",
@@ -2123,7 +2081,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 342,
+      "wordCount": 294,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -2161,14 +2119,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -2210,7 +2160,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 38,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2218,7 +2168,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -2270,7 +2219,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 473,
+      "wordCount": 472,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -2308,14 +2257,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -2357,7 +2298,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 38,
+      "internalLinks": 37,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2365,7 +2306,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -2401,17 +2341,16 @@
       "h1": [
         "Help Build an HVAC Company Around Faith, Craftsmanship & Trust"
       ],
-      "h2Count": 17,
-      "h3Count": 32,
+      "h2Count": 16,
+      "h3Count": 27,
       "h2s": [
-        "This Isn't a Business Idea on Paper",
+        "The Current State of the Business",
         "Why Sunshine Climate Solutions Exists",
         "Faith, Heritage & Community",
         "Technical Credibility",
         "What Has Already Been Invested",
-        "The $20,000 Growth Plan",
+        "The Growth Plan",
         "Why Support Matters Now",
-        "What the Capital Unlocks",
         "Choose How to Support",
         "Other Ways to Help",
         "Transparency FAQ",
@@ -2422,7 +2361,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 1670,
+      "wordCount": 1609,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -2438,6 +2377,22 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/service-truck.y_izjNrL_1OQ5Kt.webp",
+          "alt": "The company's white Ram 2500 service truck parked under Florida oaks.",
+          "loading": "lazy",
+          "width": "750",
+          "height": "1000",
+          "hasAlt": true
+        },
+        {
+          "src": "/_astro/refrigerant-gauges-diagnostic.CBfI1Sre_ZKGQss.webp",
+          "alt": "Manifold gauges and field diagnostic equipment connected to an outdoor unit.",
+          "loading": "lazy",
+          "width": "1600",
+          "height": "1200",
           "hasAlt": true
         },
         {
@@ -2457,27 +2412,11 @@
           "hasAlt": true
         },
         {
-          "src": "/_astro/dirty-coil-detail.DBcupP7M_1PlCyS.webp",
-          "alt": "Close-up of a dirty evaporator or condenser coil surface.",
-          "loading": "lazy",
-          "width": "1600",
-          "height": "1200",
-          "hasAlt": true
-        },
-        {
           "src": "/brand/logo-dark.png",
           "alt": "",
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -2530,7 +2469,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 32,
+      "internalLinks": 31,
       "externalLinks": 16,
       "internalLinkTargets": [
         "/",
@@ -2538,7 +2477,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -2589,7 +2527,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 373,
+      "wordCount": 372,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -2629,14 +2567,6 @@
           "loading": "eager",
           "width": "331",
           "height": "96",
-          "hasAlt": true
-        },
-        {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
           "hasAlt": true
         },
         {
@@ -2689,7 +2619,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 34,
+      "internalLinks": 33,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2698,7 +2628,6 @@
         "/contact/?offer=FIRST10#request-form",
         "/contact/?service=tab-commissioning-support",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",
@@ -2778,14 +2707,6 @@
           "hasAlt": true
         },
         {
-          "src": "/brand/google-g.svg",
-          "alt": "",
-          "loading": "eager",
-          "width": "26",
-          "height": "26",
-          "hasAlt": true
-        },
-        {
           "src": "/images/Facebook_logo.webp",
           "alt": "",
           "loading": "lazy",
@@ -2827,7 +2748,7 @@
         }
       ],
       "imagesMissingAlt": 0,
-      "internalLinks": 33,
+      "internalLinks": 32,
       "externalLinks": 10,
       "internalLinkTargets": [
         "/",
@@ -2835,7 +2756,6 @@
         "/contact/",
         "/contact/?offer=FIRST10#request-form",
         "/faq/",
-        "/leave-review/",
         "/privacy/",
         "/service-area/",
         "/services/",

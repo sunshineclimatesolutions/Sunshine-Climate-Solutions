@@ -1890,7 +1890,8 @@ body.nav-open {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem var(--sp-md);
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   padding-block: 0.65rem;
 }
@@ -2755,7 +2756,7 @@ body.nav-open {
   }
 
   .support-photos {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .support-platforms {
@@ -2878,4 +2879,280 @@ body.nav-open {
   background: var(--c-gold-tint);
   color: var(--c-ink);
   font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   October 2026 website refinement — hero bubble, pricing strip,
+   workmanship carousels, service-area county cards, review follow
+   block, Daikin / & More brand tiles.
+   ───────────────────────────────────────────────────────────── */
+
+/* Inline flag beside the About hero heading. */
+.hero-flag {
+  display: inline-block;
+  vertical-align: -0.12em;
+  margin-right: 0.35rem;
+  color: var(--c-navy);
+}
+
+/* Hero tertiary CTA as a white bubble (Text Us). */
+.hero-alt--bubble {
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-full);
+  background: var(--c-card);
+  box-shadow: var(--sh-sm);
+  text-decoration: none;
+}
+
+.hero-alt--bubble:hover {
+  border-color: var(--c-line-hover);
+  color: var(--c-navy-deep);
+}
+
+/* Pricing: three columns (maintenance / service call / estimates). */
+.pricing-grid {
+  display: grid;
+  gap: var(--sp-md);
+  margin-top: var(--sp-lg);
+}
+
+@media (min-width: 48em) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.pricing-card {
+  padding: var(--sp-lg);
+  text-align: center;
+  align-items: center;
+  gap: var(--sp-xs);
+}
+
+.pricing-card h3 {
+  font-size: var(--text-lg);
+}
+
+.pricing-price {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: var(--text-h1);
+  line-height: 1;
+  color: var(--c-navy);
+}
+
+.pricing-card--featured {
+  border-color: var(--c-gold);
+  background: var(--c-gold-tint);
+}
+
+.pricing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-top: var(--sp-xs);
+}
+
+/* Workmanship cards with photo carousels. */
+.work-grid {
+  margin-top: var(--sp-lg);
+}
+
+.work-card {
+  padding: 0;
+  overflow: clip;
+}
+
+.work-card-body {
+  padding: var(--sp-md);
+  display: grid;
+  gap: var(--sp-2xs);
+  align-content: start;
+}
+
+.work-card-title {
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.work-card-title a {
+  color: var(--c-navy);
+  text-decoration: none;
+}
+
+.work-card-title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track:focus-visible {
+  outline: var(--focus-width) solid var(--focus-color-light);
+  outline-offset: calc(-1 * var(--focus-width));
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  position: absolute;
+  inset-inline: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.carousel-btn {
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--c-navy);
+  cursor: pointer;
+  box-shadow: var(--sh-sm);
+}
+
+.carousel-btn:hover {
+  background: var(--c-card);
+  border-color: var(--c-line-hover);
+}
+
+/* Contact: consolidated reach card (phone / text / email + hours). */
+.contact-reach {
+  padding: var(--sp-md);
+  gap: var(--sp-sm);
+  align-self: stretch;
+}
+
+.contact-reach-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.contact-reach-line a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-reach-line .card-icon {
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  flex: 0 0 auto;
+}
+
+.contact-reach-line .card-icon .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.contact-reach-hours {
+  margin: 0;
+  padding-top: var(--sp-2xs);
+  border-top: 1px solid var(--c-line);
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+}
+
+/* Definition-style services note under the services heading. */
+.service-definition {
+  margin-top: var(--sp-xs);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--c-ink-soft);
+}
+
+/* Service-area county cards with representative cities. */
+.county-card {
+  padding: 0.9rem 1.1rem;
+  gap: 0.25rem;
+}
+
+.county-card strong {
+  font-family: var(--font-head);
+}
+
+.county-cities {
+  font-size: var(--text-xs);
+  color: var(--c-ink-soft);
+  line-height: var(--leading-snug);
+}
+
+/* Reviews: honest provenance line + social follow block. */
+.follow-block {
+  margin-top: var(--sp-lg);
+  display: grid;
+  gap: var(--sp-xs);
+  justify-items: center;
+}
+
+.follow-label {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--c-navy);
+}
+
+/* Brand strip: Daikin wordmark tile + & More tile. */
+.brand-wordmark {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  letter-spacing: 0.02em;
+  color: var(--c-navy);
+}
+
+.brand-box--more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--c-navy);
+  text-decoration: none;
+}
+
+.brand-box--more a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

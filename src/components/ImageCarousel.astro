@@ -1,0 +1,78 @@
+---
+// Dependency-free photo carousel for the home Workmanship cards.
+// Native scroll-snap track (swipe/trackpad/keyboard) plus prev/next buttons;
+// one delegated script serves every instance on the page.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import type { ImageMetadata } from 'astro';
+
+interface CarouselImage {
+  image: ImageMetadata;
+  alt: string;
+  position?: string | undefined;
+}
+
+interface Props {
+  images: CarouselImage[];
+  /** Accessible name, e.g. "Professional AC Installation photos". */
+  label: string;
+}
+
+const { images, label } = Astro.props;
+const multi = images.length > 1;
+---
+
+<div
+  class="carousel"
+  data-carousel
+  role="group"
+  aria-roledescription={multi ? 'carousel' : undefined}
+  aria-label={label}
+>
+  <div class="carousel-track" data-carousel-track tabindex="0">
+    {
+      images.map((item) => (
+        <div class="carousel-slide">
+          <Image
+            src={item.image}
+            alt={item.alt}
+            widths={[400, 700, 1000]}
+            sizes="(min-width: 64em) 30vw, (min-width: 48em) 44vw, 92vw"
+            loading="lazy"
+            style={item.position ? `object-position: ${item.position}` : undefined}
+          />
+        </div>
+      ))
+    }
+  </div>
+  {
+    multi && (
+      <div class="carousel-controls">
+        <button type="button" class="carousel-btn" data-carousel-prev aria-label="Previous photo">
+          <Icon name="chevron-left" size={20} />
+        </button>
+        <button type="button" class="carousel-btn" data-carousel-next aria-label="Next photo">
+          <Icon name="chevron-right" size={20} />
+        </button>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const prev = target.closest('[data-carousel-prev]');
+    const next = target.closest('[data-carousel-next]');
+    if (!prev && !next) return;
+
+    const carousel = target.closest('[data-carousel]');
+    const track = carousel?.querySelector<HTMLElement>('[data-carousel-track]');
+    if (!track) return;
+
+    const amount = Math.max(track.clientWidth, 240);
+    track.scrollBy({ left: next ? amount : -amount, behavior: reduceMotion() ? 'auto' : 'smooth' });
+  });
+</script>

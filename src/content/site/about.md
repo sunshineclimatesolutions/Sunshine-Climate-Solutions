@@ -11,7 +11,7 @@ metaDescription: >-
 
 hero:
   eyebrow: About
-  heading: Owner-Operated, on Purpose
+  heading: Proud American Owner-Operated
   lead: >-
     Sunshine Climate Solutions exists to give Tampa Bay homeowners and businesses
     HVAC service grounded in integrity, transparency, and genuine care.
@@ -20,11 +20,11 @@ infoTitles:
   call: Call or text
   hours: Hours
   area: Service area
-  pricing: Pricing
+  pricing: Competitive Pricing
 
 # Story sections render in order; the first heading anchors the section.
 story:
-  - heading: Why Sunshine Climate Solutions Exists
+  - heading: How SCS Was Founded
     paragraphs:
       - >-
         Sunshine Climate Solutions was started because too many homeowners get
@@ -37,12 +37,17 @@ story:
         explained in plain language, and the customer — not the commission —
         drives the decision. That's the whole idea: service grounded in
         integrity, transparency, and genuine care.
+      - >-
+        The company was founded close to home, in Spring Hill, and built to serve
+        Tampa Bay the way a trade business should: reputation earned one
+        homeowner, one repair, and one honest recommendation at a time.
   - heading: How We Work
     list:
       - You work directly with the owner on every job.
       - Findings and options are explained before anything is recommended.
       - Work proceeds only after you approve it.
       - A sound repair is prioritized where it makes sense.
+      - Family first — we treat your home with care and your budget with respect.
       - >-
         Replacement recommendations are based on equipment condition and practical
         options — never fear tactics.
@@ -55,7 +60,7 @@ story:
         Five years of hands-on HVAC experience — residential and commercial
         installation, service, and maintenance.
       - HVAC schooling at Lively Technical College.
-      - EPA Section 608 certification.
+      - Environmental Protection Agency (EPA) Section 608 certification.
       - Experience working with engineering companies and smaller contractors.
       - Leadership, project coordination, and mentoring background.
       - >-
@@ -67,13 +72,18 @@ story:
       - >-
         Weak airflow, hot rooms, and intermittent electrical or control-board
         faults are where sloppy diagnostics usually end in a new system. They're
-        also where we're strongest: measuring the whole air path, tracing
-        electrical faults methodically, and explaining what we find so clearly
-        that you could make the decision without us in the room.
+        also where we're strongest: measuring static pressure and airflow through
+        the whole air path, reading the system through psychrometrics instead of
+        guessing, tracing electrical faults methodically, and explaining what we
+        find so clearly that you could make the decision without us in the room.
+      - >-
+        We use professional instrumentation — manometers, airflow meters, manifold
+        gauges, vacuum and electrical test equipment — and document what the
+        measurements show before recommending anything.
 
 ctaBand:
   title: Work With the Owner Directly
   text: >-
-    Call, text, or send a request — you'll get clear answers and straight options,
+    Call, text, or send a request — you'll get clear answers and honest options,
     every time.
 ---

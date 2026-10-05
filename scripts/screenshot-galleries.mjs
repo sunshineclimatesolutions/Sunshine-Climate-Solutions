@@ -13,7 +13,8 @@ const OUT = path.join('docs', 'verification', 'screenshots', 'aesthetic', 'galle
 fs.mkdirSync(OUT, { recursive: true });
 
 const targets = [
-  ['/', '.photo-grid', 'home-proof-gallery'],
+  ['/', '.work-grid', 'home-workmanship-gallery'],
+  ['/', '.pricing-grid', 'home-pricing'],
   ['/tab-commissioning-support/', '.tab-visuals', 'tab-field-gallery'],
   ['/faq/', '.conditions-grid', 'faq-conditions'],
 ];

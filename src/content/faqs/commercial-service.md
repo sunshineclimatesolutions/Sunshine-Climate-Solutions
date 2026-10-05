@@ -4,4 +4,4 @@ category: commercial
 order: 1
 ---
 
-Yes — we provide light commercial service and maintenance, and we support contractors with subcontracted installation and overflow work. The owner has residential and commercial installation, service, and maintenance experience, including work with engineering companies and smaller contractors.
+Yes — we provide light commercial service and maintenance. The owner has residential and commercial installation, service, and maintenance experience, including work with engineering companies and smaller contractors. Contractors and engineering teams looking for [TAB and commissioning support](/tab-commissioning-support/) can start there.

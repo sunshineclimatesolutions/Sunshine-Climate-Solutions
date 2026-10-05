@@ -2,8 +2,9 @@
 title: Airflow & Ductwork
 metaTitle: Airflow & Ductwork Spring Hill FL
 summary: >-
-  Hot rooms, weak airflow, and humidity trouble usually have measurable causes. Airflow
-  diagnostics are one of our core strengths — we check the whole air path, not just the box.
+  Hot rooms, weak airflow, and humidity trouble always have measurable causes. Airflow
+  diagnostics are one of our core strengths — we use psychrometrics and static pressure
+  to find the real problem.
 metaDescription: >-
   Hot rooms, weak airflow, humidity, and duct problems in Spring Hill and across
   Tampa Bay — diagnosed with static pressure and measured airflow. Free estimates.

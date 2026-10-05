@@ -4,9 +4,8 @@
 # remediation claims, no matched before/after implications.
 metaTitle: HVAC Service FAQs & Pricing | Sunshine Climate Solutions
 metaDescription: >-
-  Straight answers about service-call pricing, free estimates, our Tampa Bay
-  service area, brands, payments, warranty coverage, and how service requests
-  work.
+  Answers about service-call pricing, free estimates, our Tampa Bay service
+  area, brands, payments, warranty coverage, and how service requests work.
 
 conditions:
   eyebrow: Conditions We Investigate

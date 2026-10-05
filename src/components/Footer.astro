@@ -36,15 +36,8 @@ const consentUi = Boolean(business.analytics.gtm.containerId) &&
           rel="noopener"
         >
           <img class="google-g" src="/brand/google-g.svg" alt="" width="26" height="26" />
-          Read Our Google Reviews
+          See Our Google Reviews
         </a>
-        <div class="footer-review-invite">
-          <p>Been a Customer? We’d Appreciate Your Honest Review.</p>
-          <a class="footer-review-cta" href="/leave-review/" data-cta="leave-review-footer">
-            <img class="google-g" src="/brand/google-g.svg" alt="" width="26" height="26" />
-            Leave a Google Review
-          </a>
-        </div>
         <SocialLinks compact />
         <p class="license-line">
           <Icon name="badge" /> Licensed and insured · EPA Section 608 certified
@@ -98,9 +91,7 @@ const consentUi = Boolean(business.analytics.gtm.containerId) &&
             <Icon name="mail" /> {business.email}
           </a>
           <p class="fc-meta">
-            <span class="fc-line">
-              <Icon name="clock" /> {business.hours.display} · {business.hours.days}
-            </span>
+            <span class="fc-line">{business.hours.display} · {business.hours.days}</span>
             <span class="fc-line">
               <Icon name="map-pin" /> Hernando · Pasco · Pinellas · Hillsborough
             </span>
@@ -114,7 +105,7 @@ const consentUi = Boolean(business.analytics.gtm.containerId) &&
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p>© {year} {business.legalName}. All rights reserved.</p>
-      {license ? <p class="license">{license}</p> : <p>Independently Owned · Repair-First</p>}
+      {license && <p class="license">{license}</p>}
     </div>
   </div>
 </footer>

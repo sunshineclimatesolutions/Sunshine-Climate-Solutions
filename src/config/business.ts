@@ -92,9 +92,29 @@ export const business = {
 
   serviceArea: {
     counties: ['Hernando County', 'Pasco County', 'Pinellas County', 'Hillsborough County'],
+    // Home page service-area cards: presentation order and a representative
+    // city list per county (home-market cities only, not a coverage limit).
+    countyDetails: [
+      {
+        name: 'Hillsborough County',
+        cities: ['Tampa', 'Brandon', 'Plant City', 'Riverview', 'Apollo Beach'],
+      },
+      {
+        name: 'Pinellas County',
+        cities: ['St. Petersburg', 'Clearwater', 'Largo', 'Palm Harbor', 'Tarpon Springs'],
+      },
+      {
+        name: 'Hernando County',
+        cities: ['Spring Hill', 'Brooksville', 'Weeki Wachee', 'Hernando Beach'],
+      },
+      {
+        name: 'Pasco County',
+        cities: ["Land O' Lakes", 'Wesley Chapel', 'New Port Richey', 'Zephyrhills', 'Dade City'],
+      },
+    ],
     summary: 'Tampa Bay and surrounding communities.',
     centralFloridaNote:
-      'Central Florida projects are considered depending on scope — call or text to talk it through.',
+      'Central Florida projects are considered depending on scope. Call or text to talk it through.',
   },
 
   brands: ['Daikin', 'Carrier', 'Bryant', 'Trane', 'Ruud', 'Rheem', 'Lennox', 'Goodman', 'York'],

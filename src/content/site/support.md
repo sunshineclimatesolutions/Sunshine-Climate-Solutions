@@ -18,20 +18,13 @@ support:
       assets required to do the work. The company, website, customer-acquisition system and
       marketing infrastructure are already built. This campaign is intended to close the
       remaining growth gaps and give the business the runway to grow responsibly.
-    chips:
-      - ~$25K Founder Capital Invested
-      - EPA Section 608 Universal
-      - Owner Operated
-      - Professional HVAC / TAB Experience
   realBusiness:
-    heading: This Isn't a Business Idea on Paper
+    heading: The Current State of the Business
     lead: >-
       Most campaigns ask you to fund an idea. This one is different: the operating business
-      already exists, and the founder is already doing the work.
-    quote: >-
-      The truck exists. The tools exist. The company exists. The infrastructure exists. I'm
-      already doing the work.
-    quoteAttribution: Aaron Thomas, Founder & Owner/Operator
+      already exists and the founder is already doing the work. The truck exists, the tools
+      exist, the company exists, and the digital and marketing infrastructure exists. This is
+      a working foundation asking for help to grow responsibly.
     categories:
       - title: Field Capability
         items:
@@ -47,6 +40,7 @@ support:
           - Scheduling
           - Project coordination
           - Field documentation
+          - Continuing education in airflow, refrigeration, and electrical diagnostics
       - title: Digital Capability
         items:
           - Custom website and service pages
@@ -138,20 +132,23 @@ support:
         the website, service pages, conversion funnel, Google presence, analytics, attribution
         and content systems. It is working infrastructure, not a plan on paper.
     photos:
+      - image: ./images/service-truck.jpg
+        alt: The company's white Ram 2500 service truck parked under Florida oaks.
+        caption: The service truck — already purchased and working, the platform this business operates from.
+      - image: ./images/refrigerant-gauges-diagnostic.jpg
+        alt: Manifold gauges and field diagnostic equipment connected to an outdoor unit.
+        caption: Professional diagnostic equipment — bought with founder capital and used on real service calls.
       - image: ./images/airflow-measurement-at-grille.jpg
         alt: A technician's airflow measurement instrument held at a ceiling supply grille.
         caption: Measured airflow at a supply grille — airflow and static pressure are core to how this company diagnoses comfort problems.
       - image: ./images/rooftop-mechanical-equipment.jpg
         alt: Rooftop commercial HVAC equipment with service access panels.
         caption: Commercial rooftop equipment — the founder's field experience includes commercial HVAC service work.
-      - image: ./images/dirty-coil-detail.jpg
-        alt: Close-up of a dirty evaporator or condenser coil surface.
-        caption: Coil condition is measured and documented, not guessed at — findings are explained before any work is approved.
   useOfFunds:
-    heading: The $20,000 Growth Plan
+    heading: The Growth Plan
     lead: >-
-      The campaign target is $20,000. This is the owner-approved planned allocation — every
-      category exists to close a specific operating gap during the early-growth period.
+      Intended itemized capital allocation is as follows: the campaign target is $20,000, and
+      every category exists to close a specific operating gap during the early-growth period.
     totalLabel: Total campaign target
     disclosure: >-
       Actual spending may shift modestly between categories as operating needs change, but the
@@ -227,20 +224,6 @@ support:
         text: Build recurring customers, referrals, reviews and marketing performance data.
       - when: Next cooling season
         text: Enter stronger, more visible and better capitalized.
-  unlocks:
-    heading: What the Capital Unlocks
-    lead: These are operating consequences, not vague promises.
-    items:
-      - title: More Ready Truck Stock
-        text: Less time lost sourcing common parts during the workday.
-      - title: Operating Reserve
-        text: Ability to absorb normal timing differences between expenses and customer payments.
-      - title: Customer Acquisition
-        text: More qualified local homeowners discovering Sunshine Climate Solutions.
-      - title: Field Readiness
-        text: A more efficient service operation with fewer delays.
-      - title: Diagnostic Reserve
-        text: Maintain the professional technical capability that differentiates this company.
   platforms:
     heading: Choose How to Support
     lead: >-
@@ -258,10 +241,10 @@ support:
     heading: Other Ways to Help
     lead: Not everyone can contribute money — and that is not the only way to help.
     items:
-      - icon: arrow-right
+      - icon: share
         title: Share the Campaign
         text: Share this page with people who may want to support the mission.
-      - icon: message
+      - icon: users
         title: Refer a Customer
         text: Recommend Sunshine Climate Solutions to someone who needs HVAC service.
       - icon: wrench
