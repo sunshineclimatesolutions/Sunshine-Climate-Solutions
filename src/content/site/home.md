@@ -18,6 +18,9 @@ hero:
   lead: >-
     Repair-first heating and cooling service, backed by measurement-driven
     diagnostics and straightforward recommendations.
+  image: './images/condenser-installed-pad.jpg'
+  imageAlt: 'Completed outdoor condenser unit set and leveled on a concrete pad beside a home, with refrigerant lines connected and the service cart on site'
+  imagePosition: '68% 58%'
 
 pricing:
   heading: Pricing, Up Front
@@ -94,6 +97,9 @@ diagnostics:
   footnote:
     lead: Want the full story?
     linkLabel: More about the owner and how we work
+  image: './images/micron-gauge-reading.jpg'
+  imageAlt: 'Digital vacuum gauge connected to an outdoor unit service port, reading 412 microns during an evacuation'
+  imageCaption: 'Evacuation verified at 412 microns — documented, not guessed.'
 
 tabBand:
   eyebrow: For Contractors, Engineers & Property Teams
@@ -105,6 +111,8 @@ tabBand:
   note: Project scope and certification requirements are reviewed before acceptance.
   ctaLabel: Request a TAB Proposal
   secondaryLabel: See TAB services
+  image: './images/rooftop-mechanical-equipment.jpg'
+  imageAlt: 'Rooftop commercial HVAC equipment with service access panels on a flat roof'
 
 serviceArea:
   eyebrow: Service Area
@@ -133,8 +141,8 @@ workmanship:
         - image: './images/linehide-and-disconnect.jpg'
           alt: 'Refrigerant line-set concealment (line hide) and electrical disconnect installed beside an outdoor unit'
           position: '50% 45%'
-        - image: './images/condenser-installation-complete.jpg'
-          alt: 'New outdoor condenser unit set and leveled on a concrete pad with refrigerant lines connected'
+        - image: './images/package-unit-install.jpg'
+          alt: 'Packaged rooftop-style unit set and connected at a residential service, with the supply transition sealed and secured'
         - image: './images/nitrogen-purge-during-brazing.jpg'
           alt: 'Nitrogen purge flowing through refrigerant lines during brazing, verified at a flow indicator'
     - title: AC Repair & Diagnostics
@@ -145,6 +153,10 @@ workmanship:
       images:
         - image: './images/refrigerant-gauges-diagnostic.jpg'
           alt: 'Manifold gauges and a vacuum pump connected to an outdoor unit during a diagnostic service call'
+        - image: './images/static-pressure-manometer.jpg'
+          alt: 'Digital manometer taking a static-pressure reading at the supply plenum during a diagnostic visit'
+        - image: './images/condenser-lineset-detail.jpg'
+          alt: 'Close view of refrigerant line-set connections and service valves at an outdoor unit'
         - image: './images/evacuation-micron-gauge.jpg'
           alt: 'Digital vacuum gauge reading 412 microns during system evacuation'
     - title: Testing, Adjusting & Balancing

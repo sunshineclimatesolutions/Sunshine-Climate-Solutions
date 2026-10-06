@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { getEntry } from 'astro:content';
+import truckImage from '../content/site/images/service-truck-oaks.jpg';
 import { business } from '../config/business';
 import { need, interpolateBusiness } from '../lib/site-content';
 
@@ -69,6 +71,23 @@ const description = about.data.metaDescription;
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Field photograph: the working platform behind the profile. -->
+  <section class="about-media-band">
+    <div class="container">
+      <figure class="about-media">
+        <Image
+          src={truckImage}
+          alt="The company's white Ram 2500 service truck parked under Florida oaks in Spring Hill."
+          widths={[640, 1000, 1400]}
+          sizes="(min-width: 64em) 68rem, 96vw"
+          loading="lazy"
+          style="object-position: 50% 62%"
+        />
+        <figcaption>The service truck — purchased and working, the platform this business operates from.</figcaption>
+      </figure>
     </div>
   </section>
 

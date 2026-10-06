@@ -40,17 +40,21 @@ const description =
       <h2 id="services-list-heading" class="visually-hidden">Service details</h2>
       <div class="grid--six">
         {
-          services.map((service) => (
+          services.map((service, index) => (
             <ServiceCard
               href={`/services/${service.id}/`}
               title={service.data.title}
               serviceIcon={serviceIcons[service.id]}
               summary={service.data.summary}
+              feature={index === 0}
               center
             />
           ))
         }
-        <a class="card card-hover card--center" href="/tab-commissioning-support/">
+        <a
+          class="card card-hover card--center svc-tile svc-tile--tab"
+          href="/tab-commissioning-support/"
+        >
           <span class="card-icon card-icon--custom">
             <ServiceIcon name="checklist" />
           </span>

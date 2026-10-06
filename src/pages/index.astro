@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import ServiceCard from '../components/ServiceCard.astro';
@@ -42,132 +43,155 @@ const serviceIcons: Record<string, string> = {
   'airflow-ductwork': 'airflow-blue',
   'commercial-service-maintenance': 'briefcase-black',
 };
-const diagIcons: Record<string, string> = {
-  wind: 'magnifier',
-  activity: 'lightning',
-  clipboard: 'clipboard-brown',
-  badge: 'badge-red',
-};
 
 const title = home.data.metaTitle;
 const description = home.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Hero: light editorial, centered; no eyebrow label, no dark slab. -->
+  <!-- Hero: split editorial — headline and actions beside one large field photograph. -->
   <section class="hero">
-    <div class="container hero-inner hero-inner--center">
-      <h1>
-        {hero.headline} <span class="accent">{headlineAccent}</span>
-        {headlineTail && ` ${headlineTail}`}
-      </h1>
-      <p class="lead">
-        {hero.lead}
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn--gold btn--lg" href="/contact/" data-cta="request-hero">
-          <Icon name="clipboard" /> Request Service
-        </a>
-        <a class="btn btn--navy btn--lg" href={business.phone.href} data-cta="call-hero">
-          <Icon name="phone" /> Call {business.phone.display}
-        </a>
-        <a class="hero-alt hero-alt--bubble" href={business.phone.sms} data-cta="text-hero">
-          <Icon name="message" /> Text Us
-        </a>
+    <div class="container hero-split">
+      <div class="hero-copy">
+        <h1>
+          {hero.headline} <span class="accent">{headlineAccent}</span>
+          {headlineTail && ` ${headlineTail}`}
+        </h1>
+        <p class="lead">
+          {hero.lead}
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--gold btn--lg" href="/contact/" data-cta="request-hero">
+            <Icon name="clipboard" /> Request Service
+          </a>
+          <a class="btn btn--outline-navy btn--lg" href={business.phone.href} data-cta="call-hero">
+            <Icon name="phone" /> Call {business.phone.display}
+          </a>
+          <a class="hero-alt" href={business.phone.sms} data-cta="text-hero">
+            <Icon name="message" /> Text Us
+          </a>
+        </div>
+        <TrustChips variant="line" />
       </div>
-      <TrustChips />
+      {
+        hero.image && (
+          <figure class="hero-media">
+            <Image
+              src={hero.image}
+              alt={hero.imageAlt ?? ''}
+              widths={[560, 840, 1200]}
+              sizes="(min-width: 64em) 42vw, 92vw"
+              loading="eager"
+              fetchpriority="high"
+              style={hero.imagePosition ? `object-position: ${hero.imagePosition}` : undefined}
+            />
+          </figure>
+        )
+      }
     </div>
   </section>
 
-  <!-- Pricing: three columns (maintenance / service call / estimates). -->
-  <section class="section section--alt" aria-labelledby="home-pricing-heading">
+  <!-- Pricing: a rate sheet, not three floating cards. -->
+  <section class="rates" aria-labelledby="home-pricing-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
+      <div class="section-head">
+        <p class="kicker">Pricing</p>
         <h2 id="home-pricing-heading">{pricingCopy.heading}</h2>
       </div>
-      <div class="pricing-grid">
+      <div class="rate-sheet">
         {
-          pricingCopy.items.map((item, index) => (
-            <div class={`card pricing-card${index === 1 ? ' pricing-card--featured' : ''}`}>
-              <p class="pricing-price">{item.price}</p>
-              <h3>{item.title}</h3>
-              <p>{interpolateBusiness(item.text)}</p>
-              {item.linkLabel && item.linkHref && (
-                <div class="pricing-actions">
-                  <a
-                    class={`btn ${index === 1 ? 'btn--navy' : 'btn--outline-navy'}`}
-                    href={item.linkHref}
-                    data-cta={`pricing-${index}`}
-                  >
-                    {index === 1 && <Icon name="clipboard" />} {item.linkLabel}
-                  </a>
-                  {index === 1 && (
-                    <a class="hero-alt" href={business.phone.href} data-cta="call-pricing">
-                      <Icon name="phone" /> Call {business.phone.display}
+          pricingCopy.items.map((item, index) => {
+            const featured = index === 1;
+            return (
+              <article class={`rate${featured ? ' rate--featured on-dark' : ''}`}>
+                <p class="rate-price">{item.price}</p>
+                <h3>{item.title}</h3>
+                <p class="rate-text">{interpolateBusiness(item.text)}</p>
+                {item.linkLabel && item.linkHref && (
+                  <div class="rate-actions">
+                    <a
+                      class={`btn ${featured ? 'btn--gold' : 'btn--outline-navy'}`}
+                      href={item.linkHref}
+                      data-cta={`pricing-${index}`}
+                    >
+                      {featured && <Icon name="clipboard" />} {item.linkLabel}
                     </a>
-                  )}
-                </div>
-              )}
-            </div>
-          ))
+                    {featured && (
+                      <a class="hero-alt" href={business.phone.href} data-cta="call-pricing">
+                        <Icon name="phone" /> Call {business.phone.display}
+                      </a>
+                    )}
+                  </div>
+                )}
+              </article>
+            );
+          })
         }
       </div>
     </div>
   </section>
 
-  <!-- Workmanship: three linked cards, each with a small photo carousel. -->
+  <!-- Workmanship: editorial case rows with large working photographs. -->
   <section class="section" aria-labelledby="home-workmanship-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <p class="eyebrow">{workmanship.eyebrow}</p>
-        <h2 id="home-workmanship-heading">{workmanship.heading}</h2>
-        <p class="lead">
-          {workmanship.lead}
-        </p>
+      <div class="section-head section-head--split">
+        <div>
+          <p class="kicker">{workmanship.eyebrow}</p>
+          <h2 id="home-workmanship-heading">{workmanship.heading}</h2>
+        </div>
+        <p class="lead">{workmanship.lead}</p>
       </div>
-      <div class="grid work-grid">
-        {
-          workmanship.cards.map((card) => (
-            <article class="card work-card">
+    </div>
+    <div class="container cases">
+      {
+        workmanship.cards.map((card, index) => (
+          <article class={`case${index % 2 === 1 ? ' case--reverse' : ''}`}>
+            <div class="case-media">
               <ImageCarousel images={card.images} label={`${card.title} photos`} />
-              <div class="work-card-body">
-                <h3 class="work-card-title">
-                  <a href={card.linkHref}>{card.title}</a>
-                </h3>
-                {card.text && <p>{card.text}</p>}
-              </div>
-            </article>
-          ))
-        }
-      </div>
+            </div>
+            <div class="case-body">
+              <p class="case-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</p>
+              <h3 class="case-title">
+                <a href={card.linkHref}>{card.title}</a>
+              </h3>
+              {card.text && <p>{card.text}</p>}
+              <a class="case-link" href={card.linkHref}>
+                Explore this service <Icon name="arrow-right" size={18} />
+              </a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <!-- Services: six uniform cards, 3×2 desktop / 2 tablet / 1 mobile. -->
-  <section class="section section--alt" aria-labelledby="home-services-heading">
+  <!-- Services: one primary service, quieter supporting services. -->
+  <section class="services-stage" aria-labelledby="home-services-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <p class="eyebrow">{servicesCopy.eyebrow}</p>
-        <h2 id="home-services-heading">{servicesCopy.heading}</h2>
+      <div class="section-head section-head--split">
+        <div>
+          <p class="kicker">{servicesCopy.eyebrow}</p>
+          <h2 id="home-services-heading">{servicesCopy.heading}</h2>
+        </div>
         <p class="lead">
           {servicesLead}
         </p>
-        {servicesCopy.servingNote && <p class="service-definition">{servicesCopy.servingNote}</p>}
       </div>
 
-      <div class="grid--six">
+      <div class="grid--six services-grid">
         {
-          services.map((service) => (
+          services.map((service, index) => (
             <ServiceCard
               href={`/services/${service.id}/`}
               title={service.data.title}
               serviceIcon={serviceIcons[service.id]}
               summary={service.data.summary}
+              feature={index === 0}
               center
             />
           ))
         }
-        <a class="card card-hover card--center" href="/tab-commissioning-support/">
+        <a class="card card-hover card--center svc-tile svc-tile--tab" href="/tab-commissioning-support/">
           <span class="card-icon card-icon--custom">
             <ServiceIcon name="checklist" />
           </span>
@@ -178,26 +202,46 @@ const description = home.data.metaDescription;
           </span>
         </a>
       </div>
+      {servicesCopy.servingNote && <p class="service-definition">{servicesCopy.servingNote}</p>}
     </div>
   </section>
 
-  <!-- Diagnostics strengths -->
-  <section class="section" aria-labelledby="home-diag-heading">
+  <!-- Technical authority: field notes, measurements, evidence. -->
+  <section class="fieldnotes" aria-labelledby="home-diag-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <p class="eyebrow">{diagnostics.eyebrow}</p>
-        <h2 id="home-diag-heading">{diagnostics.heading}</h2>
-        <p class="lead">
-          {diagnostics.lead}
-        </p>
-      </div>
-      <div class="grid--four">
+      <div class="fieldnotes-top">
+        <div class="fieldnotes-copy">
+          <p class="kicker">{diagnostics.eyebrow}</p>
+          <h2 id="home-diag-heading">{diagnostics.heading}</h2>
+          <p class="lead">
+            {diagnostics.lead}
+          </p>
+        </div>
         {
-          diagnostics.cards.map((card) => (
-            <div class="card card--center">
-              <span class="card-icon card-icon--custom">
-                <ServiceIcon name={diagIcons[card.icon] as never} />
-              </span>
+          diagnostics.image && (
+            <figure class="fieldnotes-evidence">
+              <Image
+                src={diagnostics.image}
+                alt={diagnostics.imageAlt ?? ''}
+                widths={[480, 720, 960]}
+                sizes="(min-width: 64em) 34vw, 92vw"
+                loading="lazy"
+              />
+              {diagnostics.imageCaption && <figcaption>{diagnostics.imageCaption}</figcaption>}
+            </figure>
+          )
+        }
+      </div>
+
+      <p class="fieldnotes-statement">We measure before we recommend.</p>
+
+      <div class="grid--four fieldnotes-grid">
+        {
+          diagnostics.cards.map((card, index) => (
+            <div class="fieldnote">
+              <p class="fieldnote-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </p>
               <h3>{card.title}</h3>
               <p>{card.text}</p>
             </div>
@@ -206,7 +250,7 @@ const description = home.data.metaDescription;
       </div>
       {
         diagnostics.footnote && (
-          <p class="muted" style="margin-top: var(--sp-md); text-align: center;">
+          <p class="fieldnotes-footnote">
             {diagnostics.footnote.lead}{' '}
             <a href="/about/">{diagnostics.footnote.linkLabel}</a>.
           </p>
@@ -215,58 +259,74 @@ const description = home.data.metaDescription;
     </div>
   </section>
 
-  <!-- TAB / professional band: pale slate-blue technical band, compact. -->
-  <section class="band--technical band--center" aria-labelledby="home-tab-heading">
-    <div class="container">
-      <p class="eyebrow">{tabBand.eyebrow}</p>
-      <h2 id="home-tab-heading">{tabBand.heading}</h2>
-      <p>
-        {tabBand.text}
-      </p>
-      {tabBand.note && <p style="font-size: var(--text-sm);">{tabBand.note}</p>}
-      <div class="cluster">
-        <a
-          class="btn btn--navy btn--lg"
-          href="/contact/?service=tab-commissioning-support"
-          data-cta="request-tab-proposal"
-        >
-          <Icon name="clipboard" /> {tabBand.ctaLabel}
-        </a>
-        <a
-          class="btn btn--outline-navy"
-          href="/tab-commissioning-support/"
-          data-cta="tab-learn-more"
-        >
-          {tabBand.secondaryLabel}
-        </a>
+  <!-- TAB: full-width navy signature moment. -->
+  <section class="tabstage on-dark" aria-labelledby="home-tab-heading">
+    <div class="container tabstage-inner">
+      <div class="tabstage-copy">
+        <p class="kicker">{tabBand.eyebrow}</p>
+        <h2 id="home-tab-heading">{tabBand.heading}</h2>
+        <p class="tabstage-text">
+          {tabBand.text}
+        </p>
+        {tabBand.note && <p class="tabstage-note">{tabBand.note}</p>}
+        <div class="cluster tabstage-actions">
+          <a
+            class="btn btn--gold btn--lg"
+            href="/contact/?service=tab-commissioning-support"
+            data-cta="request-tab-proposal"
+          >
+            <Icon name="clipboard" /> {tabBand.ctaLabel}
+          </a>
+          <a
+            class="btn btn--outline-light"
+            href="/tab-commissioning-support/"
+            data-cta="tab-learn-more"
+          >
+            {tabBand.secondaryLabel}
+          </a>
+        </div>
       </div>
+      {
+        tabBand.image && (
+          <figure class="tabstage-media">
+            <Image
+              src={tabBand.image}
+              alt={tabBand.imageAlt ?? ''}
+              widths={[520, 780, 1040]}
+              sizes="(min-width: 64em) 40vw, 92vw"
+              loading="lazy"
+              style="object-position: 45% 55%"
+            />
+          </figure>
+        )
+      }
     </div>
   </section>
 
-  <!-- Service area: county cards (with representative cities) beside the map. -->
-  <section class="section" aria-labelledby="home-area-heading">
+  <!-- Service area: geography as brand. -->
+  <section class="area-band" aria-labelledby="home-area-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <p class="eyebrow">{areaCopy.eyebrow}</p>
+      <div class="section-head">
+        <p class="kicker">{areaCopy.eyebrow}</p>
         <h2 id="home-area-heading">{areaCopy.heading}</h2>
       </div>
 
       <div class="area-duo">
-        <div>
-          <ul class="area-list area-list--two">
+        <div class="area-counties">
+          <ul class="area-list area-list--two county-list">
             {
               business.serviceArea.countyDetails.map((county) => (
-                <li class="card county-card">
+                <li class="county-row">
                   <strong>{county.name}</strong>
                   <span class="county-cities">{county.cities.join(' · ')}</span>
                 </li>
               ))
             }
           </ul>
-          <p class="muted" style="margin-top: var(--sp-sm); font-size: var(--text-sm);">
+          <p class="area-note">
             {business.serviceArea.centralFloridaNote}
           </p>
-          <p class="cluster" style="margin-top: var(--sp-sm);">
+          <p class="cluster area-links">
             <a class="text-link" href="/service-area/">
               {areaCopy.linkLabel} <Icon name="arrow-right" size={18} />
             </a>
@@ -292,16 +352,29 @@ const description = home.data.metaDescription;
   </section>
 
   <!-- Reviews: honest provenance + direct Google access while the review
-       collection is intentionally empty; social follow block underneath. -->
-  <section class="section section--alt" aria-labelledby="home-reviews-heading">
+       collection is intentionally empty. -->
+  <section class="reviews-band" aria-labelledby="home-reviews-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <h2 id="home-reviews-heading">{reviewsCopy.heading}</h2>
-        {reviewsCopy.note && <p class="lead">{reviewsCopy.note}</p>}
+      <div class="reviews-split">
+        <div class="reviews-copy">
+          <p class="kicker">Reviews</p>
+          <h2 id="home-reviews-heading">{reviewsCopy.heading}</h2>
+          {reviewsCopy.note && <p class="lead">{reviewsCopy.note}</p>}
+        </div>
+        <div class="reviews-access">
+          <a
+            class="btn btn--navy btn--lg"
+            href={business.reviewsUrl}
+            data-cta="reviews-google-home"
+            rel="noopener"
+          >
+            <Icon name="star" /> See Our Reviews on Google
+          </a>
+        </div>
       </div>
       {
         reviews.length > 0 && (
-          <div class="grid" style="margin-bottom: var(--sp-lg);">
+          <div class="grid reviews-grid">
             {reviews
               .sort((a, b) => a.data.order - b.data.order)
               .slice(0, 3)
@@ -317,24 +390,14 @@ const description = home.data.metaDescription;
           </div>
         )
       }
-      <div class="cluster" style="justify-content: center;">
-        <a
-          class="btn btn--navy btn--lg"
-          href={business.reviewsUrl}
-          data-cta="reviews-google-home"
-          rel="noopener"
-        >
-          <Icon name="star" /> See Our Reviews on Google
-        </a>
-      </div>
       {reviewsCopy.followLabel && (
-        <div class="follow-block">
+        <div class="follow-row">
           <p class="follow-label">{reviewsCopy.followLabel}</p>
           <SocialLinks />
         </div>
       )}
       {projects.length > 0 && (
-        <p style="text-align: center; margin-top: var(--sp-md);">
+        <p class="reviews-work-link">
           <a class="text-link" href="/our-work/">
             {reviewsCopy.workLink} <Icon name="arrow-right" size={18} />
           </a>
@@ -343,49 +406,46 @@ const description = home.data.metaDescription;
     </div>
   </section>
 
-  <!-- Process (2×2 steps) -->
-  <section class="section" aria-labelledby="home-process-heading">
+  <!-- Process: a timeline, not four cards. -->
+  <section class="section process-band" aria-labelledby="home-process-heading">
     <div class="container">
-      <div class="section-heading section-heading--center">
-        <p class="eyebrow">{processCopy.eyebrow}</p>
+      <div class="section-head">
+        <p class="kicker">{processCopy.eyebrow}</p>
         <h2 id="home-process-heading">{processCopy.heading}</h2>
       </div>
       <Steps />
     </div>
   </section>
 
-  <!-- Final contact: the single short charcoal feature band on this page. -->
-  <section class="band--charcoal band--center on-dark" aria-labelledby="home-contact-heading">
-    <div class="container">
+  <!-- Final CTA: a deliberate closing moment. -->
+  <section class="finale on-dark" aria-labelledby="home-contact-heading">
+    <div class="container finale-inner">
       <h2 id="home-contact-heading">{finalCopy.heading}</h2>
       <p class="lead">
         {finalCopy.lead}
       </p>
-      <div class="cluster">
-        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-final">
+      <div class="cluster finale-actions">
+        <a class="btn btn--gold btn--lg" href="/contact/" data-cta="request-final">
+          <Icon name="clipboard" /> Request Service
+        </a>
+        <a class="btn btn--outline-light btn--lg" href={business.phone.href} data-cta="call-final">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
-        <a class="btn btn--outline-light btn--lg" href="/contact/" data-cta="request-final">
-          Request Service
-        </a>
-        <a class="hero-alt" href={business.phone.sms} data-cta="text-final">
-          <Icon name="message" /> Text Us
-        </a>
       </div>
-      <TrustChips />
+      <TrustChips variant="line" />
     </div>
   </section>
 
-  <!-- Brands at the bottom (design order). -->
+  <!-- Brands: a quiet, hairline-framed credibility footer to the story. -->
   {
     brands && (
-      <section class="section" aria-labelledby="brands-heading">
+      <section class="brands-band" aria-labelledby="brands-heading">
         <div class="container">
-          <div class="section-heading section-heading--center">
+          <div class="section-head section-head--center">
             <h2 id="brands-heading">{brands.heading}</h2>
-            {brands.lead && <p class="lead">{brands.lead}</p>}
+            {brands.lead && <p class="brands-lead">{brands.lead}</p>}
           </div>
-          <ul class="brand-list" style="justify-content: center;">
+          <ul class="brand-list brand-grid">
             <li class="brand-box"><img src="/images/brand-carrier.png" alt="Carrier" loading="lazy" width="348" height="150" /></li>
             <li class="brand-box"><img src="/images/brand-goodman.png" alt="Goodman" loading="lazy" width="322" height="135" /></li>
             <li class="brand-box"><img src="/images/brand-lennox.png" alt="Lennox" loading="lazy" width="326" height="93" /></li>

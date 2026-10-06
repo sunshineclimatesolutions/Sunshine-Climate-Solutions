@@ -145,6 +145,10 @@ const site = defineCollection({
         // Optional: pages that lead straight into an action (contact) omit it.
         lead: z.string().optional(),
         ctaLabel: z.string().optional(),
+        // Optional editorial hero media (home): a large genuine work photograph.
+        image: image().optional(),
+        imageAlt: z.string().optional(),
+        imagePosition: z.string().optional(),
       })
       .optional(),
 
@@ -173,6 +177,10 @@ const site = defineCollection({
         lead: z.string(),
         cards: z.array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() })),
         footnote: z.object({ lead: z.string(), linkLabel: z.string() }).optional(),
+        // Optional evidence photograph for the technical authority section.
+        image: image().optional(),
+        imageAlt: z.string().optional(),
+        imageCaption: z.string().optional(),
       })
       .optional(),
 
@@ -185,6 +193,9 @@ const site = defineCollection({
         note: z.string().optional(),
         ctaLabel: z.string().optional(),
         secondaryLabel: z.string().optional(),
+        // Optional field photograph for the full-width TAB band.
+        image: image().optional(),
+        imageAlt: z.string().optional(),
       })
       .optional(),
 

@@ -65,7 +65,7 @@ const viewports = [
 // Close-ups of the owner-flagged sections (change order §VII).
 const closeUps = [
   ['/', '.hero', 'home-hero'],
-  ['/', '.hero .chips', 'home-trust-chips'],
+  ['/', '.hero .cred-line', 'home-trust-chips'],
   ['/', 'section[aria-labelledby="home-workmanship-heading"]', 'home-workmanship'],
   ['/', 'section[aria-labelledby="home-pricing-heading"]', 'home-pricing'],
   ['/', 'section[aria-labelledby="home-diag-heading"]', 'home-diagnostics'],

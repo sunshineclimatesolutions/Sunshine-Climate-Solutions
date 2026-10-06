@@ -24,7 +24,7 @@ const description = tab.data.metaDescription;
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="page-hero">
+  <section class="page-hero page-hero--dark on-dark">
     <div class="container page-hero-inner">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
@@ -33,29 +33,29 @@ const description = tab.data.metaDescription;
       </p>
       <div class="cluster" style="margin-top: var(--sp-xs);">
         <a
-          class="btn btn--navy btn--lg"
+          class="btn btn--gold btn--lg"
           href="/contact/?service=tab-commissioning-support"
           data-cta="request-tab-page"
         >
           <Icon name="clipboard" /> {heroCtaLabel}
         </a>
-        <a class="btn btn--outline-navy" href={business.phone.href} data-cta="call-tab-page">
+        <a class="btn btn--outline-light" href={business.phone.href} data-cta="call-tab-page">
           <Icon name="phone" /> Call {business.phone.display}
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="tab-services-heading">
+  <section class="section tab-scope" aria-labelledby="tab-services-heading">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">{servicesCopy.eyebrow}</p>
+      <div class="section-head">
+        <p class="kicker">{servicesCopy.eyebrow}</p>
         <h2 id="tab-services-heading">{servicesCopy.heading}</h2>
       </div>
       <div class="grid--seven">
         {
           servicesCopy.cards.map((item) => (
-            <div class="card">
+            <div class="fieldnote">
               <span class="card-icon">
                 <Icon name={item.icon} />
               </span>
@@ -75,8 +75,8 @@ const description = tab.data.metaDescription;
 
       {visuals && visuals.photos.length > 0 && (
         <div class="stack" style="margin-top: var(--sp-xl);">
-          <div class="section-heading">
-            <p class="eyebrow">{visuals.eyebrow}</p>
+          <div class="section-head">
+            <p class="kicker">{visuals.eyebrow}</p>
             <h2>{visuals.heading}</h2>
             <p class="lead">
               {visuals.lead}
@@ -100,15 +100,15 @@ const description = tab.data.metaDescription;
 
   <section class="section section--alt" aria-labelledby="tab-process-heading">
     <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">{processCopy.eyebrow}</p>
+      <div class="section-head">
+        <p class="kicker">{processCopy.eyebrow}</p>
         <h2 id="tab-process-heading">{processCopy.heading}</h2>
       </div>
       <div class="steps">
         {
           processCopy.steps.map((step, index) => (
             <div class="step">
-              <span class="step-num" aria-hidden="true">{index + 1}</span>
+              <span class="step-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </div>

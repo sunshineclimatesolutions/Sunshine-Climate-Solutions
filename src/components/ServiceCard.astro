@@ -13,12 +13,26 @@ interface Props {
   cta?: string | undefined;
   /** Center short card copy (design order). */
   center?: boolean | undefined;
+  /** Primary service tile: stronger surface and hierarchy. */
+  feature?: boolean | undefined;
 }
 
-const { href, title, icon, serviceIcon, summary, cta = 'Learn more', center = false } = Astro.props;
+const {
+  href,
+  title,
+  icon,
+  serviceIcon,
+  summary,
+  cta = 'Learn more',
+  center = false,
+  feature = false,
+} = Astro.props;
 ---
 
-<a class={`card card-hover${center ? ' card--center' : ''}`} href={href}>
+<a
+  class={`card card-hover${center ? ' card--center' : ''} svc-tile${feature ? ' svc-tile--feature' : ''}`}
+  href={href}
+>
   <span class={`card-icon${serviceIcon ? ' card-icon--custom' : ''}`}>
     {serviceIcon ? <ServiceIcon name={serviceIcon as never} /> : <Icon name={icon ?? 'wrench'} />}
   </span>

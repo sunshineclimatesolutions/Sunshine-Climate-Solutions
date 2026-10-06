@@ -8,14 +8,30 @@ const chips = [
   { icon: 'check-circle', label: 'EPA Section 608 certified' },
   { icon: 'calendar', label: 'Open seven days a week' },
 ];
+
+interface Props {
+  /** "chips" = pill badges; "line" = quiet editorial credibility line. */
+  variant?: 'chips' | 'line';
+}
+const { variant = 'chips' } = Astro.props;
 ---
 
-<div class="chips">
-  {
-    chips.map((c) => (
-      <span class="chip">
-        <Icon name={c.icon} /> {c.label}
-      </span>
-    ))
-  }
-</div>
+{
+  variant === 'line' ? (
+    <ul class="cred-line">
+      {chips.map((c) => (
+        <li class="cred-item">
+          <Icon name={c.icon} /> {c.label}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <div class="chips">
+      {chips.map((c) => (
+        <span class="chip">
+          <Icon name={c.icon} /> {c.label}
+        </span>
+      ))}
+    </div>
+  )
+}
