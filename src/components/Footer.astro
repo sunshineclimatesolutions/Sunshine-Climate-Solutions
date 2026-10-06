@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import SocialLinks from './SocialLinks.astro';
-import ScsSignature from './ScsSignature.astro';
 import { business, licenseDisplay } from '../config/business';
 
 const projects = await getCollection('projects');
@@ -22,13 +21,10 @@ const consentUi = Boolean(business.analytics.gtm.containerId) &&
     <div class="footer-grid">
       <div class="footer-brand">
         <Logo size="lg" />
-        <div class="footer-brand-top">
-          <p>
-            Owner-operated heating and cooling service for Tampa Bay homes and businesses. Clear
-            explanations, straightforward options, and a repair-first approach.
-          </p>
-          <ScsSignature size={56} class="footer-signature" />
-        </div>
+        <p>
+          Owner-operated heating and cooling service for Tampa Bay homes and businesses. Clear
+          explanations, straightforward options, and a repair-first approach.
+        </p>
         <a
           class="footer-reviews"
           href={business.reviewsUrl}

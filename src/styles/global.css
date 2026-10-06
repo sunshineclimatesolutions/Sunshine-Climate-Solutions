@@ -986,15 +986,6 @@ body.nav-open {
   max-width: 58ch;
 }
 
-.band--technical .scs-signature {
-  margin-inline: auto;
-  opacity: 0.9;
-}
-
-.band--charcoal .scs-signature {
-  margin-inline: auto;
-}
-
 /* Gold offer band (home) — kept for the single $50 promotion, compact. */
 .band--gold {
   background: var(--c-gold);
@@ -1420,20 +1411,6 @@ body.nav-open {
   max-width: 34ch;
 }
 
-.footer-brand-top {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-md);
-}
-
-/* The custom technical signature sits beside the brand description without
-   competing with the real logo. */
-.footer-signature {
-  color: var(--c-navy);
-  margin-left: auto;
-  opacity: 0.9;
-}
-
 .footer-heading {
   font-family: var(--font-head);
   font-size: var(--text-sm);
@@ -1739,6 +1716,14 @@ body.nav-open {
 @media (min-width: 40em) {
   .brand-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Two-column phones: the trailing & More tile spans the row instead of
+   sitting alone in the last cell. */
+@media (max-width: 39.99em) {
+  .brand-box--more {
+    grid-column: 1 / -1;
   }
 }
 
@@ -3133,15 +3118,7 @@ body.nav-open {
   color: var(--c-navy);
 }
 
-/* Brand strip: Daikin wordmark tile + & More tile. */
-.brand-wordmark {
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: var(--text-xl);
-  letter-spacing: 0.02em;
-  color: var(--c-navy);
-}
-
+/* Brand strip: & More tile. */
 .brand-box--more a {
   display: inline-flex;
   align-items: center;

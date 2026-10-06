@@ -231,11 +231,9 @@ support:
       preferred over the other — choose whichever fits you best.
     gofundme:
       name: GoFundMe
-      positioning: General community fundraising platform.
       ctaLabel: Support on GoFundMe
     givesendgo:
       name: GiveSendGo
-      positioning: Faith/community-oriented fundraising platform.
       ctaLabel: Support on GiveSendGo
   otherWays:
     heading: Other Ways to Help
@@ -244,10 +242,10 @@ support:
       - icon: share
         title: Share the Campaign
         text: Share this page with people who may want to support the mission.
-      - icon: users
+      - icon: message
         title: Refer a Customer
         text: Recommend Sunshine Climate Solutions to someone who needs HVAC service.
-      - icon: wrench
+      - icon: bulb
         title: Choose SCS
         text: When you need legitimate HVAC service, choose Sunshine Climate Solutions.
       - icon: star

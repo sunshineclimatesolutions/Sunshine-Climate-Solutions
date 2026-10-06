@@ -32,9 +32,8 @@ story:
         through a script that ends at a replacement — even when a sound repair
         would serve them better for years.
       - >-
-        So it was built as a different kind of company: one where the person who
-        shows up is the person whose name is on the business, the findings get
-        explained in plain language, and the customer — not the commission —
+        So it was built as a different kind of company: one where the findings
+        get explained in plain language, and the customer — not the commission —
         drives the decision. That's the whole idea: service grounded in
         integrity, transparency, and genuine care.
       - >-

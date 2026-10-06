@@ -120,6 +120,7 @@ const siteIconEnum = z.enum([
   'share',
   'users',
   'heart',
+  'bulb',
 ]);
 
 const site = defineCollection({
@@ -491,8 +492,8 @@ const site = defineCollection({
         platforms: z.object({
           heading: z.string(),
           lead: z.string(),
-          gofundme: z.object({ name: z.string(), positioning: z.string(), ctaLabel: z.string() }),
-          givesendgo: z.object({ name: z.string(), positioning: z.string(), ctaLabel: z.string() }),
+          gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
+          givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),
         }),
         otherWays: z.object({
           heading: z.string(),

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T21:51:52.616Z",
+  "generatedAt": "2026-10-06T02:14:46.776Z",
   "productionHead": "1080de335396e5278f1931ee79233eff619a7646",
   "pageCount": 18,
   "sitemapUrls": [
@@ -56,7 +56,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 995,
+      "wordCount": 994,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -232,6 +232,22 @@
           "loading": "lazy",
           "width": "280",
           "height": "348",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-daikin.webp",
+          "alt": "Daikin",
+          "loading": "lazy",
+          "width": "320",
+          "height": "160",
+          "hasAlt": true
+        },
+        {
+          "src": "/images/brand-mitsubishi-electric.webp",
+          "alt": "Mitsubishi Electric",
+          "loading": "lazy",
+          "width": "474",
+          "height": "238",
           "hasAlt": true
         },
         {
@@ -480,7 +496,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 493,
+      "wordCount": 479,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -612,7 +628,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 381,
+      "wordCount": 378,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",
@@ -784,7 +800,7 @@
         "Calls, Texts & Photos",
         "Commercial, Contractors & TAB",
         "Problems Aren't Always Where They First Appear",
-        "Ready to get started?",
+        "Connect with us directly",
         "Services",
         "Company",
         "Get in touch",
@@ -2361,7 +2377,7 @@
         "Optional analytics",
         "Get 10% Off Your First Service Call"
       ],
-      "wordCount": 1609,
+      "wordCount": 1602,
       "schemaTypes": [
         "HVACBusiness",
         "OpeningHoursSpecification",

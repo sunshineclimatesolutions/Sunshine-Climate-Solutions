@@ -7,7 +7,6 @@ import TrustChips from '../components/TrustChips.astro';
 import Steps from '../components/Steps.astro';
 import ImageCarousel from '../components/ImageCarousel.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
-import ScsSignature from '../components/ScsSignature.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { business } from '../config/business';
 import { need, interpolateBusiness } from '../lib/site-content';
@@ -219,7 +218,6 @@ const description = home.data.metaDescription;
   <!-- TAB / professional band: pale slate-blue technical band, compact. -->
   <section class="band--technical band--center" aria-labelledby="home-tab-heading">
     <div class="container">
-      <ScsSignature size={44} />
       <p class="eyebrow">{tabBand.eyebrow}</p>
       <h2 id="home-tab-heading">{tabBand.heading}</h2>
       <p>
@@ -394,7 +392,8 @@ const description = home.data.metaDescription;
             <li class="brand-box"><img src="/images/brand-rheem.png" alt="Rheem" loading="lazy" width="320" height="315" /></li>
             <li class="brand-box"><img src="/images/brand-ruud.png" alt="Ruud" loading="lazy" width="348" height="217" /></li>
             <li class="brand-box"><img src="/images/brand-trane.png" alt="Trane" loading="lazy" width="280" height="348" /></li>
-            <li class="brand-box brand-box--wordmark"><span class="brand-wordmark">Daikin</span></li>
+            <li class="brand-box"><img src="/images/brand-daikin.webp" alt="Daikin" loading="lazy" width="320" height="160" /></li>
+            <li class="brand-box"><img src="/images/brand-mitsubishi-electric.webp" alt="Mitsubishi Electric" loading="lazy" width="474" height="238" /></li>
             <li class="brand-box brand-box--more">
               <a href="/services/">
                 &amp; More <Icon name="arrow-right" size={18} />
