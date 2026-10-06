@@ -118,7 +118,7 @@ const description = home.data.metaDescription;
                     </a>
                     {featured && (
                       <a class="hero-alt" href={business.phone.href} data-cta="call-pricing">
-                        <Icon name="phone" /> Call {business.phone.display}
+                        <Icon name="phone" onDark /> Call {business.phone.display}
                       </a>
                     )}
                   </div>
@@ -337,13 +337,13 @@ const description = home.data.metaDescription;
             )}
           </p>
         </div>
-        <figure class="service-map-compact">
+        <figure class="service-map-full">
           <img
-            src="/images/service-area-map-compact.svg"
-            alt="Compact map of west-central Florida with Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, and the Gulf of America to the west."
+            src="/images/service-area-map.svg"
+            alt="Map of west-central Florida showing Hernando, Pasco, Pinellas and Hillsborough counties highlighted and labeled, with neighboring counties and the Gulf of America for context."
             loading="lazy"
-            width="1278"
-            height="1469"
+            width="1674"
+            height="2219"
           />
           <figcaption>Serving Hillsborough, Pinellas, Hernando and Pasco counties.</figcaption>
         </figure>
@@ -374,7 +374,7 @@ const description = home.data.metaDescription;
       </div>
       {
         reviews.length > 0 && (
-          <div class="grid reviews-grid">
+          <div class={`grid reviews-grid${reviews.length < 3 ? ' reviews-grid--pair' : ''}`}>
             {reviews
               .sort((a, b) => a.data.order - b.data.order)
               .slice(0, 3)
@@ -383,6 +383,14 @@ const description = home.data.metaDescription;
                   <p>“{review.data.quote}”</p>
                   <footer style="margin-top: auto; font-size: var(--text-sm); color: var(--c-ink-soft);">
                     — {review.data.author}
+                    {review.data.source === 'google' && (
+                      <>
+                        {' · '}
+                        <a class="text-link" href={business.reviewsUrl} rel="noopener">
+                          Google Reviews →
+                        </a>
+                      </>
+                    )}
                     {review.data.context ? `, ${review.data.context}` : ''}
                   </footer>
                 </blockquote>
@@ -429,10 +437,10 @@ const description = home.data.metaDescription;
           <Icon name="clipboard" /> Request Service
         </a>
         <a class="btn btn--outline-light btn--lg" href={business.phone.href} data-cta="call-final">
-          <Icon name="phone" /> Call {business.phone.display}
+          <Icon name="phone" onDark /> Call {business.phone.display}
         </a>
       </div>
-      <TrustChips variant="line" />
+      <TrustChips variant="line" onDark />
     </div>
   </section>
 

@@ -7,6 +7,7 @@ import CtaBand from '../components/CtaBand.astro';
 import { business } from '../config/business';
 import { need } from '../lib/site-content';
 import PhotoCard from '../components/PhotoCard.astro';
+import FieldClip from '../components/FieldClip.astro';
 
 const tab = await getEntry('site', 'tab');
 if (!tab) throw new Error('[content] src/content/site/tab.md is missing');
@@ -40,7 +41,7 @@ const description = tab.data.metaDescription;
           <Icon name="clipboard" /> {heroCtaLabel}
         </a>
         <a class="btn btn--outline-light" href={business.phone.href} data-cta="call-tab-page">
-          <Icon name="phone" /> Call {business.phone.display}
+          <Icon name="phone" onDark /> Call {business.phone.display}
         </a>
       </div>
     </div>
@@ -73,7 +74,7 @@ const description = tab.data.metaDescription;
         </span>
       </div>
 
-      {visuals && visuals.photos.length > 0 && (
+      {visuals && (visuals.photos.length > 0 || visuals.clip) && (
         <div class="stack" style="margin-top: var(--sp-xl);">
           <div class="section-head">
             <p class="kicker">{visuals.eyebrow}</p>
@@ -92,6 +93,13 @@ const description = tab.data.metaDescription;
                 position={photo.position}
               />
             ))}
+            {visuals.clip && (
+              <FieldClip
+                src={visuals.clip.src}
+                poster={visuals.clip.poster}
+                caption={visuals.clip.caption}
+              />
+            )}
           </div>
         </div>
       )}

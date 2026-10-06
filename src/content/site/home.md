@@ -12,12 +12,12 @@ metaDescription: >-
   Solutions.
 
 hero:
-  headline: Honest HVAC. Expert Diagnostics.
-  headlineAccent: Clear Solutions.
+  headline: Know what's wrong.
+  headlineAccent: Then decide what to do.
   headlineTail: ''
   lead: >-
-    Repair-first heating and cooling service, backed by measurement-driven
-    diagnostics and straightforward recommendations.
+    Locally owned heating and cooling for Spring Hill and Tampa Bay. We diagnose
+    the system, show you what we found, and lay out the options — then you decide.
   image: './images/condenser-installed-pad.jpg'
   imageAlt: 'Completed outdoor condenser unit set and leveled on a concrete pad beside a home, with refrigerant lines connected and the service cart on site'
   imagePosition: '68% 58%'
@@ -28,24 +28,25 @@ pricing:
     - price: $75
       title: Premium AC Maintenance
       text: >-
-        Per system, per visit — routine coil cleaning, condensate drain flushing,
-        blower-compartment cleaning, electrical testing and a full operating
-        evaluation.
+        A scheduled maintenance visit for a system that's running: routine coil
+        cleaning, condensate drain flushing, blower-compartment cleaning,
+        electrical testing, and a full operating evaluation. Per system, per
+        visit.
       linkLabel: More Details
       linkHref: /services/ac-maintenance/
     - price: $0
       title: Service Call When You Proceed With the Repair
       text: >-
-        A {serviceCall} service call applies up front — waived when you proceed
-        with the repair. Findings and options are explained before any work
-        begins.
+        A {serviceCall} service call applies up front and is waived when you
+        proceed with the repair. You hear the findings and the price before any
+        work begins.
       linkLabel: Schedule Service
       linkHref: /contact/
     - price: Free
       title: Free Estimates
       text: >-
-        Replacement and installation estimates are free — clear written
-        options, no obligation and no pressure.
+        For replacement or installation planning: free written estimates,
+        itemized, with the scope of work spelled out. No obligation.
       linkLabel: More Details
       linkHref: /contact/
 
@@ -53,10 +54,11 @@ services:
   eyebrow: Services
   heading: HVAC Service for Tampa Bay Homes & Businesses
   lead: >-
-    Repairs come first — and if replacement is genuinely the better call, you’ll
-    hear exactly why, with real options and a free estimate.
+    Repairs come first. If replacement is genuinely the better call, you'll hear
+    why, with the options and price in writing.
   servingNote: >-
-    service (n.) — the act of serving. When we service your system, we are serving YOU.
+    Every visit is documented: what was measured, what was found, and what we
+    recommend.
   tabCard:
     title: Testing, Adjusting & Balancing
     text: >-
@@ -66,12 +68,12 @@ services:
 
 diagnostics:
   eyebrow: Expert Diagnostics
-  heading: Why Trust Us With Your System
+  heading: How We Find the Actual Cause
   lead: >-
-    Many systems that won’t run turn out to be a failed capacitor, a stuck
+    Many systems that won't run turn out to be a failed capacitor, a stuck
     contactor, a control-board fault, or an airflow problem nobody measured.
-    We find the actual cause before we recommend anything — and explain it in
-    plain language.
+    We find the actual cause before we recommend anything, and back it with
+    readings you can see.
   cards:
     - icon: wind
       title: Airflow & Static Pressure
@@ -85,10 +87,10 @@ diagnostics:
         Control boards, wiring, capacitors, contactors, and sensors — traced
         methodically instead of parts-swapping at your expense.
     - icon: clipboard
-      title: Plain-Language Findings
+      title: Findings in Writing
       text: >-
-        You’ll see what we found, what it means, and what your options cost —
-        before any work is approved or performed.
+        You'll see what was measured, what it means, and what each option
+        costs — before any work is approved.
     - icon: badge
       title: Local Owner-Operator
       text: >-
@@ -108,7 +110,6 @@ tabBand:
     Air and hydronic TAB, airflow measurement and balancing reports, duct
     traverses, outside-air verification, building-pressure checks, performance
     investigation, and commissioning support within agreed scope.
-  note: Project scope and certification requirements are reviewed before acceptance.
   ctaLabel: Request a TAB Proposal
   secondaryLabel: See TAB services
   image: './images/rooftop-mechanical-equipment.jpg'
@@ -123,11 +124,10 @@ serviceArea:
 
 workmanship:
   eyebrow: Workmanship
-  heading: Quality Workmanship
+  heading: What the Work Looks Like
   lead: >-
-    Sunshine Climate Solutions was founded to serve our community with integrity
-    and honor. We take pride in what we do, and it reflects in our consistent
-    quality.
+    These photographs are from our jobs. They show the details that affect how a
+    system performs long after the installation is finished.
   cards:
     - title: Professional AC Installation
       linkHref: /services/replacement-installation/
@@ -148,8 +148,8 @@ workmanship:
     - title: AC Repair & Diagnostics
       linkHref: /services/ac-repair-diagnostics/
       text: >-
-        Gauges, vacuum and measurements first — the cause is found and
-        documented before any repair is recommended.
+        Capacitors, controls, and refrigerant work: the cause is confirmed
+        first, and the repair is documented.
       images:
         - image: './images/refrigerant-gauges-diagnostic.jpg'
           alt: 'Manifold gauges and a vacuum pump connected to an outdoor unit during a diagnostic service call'
@@ -175,9 +175,6 @@ workmanship:
 reviews:
   eyebrow: Reviews
   heading: Hear It from Customers
-  note: >-
-    Our Google reviews come from real customers after completed service — read
-    them at the source, in their own words.
   followLabel: Follow Us
   workLink: See examples of our work
 
@@ -193,5 +190,5 @@ final:
 
 brands:
   heading: Equipment Brands We Service
-  lead: 'Service experience across a range of common HVAC equipment. Call with your system model and issue.'
+  lead: 'We service and install most common residential and light commercial equipment. Call or text with your system model and what it''s doing.'
 ---

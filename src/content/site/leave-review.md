@@ -4,9 +4,8 @@
 # (src/config/business.ts) — never hard-code the URL here.
 metaTitle: Leave a Review | Sunshine Climate Solutions
 metaDescription: >-
-  Thank you for choosing Sunshine Climate Solutions. If we've earned it, your
-  Google review helps other Tampa Bay homeowners find honest, owner-operated
-  HVAC service.
+  Thank you for choosing Sunshine Climate Solutions. Your Google review helps
+  other homeowners find us.
 
 hero:
   eyebrow: Thank You

@@ -11,8 +11,11 @@ metaDescription: >-
 hero:
   eyebrow: Contact
   heading: Request Service
+  lead: >-
+    Tell us what's going on. A call, a text, or the short form — the owner reads
+    and answers these.
 
-waysHeading: Ways to Reach Us
+waysHeading: Prefer to call or text?
 
 process:
   eyebrow: Our Process

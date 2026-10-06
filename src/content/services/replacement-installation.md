@@ -2,13 +2,23 @@
 title: Replacements & Installations
 metaTitle: AC Replacement Spring Hill FL
 summary: >-
-  When equipment has genuinely reached the end, we size and quote straightforward options — free
-  estimates and honest advice about repair versus replace.
+  When equipment has genuinely reached the end of its service life, we size the replacement
+  to your home and ductwork, then quote the options in writing.
 metaDescription: >-
   AC and heat pump replacement and installation in Spring Hill and across Tampa Bay.
-  Free estimates and honest repair-versus-replace advice.
+  Right-sized equipment, ductwork considered, options quoted in writing.
 icon: thermometer
 order: 2
+evidence:
+  photos:
+    - image: '../site/images/brazed-lineset-detail.jpg'
+      alt: 'Brazed and insulated refrigerant line-set connections inside an outdoor condenser cabinet'
+      caption: 'Brazed and insulated line-set connections inside the condenser cabinet.'
+      position: '50% 45%'
+    - image: '../site/images/condenser-replacement-in-progress.jpg'
+      alt: 'Residential replacement in progress with the old condenser removed, a new pad set, and tools staged'
+      caption: 'A replacement in progress: the old condenser removed, the new pad set, and tools staged.'
+      position: '50% 55%'
 ---
 
 ## When replacement makes sense
@@ -22,8 +32,8 @@ practical call:
 - Comfort problems can't be fixed by repairing what's there
 - You're planning around the equipment you have and want a clear-eyed look at the options
 
-If a repair is the smarter move, we'll tell you — even though replacement pays us more. That's
-the whole point of an owner-operated, repair-first business.
+If a repair is the smarter move, we'll tell you. Replacement makes sense when it's genuinely
+the better option for the system and the house.
 
 ## How we quote a replacement
 
@@ -31,7 +41,7 @@ the whole point of an owner-operated, repair-first business.
 then talk through what matters to you — reliability, comfort, budget.
 
 - Equipment sized to your home and existing ductwork — not guesswork, not oversizing
-- Options explained in plain language, including what you actually get for the difference in price
+- Options compared side by side, including what you get for the difference in price
 - The proposal covers the work included, so there are no surprises mid-job
 - Ask about the workmanship and manufacturer warranty coverage included with your proposal
 

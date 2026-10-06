@@ -11,19 +11,35 @@ metaDescription: >-
   serving Tampa Bay.
 icon: shield
 order: 3
+evidence:
+  photos:
+    - image: '../site/images/filter-rack-maintenance.jpg'
+      alt: 'Return air filter rack with filters installed, checked during a maintenance visit'
+      caption: 'The return filter rack during a maintenance visit. Filter condition is part of the evaluation.'
+  clip:
+    src: '/videos/air-handler-service.mp4'
+    poster: '../site/images/clip-air-handler-poster.jpg'
+    caption: 'Inside the air handler during a maintenance visit.'
 ---
 
-**Premium AC Maintenance. Comprehensive Care. Just $75.**
+## Premium AC Maintenance — $75 per system, per visit
 
-This is preventive maintenance for a system that is running: routine cleaning, testing and a
-real evaluation of how your equipment is operating. **$75 per system, per visit** — an
-individual maintenance visit, not a membership, annual contract, repair warranty or
-subscription. If your system isn't cooling or isn't running, start with a
+A scheduled maintenance visit for a system that is running: the coils get cleaned, the drain gets
+flushed, the electrical components get tested, and the system gets evaluated and documented.
+
+- **Who it's for:** an operating system that needs routine care — not a repair.
+- **Included:** four cleaning services, a full electrical inspection and test, an operating
+  evaluation, and a written summary.
+- **Not included:** parts, refrigerant, deep or invasive cleaning, and any repair work found
+  during the visit.
+- **Per system, per visit.** No membership, no contract, no subscription.
+
+If the system isn't cooling or won't run, start with a
 [repair diagnostic](/services/ac-repair-diagnostics/) instead.
 
 ## The four cleaning services included in every visit
 
-These routine procedures are part of the advertised $75 price — not add-ons:
+Included in the $75 price, not add-ons:
 
 - **Outdoor condenser-coil cleaning.**
 - **Routine cleaning of the accessible indoor evaporator coil.**
@@ -60,10 +76,6 @@ methods.
 
 ### Cleaning and drainage
 
-- Outdoor condenser-coil cleaning.
-- Routine cleaning of the accessible indoor evaporator coil.
-- Flushing of the accessible condensate drain.
-- Accessible blower-compartment cleaning.
 - Check the condensate pan and accessible drain connections.
 - Check the outdoor unit for airflow obstructions.
 - Verify accessible condensate drainage after flushing.
@@ -116,7 +128,7 @@ be performed due to normal access limits, we tell you at the visit and note it i
 we don't quietly skip an advertised procedure, and we don't add a surprise charge for ordinary
 access.
 
-Two honest boundaries:
+Two limits, stated plainly:
 
 - Routine indoor-coil cleaning does not mean coil removal, invasive cabinet reconstruction or
   restoration of severely impacted components.
@@ -143,12 +155,12 @@ straight.
 - Your system is running normally and you want it cleaned, tested and evaluated.
 - You're heading into the cooling season and want the coils and drain in good condition.
 - It's been a long time since the equipment was cleaned or checked.
-- You want documented operating measurements and a plain-language summary of your equipment's
+- You want documented operating measurements and a written summary of your equipment's
   condition.
 
-Maintenance is preventive care. It does not guarantee that equipment will never break down or
-restore a specific amount of lost efficiency — it's a professional routine visit that keeps
-your system clean, tested and honestly evaluated.
+Maintenance is preventive care. It keeps the system clean, tested, and evaluated; it doesn't
+guarantee that equipment will never fail, and it won't restore efficiency the equipment has
+already lost.
 
 ## Maintenance FAQ
 
@@ -182,8 +194,8 @@ waived when you proceed with the repair.
 
 ### Will you tell me if you find a problem?
 
-Yes. Every visit ends with findings explained in plain language and a concise summary. If we
-recommend additional work, you get the reason and the price — and the decision is yours.
+Yes. Every visit ends with the findings and a written summary. If we recommend additional work,
+you get the reason and the price before anything proceeds.
 
 ### Do you service my area?
 

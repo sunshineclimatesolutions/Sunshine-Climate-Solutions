@@ -1,0 +1,59 @@
+---
+// Short muted field clip rendered inside an evidence figure.
+// Playback starts only when the clip scrolls into view and only when the
+// visitor has not requested reduced motion; the poster frame carries the
+// content without JavaScript. All content comes from props.
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  /** Public path to the transcoded MP4 (e.g. /videos/name.mp4). */
+  src: string;
+  /** Poster frame (genuine still from the same clip). */
+  poster: ImageMetadata;
+  caption: string;
+}
+
+const { src, poster, caption } = Astro.props;
+const posterImage = await getImage({ src: poster, width: 960, format: 'jpeg', quality: 78 });
+---
+
+<figure class="field-clip">
+  <video
+    data-field-clip
+    aria-hidden="true"
+    muted
+    loop
+    playsinline
+    preload="none"
+    poster={posterImage.src}
+  >
+    <source src={src} type="video/mp4" />
+  </video>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<script>
+  const clips = document.querySelectorAll<HTMLVideoElement>('video[data-field-clip]');
+  if (clips.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const play = (video: HTMLVideoElement) => {
+      const started = video.play();
+      if (started && typeof started.catch === 'function') started.catch(() => {});
+    };
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const video = entry.target as HTMLVideoElement;
+            if (entry.isIntersecting) play(video);
+            else video.pause();
+          }
+        },
+        { rootMargin: '120px 0px' },
+      );
+      clips.forEach((clip) => observer.observe(clip));
+    } else {
+      clips.forEach(play);
+    }
+  }
+</script>

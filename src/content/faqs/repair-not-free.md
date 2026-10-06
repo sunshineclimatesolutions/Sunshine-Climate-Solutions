@@ -4,4 +4,4 @@ category: pricing
 order: 3
 ---
 
-No — the repair is quoted and priced based on the work needed. What's waived is the $50 service-call fee, as a thank-you for proceeding with the repair. You'll always know the cost of the repair before you approve it.
+No. The repair is quoted based on the work it needs. What's waived is the $50 service-call fee when you proceed with the repair. You know the cost before you approve anything.

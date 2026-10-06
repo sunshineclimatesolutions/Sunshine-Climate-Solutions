@@ -2,14 +2,22 @@
 title: Airflow & Ductwork
 metaTitle: Airflow & Ductwork Spring Hill FL
 summary: >-
-  Hot rooms, weak airflow, and humidity trouble always have measurable causes. Airflow
-  diagnostics are one of our core strengths — we use psychrometrics and static pressure
-  to find the real problem.
+  Hot rooms, weak registers, and humidity that never settles usually trace back to the duct
+  system — pressure, balance, and return paths. We measure before recommending anything.
 metaDescription: >-
   Hot rooms, weak airflow, humidity, and duct problems in Spring Hill and across
   Tampa Bay — diagnosed with static pressure and measured airflow. Free estimates.
 icon: wind
 order: 3
+evidence:
+  photos:
+    - image: '../site/images/static-pressure-display.jpg'
+      alt: 'Alnor digital micro-manometer displaying a static-pressure reading in inches of water column'
+      caption: 'A static-pressure reading on the Alnor gauge during a field measurement.'
+    - image: '../site/images/filter-return-size.jpg'
+      alt: 'Return air filter with its size label visible during an airflow check'
+      caption: 'The return filter — size and condition are part of the airflow check.'
+      position: '50% 40%'
 ---
 
 ## Symptoms of airflow trouble
@@ -34,11 +42,12 @@ Airflow work is measurement work. Guessing at duct problems gets expensive fast,
 - **Return air paths** — closed doors and missing returns starve rooms of circulation
 - **Fan settings and equipment matchup** — the blower doing its part for your ducts
 
-This is a core strength of ours: airflow and electrical/control-board diagnostics, traced
-methodically to the real cause. When the measurements point to the equipment or refrigerant
-side instead, that's covered under [AC repair & diagnostics](/services/ac-repair-diagnostics/),
-and the same measurement discipline is what we bring to
-[TAB and commissioning support](/tab-commissioning-support/) for professional teams.
+Static pressure helps separate airflow restrictions from problems on the refrigeration side.
+Combined with measured airflow and refrigerant readings, it shows whether the fix is in the
+ducts, the blower, or the equipment. When the readings point to the refrigerant side, that's
+covered under [AC repair & diagnostics](/services/ac-repair-diagnostics/); the same measurement
+discipline carries into [TAB and commissioning support](/tab-commissioning-support/) for
+professional teams.
 
 ## What fixes look like
 
@@ -54,4 +63,3 @@ Depends entirely on what we find — that's the point of measuring first:
 
 - **Call or text (727) 661-5200** — telling us which rooms struggle is a great start.
 - **[Request service online](/contact/)** and choose "Airflow / ductwork issue."
-- Free estimates — and the $50 service call is waived when you proceed with the repair.

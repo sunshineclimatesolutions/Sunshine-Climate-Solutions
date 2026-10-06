@@ -2,7 +2,7 @@
 metaTitle: HVAC Service in Spring Hill, FL
 metaDescription: >-
   HVAC service in Spring Hill, FL for AC repair, $75 maintenance, replacement, airflow and
-  ductwork. Owner-operated, repair-first service.
+  ductwork. Owner-operated.
 cityHub:
   hero:
     heading: HVAC Service in Spring Hill, Florida
@@ -47,7 +47,7 @@ cityHub:
       - icon: activity
         title: Replacements & Installations
         text: >-
-          Free estimates and honest repair-versus-replace advice when equipment has genuinely
+          Free estimates and clear repair-versus-replace advice when equipment has genuinely
           reached the end of its life.
         linkLabel: Replacement & installation
         linkHref: '/services/replacement-installation/'
@@ -83,7 +83,7 @@ cityHub:
       - >-
         That is why the visit starts with measurements — airflow and static pressure to
         evaluate the duct system, refrigerant readings to evaluate the equipment, and
-        electrical checks at the board and components. You hear the findings in plain language,
+        electrical checks at the board and components. You see the readings and the findings,
         with the practical options, before anything is approved.
       - >-
         The service call is $50, and it is waived when you proceed with the repair. Replacement
@@ -109,7 +109,7 @@ cityHub:
     - question: How much does a service call cost in Spring Hill?
       answer: >-
         $50, and it is waived when you proceed with the repair. Replacement and installation
-        estimates are free. There are no invented package prices.
+        estimates are free.
     - question: What does the $75 maintenance visit include?
       answer: >-
         $75 per system, per visit: routine coil cleaning, condensate drain flushing,
@@ -131,5 +131,6 @@ cityHub:
   ctaBand:
     title: Talk to the owner about your Spring Hill system
     text: >-
-      Call, text, or send a request — clear answers and straightforward options, every time.
+      Call, text, or send a request. Describe what the system is doing and you'll get a straight
+      answer on what it takes to fix it.
 ---

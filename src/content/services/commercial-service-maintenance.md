@@ -2,34 +2,49 @@
 title: Commercial Service & Maintenance
 metaTitle: Commercial HVAC Tampa Bay
 summary: >-
-  Light commercial service and maintenance for property managers and business owners —
-  measured diagnostics, agreed scopes, and work that respects your tenants and schedule.
+  Light commercial HVAC service and maintenance for property managers, business owners, and
+  contractors — scopes agreed in advance, work scheduled around your tenants and operations.
 metaDescription: >-
   Light commercial HVAC service and maintenance in Tampa Bay for property managers and
   business owners — measured diagnostics and maintenance scopes agreed in advance.
 icon: briefcase
 order: 4
+evidence:
+  photos:
+    - image: '../site/images/commercial-rooftop-walkway.jpg'
+      alt: 'Rooftop walkway between commercial HVAC equipment under a wide sky'
+      caption: 'A commercial rooftop mechanical area during a service visit.'
+      position: '50% 55%'
+    - image: '../site/images/unit-panel-diagnostics.jpg'
+      alt: 'Open outdoor unit panel with connected diagnostic gauges during a service visit'
+      caption: 'An open unit panel and connected gauges during a diagnostic visit.'
+      position: '50% 50%'
 ---
 
 ## Who this is for
 
-- Business owners and property managers who need equipment diagnosed and maintained without drama
-- Multi-unit and light commercial properties that need a clear, agreed maintenance scope
-- Contractors, engineers and property teams that need testing, adjusting, and balancing support —
-  see [TAB & Commissioning Support](/tab-commissioning-support/)
+- Property managers who need equipment diagnosed and maintained without disrupting tenants.
+- Business owners who need a straight answer on repair versus replacement, and a schedule that
+  fits the building.
+- Contractors and engineering teams who need TAB, airflow verification, or overflow field
+  support — start with [TAB & Commissioning Support](/tab-commissioning-support/).
 
 ## What we provide
 
-- Service visits for light commercial heating and cooling equipment
-- Maintenance within a scope we agree on in advance — quoted for your equipment, not a made-up
-  package price
-- Diagnostics with the same method we use on homes: measure first, explain findings, get approval
-- Coordination that respects your tenants, your schedule, and your budget
+Service and maintenance visits are scheduled around your operation — access windows coordinated
+with your team and your tenants, and the scope of each visit agreed in writing beforehand.
 
-The owner has worked residential and commercial installation, service, and maintenance —
-including with engineering companies and smaller contractors — and brings project coordination
-and mentoring experience to every job. Coverage spans Hernando, Pasco, Pinellas, and
-Hillsborough counties — see the [service area](/service-area/) for details.
+- **Agreed scope:** the equipment list, the work included, and the reporting you'll receive.
+- **Access and scheduling:** coordinated with your team, worked around business hours where
+  needed.
+- **Documentation:** measurements, findings, and recommended follow-up in writing after each
+  visit.
+- **Multi-unit work:** maintenance scopes quoted for your equipment, not a package price.
+
+Commercial work is part of the five years of field experience behind this company: installation,
+service, and maintenance, including time alongside engineering companies and smaller contractors.
+Routine coverage is Hernando, Pasco, Pinellas, and Hillsborough counties — see the
+[service area](/service-area/) for details.
 
 ## Next steps
 

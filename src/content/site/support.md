@@ -13,18 +13,15 @@ support:
     eyebrow: Support the Mission
     heading: Help Build an HVAC Company Around Faith, Craftsmanship & Trust
     lead: >-
-      Sunshine Climate Solutions is already operating. Aaron has invested approximately $25,000
-      of his own capital into the truck, professional tools, diagnostic equipment and field
-      assets required to do the work. The company, website, customer-acquisition system and
-      marketing infrastructure are already built. This campaign is intended to close the
-      remaining growth gaps and give the business the runway to grow responsibly.
+      Sunshine Climate Solutions is operating today: the truck, the tools, the diagnostic
+      equipment, and the customer systems are already in place, built with approximately $25,000
+      of the founder's own capital. This campaign raises $20,000 to close the remaining growth
+      gaps and give the business room to grow responsibly.
   realBusiness:
     heading: The Current State of the Business
     lead: >-
-      Most campaigns ask you to fund an idea. This one is different: the operating business
-      already exists and the founder is already doing the work. The truck exists, the tools
-      exist, the company exists, and the digital and marketing infrastructure exists. This is
-      a working foundation asking for help to grow responsibly.
+      Most campaigns fund an idea. This one funds capacity: the business is already doing the
+      work. What follows is what's already built, paid for, and operating.
     categories:
       - title: Field Capability
         items:
@@ -102,7 +99,7 @@ support:
         text: EPA Section 608 Universal certification for refrigerant handling.
       - icon: wrench
         title: Residential Service
-        text: Residential HVAC service and diagnostics, repair-first.
+        text: Residential HVAC service and diagnostics.
       - icon: thermometer
         title: Installation
         text: Residential HVAC installation and replacement work.
@@ -124,9 +121,9 @@ support:
     amountLabel: Founder capital already invested
     paragraphs:
       - >-
-        Approximately $25,000 of Aaron's own capital has already gone into the operating
-        assets required to do this work: the service truck, professional HVAC tools,
-        diagnostic equipment, field equipment and other operating assets.
+        The operating assets behind this work — the service truck, professional HVAC tools,
+        diagnostic equipment, and field equipment — were funded with approximately $25,000 of
+        Aaron's own capital.
       - >-
         The digital and marketing infrastructure was largely built by the founder himself —
         the website, service pages, conversion funnel, Google presence, analytics, attribution
@@ -256,9 +253,9 @@ support:
   faqs:
     - question: Is Sunshine Climate Solutions already operating?
       answer: >-
-        Yes. The service truck, professional tools, diagnostic equipment, website,
-        customer-acquisition system and marketing infrastructure already exist, and the
-        founder is already performing HVAC work in the field.
+        Yes. The founder is performing HVAC work in the field today, and the truck, tools,
+        diagnostic equipment, and customer systems are already in place — shown in the photos
+        above.
     - question: Is this a charity?
       answer: >-
         No. Contributions support a privately owned operating business. They are not being
@@ -278,10 +275,9 @@ support:
         help directly.
     - question: Why does the company need funding if it is already operating?
       answer: >-
-        Because significant founder capital has already built the operating platform. The
-        additional funding is meant to strengthen inventory, working capital, customer
-        acquisition and field readiness during an aggressive early-growth period — not to
-        rescue a failing business.
+        Because the operating platform is built, and the remaining gap is capacity: inventory,
+        working capital, customer acquisition, and field readiness during early growth. This is
+        a growth plan, not a rescue.
   closing:
     quote: >-
       I am not asking anyone to carry this business for me. I have already put my own money,

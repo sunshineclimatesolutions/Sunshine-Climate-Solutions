@@ -1,9 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import TrustChips from '../../components/TrustChips.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import FieldClip from '../../components/FieldClip.astro';
 import { business } from '../../config/business';
 
 export async function getStaticPaths() {
@@ -76,6 +78,34 @@ const pageSchema = [
 
   <section class="section">
     <div class="container container--narrow">
+      {
+        service.data.evidence &&
+          (service.data.evidence.photos.length > 0 || service.data.evidence.clip) && (
+            <div class="evidence-strip">
+              {service.data.evidence.photos.map((photo) => (
+                <figure class="evidence-figure">
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    widths={[480, 720, 960]}
+                    sizes="(min-width: 48em) 21rem, 92vw"
+                    loading="lazy"
+                    style={photo.position ? `object-position: ${photo.position}` : undefined}
+                  />
+                  <figcaption>{photo.caption}</figcaption>
+                </figure>
+              ))}
+              {service.data.evidence.clip && (
+                <FieldClip
+                  src={service.data.evidence.clip.src}
+                  poster={service.data.evidence.clip.poster}
+                  caption={service.data.evidence.clip.caption}
+                />
+              )}
+            </div>
+          )
+      }
+
       <div class="prose">
         <Content />
       </div>
@@ -99,6 +129,6 @@ const pageSchema = [
   <CtaBand
     context={`service-${service.id}`}
     title="Talk it through with the owner"
-    text="Describe the situation and get clear answers about your options — repair-first, always explained before anything is approved."
+    text="Describe the situation and get clear answers about what we found, what it means, and what the available options are."
   />
 </BaseLayout>

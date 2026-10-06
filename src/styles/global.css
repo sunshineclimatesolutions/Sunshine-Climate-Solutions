@@ -426,6 +426,37 @@ ol {
   height: 1.4rem;
 }
 
+/* Multi-color utility-icon palette (October 2026 refinement). Artwork carries
+   its own fills/strokes; these tokens only swap the palette for navy surfaces
+   via .icon--on-dark. */
+.icon--color {
+  --ui-navy: #2d4256;
+  --ui-blue: #2e7fd8;
+  --ui-blue-soft: #8cc6f2;
+  --ui-gold: #f4b631;
+  --ui-gold-deep: #e9a41b;
+  --ui-green: #2e9e4f;
+  --ui-silver: #c3cbd4;
+  --ui-steel: #5b6672;
+  --ui-white: #ffffff;
+  --ui-red: #c8402f;
+  --ui-canton: #3c3b6e;
+}
+
+.icon--on-dark {
+  --ui-navy: #eaf1f7;
+  --ui-blue: #8cc6f2;
+  --ui-blue-soft: #bfe0ff;
+  --ui-gold: #f4b631;
+  --ui-gold-deep: #f4b631;
+  --ui-green: #7ed957;
+  --ui-silver: #aebfcd;
+  --ui-steel: #8fa3b5;
+  --ui-white: #203549;
+  --ui-red: #e0675a;
+  --ui-canton: #6e8fc9;
+}
+
 .card h2,
 .card h3 {
   font-size: var(--text-xl);
@@ -1767,12 +1798,6 @@ body.nav-open {
 
 /* ── Service-area maps ────────────────────────────────────────── */
 
-.service-map-compact {
-  margin: var(--sp-md) 0 0;
-  max-width: 21rem;
-}
-
-.service-map-compact img,
 .service-map-full img {
   width: 100%;
   height: auto;
@@ -1781,7 +1806,6 @@ body.nav-open {
   border-radius: var(--r-md);
 }
 
-.service-map-compact figcaption,
 .service-map-full figcaption {
   font-size: var(--text-sm);
   color: var(--c-ink-soft);
@@ -2359,7 +2383,7 @@ body.nav-open {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.area-duo .service-map-compact {
+.area-duo .service-map-full {
   margin: 0;
   max-width: 100%;
 }
@@ -2442,24 +2466,63 @@ body.nav-open {
   }
 }
 
-/* Contact page: centered info column (short copy); form stays left-aligned. */
-.contact-info {
-  text-align: center;
+/* Contact page: the request form is primary; call/text/email form a compact
+   supporting column (October 2026 refinement). On mobile the form renders
+   first so the visitor reaches it with minimal scrolling. */
+.contact-layout {
+  display: grid;
+  gap: var(--sp-lg);
 }
 
-.contact-info .card {
-  text-align: center;
-  align-items: center;
+@media (min-width: 64em) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: var(--sp-2xl);
+    align-items: start;
+  }
+}
+
+.contact-form-heading {
+  font-size: var(--text-h2);
+  margin-bottom: var(--sp-md);
+}
+
+.contact-support {
+  display: grid;
+  gap: var(--sp-md);
+  align-content: start;
+}
+
+.contact-support-heading {
+  font-size: var(--text-h3);
+  margin: 0;
 }
 
 /* Flatten the reach card into a hairline panel. */
-.contact-info .contact-reach {
+.contact-support .contact-reach {
   background: none;
   border: 0;
   border-top: 1px solid var(--c-line-strong);
   border-bottom: 1px solid var(--c-line);
   border-radius: 0;
   padding: var(--sp-md) 0;
+}
+
+/* Keep trust signals factually present but visually subordinate to the form. */
+.contact-support .chips {
+  justify-content: flex-start;
+  margin-inline: 0;
+}
+
+.contact-support-area {
+  margin: 0;
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.contact-support-follow {
+  display: grid;
+  gap: var(--sp-xs);
 }
 
 /* FAQ page: centered category headings; question text/answers stay left. */
@@ -3396,6 +3459,41 @@ body.nav-open {
   color: var(--c-ink-soft);
 }
 
+/* Service-page evidence strip — genuine work photos and an optional short
+   muted field clip, rendered under the page hero (October 2026 editorial pass). */
+.evidence-strip {
+  display: grid;
+  gap: var(--sp-lg) var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+
+@media (min-width: 48em) {
+  .evidence-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.evidence-figure,
+.field-clip {
+  margin: 0;
+}
+
+.evidence-figure img,
+.field-clip video {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.evidence-figure figcaption,
+.field-clip figcaption {
+  margin-top: var(--sp-2xs);
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
 .fieldnotes-statement {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
   font-family: var(--font-head);
@@ -3628,12 +3726,12 @@ body.nav-open {
   gap: var(--sp-md);
 }
 
-.area-band .service-map-compact {
+.area-band .service-map-full {
   max-width: 100%;
   margin: 0;
 }
 
-.area-band .service-map-compact img {
+.area-band .service-map-full img {
   border-radius: 0;
 }
 
@@ -3671,6 +3769,19 @@ body.nav-open {
 
 .reviews-grid {
   margin-top: var(--sp-xl);
+}
+
+/* One or two genuine reviews read as an editorial pair — full-width columns
+   with a larger quotation, not a sparse wall of cards. */
+@media (min-width: 48em) {
+  .reviews-grid--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reviews-grid--pair blockquote p {
+  font-size: var(--text-lead);
+  line-height: 1.5;
 }
 
 .follow-row {

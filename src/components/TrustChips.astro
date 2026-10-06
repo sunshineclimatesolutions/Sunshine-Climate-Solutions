@@ -12,8 +12,10 @@ const chips = [
 interface Props {
   /** "chips" = pill badges; "line" = quiet editorial credibility line. */
   variant?: 'chips' | 'line';
+  /** Use the light icon palette when the chips sit on a navy surface. */
+  onDark?: boolean;
 }
-const { variant = 'chips' } = Astro.props;
+const { variant = 'chips', onDark = false } = Astro.props;
 ---
 
 {
@@ -21,7 +23,7 @@ const { variant = 'chips' } = Astro.props;
     <ul class="cred-line">
       {chips.map((c) => (
         <li class="cred-item">
-          <Icon name={c.icon} /> {c.label}
+          <Icon name={c.icon} onDark={onDark} /> {c.label}
         </li>
       ))}
     </ul>
@@ -29,7 +31,7 @@ const { variant = 'chips' } = Astro.props;
     <div class="chips">
       {chips.map((c) => (
         <span class="chip">
-          <Icon name={c.icon} /> {c.label}
+          <Icon name={c.icon} onDark={onDark} /> {c.label}
         </span>
       ))}
     </div>

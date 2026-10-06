@@ -4,6 +4,4 @@ category: repairs
 order: 1
 ---
 
-No. We're repair-first by design: when a sound repair makes sense, that's what we recommend — the $50 service call is even waived when you proceed with it.
-
-If replacement is genuinely the better call, we'll show you exactly why, based on your equipment's condition and practical options. You make the decision; we make it clear. Free estimates either way.
+No. The order is the same on every call: find the failure first, then talk about what it takes to fix it. If the system can be repaired, that's the recommendation. If replacement is the better call, you'll see the condition, the reasoning, and the options side by side. You make the decision.

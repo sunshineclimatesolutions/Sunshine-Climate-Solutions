@@ -11,8 +11,9 @@ hero:
   eyebrow: Service Area
   heading: Serving Tampa Bay, County by County
   lead: >-
-    Owner-operated heating and cooling service across Hernando, Pasco, Pinellas,
-    and Hillsborough counties — Tampa Bay and surrounding communities.
+    Sunshine Climate Solutions is based in Spring Hill. Hernando, Pasco, Pinellas,
+    and Hillsborough counties are the routine service area; projects beyond that
+    are considered by scope.
 
 counties:
   eyebrow: Counties We Serve
@@ -61,8 +62,8 @@ counties:
 beyond:
   strong: Beyond Tampa Bay?
   suffix: >-
-    We don't promise statewide routine service — but the right project in Central
-    Florida is worth a conversation.
+    We don't promise statewide routine service — but the right project beyond
+    those counties is worth a conversation.
 
 coverage:
   eyebrow: Coverage Check

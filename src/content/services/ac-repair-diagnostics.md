@@ -2,18 +2,42 @@
 title: AC Repair & Diagnostics
 metaTitle: AC Repair in Spring Hill & Tampa Bay
 summary: >-
-  Not cooling, short cycling, or acting up? Expert diagnostics with findings explained in plain
-  language — $50 service call, waived when you proceed with the repair.
+  Not cooling, short cycling, or tripping the breaker? We find the failure, show you the
+  readings, and give you the options before any work is approved.
 metaDescription: >-
-  AC repair and diagnostics in Spring Hill and across Tampa Bay. Repair-first
-  troubleshooting; $50 service call, waived when you proceed with the repair.
+  AC repair and diagnostics in Spring Hill and across Tampa Bay. We find the failure and
+  show you the readings before recommending any repair.
 icon: wrench
 order: 1
+evidence:
+  photos:
+    - image: '../site/images/blower-wheel-condition.jpg'
+      alt: 'A blower wheel caked with dust and debris after years of service'
+      caption: >-
+        A blower wheel after years of return air. Condition findings like this are
+        photographed and documented during the visit.
+      position: '50% 45%'
+    - image: '../site/images/connector-heat-discoloration.jpg'
+      alt: 'Heat-discolored and corroded connector plug at the indoor unit wiring'
+      caption: >-
+        Heat discoloration at a plug connection — a reason to test the circuit
+        before replacing anything.
+      position: '50% 55%'
+    - image: '../site/images/failed-component-removed.jpg'
+      alt: 'A failed HVAC component held in hand after removal during a repair'
+      caption: >-
+        A failed component after removal. The old part stays available for you to
+        see.
+      position: '50% 42%'
+  clip:
+    src: '/videos/manometer-reading-unit.mp4'
+    poster: '../site/images/clip-manometer-poster.jpg'
+    caption: 'A live reading at the unit during a diagnostic visit.'
 ---
 
 ## Problems we diagnose every week
 
-If your system is doing any of these, it's worth a real diagnostic before anything else:
+If the system is doing any of these, it's worth finding out why:
 
 - Running but not cooling — or blowing warm air
 - Short cycling, running nonstop, or struggling to hit temperature
@@ -27,8 +51,8 @@ If your system is doing any of these, it's worth a real diagnostic before anythi
 
 1. **You describe what's happening.** The more detail, the better — but even "it just stopped cooling" gives us a starting point.
 2. **We verify the symptoms.** On site, we measure what the system is actually doing — airflow and static pressure, refrigerant readings, electrical checks at the board and components.
-3. **We explain what we find.** You'll hear the root cause in plain language, what your options are, and what each one costs.
-4. **You approve the work.** Nothing proceeds without your go-ahead. If a sound repair is the right move, that's what we'll recommend.
+3. **We show you what we found.** You get the cause, the evidence behind it, and what each option costs.
+4. **You approve the work.** Nothing proceeds without your go-ahead. If the system can be repaired, that's the recommendation.
 
 The service call is $50 — and it's waived when you proceed with the repair.
 
@@ -39,11 +63,11 @@ The service call is $50 — and it's waived when you proceed with the repair.
 - Blower motors, condenser fan motors, and their triggers
 - Thermostats, sensors, and safeties
 - Condensate drains and float switches
-- Refrigerant circuit issues — evaluated case by case, with a repair-first mindset when repair makes sense
+- Refrigerant circuit issues — evaluated case by case, with the repair considered first whenever it's the right call
 
-## Repair-first, honestly
+## What you get at the end of the visit
 
-Some companies sell replacements because it's easier for them. We lead with the repair when the repair makes sense — and if replacement is genuinely the better call, we'll show you exactly why and what your practical options are. You make the decision; we make it clear.
+Every diagnostic visit ends with the same four things: what was measured, what it means, what can be repaired, and what each option costs. The findings are yours whether or not you move forward.
 
 ## Brands we service
 

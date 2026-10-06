@@ -10,9 +10,8 @@ hero:
   eyebrow: For Contractors, Engineers & Property Teams
   heading: Testing, Adjusting & Balancing, and Commissioning Support
   lead: >-
-    Measurement-driven TAB and commissioning support across Tampa Bay — with the
-    scope, deliverables, and certification requirements reviewed and agreed before
-    acceptance.
+    Measurement-driven TAB and commissioning support for Tampa Bay contractors,
+    engineers, and property teams — from initial scope through final report.
   ctaLabel: Request a TAB Proposal
 
 services:
@@ -88,16 +87,14 @@ process:
 ctaBand:
   title: Have a Project in Mind?
   text: >-
-    Send the scope and we'll talk through requirements, schedule, and deliverables
-    before anything is accepted.
+    Send the scope and we'll talk through requirements, schedule, and deliverables.
   requestLabel: Request a TAB Proposal
 visuals:
   eyebrow: From the Field
   heading: Field measurement and system verification
   lead: >-
-    Selected photographs from airflow measurement, mechanical-equipment and
-    ductwork field activities. We review scope, required reports and
-    certification requirements before accepting each project.
+    Photographs from recent field work: airflow measurement, mechanical equipment,
+    and ductwork. Instrument readings and reports are part of every accepted scope.
   photos:
     - image: './images/airflow-measurement-at-grille.jpg'
       alt: 'Instrument taking an airflow reading at a supply grille during TAB field work'
@@ -106,4 +103,8 @@ visuals:
     - image: './images/rooftop-mechanical-equipment.jpg'
       alt: 'Rooftop mechanical equipment on a commercial project site'
       caption: 'Rooftop mechanical equipment on a commercial site.'
+  clip:
+    src: '/videos/static-pressure-balancing.mp4'
+    poster: './images/clip-static-pressure-poster.jpg'
+    caption: 'Static pressure readings during a balancing visit.'
 ---

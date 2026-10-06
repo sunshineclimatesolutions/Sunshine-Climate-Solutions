@@ -4,16 +4,44 @@ import { glob } from 'astro/loaders';
 // Residential + commercial service pages (src/content/services/*.md)
 const services = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/services' }),
-  schema: z.object({
-    title: z.string(),
-    // Optional SEO title override. Default page title is "<title> in Tampa Bay";
-    // use this only where a specific local intent justifies different wording.
-    metaTitle: z.string().optional(),
-    summary: z.string(),
-    metaDescription: z.string(),
-    icon: z.enum(['wrench', 'thermometer', 'wind', 'briefcase', 'shield']),
-    order: z.number().int(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      // Optional SEO title override. Default page title is "<title> in Tampa Bay";
+      // use this only where a specific local intent justifies different wording.
+      metaTitle: z.string().optional(),
+      summary: z.string(),
+      metaDescription: z.string(),
+      icon: z.enum(['wrench', 'thermometer', 'wind', 'briefcase', 'shield']),
+      order: z.number().int(),
+      // Optional field-evidence strip (genuine work photos + an optional short
+      // muted clip) rendered under the page hero. Captions must describe only
+      // what the asset visibly shows.
+      evidence: z
+        .object({
+          photos: z
+            .array(
+              z.object({
+                image: image(),
+                alt: z.string(),
+                caption: z.string(),
+                // Optional focal point for the fixed 4:3 crop.
+                position: z.string().optional(),
+              }),
+            )
+            .max(3)
+            .default([]),
+          clip: z
+            .object({
+              // Public path to the transcoded MP4 (public/videos/).
+              src: z.string(),
+              poster: image(),
+              caption: z.string(),
+            })
+            .optional(),
+        })
+        .optional(),
+    }),
 });
 
 // FAQ entries (src/content/faqs/*.md)
@@ -366,6 +394,10 @@ const site = defineCollection({
             }),
           )
           .max(3),
+        // Optional short muted field clip shown with the photos.
+        clip: z
+          .object({ src: z.string(), poster: image(), caption: z.string() })
+          .optional(),
       })
       .optional(),
 

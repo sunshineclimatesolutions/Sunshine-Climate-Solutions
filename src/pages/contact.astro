@@ -25,29 +25,20 @@ const description = contact.data.metaDescription;
     <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1>{hero.heading}</h1>
-      <div class="cluster" style="margin-top: var(--sp-xs); justify-content: center;">
-        <a class="btn btn--gold btn--lg" href={business.phone.href} data-cta="call-contact-hero">
-          <Icon name="phone" /> Call {business.phone.display}
-        </a>
-        <a class="btn btn--outline-navy btn--lg" href={business.phone.sms} data-cta="text-contact-hero">
-          <Icon name="message" /> Text Us
-        </a>
-        <a
-          class="hero-alt"
-          href={`mailto:${business.email}`}
-          data-cta="email-contact-hero"
-        >
-          <Icon name="mail" /> {business.email}
-        </a>
-      </div>
+      {hero.lead && <p class="lead">{hero.lead}</p>}
     </div>
   </section>
 
-  <section class="section" aria-labelledby="request-heading">
-    <div class="container home-duo">
-      <div class="stack stack--lg contact-info">
-        <h2 id="request-heading" style="font-size: var(--text-h2);">{waysHeading}</h2>
-        <div class="card contact-reach">
+  <section class="section contact-request" aria-labelledby="request-heading">
+    <div class="container contact-layout">
+      <div class="form-card" id="request-form">
+        <h2 id="request-heading" class="contact-form-heading">Tell us what's going on</h2>
+        <ContactForm />
+      </div>
+
+      <aside class="contact-support" aria-labelledby="contact-support-heading">
+        <h2 id="contact-support-heading" class="contact-support-heading">{waysHeading}</h2>
+        <div class="contact-reach">
           <p class="contact-reach-line">
             <span class="card-icon"><Icon name="phone" /></span>
             <a href={business.phone.href} data-cta="call-contact-card" class="text-link">
@@ -57,7 +48,7 @@ const description = contact.data.metaDescription;
           <p class="contact-reach-line">
             <span class="card-icon"><Icon name="message" /></span>
             <a href={business.phone.sms} data-cta="text-contact-card" class="text-link">
-              Text the same number
+              Text us at the same number
             </a>
           </p>
           <p class="contact-reach-line">
@@ -69,9 +60,11 @@ const description = contact.data.metaDescription;
           <p class="contact-reach-hours">{business.hours.display} EST, 7 Days a Week</p>
         </div>
 
-        <p class="muted">
-          Serving Hernando, Pasco, Pinellas, and Hillsborough counties — Tampa Bay and
-          surrounding communities. Central Florida projects are considered depending on scope.
+        <TrustChips />
+
+        <p class="contact-support-area">
+          Serving Hernando, Pasco, Pinellas, and Hillsborough counties. Central Florida projects
+          are considered by scope.
         </p>
 
         {business.licenseNumber && (
@@ -80,18 +73,11 @@ const description = contact.data.metaDescription;
           </p>
         )}
 
-        <TrustChips />
-
-        <div>
-          <h2 style="font-size: var(--text-h3);">Follow us</h2>
+        <div class="contact-support-follow">
+          <p class="follow-label">Follow us</p>
           <SocialLinks />
         </div>
-      </div>
-
-      <div class="form-card" id="request-form">
-        <h2 style="font-size: var(--text-h2); margin-bottom: var(--sp-md);">Request service</h2>
-        <ContactForm />
-      </div>
+      </aside>
     </div>
   </section>
 
