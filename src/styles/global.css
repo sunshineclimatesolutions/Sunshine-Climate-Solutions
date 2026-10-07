@@ -374,6 +374,15 @@ ol {
   color: var(--c-gold-strong);
 }
 
+/* Official EPA mark beside the EPA credential — replaces the generic check
+   glyph and keeps the 1rem optical size/alignment of the icon it stands in for. */
+.chip-mark {
+  flex: none;
+  inline-size: 1rem;
+  block-size: 1rem;
+  object-fit: contain;
+}
+
 .on-dark .chip {
   background: rgba(255, 255, 255, 0.06);
   border-color: var(--c-line-navy);

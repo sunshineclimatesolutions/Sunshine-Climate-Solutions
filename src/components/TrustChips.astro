@@ -2,10 +2,24 @@
 import Icon from './Icon.astro';
 
 // Factual trust signals shown near CTAs and the request form.
-const chips = [
+// The EPA credential uses the official EPA mark (owner-supplied asset at
+// public/images/US-EPA-Logo-1024x1024.png) in place of the generic check
+// glyph — the label text stays exactly as before.
+interface Chip {
+  icon: string;
+  label: string;
+  /** Optional official mark image rendered instead of the Icon glyph. */
+  mark?: string;
+}
+
+const chips: Chip[] = [
   { icon: 'flag', label: 'Local Owner-Operator' },
   { icon: 'shield', label: 'Licensed and insured' },
-  { icon: 'check-circle', label: 'EPA Section 608 certified' },
+  {
+    icon: 'check-circle',
+    label: 'EPA Section 608 certified',
+    mark: '/images/US-EPA-Logo-1024x1024.png',
+  },
   { icon: 'calendar', label: 'Open seven days a week' },
 ];
 
@@ -23,7 +37,12 @@ const { variant = 'chips', onDark = false } = Astro.props;
     <ul class="cred-line">
       {chips.map((c) => (
         <li class="cred-item">
-          <Icon name={c.icon} onDark={onDark} /> {c.label}
+          {c.mark ? (
+            <img class="chip-mark" src={c.mark} alt="" width="16" height="16" loading="lazy" />
+          ) : (
+            <Icon name={c.icon} onDark={onDark} />
+          )}{' '}
+          {c.label}
         </li>
       ))}
     </ul>
@@ -31,7 +50,12 @@ const { variant = 'chips', onDark = false } = Astro.props;
     <div class="chips">
       {chips.map((c) => (
         <span class="chip">
-          <Icon name={c.icon} onDark={onDark} /> {c.label}
+          {c.mark ? (
+            <img class="chip-mark" src={c.mark} alt="" width="16" height="16" loading="lazy" />
+          ) : (
+            <Icon name={c.icon} onDark={onDark} />
+          )}{' '}
+          {c.label}
         </span>
       ))}
     </div>
