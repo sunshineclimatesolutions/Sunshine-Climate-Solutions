@@ -25,7 +25,14 @@ const description = about.data.metaDescription;
       <p class="eyebrow">{hero.eyebrow}</p>
       <h1 class="about-hero-heading">
         <Icon name="flag" class="hero-flag" size={72} viewBox="2.9 6.4 18.2 11.2" />
-        <span>{hero.heading}</span>
+        <span>
+          {(hero.heading ?? '').split('\n').map((line, index) => (
+            <>
+              {index > 0 && <br />}
+              {line === 'with' ? <em>{line}</em> : line}
+            </>
+          ))}
+        </span>
       </h1>
       <p class="lead">
         {hero.lead}

@@ -19,8 +19,8 @@ hero:
     Locally owned heating, ventilation, and air-conditioning company serving
     Tampa Bay and surrounding counties. Our diagnostics are integral and
     data-driven, our pricing is affordable, and the honor is OURS!
-  image: './images/field-service-manifold-gauges.jpg'
-  imageAlt: 'Technician taking refrigerant-system readings with digital manifold gauges at an outdoor unit during a service visit'
+  image: './images/bottling-factory-field-visit.jpg'
+  imageAlt: 'The owner in a high-visibility vest walking a commercial bottling facility production line during a field visit'
   imagePosition: '42% 45%'
 
 pricing:

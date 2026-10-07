@@ -13,6 +13,7 @@ hero:
   eyebrow: About
   heading: |-
     Traditional American
+    with
     Traditional Values
   lead: >-
     Owner-operated HVAC service in Spring Hill, built on traditional American
