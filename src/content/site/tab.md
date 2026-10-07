@@ -28,17 +28,17 @@ services:
       text: >-
         Measured airflow at grilles, registers, and diffusers, with balancing
         performed to the agreed targets.
-    - icon: activity
+    - icon: duct-traverse
       title: Duct traverses
       text: >-
         Duct traverses for airflow quantities where direct measurement at terminals
         is not enough.
-    - icon: sun
+    - icon: outside-air
       title: Outside-air verification
       text: >-
         Verification of outside-air quantities against the requirements for your
         building.
-    - icon: shield
+    - icon: pressure-diff
       title: Building-pressure checks
       text: >-
         Building-pressure measurements to find pressurization and ventilation
@@ -93,18 +93,17 @@ visuals:
   eyebrow: From the Field
   heading: Field measurement and system verification
   lead: >-
-    Photographs from recent field work: airflow measurement, mechanical equipment,
-    and ductwork. Instrument readings and reports are part of every accepted scope.
+    Reports and photographs of instrument readings and all job conditions are
+    part of every accepted scope.
   photos:
     - image: './images/airflow-measurement-at-grille.jpg'
-      alt: 'Instrument taking an airflow reading at a supply grille during TAB field work'
-      caption: 'Airflow measurement at a supply grille.'
+      alt: 'Total building exhaust measured at an exhaust terminal louver with an airflow instrument during TAB field work'
+      caption: 'Total building exhaust measured at an exhaust terminal louver.'
       position: '50% 48%'
     - image: './images/rooftop-mechanical-equipment.jpg'
       alt: 'Rooftop mechanical equipment on a commercial project site'
       caption: 'Rooftop mechanical equipment on a commercial site.'
-  clip:
-    src: '/videos/static-pressure-balancing.mp4'
-    poster: './images/clip-static-pressure-poster.jpg'
-    caption: 'Static pressure readings during a balancing visit.'
+    - image: './images/commercial-ahu-field-work.jpg'
+      alt: 'Commercial air-handling equipment during a TAB field visit'
+      caption: 'Commercial air-handling equipment during a TAB field visit.'
 ---

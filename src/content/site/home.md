@@ -12,16 +12,16 @@ metaDescription: >-
   Solutions.
 
 hero:
-  headline: Know what's wrong.
-  headlineAccent: Then decide what to do.
+  headline: HVAC Solutions for
+  headlineAccent: Every Problem
   headlineTail: ''
   lead: >-
     Locally owned heating, ventilation, and air-conditioning company serving
     Tampa Bay and surrounding counties. Our diagnostics are integral and
-    data-driven, our pricing is     reasonable, and the honor is OURS!
-  image: './images/package-unit-install.jpg'
-  imageAlt: 'Packaged unit set and connected at a residential service, with the supply transition sealed and secured'
-  imagePosition: '50% 45%'
+    data-driven, our pricing is affordable, and the honor is OURS!
+  image: './images/field-service-manifold-gauges.jpg'
+  imageAlt: 'Technician taking refrigerant-system readings with digital manifold gauges at an outdoor unit during a service visit'
+  imagePosition: '42% 45%'
 
 pricing:
   heading: Competitive Pricing. No Hidden Fees.
@@ -84,17 +84,18 @@ diagnostics:
         Control boards, wiring, capacitors, contactors, and sensors — traced
         methodically instead of parts-swapping at your expense.
     - icon: clipboard
-      title: Contaminants & System Condition
+      title: Refrigerants & Contaminants
       text: >-
-        Dirty coils, restricted filters, and poor duct connections quietly
-        raise pressures and cut capacity. We inspect the condition of the
-        equipment and the air path as part of every diagnosis.
+        Refrigerant charge and system behavior are checked against real
+        readings — and we look for the contaminants and conditions, from
+        moisture to dirt and wear, that quietly change how a system performs.
     - icon: badge
-      title: Pressure, Temperature & the Whole System
+      title: The Complete Picture
       text: >-
-        Airflow, pressures, temperatures, electrical operation, and refrigerant
-        behavior all affect one another. We read them together — the full
-        picture, not one number — before recommending anything.
+        No single number tells the whole story. We bring airflow and static
+        pressure, electrical and control operation, and refrigerant-system
+        condition together — that combined picture is what leads to an accurate
+        diagnosis and a recommendation you can act on.
   footnote:
     lead: Want the full story?
     linkLabel: More about the owner
@@ -125,7 +126,7 @@ workmanship:
   eyebrow: Workmanship
   heading: Quality Workmanship
   lead: >-
-    These photographs are from our jobs. They show the details that affect how a
+    These photographs demonstrate the attention to detail that affects how a
     system performs long after the installation is finished.
   cards:
     - title: Professional AC Installation
@@ -176,12 +177,12 @@ workmanship:
           alt: 'Failed electrical component after removal during a repair'
         - image: './images/unit-panel-diagnostics.jpg'
           alt: 'Outdoor unit panel removed with test instruments connected during diagnostics'
-        - image: './images/static-pressure-display.jpg'
-          alt: 'Instrument display showing a static-pressure reading during a diagnostic visit'
+        - image: './images/clamp-meter-reading.jpg'
+          alt: 'Clamp meter taking an amperage reading at system wiring during diagnostics'
         - image: './images/dirty-coil-detail.jpg'
           alt: 'Close view of a soiled coil photographed during an inspection'
-        - image: './images/micron-pull-evacuation.jpg'
-          alt: 'Vacuum gauge connected to a service port during system evacuation'
+        - image: './images/digital-manifold-readings.jpg'
+          alt: 'Digital manifold gauges showing refrigerant-system pressures during a diagnostic visit'
         - image: './images/dirty-condenser-coils.jpg'
           alt: 'Soiled condenser coil photographed during service'
         - image: './images/recovery-machine-reading.jpg'
@@ -190,24 +191,22 @@ workmanship:
       linkHref: /tab-commissioning-support/
       images:
         - image: './images/airflow-measurement-at-grille.jpg'
-          alt: 'Instrument taking an airflow reading at a supply grille during TAB field work'
+          alt: 'Total building exhaust measured at an exhaust terminal louver during TAB field work'
           position: '50% 48%'
         - image: './images/rooftop-mechanical-equipment.jpg'
           alt: 'Rooftop commercial HVAC equipment with service access panels on a flat roof'
         - image: './images/commercial-rooftop-walkway.jpg'
           alt: 'Rooftop walkway between commercial mechanical units during a TAB visit'
-        - image: './images/clip-static-pressure-poster.jpg'
-          alt: 'Static-pressure instrument display during a balancing visit'
         - image: './images/commercial-rooftop-unit.jpg'
           alt: 'Packaged commercial rooftop unit during a testing and balancing visit'
+        - image: './images/commercial-ahu-field-work.jpg'
+          alt: 'Commercial air-handling equipment during a TAB field visit'
         - image: './images/equipment-control-wiring.jpg'
           alt: 'Low-voltage control wiring at commercial equipment during a TAB visit'
         - image: './images/building-pressure-manometer.jpg'
           alt: 'Digital manometer taking a building-pressure reading inside a commercial facility'
-        - image: './images/pressure-reading-commercial.jpg'
-          alt: 'Instrument display showing a pressure reading during a commercial TAB visit'
-        - image: './images/airside-measurement-report.jpg'
-          alt: 'Air-side psychrometric measurement report captured during a commercial TAB visit'
+        - image: './images/metal-duct-interior.jpg'
+          alt: 'Interior of a metal duct photographed during system verification'
         - image: './images/psychrometric-measurement-report.jpg'
           alt: 'Psychrometric measurement report from a commercial testing and balancing visit'
         - image: './images/vfd-motor-readings.jpg'

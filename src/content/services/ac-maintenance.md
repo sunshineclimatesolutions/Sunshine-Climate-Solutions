@@ -13,13 +13,15 @@ icon: shield
 order: 3
 evidence:
   photos:
-    - image: '../site/images/filter-rack-maintenance.jpg'
-      alt: 'Return air filter rack with filters installed, checked during a maintenance visit'
-      caption: 'The return filter rack during a maintenance visit. Filter condition is part of the evaluation.'
-  clip:
-    src: '/videos/air-handler-service.mp4'
-    poster: '../site/images/clip-air-handler-poster.jpg'
-    caption: 'Inside the air handler during a maintenance visit.'
+    - image: '../site/images/dirty-evaporator-coil.jpg'
+      alt: 'Grimy evaporator coil and cabinet interior photographed during a maintenance visit'
+      caption: 'Coil condition inside the cabinet — what maintenance is meant to stay ahead of.'
+    - image: '../site/images/dirty-return-filter.jpg'
+      alt: 'Heavily soiled pleated return-air filter in its grille'
+      caption: 'A return filter at the end of its service life.'
+    - image: '../site/images/coil-cleaning-wash.jpg'
+      alt: 'Hand holding a hose spraying water across an outdoor coil during cleaning'
+      caption: 'Outdoor coil cleaning during a maintenance visit.'
 ---
 
 ## Premium AC Maintenance — $75 per system, per visit

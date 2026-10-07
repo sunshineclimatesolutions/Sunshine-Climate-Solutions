@@ -11,11 +11,13 @@ metaDescription: >-
 
 hero:
   eyebrow: About
-  heading: Proudly American. Owner-Operated.
+  heading: |-
+    Traditional American
+    Traditional Values
   lead: >-
-    Owner-operated HVAC service in Spring Hill, built on a simple idea: the
-    person standing in your home should be worth the trust you have no choice
-    but to place in them.
+    Owner-operated HVAC service in Spring Hill, built on traditional American
+    values: discipline, integrity, and sacrifice. We make it a point to treat
+    our community as family.
 
 # Story sections render in order; the first heading anchors the section.
 story:

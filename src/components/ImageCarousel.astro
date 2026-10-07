@@ -2,6 +2,13 @@
 // Dependency-free photo carousel for the home Workmanship cards.
 // Native scroll-snap track (swipe/trackpad/keyboard) plus prev/next buttons;
 // one delegated script serves every instance on the page.
+//
+// Continuous loop: the slide set is rendered three times. The script parks the
+// track in the middle set and, once scrolling settles, silently re-anchors by
+// exactly one set width whenever the user nears either edge. Because the
+// surrounding slides are identical duplicates, the instant jump is invisible —
+// forward and backward navigation never dead-end and never visibly rewind.
+// Cloned sets (first and last) are aria-hidden and their images decorative.
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import type { ImageMetadata } from 'astro';
@@ -20,6 +27,7 @@ interface Props {
 
 const { images, label } = Astro.props;
 const multi = images.length > 1;
+const slides = multi ? [...images, ...images, ...images] : images;
 ---
 
 <div
@@ -29,20 +37,28 @@ const multi = images.length > 1;
   aria-roledescription={multi ? 'carousel' : undefined}
   aria-label={label}
 >
-  <div class="carousel-track" data-carousel-track tabindex="0">
+  <div
+    class="carousel-track"
+    data-carousel-track
+    data-carousel-count={multi ? images.length : undefined}
+    tabindex="0"
+  >
     {
-      images.map((item) => (
-        <div class="carousel-slide">
-          <Image
-            src={item.image}
-            alt={item.alt}
-            widths={[400, 700, 1000]}
-            sizes="(min-width: 64em) 30vw, (min-width: 48em) 44vw, 92vw"
-            loading="lazy"
-            style={item.position ? `object-position: ${item.position}` : undefined}
-          />
-        </div>
-      ))
+      slides.map((item, index) => {
+        const clone = multi && (index < images.length || index >= images.length * 2);
+        return (
+          <div class="carousel-slide" aria-hidden={clone ? 'true' : undefined}>
+            <Image
+              src={item.image}
+              alt={clone ? '' : item.alt}
+              widths={[400, 700, 1000]}
+              sizes="(min-width: 64em) 30vw, (min-width: 48em) 44vw, 92vw"
+              loading="lazy"
+              style={item.position ? `object-position: ${item.position}` : undefined}
+            />
+          </div>
+        );
+      })
     }
   </div>
   {
@@ -62,6 +78,47 @@ const multi = images.length > 1;
 <script>
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const tracks = document.querySelectorAll<HTMLElement>('[data-carousel-track]');
+  const settleTimers = new WeakMap<HTMLElement, number>();
+
+  const setWidth = (track: HTMLElement): number =>
+    track.scrollWidth / (Number(track.dataset.carouselCount) ? 3 : 1);
+
+  // Re-anchor inside the middle duplicate set. The jump is exactly one set
+  // width, so the visible content is unchanged — no snap, no transition.
+  const normalize = (track: HTMLElement): void => {
+    const width = setWidth(track);
+    if (width <= 0) return;
+    if (track.scrollLeft < width * 0.5) {
+      track.scrollLeft += width;
+    } else if (track.scrollLeft > width * 1.5) {
+      track.scrollLeft -= width;
+    }
+  };
+
+  const settle = (track: HTMLElement): void => {
+    window.clearTimeout(settleTimers.get(track));
+    settleTimers.set(
+      track,
+      window.setTimeout(() => normalize(track), 140),
+    );
+  };
+
+  tracks.forEach((track) => {
+    if (!Number(track.dataset.carouselCount)) return;
+    // Park in the middle set before first paint where possible.
+    requestAnimationFrame(() => {
+      track.scrollLeft = setWidth(track);
+    });
+    track.addEventListener('scroll', () => settle(track), { passive: true });
+  });
+
+  window.addEventListener('resize', () => {
+    tracks.forEach((track) => {
+      if (Number(track.dataset.carouselCount)) settle(track);
+    });
+  });
+
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
     const prev = target.closest('[data-carousel-prev]');
@@ -74,21 +131,6 @@ const multi = images.length > 1;
 
     const behavior: ScrollBehavior = reduceMotion() ? 'auto' : 'smooth';
     const amount = Math.max(track.clientWidth, 240);
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    const atStart = track.scrollLeft <= 2;
-    const atEnd = track.scrollLeft >= maxScroll - 2;
-
-    // Continuous loop: advancing past the last slide wraps to the first and
-    // stepping back from the first wraps to the last — never a dead end.
-    if (next && atEnd) {
-      track.scrollTo({ left: 0, behavior });
-      return;
-    }
-    if (prev && atStart) {
-      track.scrollTo({ left: maxScroll, behavior });
-      return;
-    }
-
     track.scrollBy({ left: next ? amount : -amount, behavior });
   });
 </script>

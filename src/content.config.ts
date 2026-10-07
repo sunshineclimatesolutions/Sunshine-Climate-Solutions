@@ -149,6 +149,9 @@ const siteIconEnum = z.enum([
   'users',
   'heart',
   'bulb',
+  'duct-traverse',
+  'pressure-diff',
+  'outside-air',
 ]);
 
 const site = defineCollection({
