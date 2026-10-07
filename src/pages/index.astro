@@ -24,7 +24,7 @@ const headlineAccent = need(hero.headlineAccent, 'home.md → hero.headlineAccen
 const headlineTail = need(hero.headlineTail, 'home.md → hero.headlineTail');
 const pricingCopy = need(home.data.pricing, 'home.md → pricing');
 const servicesCopy = need(home.data.services, 'home.md → services');
-const servicesLead = need(servicesCopy.lead, 'home.md → services.lead');
+const servicesLead = servicesCopy.lead;
 const tabCard = need(servicesCopy.tabCard, 'home.md → services.tabCard');
 const diagnostics = need(home.data.diagnostics, 'home.md → diagnostics');
 const tabBand = need(home.data.tabBand, 'home.md → tabBand');
@@ -173,9 +173,13 @@ const description = home.data.metaDescription;
           <p class="kicker">{servicesCopy.eyebrow}</p>
           <h2 id="home-services-heading">{servicesCopy.heading}</h2>
         </div>
-        <p class="lead">
-          {servicesLead}
-        </p>
+        {
+          servicesLead && (
+            <p class="lead">
+              {servicesLead}
+            </p>
+          )
+        }
       </div>
 
       <div class="grid--six services-grid">
@@ -233,7 +237,7 @@ const description = home.data.metaDescription;
         }
       </div>
 
-      <p class="fieldnotes-statement">We measure before we recommend.</p>
+      <p class="fieldnotes-statement">Data-Driven Recommendations</p>
 
       <div class="grid--four fieldnotes-grid">
         {
@@ -313,16 +317,22 @@ const description = home.data.metaDescription;
 
       <div class="area-duo">
         <div class="area-counties">
-          <ul class="area-list area-list--two county-list">
+          <div class="area-list area-list--two county-list">
             {
               business.serviceArea.countyDetails.map((county) => (
-                <li class="county-row">
-                  <strong>{county.name}</strong>
-                  <span class="county-cities">{county.cities.join(' · ')}</span>
-                </li>
+                <div class="county-row area-card">
+                  <h3>
+                    <Icon name="map-pin" /> {county.name}
+                  </h3>
+                  <ul>
+                    {county.cities.map((city) => (
+                      <li>{city}</li>
+                    ))}
+                  </ul>
+                </div>
               ))
             }
-          </ul>
+          </div>
           <p class="area-note">
             {business.serviceArea.centralFloridaNote}
           </p>
@@ -368,7 +378,8 @@ const description = home.data.metaDescription;
             data-cta="reviews-google-home"
             rel="noopener"
           >
-            <Icon name="star" /> See Our Reviews on Google
+            <img class="google-g" src="/brand/google-g.svg" alt="" width="26" height="26" />
+            See Our Google Reviews
           </a>
         </div>
       </div>

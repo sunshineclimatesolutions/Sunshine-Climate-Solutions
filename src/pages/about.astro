@@ -4,15 +4,14 @@ import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { getEntry } from 'astro:content';
-import truckImage from '../content/site/images/service-truck-oaks.jpg';
-import { business } from '../config/business';
+import truckImage from '../content/site/images/work-truck.jpg';
+import headshotImage from '../content/site/images/owner-headshot.jpg';
 import { need, interpolateBusiness } from '../lib/site-content';
 
 const about = await getEntry('site', 'about');
 if (!about) throw new Error('[content] src/content/site/about.md is missing');
 
 const hero = need(about.data.hero, 'about.md → hero');
-const infoTitles = need(about.data.infoTitles, 'about.md → infoTitles');
 const story = need(about.data.story, 'about.md → story');
 const ctaBand = need(about.data.ctaBand, 'about.md → ctaBand');
 
@@ -24,8 +23,9 @@ const description = about.data.metaDescription;
   <section class="page-hero">
     <div class="container page-hero-inner page-hero-inner--center">
       <p class="eyebrow">{hero.eyebrow}</p>
-      <h1>
-        <Icon name="flag" class="hero-flag" size={40} /> {hero.heading}
+      <h1 class="about-hero-heading">
+        <Icon name="flag" class="hero-flag" size={72} viewBox="2.9 6.4 18.2 11.2" />
+        <span>{hero.heading}</span>
       </h1>
       <p class="lead">
         {hero.lead}
@@ -33,61 +33,33 @@ const description = about.data.metaDescription;
     </div>
   </section>
 
-  <!-- Business information (license renders here once the owner configures it) -->
-  <section class="section section--alt" aria-labelledby="about-business-heading">
-    <div class="container">
-      <h2 id="about-business-heading" class="visually-hidden">Business information</h2>
-      <div class="about-cards">
-        <div class="card">
-          <h3 style="font-size: var(--text-lg);">{infoTitles.call}</h3>
-          <p>
-            <a href={business.phone.href} data-cta="call-about" class="text-link">
-              <Icon name="phone" /> {business.phone.display}
-            </a>
-          </p>
-          <p style="font-size: var(--text-sm);">
-            <a href={business.phone.sms} data-cta="text-about" class="text-link">
-              <Icon name="message" /> Text us
-            </a>
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size: var(--text-lg);">{infoTitles.hours}</h3>
-          <p>{business.hours.display} EST, 7 Days a Week</p>
-        </div>
-        <div class="card">
-          <h3 style="font-size: var(--text-lg);">{infoTitles.area}</h3>
-          <p>Hernando, Pasco, Pinellas, and Hillsborough counties.</p>
-        </div>
-        <div class="card">
-          <h3 style="font-size: var(--text-lg);">{infoTitles.pricing}</h3>
-          <p>
-            {business.pricing.serviceCall} service call, waived when you proceed with the repair ·
-            Free estimates.
-          </p>
-          <p class="license-line" style="margin-top: var(--sp-2xs);">
-            <Icon name="badge" /> Licensed and insured
-            {business.licenseNumber ? ` · ${business.licenseNumber}` : ''}
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Field photograph: the working platform behind the profile. -->
+  <!-- Field photographs: the working platform and the owner behind the profile. -->
   <section class="about-media-band">
     <div class="container">
-      <figure class="about-media">
-        <Image
-          src={truckImage}
-          alt="The company's white Ram 2500 service truck parked under Florida oaks in Spring Hill."
-          widths={[640, 1000, 1400]}
-          sizes="(min-width: 64em) 68rem, 96vw"
-          loading="lazy"
-          style="object-position: 50% 62%"
-        />
-        <figcaption>The service truck — purchased and working, the platform this business operates from.</figcaption>
-      </figure>
+      <div class="about-media-duo">
+        <figure class="about-media about-media--truck">
+          <Image
+            src={truckImage}
+            alt="The company's white Ram 2500 service truck with SCS lettering, parked under Florida oaks in Spring Hill."
+            widths={[640, 1000, 1400]}
+            sizes="(min-width: 48em) 56vw, 96vw"
+            loading="lazy"
+            style="object-position: 50% 52%"
+          />
+          <figcaption>The service truck — purchased and working, the platform this business operates from.</figcaption>
+        </figure>
+        <figure class="about-media about-media--portrait">
+          <Image
+            src={headshotImage}
+            alt="Aaron Thomas, owner and operator of Sunshine Climate Solutions."
+            widths={[400, 640, 800]}
+            sizes="(min-width: 48em) 34vw, 96vw"
+            loading="lazy"
+            style="object-position: 50% 30%"
+          />
+          <figcaption>Aaron Thomas — owner and operator.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 

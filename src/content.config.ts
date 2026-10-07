@@ -314,7 +314,7 @@ const site = defineCollection({
       .optional(),
 
     // home.md — "Quality Workmanship" section (maximum three cards, each a
-    // different work category with a small photo gallery; factual captions
+    // different work category with a looping photo carousel; factual alt text
     // only, no outcome claims).
     workmanship: z
       .object({
@@ -337,7 +337,7 @@ const site = defineCollection({
                   }),
                 )
                 .min(1)
-                .max(4),
+                .max(14),
             }),
           )
           .max(3),

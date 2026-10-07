@@ -17,12 +17,6 @@ hero:
     person standing in your home should be worth the trust you have no choice
     but to place in them.
 
-infoTitles:
-  call: Call or text
-  hours: Hours
-  area: Service area
-  pricing: Competitive Pricing
-
 # Story sections render in order; the first heading anchors the section.
 story:
   - heading: Why This Company Exists

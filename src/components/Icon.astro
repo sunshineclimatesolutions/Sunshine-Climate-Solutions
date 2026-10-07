@@ -16,8 +16,10 @@ interface Props {
   class?: string;
   /** Render the light palette variant for use on navy/dark surfaces. */
   onDark?: boolean;
+  /** Optional tighter viewBox (defaults to the full 24×24 icon frame). */
+  viewBox?: string;
 }
-const { name, size = 24, class: className, onDark = false } = Astro.props;
+const { name, size = 24, class: className, onDark = false, viewBox = '0 0 24 24' } = Astro.props;
 
 // Multi-color utility artwork. Colors resolve from the .icon palette tokens
 // defined in global.css; fills/strokes live in the artwork itself.
@@ -92,7 +94,7 @@ const glyph = glyphs[name] ?? '';
       class={`icon icon--color${onDark ? ' icon--on-dark' : ''} ${className ?? ''}`.trim()}
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      viewBox={viewBox}
       aria-hidden="true"
       focusable="false"
       set:html={colorArtwork}
@@ -102,7 +104,7 @@ const glyph = glyphs[name] ?? '';
       class={`icon ${className ?? ''}`.trim()}
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      viewBox={viewBox}
       fill="none"
       stroke="currentColor"
       stroke-width="2"
