@@ -71,13 +71,13 @@ Call or text: (727) 661-5200
 Website: [paste the YouTube tracked URL from WHERE-TO-PASTE-UTM-LINKS.md]
 ```
 
-### LinkedIn tagline (prepared — publish only after verification)
+### LinkedIn tagline (publish on the live Company Page)
 
 ```text
 Measurement-driven HVAC service, airflow diagnostics, commercial support & TAB.
 ```
 
-### LinkedIn overview (prepared — publish only after verification)
+### LinkedIn overview (publish on the live Company Page)
 
 ```text
 Sunshine Climate Solutions is an owner-operated HVAC company serving Spring Hill and the Tampa Bay region.
@@ -170,24 +170,15 @@ Website: [paste the YouTube tracked URL from WHERE-TO-PASTE-UTM-LINKS.md]
    business — do not intentionally publish a private operating address unless the owner wants
    it public.
 
-### LinkedIn Company Page — PENDING
+### LinkedIn Company Page — LIVE (owner-approved 2026-10-07)
 
-- No public Company Page exists; no LinkedIn URL is published on the website or in structured
-  data.
-- **Known eligibility rule (official LinkedIn documentation, checked 2026-10-01):** the
-  personal account must have **more than one connection** — operationally, at least **two
-  accepted connections** — to create a Company Page. LinkedIn also documents possible
-  additional blockers: account age requirements, verified email, workplace verification, an
-  existing/conflicting Page or URL, and temporary Page-creation restrictions.
-- `business.social.linkedin` stays empty and the prepared UTM entry (`linkedin_profile`) stays
-  `pending`. Do not populate or publish a LinkedIn URL until the Page exists.
-
-**Owner action to unblock LinkedIn:**
-
-1. Establish at least two genuine accepted connections.
-2. Complete/verify the personal professional profile.
-3. Attempt Company Page creation.
-4. Once the Company Page is successfully created, supply the exact public URL.
-5. Only then update `src/config/business.ts` (`social.linkedin`) and publish the prepared
-   LinkedIn campaign links (remove the `pending` flag in `src/config/marketing-links.ts` and
-   regenerate with `npm run marketing:links`).
+- Public Company Page: <https://www.linkedin.com/company/sunshine-climate-solutions>
+  (owner-supplied URL; do not alter it in config).
+- Published on the website: footer/contact social links and `HVACBusiness` `sameAs` structured
+  data, sourced from `business.social.linkedin`. The icon is
+  `public/images/linkedin-logo.webp` (owner-supplied mark; white margin trimmed only, to match
+  the other icons' optical size).
+- The prepared `linkedin_profile` campaign link remains `pending` in
+  `src/config/marketing-links.ts` until it is deliberately activated: paste the tracked URL in the
+  Company Page website field, then remove the `pending` flag and regenerate with
+  `npm run marketing:links`.

@@ -49,7 +49,7 @@ rules in `docs/operations/PLATFORM-STATUS.md`.
  GitHub main → Cloudflare   Google Business Profile         TikTok · YouTube
  business.ts = facts        Bing Webmaster + Bing Places    X · Nextdoor · Yelp
  content collections        Apple Business Connect (pend.)  Gab · Parler
- service + support pages    IndexNow freshness               LinkedIn (pending)
+ service + support pages    IndexNow freshness               LinkedIn
    │                           │                               │
    └───────────────┬───────────┴───────────────┬───────────────┘
                    │                           │
@@ -81,7 +81,7 @@ hard-code these values anywhere else, and never invent replacements:
 | Pricing | $50 service call (waived with repair), $75/system/visit maintenance, free estimates |
 | Service area | Hernando, Pasco, Pinellas, Hillsborough counties; Spring Hill home market |
 | License number | **empty — owner input required** (no license line renders while empty) |
-| Social profiles | Facebook, Instagram, TikTok, YouTube, X, Nextdoor, Yelp, Gab, Parler (LinkedIn empty/pending) |
+| Social profiles | Facebook, Instagram, TikTok, YouTube, X, LinkedIn, Nextdoor, Yelp, Gab, Parler (all published) |
 | Fundraising | GoFundMe + GiveSendGo URLs; `founderVideoUrl` empty until supplied |
 | Analytics | Umami website ID, GTM container `GTM-MBGJ8SLD` (public client-side IDs) |
 | Web3Forms | public client-side access key (safe to commit by design) |
@@ -133,10 +133,11 @@ Current platform status (verified vs owner-confirmed vs pending) is maintained o
 ## 6. Social platforms and publishing
 
 - **Configured public profiles** (footer + structured data, sourced from `business.ts`):
-  Facebook, Instagram, TikTok, YouTube, X, Nextdoor, Yelp, Gab, Parler.
-- **Pending:** LinkedIn Company Page (no public URL — nothing is published). Known eligibility
-  rule (official LinkedIn docs, checked 2026-10-01): the personal account needs **more than one
-  connection** (≥2 accepted connections) to create a Company Page; other blockers may apply.
+  Facebook, Instagram, TikTok, YouTube, X, LinkedIn, Nextdoor, Yelp, Gab, Parler.
+- **LinkedIn Company Page: owner-approved and live (2026-10-07)** —
+  `https://www.linkedin.com/company/sunshine-climate-solutions`, published in the footer/contact
+  social links and `sameAs` structured data. The prepared `linkedin_profile` campaign link is a
+  separate marketer step (tracked website-field URL) — see `docs/marketing/SOCIAL-PROFILE-SETUP.md`.
 - **TikTok business verification: owner-confirmed completed (2026-10-01)** — verified business
   status in TikTok Business Suite ("Verify your business — Good to go!"); the configured
   website is the tracked TikTok profile URL. Business Suite exposes features including
@@ -348,10 +349,7 @@ Full details, triggers, failure behavior and recovery: `docs/operations/AUTOMATI
 - GA4 ↔ Search Console association — pending the owner's final confirmation of submission.
 - GA4 Enhanced Measurement form interactions disabled? Data retention 14 months? Web stream URL
   set to the canonical non-www domain? Custom Explorations created? (owner confirmations)
-- LinkedIn Company Page — pending; official eligibility rule checked 2026-10-01 (personal
-  account needs more than one connection, i.e. ≥2 accepted connections; other blockers may
-  apply). Owner steps in `docs/marketing/SOCIAL-PROFILE-SETUP.md`. Apple Business Connect
-  status also pending owner confirmation.
+- Apple Business Connect status — pending owner confirmation.
 - Publicly displayable contractor license number.
 - TikTok follow-ups: Leads Manager configuration, message labels/automation, street-address
   visibility review.

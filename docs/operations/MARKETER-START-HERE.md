@@ -43,7 +43,12 @@ Start with `docs/OPERATIONS-HUB.md` for the complete system map.
 ## Social profiles — current state
 
 - **Configured and published** (footer + structured data, from `business.ts`): Facebook,
-  Instagram, TikTok, YouTube, X, Nextdoor, Yelp, Gab, Parler.
+  Instagram, TikTok, YouTube, X, LinkedIn, Nextdoor, Yelp, Gab, Parler.
+- **LinkedIn:** Company Page live (owner-approved 2026-10-07) —
+  <https://www.linkedin.com/company/sunshine-climate-solutions> — published in the footer/contact
+  social links and `sameAs` structured data. The prepared `linkedin_profile` campaign link stays
+  `pending` until you activate it (paste the tracked URL in the Page's website field, then remove
+  the `pending` flag and regenerate with `npm run marketing:links`).
 - **TikTok:** business verification is **owner-confirmed completed (2026-10-01)** — verified
   business status in Business Suite ("Verify your business — Good to go!"); the configured
   website is the tracked TikTok UTM URL. This is business verification, **not** a public
@@ -51,11 +56,6 @@ Start with `docs/OPERATIONS-HUB.md` for the complete system map.
   settings/labels (availability only — do not claim lead-gen or messaging is enabled).
   Follow-ups for the owner: review Leads Manager, configure message labels/automation, verify
   street-address visibility (service-area business).
-- **Pending:** LinkedIn Company Page (no public URL — do not publish or infer one). Known
-  eligibility rule (official LinkedIn docs, checked 2026-10-01): the personal account needs
-  **more than one connection** (≥2 accepted connections) to create a Company Page; other
-  blockers may apply. Owner steps: build genuine connections → complete the personal profile →
-  create the Page → supply the public URL → only then update config and publish prepared links.
 - Bios, brand block and visual specs: `docs/marketing/SOCIAL-PROFILE-SETUP.md`.
 - Icon/asset provenance: `docs/marketing/SOCIAL-ASSET-SOURCES.md`.
 
@@ -92,7 +92,7 @@ Start with `docs/OPERATIONS-HUB.md` for the complete system map.
 - [ ] Fill the weekly scorecard for the current week (`docs/marketing/WEEKLY-MARKETING-SCORECARD.md`).
 - [ ] Review `docs/seo/ON-PAGE-AUDIT.md` and `docs/seo/RANK-MONITORING-PLAN.md` to understand
       current SEO priorities.
-- [ ] Confirm with the owner: LinkedIn timing, founder video, any campaign you plan to run.
+- [ ] Confirm with the owner: founder video, any campaign you plan to run.
 
 ## Where results come from (honest measurement)
 

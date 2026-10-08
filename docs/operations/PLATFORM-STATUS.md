@@ -4,7 +4,7 @@ Live operational status for every external platform and service in the SCS ecosy
 **This is the only place current operational status is maintained.** Historical audits keep
 their original dated findings (see the Historical section).
 
-Last reviewed: **October 1, 2026**
+Last reviewed: **October 7, 2026**
 
 ## How to read this register
 
@@ -41,7 +41,8 @@ Rules:
 | Fundraiser outbound tracking | Platform split (`gofundme`/`givesendgo`) | `/support/` buttons | Repo | **Verified site-side**; GTM/GA4 forwarding owner-confirmed | `gtm-consent.mjs` 91/91; owner GTM tests | 2026-10-01 | Consent; published GTM container | — | `docs/GTM-GA4-SETUP.md` |
 | Consent / privacy system | Basic Consent Mode + privacy page | Site-wide | Repo | **Verified** — no Google request before permission | `gtm-consent.mjs` 91/91 | 2026-10-01 | GTM container ID configured | Keep privacy page accurate | `docs/GTM-GA4-SETUP.md`, `src/pages/privacy.astro` |
 | Web3Forms request flow | Lead capture | `/contact/` | Owner (Web3Forms account) | **Verified site-side**; live inbox delivery owner-verified only | Built HTML; `gtm-consent.mjs` provider interception | 2026-10-01 | Public access key; Web3Forms service | Test live delivery after key rotation | `README.md`, `docs/GTM-GA4-SETUP.md` |
-| Social profile links | Footer + `sameAs` | `business.social` in `business.ts` | Owner (platform accounts) | **Verified in code** (9 profiles published) | Built HTML + schema checks | 2026-10-01 | Platform accounts remain active | Keep URLs current | `docs/marketing/SOCIAL-PROFILE-SETUP.md` |
+| Social profile links | Footer + `sameAs` | `business.social` in `business.ts` | Owner (platform accounts) | **Verified in code** (10 profiles published) | Built HTML + schema checks | 2026-10-07 | Platform accounts remain active | Keep URLs current | `docs/marketing/SOCIAL-PROFILE-SETUP.md` |
+| LinkedIn Company Page | Commercial/TAB credibility | <https://www.linkedin.com/company/sunshine-climate-solutions> | Owner (LinkedIn account) | **Verified in code** — published in the footer/contact social links and `sameAs` structured data (owner-approved public URL supplied 2026-10-07) | Built HTML + schema checks | 2026-10-07 | LinkedIn Page remains active | Activate the prepared `linkedin_profile` campaign link when the tracked website-field URL is pasted (see `src/config/marketing-links.ts`) | `docs/marketing/SOCIAL-PROFILE-SETUP.md` |
 
 ---
 
@@ -82,7 +83,6 @@ obtainable from the repository.
 
 | Platform / service | Purpose | Safe entry point | Status | Outstanding owner actions | Authoritative docs |
 | --- | --- | --- | --- | --- | --- |
-| LinkedIn Company Page | Commercial/TAB credibility | <https://www.linkedin.com> | **Pending** — no public Company Page URL; nothing is published on the website or in structured data; the prepared UTM entry stays `pending`. **Known eligibility rule (official LinkedIn documentation, checked 2026-10-01):** the personal account must have **more than one connection** (≥2 accepted connections) to create a Company Page. Possible additional blockers documented by LinkedIn: account age requirements, verified email, workplace verification, an existing/conflicting Page or URL, and temporary Page-creation restrictions | Owner: (1) establish at least two genuine accepted connections, (2) complete/verify the personal professional profile, (3) attempt Company Page creation, (4) supply the exact public Company Page URL, (5) only then update `business.social.linkedin` and publish the prepared LinkedIn campaign links | `docs/marketing/SOCIAL-PROFILE-SETUP.md`, `src/config/marketing-links.ts` |
 | Public contractor license number | Footer/About license line | Florida DBPR (owner) | **Pending** — `business.licenseNumber` intentionally empty; no license line renders | Provide the verified number exactly as it should be shown | `src/config/business.ts`, `AGENTS.md` |
 | Owner founder video | `/support/` founder-video section | YouTube (owner) | **Pending** — `business.fundraising.founderVideoUrl` empty; the section renders only when set | Supply the approved public video URL | `src/config/business.ts`, `docs/marketing/CONTENT-OPERATING-SYSTEM.md` §23 |
 

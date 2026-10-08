@@ -8,7 +8,9 @@
 // exactly one set width whenever the user nears either edge. Because the
 // surrounding slides are identical duplicates, the instant jump is invisible —
 // forward and backward navigation never dead-end and never visibly rewind.
-// Cloned sets (first and last) are aria-hidden and their images decorative.
+// Duplicated sets (first and last) are aria-hidden, so their images stay out of
+// the accessibility tree; they keep the real alt text because Astro serializes
+// an empty <Image> alt as a bare attribute the alt-verification requires quoted.
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import type { ImageMetadata } from 'astro';
@@ -50,7 +52,7 @@ const slides = multi ? [...images, ...images, ...images] : images;
           <div class="carousel-slide" aria-hidden={clone ? 'true' : undefined}>
             <Image
               src={item.image}
-              alt={clone ? '' : item.alt}
+              alt={item.alt}
               widths={[400, 700, 1000]}
               sizes="(min-width: 64em) 30vw, (min-width: 48em) 44vw, 92vw"
               loading="lazy"

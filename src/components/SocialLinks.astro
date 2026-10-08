@@ -15,8 +15,10 @@
 //    from the parler.com site assets), used unmodified.
 //  - Outbound profile links only: never append inbound campaign UTMs here.
 //  - The visible platform label carries the meaning (logos/glyphs are
-//    decorative, alt="" / aria-hidden). LinkedIn stays hidden until
-//    business.ts carries its final public Company Page URL.
+//    decorative, alt="" / aria-hidden).
+//  - LinkedIn uses the owner-supplied official "in" mark
+//    (public/images/linkedin-logo.webp) with its white margin trimmed so it
+//    matches the other icons' optical size.
 // Yelp is presented as a neutral business-directory link only — no Yelp
 // review solicitation anywhere (see business.ts).
 import { business } from '../config/business';
@@ -88,6 +90,16 @@ const allProfiles: Profile[] = [
     icon: 'x',
     // Black glyph — needs a light tile on dark surfaces to stay legible.
     tileOnDark: true,
+  },
+  {
+    href: business.social.linkedin,
+    label: 'LinkedIn',
+    kind: 'img',
+    // Official LinkedIn "in" mark (owner-supplied asset; white margin trimmed).
+    img: '/images/linkedin-logo.webp',
+    width: 512,
+    height: 513,
+    tileOnDark: false,
   },
   {
     href: business.social.nextdoor,

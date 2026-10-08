@@ -3845,7 +3845,7 @@ body.nav-open {
   gap: var(--sp-2xs) var(--sp-sm);
 }
 
-.follow-row .social-links > li:last-child {
+.follow-row .social-links > li:last-child:nth-child(odd) {
   grid-column: 1 / -1;
   justify-self: center;
 }
@@ -3858,11 +3858,21 @@ body.nav-open {
   .follow-row .social-links > li:last-child {
     grid-column: auto;
   }
+
+  /* A final profile starting a fresh 3-up row is centered, never stranded. */
+  .follow-row .social-links > li:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
 }
 
 @media (min-width: 64em) {
   .follow-row .social-links {
     grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .follow-row .social-links > li:last-child:nth-child(3n + 1) {
+    grid-column: auto;
   }
 }
 

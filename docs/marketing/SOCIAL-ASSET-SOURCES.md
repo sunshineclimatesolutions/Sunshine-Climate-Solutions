@@ -1,7 +1,8 @@
 # Social icon & avatar asset sources
 
-Provenance for every social asset added in the September 2026 social expansion.
-All assets are stored locally in the repository — nothing is hotlinked.
+Provenance for every social asset added in the September 2026 social expansion (and the
+October 2026 LinkedIn mark). All assets are stored locally in the repository — nothing is
+hotlinked.
 
 Retrieved: **2026-09-30**.
 
@@ -27,6 +28,10 @@ Retrieved: **2026-09-30**.
 - **Facebook, Nextdoor, Yelp** keep their existing owner-supplied graphics in
   `public/images/` (unchanged — the social-expansion directive requires
   preserving them).
+- **LinkedIn** uses the owner-supplied official "in" mark
+  (`public/images/linkedin-logo.webp`, owner-approved 2026-10-07; derived from the
+  supplied `linkedin-logo-editorial-free-vector.webp` by trimming the white margin
+  only — no recoloring or other modification).
 - **Gab** uses the official wordmark SVG above, unmodified.
 - Simple Icons SVGs ship with a `<title>` element and no fill; the stored files
   are unmodified, and the component renders the path with `aria-hidden` because
