@@ -84,7 +84,7 @@ obtainable from the repository.
 | Platform / service | Purpose | Safe entry point | Status | Outstanding owner actions | Authoritative docs |
 | --- | --- | --- | --- | --- | --- |
 | Public contractor license number | Footer/About license line | Florida DBPR (owner) | **Pending** — `business.licenseNumber` intentionally empty; no license line renders | Provide the verified number exactly as it should be shown | `src/config/business.ts`, `AGENTS.md` |
-| Owner founder video | `/support/` founder-video section | YouTube (owner) | **Pending** — `business.fundraising.founderVideoUrl` empty; the section renders only when set | Supply the approved public video URL | `src/config/business.ts`, `docs/marketing/CONTENT-OPERATING-SYSTEM.md` §23 |
+| Owner founder video | `/support/` founder-video section | YouTube (owner) | **Pending** — `business.fundraising.founderVideoUrl` empty; the designed placeholder renders until a valid public YouTube link is set (then a privacy-enhanced click-to-play embed) | Supply the approved public video URL | `src/config/business.ts`, `docs/marketing/CONTENT-OPERATING-SYSTEM.md` §23 |
 
 Do not invent CRM, social-scheduler or advertising accounts — none are configured in this
 repository.

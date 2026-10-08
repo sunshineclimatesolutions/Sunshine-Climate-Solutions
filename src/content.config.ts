@@ -463,46 +463,36 @@ const site = defineCollection({
       })
       .optional(),
 
-    // support.md — /support/ fundraising page (noindex, direct/referral only).
-    // Truthfulness rules: the $25,000 founder-investment figure and the $20,000
-    // planned allocation are owner-confirmed; never fabricate progress, donor
-    // counts, testimonials, or outcomes. Fundraiser URLs come from
-    // business.fundraising — never from this content file.
+    // support.md — /support/ growth-campaign page (noindex, direct/referral
+    // only). Truthfulness rules: the ~$25,000 founder-capital figure, the
+    // $20,000 allocation and the licensing planning estimate are the only
+    // financial figures allowed; never fabricate progress, donor counts,
+    // testimonials, outcomes, or promises of jobs/licensing/revenue. Fundraiser
+    // URLs come from business.fundraising — never from this content file.
+    // Photo captions must describe only what each photograph actually shows.
     support: z
       .object({
         hero: z.object({
           eyebrow: z.string(),
           heading: z.string(),
           lead: z.string(),
-          chips: z.array(z.string()).default([]),
+          facts: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+          portrait: z.object({ image: image(), alt: z.string(), caption: z.string() }),
         }),
-        realBusiness: z.object({
+        whyCare: z.object({
           heading: z.string(),
           lead: z.string(),
-          quote: z.string().optional(),
-          quoteAttribution: z.string().optional(),
-          categories: z.array(z.object({ title: z.string(), items: z.array(z.string()) })),
+          reasons: z.array(z.object({ title: z.string(), text: z.string() })),
         }),
-        whyExists: z.object({
+        person: z.object({
           heading: z.string(),
           paragraphs: z.array(z.string()),
-          principle: z.array(z.string()),
+          values: z.array(z.string()),
         }),
-        faith: z.object({
-          heading: z.string(),
-          quote: z.string(),
-          paragraphs: z.array(z.string()),
-        }),
-        credentials: z.object({
+        built: z.object({
           heading: z.string(),
           lead: z.string(),
-          cards: z.array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() })),
-        }),
-        investment: z.object({
-          heading: z.string(),
-          amount: z.string(),
-          amountLabel: z.string(),
-          paragraphs: z.array(z.string()),
+          proof: z.array(z.object({ label: z.string(), text: z.string() })),
           photos: z
             .array(z.object({ image: image(), alt: z.string(), caption: z.string() }))
             .default([]),
@@ -511,44 +501,54 @@ const site = defineCollection({
           heading: z.string(),
           lead: z.string(),
           totalLabel: z.string(),
+          logic: z.string(),
           disclosure: z.string(),
           items: z.array(
             z.object({
               label: z.string(),
               amount: z.number().int().positive(),
-              paysFor: z.string(),
-              whyItMatters: z.string(),
+              note: z.string(),
             }),
           ),
         }),
-        whyNow: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          timeline: z.array(z.object({ when: z.string(), text: z.string() })),
-        }),
-        // Optional: the itemized allocation already communicates the operating
-        // consequences, so this section can be omitted when redundant.
-        unlocks: z
-          .object({
-            heading: z.string(),
-            lead: z.string(),
-            items: z.array(z.object({ title: z.string(), text: z.string() })),
-          })
-          .optional(),
-        platforms: z.object({
+        growth: z.object({
           heading: z.string(),
           lead: z.string(),
+          paths: z.array(z.object({ when: z.string(), text: z.string() })),
+          licensing: z.object({
+            heading: z.string(),
+            estimate: z.string(),
+            estimateLabel: z.string(),
+            text: z.string(),
+            disclaimer: z.string(),
+          }),
+          community: z.object({
+            heading: z.string(),
+            text: z.string(),
+            photo: z.object({ image: image(), alt: z.string(), caption: z.string() }),
+          }),
+        }),
+        supportBand: z.object({
+          eyebrow: z.string(),
+          heading: z.string(),
+          quote: z.string(),
+          attribution: z.string(),
+          platformsNote: z.string(),
           gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
           givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),
-        }),
-        otherWays: z.object({
-          heading: z.string(),
-          lead: z.string(),
-          items: z.array(z.object({ icon: siteIconEnum, title: z.string(), text: z.string() })),
+          waysHeading: z.string(),
+          ways: z.array(z.object({ title: z.string(), text: z.string() })),
         }),
         faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
-        closing: z.object({ quote: z.string(), attribution: z.string() }),
-        founderVideo: z.object({ heading: z.string(), lead: z.string() }).optional(),
+        founderVideo: z.object({
+          heading: z.string(),
+          // `lead` renders while no video is configured; `readyLead` replaces it
+          // once business.fundraising.founderVideoUrl holds a valid public
+          // YouTube link (see src/lib/video.ts).
+          lead: z.string(),
+          readyLead: z.string(),
+          pending: z.string(),
+        }),
       })
       .optional(),
   }),

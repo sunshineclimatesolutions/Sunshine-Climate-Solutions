@@ -201,7 +201,8 @@ There is **no CRM integration** — the lead sheet and follow-up are manual (see
   social/email/referral traffic only. Content lives in `src/content/site/support.md`; layout in
   `src/pages/support.astro`.
 - **Campaign URLs:** GoFundMe + GiveSendGo in `business.fundraising`; optional
-  `founderVideoUrl` renders the founder-video section only when set.
+  `founderVideoUrl` shows the founder video as a privacy-enhanced click-to-play embed once a
+  valid public YouTube link is set (the designed placeholder renders until then).
 - **Inbound tracking:** platform-specific `/support/` links in `src/config/marketing-links.ts`
   (`*_support_*` entries) plus the independent print QR `support-campaign`.
 - **Outbound tracking:** fundraiser buttons carry `data-support-platform`; consented clicks push
