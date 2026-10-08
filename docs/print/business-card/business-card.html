@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sunshine Climate Solutions — Business Card (print source)</title>
+<!--
+  ============================================================================
+  Sunshine Climate Solutions LLC — business card · PRINT SOURCE
+  ============================================================================
+  Size ......... 3.5 × 2 in (US standard), landscape
+  Bleed ........ 0.125 in on every edge → art 3.75 × 2.25 in
+  Safe ......... all type/logo ≥ 0.26 in inside the trim line
+  Assets ....... approved Logo 2 production PNGs (public/brand/logo-*.png),
+                 approved owner headshot, self-hosted Archivo + Public Sans,
+                 decode-verified QR (qr-website.svg → the website)
+  Colors ....... brand tokens from src/styles/tokens.css:
+                   navy-deep   #203549   navy        #2d4256
+                   gold        #f4b631   gold-strong #e9a41b
+                   ink-soft    #34485b   on-navy-soft #ccd9e4
+                 CMYK-aware reference starting points for the print provider
+                 (final conversion with the printer's ICC profile):
+                   #203549 ≈ C 92 M 73 Y 45 K 45   (rich navy)
+                   #f4b631 ≈ C 0  M 28 Y 89 K 0    (brand gold)
+  Fonts ....... Archivo 500–800 (headings) · Public Sans 400–700 (body), SIL OFL
+  QR .......... https://sunshineclimatesolutions.com/ (ECC H, navy on white)
+  Render ...... node scripts/generate-business-card.mjs
+                → 300 DPI PNGs (bleed + trim), 2-page print PDF, presentation
+  ============================================================================
+-->
+<style>
+  @font-face {
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 500 800;
+    src: url('../../../public/fonts/archivo-var-latin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 400 700;
+    src: url('../../../public/fonts/publicsans-var-latin.woff2') format('woff2');
+  }
+
+  :root {
+    --navy-deep: #203549;
+    --navy: #2d4256;
+    --gold: #f4b631;
+    --gold-strong: #e9a41b;
+    --ink-soft: #34485b;
+    --on-navy-soft: #ccd9e4;
+    --head: 'Archivo', 'Segoe UI', system-ui, sans-serif;
+    --body: 'Public Sans', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background: #aeb7c1; /* editor backdrop only — never exported */
+  }
+
+  .card {
+    position: relative;
+    width: 3.75in;
+    height: 2.25in;
+    overflow: hidden;
+    font-family: var(--body);
+    color: var(--navy-deep);
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card + .card {
+    margin-top: 0.25in; /* screen preview spacing only */
+  }
+
+  @page {
+    size: 3.75in 2.25in;
+    margin: 0;
+  }
+
+  @media print {
+    html,
+    body {
+      background: #ffffff;
+    }
+
+    .card + .card {
+      margin-top: 0;
+    }
+
+    .card {
+      break-after: page;
+    }
+
+    .card:last-child {
+      break-after: auto;
+    }
+  }
+
+  .gold-rule {
+    display: block;
+    width: 0.3in;
+    height: 2pt;
+    background: var(--gold);
+  }
+
+  /* ── FRONT ──────────────────────────────────────────────────────────── */
+  .front-field {
+    position: absolute;
+    inset: 0 1.25in 0 0;
+    background: var(--navy-deep);
+  }
+
+  /* Established brand motif (from public/brand/og-default.png): faint gold
+     concentric circles — technical, never loud. */
+  .front-motif {
+    position: absolute;
+    right: -1.15in;
+    bottom: -1.35in;
+    width: 3.4in;
+    height: 3.4in;
+    opacity: 0.13;
+  }
+
+  .front-mark {
+    position: absolute;
+    left: 0.385in;
+    top: 0.4in;
+  }
+
+  .front-mark img {
+    display: block;
+    height: 0.3in; /* 331 px source → ≈331 DPI at 1.034 in wide */
+    width: auto;
+  }
+
+  .front-person {
+    position: absolute;
+    left: 0.385in;
+    bottom: 0.4in;
+  }
+
+  .front-person .gold-rule {
+    margin-bottom: 0.1in;
+  }
+
+  .front-person .company {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--on-navy-soft);
+  }
+
+  .front-person h1 {
+    margin-top: 0.06in;
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 15pt;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  .front-person .role {
+    margin-top: 0.05in;
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Owner headshot: full-bleed vertical panel, chamfered at the top-left in
+     the mark's own 45° geometry, with a gold seam hugging the chamfer. */
+  .front-photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.25in;
+    height: 100%;
+    clip-path: polygon(0.18in 0, 100% 0, 100% 100%, 0 100%, 0 0.18in);
+  }
+
+  .front-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 16%;
+  }
+
+  .front-seams {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* ── BACK ───────────────────────────────────────────────────────────── */
+  .back-body {
+    position: absolute;
+    left: 0.385in;
+    top: 0.385in;
+    right: 0.85in;
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.09in;
+  }
+
+  .lockup img {
+    display: block;
+    height: 0.26in; /* 331 px source → ≈368 DPI at 0.9 in wide */
+    width: auto;
+  }
+
+  .lockup-name {
+    font-family: var(--head);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .lockup-name strong {
+    display: block;
+    font-size: 9pt;
+    color: var(--navy-deep);
+  }
+
+  .lockup-name span {
+    display: block;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 7.8pt;
+    color: var(--ink-soft);
+  }
+
+  .back-services {
+    margin-top: 0.1in;
+    font-size: 6pt;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    line-height: 1.6;
+    text-transform: uppercase;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .back-contact {
+    margin-top: 0.1in;
+  }
+
+  .back-contact .gold-rule {
+    margin-bottom: 0.08in;
+  }
+
+  .back-contact dl {
+    display: grid;
+    gap: 0.05in;
+  }
+
+  .back-contact dl > div {
+    display: flex;
+    align-items: baseline;
+    gap: 0.08in;
+  }
+
+  .back-contact dt {
+    flex: none;
+    width: 0.58in;
+    font-size: 5pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .back-contact dd {
+    font-size: 8.8pt;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--navy-deep);
+    white-space: nowrap;
+  }
+
+  .back-qr {
+    position: absolute;
+    top: 0.385in;
+    right: 0.385in;
+    width: 0.62in;
+    text-align: center;
+  }
+
+  .back-qr img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .back-qr p {
+    margin-top: 0.045in;
+    font-size: 4.8pt;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .back-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.36in;
+    /* Content centers within the VISIBLE strip above the trim line
+       (0.125 in of the band is bleed): keeps the micro-text ~0.075 in
+       clear of the cut edge. */
+    padding: 0 0.385in 0.14in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.15in;
+    background: var(--navy-deep);
+    font-size: 5.4pt;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-navy-soft);
+    white-space: nowrap;
+  }
+
+  .back-band em {
+    font-style: normal;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- FRONT — brand field + owner, headshot as a full-bleed chamfered panel -->
+<section class="card" id="front" aria-label="Business card front">
+  <div class="front-field">
+    <svg class="front-motif" viewBox="0 0 340 340" fill="none" aria-hidden="true">
+      <circle cx="170" cy="170" r="150" stroke="#f4b631" stroke-width="1.6" />
+      <circle cx="170" cy="170" r="104" stroke="#f4b631" stroke-width="1.4" stroke-dasharray="5 7" />
+      <circle cx="170" cy="170" r="58" stroke="#f4b631" stroke-width="1.2" />
+    </svg>
+
+    <div class="front-mark">
+      <img src="../../../public/brand/logo-light.png" alt="SCS" />
+    </div>
+
+    <div class="front-person">
+      <span class="gold-rule"></span>
+      <p class="company">Sunshine Climate Solutions</p>
+      <h1>Aaron Thomas</h1>
+      <p class="role">Owner / Founder</p>
+    </div>
+  </div>
+
+  <figure class="front-photo">
+    <img src="../../../src/content/site/images/owner-headshot.jpg" alt="Aaron Thomas, owner and founder of Sunshine Climate Solutions" />
+  </figure>
+  <!-- Gold seam: exact vector path over the panel's left edge + 45° chamfer
+       (same geometry as the panel clip-path, in inches) -->
+  <svg class="front-seams" viewBox="0 0 3.75 2.25" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M2.5 0.18 L2.5 2.25" stroke="#f4b631" stroke-width="0.014" stroke-linecap="round" fill="none" />
+    <path d="M2.5 0.18 L2.68 0" stroke="#f4b631" stroke-width="0.014" stroke-linecap="round" fill="none" />
+  </svg>
+</section>
+
+<!-- BACK — functional information side -->
+<section class="card" id="back" aria-label="Business card back">
+  <div class="back-body">
+    <div class="lockup">
+      <img src="../../../public/brand/logo-dark.png" alt="SCS" />
+      <span class="lockup-name"><strong>Sunshine</strong><span>Climate Solutions</span></span>
+    </div>
+
+    <p class="back-services">
+      HVAC Service &bull; Installation &bull; Maintenance<br />
+      Commercial HVAC &bull; TAB / Commissioning
+    </p>
+
+    <div class="back-contact">
+      <span class="gold-rule"></span>
+      <dl>
+        <div>
+          <dt>Call or text</dt>
+          <dd>(727) 661-5200</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>owner@sunshineclimatesolutions.com</dd>
+        </div>
+        <div>
+          <dt>Website</dt>
+          <dd>sunshineclimatesolutions.com</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="back-qr">
+    <img src="./qr-website.svg" alt="QR code linking to sunshineclimatesolutions.com" />
+    <p>Scan to visit</p>
+  </div>
+
+  <footer class="back-band">
+    <span>Spring Hill, Florida</span>
+    <span><em>EPA Section 608 certified</em></span>
+  </footer>
+</section>
+
+</body>
+</html>
