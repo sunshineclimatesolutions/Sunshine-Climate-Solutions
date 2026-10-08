@@ -178,7 +178,6 @@ Website: [paste the YouTube tracked URL from WHERE-TO-PASTE-UTM-LINKS.md]
   data, sourced from `business.social.linkedin`. The icon is
   `public/images/linkedin-logo.webp` (owner-supplied mark; white margin trimmed only, to match
   the other icons' optical size).
-- The prepared `linkedin_profile` campaign link remains `pending` in
-  `src/config/marketing-links.ts` until it is deliberately activated: paste the tracked URL in the
-  Company Page website field, then remove the `pending` flag and regenerate with
-  `npm run marketing:links`.
+- The tracked `linkedin_profile` campaign link is now **active** in
+  `src/config/marketing-links.ts` (activated 2026-10-08). Paste it in the Company Page website
+  field (see `docs/marketing/WHERE-TO-PASTE-UTM-LINKS.md`).

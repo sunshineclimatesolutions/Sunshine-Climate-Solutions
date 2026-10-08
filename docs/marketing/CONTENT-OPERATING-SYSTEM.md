@@ -9,6 +9,7 @@ SOPs, follow-up, measurement, and decision rules.
 | Need | File |
 | --- | --- |
 | Strategy, 12-week campaign map, query/page ownership | `docs/seo/90-DAY-CONTENT-PLAN.md` |
+| 10-week social production package (20 posts, media assignments, shot lists, calendar) | `docs/marketing/SCS-90-DAY-SOCIAL-CONTENT-COMMAND-SYSTEM.md` |
 | Week-by-week execution tracker | `docs/marketing/90-DAY-CONTENT-CALENDAR.csv` |
 | Weekly KPI capture template | `docs/marketing/WEEKLY-MARKETING-SCORECARD.md` |
 | Review request and response workflow | `docs/marketing/REVIEW-GROWTH-SYSTEM.md` |

@@ -46,9 +46,8 @@ Start with `docs/OPERATIONS-HUB.md` for the complete system map.
   Instagram, TikTok, YouTube, X, LinkedIn, Nextdoor, Yelp, Gab, Parler.
 - **LinkedIn:** Company Page live (owner-approved 2026-10-07) —
   <https://www.linkedin.com/company/sunshine-climate-solutions> — published in the footer/contact
-  social links and `sameAs` structured data. The prepared `linkedin_profile` campaign link stays
-  `pending` until you activate it (paste the tracked URL in the Page's website field, then remove
-  the `pending` flag and regenerate with `npm run marketing:links`).
+  social links and `sameAs` structured data. The tracked `linkedin_profile` campaign link is now
+  active; paste it in the Page's website field (see `docs/marketing/WHERE-TO-PASTE-UTM-LINKS.md`).
 - **TikTok:** business verification is **owner-confirmed completed (2026-10-01)** — verified
   business status in Business Suite ("Verify your business — Good to go!"); the configured
   website is the tracked TikTok UTM URL. This is business verification, **not** a public
