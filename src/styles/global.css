@@ -2600,6 +2600,12 @@ body.nav-open {
    decorative (aria-hidden) — the amounts and percentages are always in text.
    Photo captions describe only what each photograph shows. */
 
+/* Tighter vertical rhythm than the site default — the campaign page is long
+   and should not carry excessive empty space between sections. */
+.support-page .section {
+  padding-block: clamp(2.25rem, 5vw, 3.5rem);
+}
+
 .support-hero {
   background: var(--c-bg);
   border-bottom: 1px solid var(--c-line);
@@ -2646,37 +2652,24 @@ body.nav-open {
   font-weight: 600;
 }
 
-.support-facts {
-  list-style: none;
-  padding: 0;
-  margin: var(--sp-xs) 0 0;
-  display: grid;
-  gap: var(--sp-sm);
-  inline-size: 100%;
-}
-
-@media (min-width: 40em) {
-  .support-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.support-facts li {
-  display: grid;
-  gap: 0.15rem;
-  border-top: 2px solid var(--c-gold);
-  padding-top: var(--sp-2xs);
-}
-
-.support-facts .value {
+.support-proof-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
   font-family: var(--font-head);
-  font-weight: 800;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
   color: var(--c-navy-deep);
 }
 
-.support-facts .label {
-  font-size: var(--text-sm);
-  color: var(--c-ink-soft);
+.support-proof-line::before {
+  content: '';
+  inline-size: 2rem;
+  block-size: 2px;
+  background: var(--c-gold);
+  flex: none;
 }
 
 .support-hero-media {
@@ -2699,11 +2692,26 @@ body.nav-open {
   color: var(--c-ink-soft);
 }
 
-/* Why this matters — three ruled reasons, no cards. */
+/* Why I'm asking — copy block + three ruled reasons, no cards. */
+.support-why-body {
+  display: grid;
+  gap: var(--sp-sm);
+  max-width: 62ch;
+}
+
+.support-why-body p {
+  margin: 0;
+  color: var(--c-ink-soft);
+}
+
+.support-why-body .lead {
+  color: var(--c-ink);
+}
+
 .support-reasons {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: var(--sp-lg) 0 0;
   display: grid;
   gap: var(--sp-md);
 }
@@ -2749,7 +2757,31 @@ body.nav-open {
   color: var(--c-ink);
 }
 
-/* What has already been built — proof ledger. */
+/* The founder — editorial profile treatment: an opening line, the story, an
+   emphasized personal statement, then the principles row. */
+p.support-profile-lead {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  line-height: 1.3;
+  color: var(--c-ink);
+}
+
+.support-profile-statement {
+  margin: var(--sp-lg) 0 0;
+  padding-left: var(--sp-md);
+  border-left: 3px solid var(--c-gold);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: var(--text-h3);
+  line-height: 1.25;
+  color: var(--c-navy-deep);
+  max-width: 34ch;
+}
+
+/* This is not starting from zero — proof ledger. The personally-invested row
+   carries slightly stronger emphasis than the other three rows. */
 .support-ledger {
   list-style: none;
   padding: 0;
@@ -2764,15 +2796,8 @@ body.nav-open {
   padding: var(--sp-sm) 0;
 }
 
-@media (min-width: 40em) {
-  .support-ledger li {
-    grid-template-columns: 9rem minmax(0, 1fr);
-    gap: var(--sp-md);
-    align-items: baseline;
-  }
-}
-
-.support-ledger .label {
+.support-ledger-label {
+  margin: 0;
   font-family: var(--font-head);
   font-weight: 800;
   font-size: var(--text-sm);
@@ -2780,10 +2805,24 @@ body.nav-open {
   color: var(--c-navy);
 }
 
-.support-ledger p {
+.support-ledger-text {
   margin: 0;
   color: var(--c-ink-soft);
-  max-width: 62ch;
+  max-width: 68ch;
+}
+
+.support-ledger li:first-child {
+  border-left: 3px solid var(--c-gold);
+  padding-left: var(--sp-sm);
+}
+
+.support-ledger li:first-child .support-ledger-label {
+  font-size: var(--text-md);
+  color: var(--c-navy-deep);
+}
+
+.support-ledger li:first-child .support-ledger-text {
+  color: var(--c-ink);
 }
 
 /* Evidence strip. */
@@ -2879,7 +2918,7 @@ body.nav-open {
 }
 
 .support-alloc-bar {
-  block-size: 0.5rem;
+  block-size: 0.3rem;
   border-radius: var(--r-full);
   background: var(--c-line);
   overflow: hidden;
@@ -2899,50 +2938,40 @@ body.nav-open {
   max-width: 68ch;
 }
 
-.support-logic {
-  margin-top: var(--sp-md);
-  font-weight: 600;
+.support-alloc-closing {
+  margin: var(--sp-md) 0 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  line-height: 1.4;
   color: var(--c-navy-deep);
+  max-width: 62ch;
 }
 
 .support-disclosure {
-  margin-top: var(--sp-2xs);
+  margin-top: var(--sp-sm);
   font-size: var(--text-sm);
   color: var(--c-ink-soft);
   max-width: 70ch;
 }
 
-/* Where this is going — licensing milestone + community. */
+/* Licensing milestone — deliberately quieter than the $20,000 campaign total
+   so the planning estimate never overpowers the campaign goal. */
 .support-milestone {
-  margin-top: var(--sp-lg);
-  padding: var(--sp-sm) 0 var(--sp-sm) var(--sp-md);
+  padding: var(--sp-xs) 0 var(--sp-xs) var(--sp-md);
   border-left: 3px solid var(--c-gold);
   display: grid;
-  gap: var(--sp-2xs);
+  gap: var(--sp-sm);
   max-width: 56rem;
 }
 
-.support-milestone .estimate-label {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-caps);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  color: var(--c-ink-soft);
-}
-
-.support-milestone .estimate {
+.support-milestone-line {
   margin: 0;
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.125rem);
-  line-height: 1.15;
-  color: var(--c-navy-deep);
-}
-
-.support-milestone h3 {
-  margin-top: var(--sp-2xs);
   font-size: var(--text-lg);
+  line-height: 1.3;
+  color: var(--c-navy-deep);
 }
 
 .support-milestone p {
@@ -2951,14 +2980,9 @@ body.nav-open {
   max-width: 62ch;
 }
 
-.support-milestone .disclaimer {
-  font-size: var(--text-sm);
-}
-
 .support-community {
   display: grid;
-  gap: var(--sp-md);
-  margin-top: var(--sp-xl);
+  gap: var(--sp-lg);
 }
 
 @media (min-width: 48em) {
@@ -2969,15 +2993,51 @@ body.nav-open {
   }
 }
 
-.support-community h3 {
-  font-size: var(--text-h3);
-  margin-bottom: var(--sp-2xs);
+.support-community-copy {
+  display: grid;
+  gap: var(--sp-sm);
 }
 
-.support-community p {
+.support-community-copy p {
   margin: 0;
   color: var(--c-ink-soft);
   max-width: 52ch;
+}
+
+.support-stay-lines {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-2xs) 0 0;
+  display: grid;
+  gap: var(--sp-2xs);
+}
+
+.support-stay-lines li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+.support-stay-lines li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  inline-size: 0.4rem;
+  block-size: 0.4rem;
+  border-radius: var(--r-full);
+  background: var(--c-gold);
+}
+
+.support-stay-closing {
+  margin: var(--sp-sm) 0 0;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  line-height: 1.35;
+  color: var(--c-navy-deep);
+  max-width: 30ch;
 }
 
 .support-community figure {
@@ -3001,13 +3061,27 @@ body.nav-open {
   color: var(--c-ink-soft);
 }
 
-/* Support band — the page's single dark conversion band. */
+/* Support band — the page's single dark conversion band and its strongest
+   section after the hero. */
 .support-band h2 {
-  font-size: var(--text-h2);
+  font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.75rem);
+}
+
+.support-band-body {
+  display: grid;
+  gap: var(--sp-2xs);
+  max-width: 58ch;
+}
+
+.support-band-body p {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--c-on-navy-soft);
 }
 
 .support-cta-row {
-  margin-top: var(--sp-2xs);
+  margin-top: var(--sp-sm);
 }
 
 .support-share-status {
@@ -3024,33 +3098,6 @@ body.nav-open {
 .support-platforms-note {
   margin: 0;
   font-size: var(--text-sm);
-  color: var(--c-on-navy-soft);
-}
-
-.support-quote {
-  margin: 0;
-  padding: var(--sp-2xs) 0 var(--sp-2xs) var(--sp-md);
-  border-left: 3px solid var(--c-gold);
-  max-width: 60ch;
-}
-
-.support-quote p {
-  font-size: var(--text-lg);
-  line-height: 1.45;
-  color: var(--c-ink);
-}
-
-.support-quote footer {
-  margin-top: var(--sp-2xs);
-  font-size: var(--text-sm);
-  color: var(--c-ink-soft);
-}
-
-.support-quote--on-dark p {
-  color: var(--c-on-navy);
-}
-
-.support-quote--on-dark footer {
   color: var(--c-on-navy-soft);
 }
 

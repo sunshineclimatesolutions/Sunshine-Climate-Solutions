@@ -475,18 +475,19 @@ const site = defineCollection({
         hero: z.object({
           eyebrow: z.string(),
           heading: z.string(),
-          lead: z.string(),
-          facts: z.array(z.object({ value: z.string(), label: z.string() })).default([]),
+          paragraphs: z.array(z.string()),
+          proofLine: z.string(),
           portrait: z.object({ image: image(), alt: z.string(), caption: z.string() }),
         }),
         whyCare: z.object({
           heading: z.string(),
-          lead: z.string(),
+          paragraphs: z.array(z.string()),
           reasons: z.array(z.object({ title: z.string(), text: z.string() })),
         }),
         person: z.object({
           heading: z.string(),
           paragraphs: z.array(z.string()),
+          closingLine: z.string(),
           values: z.array(z.string()),
         }),
         built: z.object({
@@ -499,9 +500,9 @@ const site = defineCollection({
         }),
         useOfFunds: z.object({
           heading: z.string(),
-          lead: z.string(),
+          paragraphs: z.array(z.string()),
           totalLabel: z.string(),
-          logic: z.string(),
+          closing: z.string(),
           disclosure: z.string(),
           items: z.array(
             z.object({
@@ -513,26 +514,25 @@ const site = defineCollection({
         }),
         growth: z.object({
           heading: z.string(),
-          lead: z.string(),
+          paragraphs: z.array(z.string()),
           paths: z.array(z.object({ when: z.string(), text: z.string() })),
-          licensing: z.object({
-            heading: z.string(),
-            estimate: z.string(),
-            estimateLabel: z.string(),
-            text: z.string(),
-            disclaimer: z.string(),
-          }),
-          community: z.object({
-            heading: z.string(),
-            text: z.string(),
-            photo: z.object({ image: image(), alt: z.string(), caption: z.string() }),
-          }),
+        }),
+        licensing: z.object({
+          heading: z.string(),
+          estimateLine: z.string(),
+          paragraphs: z.array(z.string()),
+        }),
+        community: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          lines: z.array(z.string()),
+          closing: z.string(),
+          photo: z.object({ image: image(), alt: z.string(), caption: z.string() }),
         }),
         supportBand: z.object({
           eyebrow: z.string(),
           heading: z.string(),
-          quote: z.string(),
-          attribution: z.string(),
+          paragraphs: z.array(z.string()),
           platformsNote: z.string(),
           gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
           givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),

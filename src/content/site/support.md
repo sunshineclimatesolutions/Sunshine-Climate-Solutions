@@ -12,111 +12,132 @@ metaDescription: >-
 
 support:
   hero:
-    eyebrow: Support the Growth Campaign
-    heading: A real business. A real plan. An invitation.
-    lead: >-
-      Sunshine Climate Solutions is already operating and serving real customers in the
-      field. This campaign raises $20,000 to fund the next stage — the capacity, inventory
-      and local demand that turn a working business into a stable one.
-    facts:
-      - value: Operating
-        label: Real HVAC work in the field today.
-      - value: Self-funded
-        label: The operating foundation was paid for by the founder.
-      - value: $20,000
-        label: Growth target with a published allocation.
+    eyebrow: SUPPORT THE NEXT STAGE
+    heading: I’ve already built the foundation. Now I’m asking for help building the next stage.
+    paragraphs:
+      - >-
+        Sunshine Climate Solutions is already operating, already serving customers, and
+        already backed by my own money, tools, time, and reputation.
+      - >-
+        This campaign is about strengthening what already exists — so I can build a more
+        capable, better-equipped, properly capitalized HVAC company that is prepared to serve
+        this community for the long term.
+    proofLine: Founder-funded. Field-tested. Built to grow responsibly.
     portrait:
       image: ./images/owner-headshot.jpg
       alt: Portrait of Aaron Thomas, founder and owner-operator of Sunshine Climate Solutions.
       caption: Aaron Thomas — founder and owner-operator.
   whyCare:
-    heading: Why This Matters
-    lead: >-
-      You're not funding a concept. You're adding capacity to a working local business —
-      and helping keep the kind of service you want available in your community.
-    reasons:
-      - title: More capacity to serve
-        text: >-
-          Inventory on the truck, equipment readiness and operating stability mean more work
-          completed on time — and fewer jobs the business has to turn away.
-      - title: Skilled trade work stays local
-        text: >-
-          Supporting a locally owned trade business keeps the work, the wages and the
-          accountability in the community.
-      - title: A company built to stay
-        text: >-
-          The goal is a business that keeps serving this area for decades — not one that
-          disappears when the market shifts.
-  person:
-    heading: Who Is Building This
+    heading: Why I’m asking
     paragraphs:
+      - I’m not asking anyone to fund an idea I haven’t acted on.
       - >-
-        My name is Aaron Thomas. I've spent five years working in residential and commercial
-        HVAC — installation, service and maintenance — and Sunshine Climate Solutions is the
-        company I'm building with that experience.
+        I’ve already invested in the truck, tools, diagnostic equipment, website, insurance,
+        operating systems, and field capability needed to put Sunshine Climate Solutions to
+        work.
       - >-
-        I'm a white Christian American of European descent. My faith, my family and my
-        heritage are where I learned what responsibility means: keep your word, know your
-        craft, answer for your work, serve your neighbors, and pass useful knowledge to the
-        next person.
+        What I do not have yet is the financial depth of a company that has been established
+        for twenty years.
+      - That is what this campaign is meant to help build.
       - >-
-        That is the standard this company is built on, and it's why I'm building it in the
-        open — with my name on the work. I would rather earn this community's trust one job
-        at a time than chase it with advertising.
+        More inventory on the truck. More room to handle operating expenses without slowing
+        down. More consistent local marketing. More capacity to keep investing in the tools,
+        licensing, and infrastructure that allow a young company to grow without lowering its
+        standards.
+    reasons:
+      - title: Serve more customers without cutting corners
+        text: >-
+          Stronger inventory and operating reserves mean fewer unnecessary delays and more
+          room to finish work properly.
+      - title: Build something that lasts
+        text: >-
+          The goal is not fast growth for its own sake. It is a stable local company that
+          becomes stronger year after year.
+      - title: Keep the standard high
+        text: >-
+          Growth only matters if the quality of the work, the accountability behind it, and
+          the way customers are treated grow with it.
+  person:
+    heading: The man behind the company
+    paragraphs:
+      - My name is Aaron Thomas.
+      - >-
+        I have spent the last several years working in residential and commercial HVAC —
+        installing systems, diagnosing problems, servicing equipment, studying airflow,
+        electrical systems, controls, and building performance.
+      - Sunshine Climate Solutions is the company I am building from that experience.
+      - >-
+        I am a Christian, an American, and a white man of European descent. My faith, family,
+        and heritage have shaped the standards I try to live by: know your craft, keep your
+        word, answer for your work, serve your neighbors, and leave something useful behind
+        for the next person.
+      - >-
+        Those are not slogans I chose for a website. They are the standards I want this
+        company judged by.
+      - >-
+        I want Sunshine Climate Solutions to earn trust the old-fashioned way — by doing
+        capable work, explaining what we find, treating people fairly, standing behind what
+        we do, and continuing to get better at the craft.
+    closingLine: My name is on the company. I intend to build it like that matters.
     values:
-      - Keep your word.
       - Know the craft.
+      - Keep your word.
       - Answer for your work.
       - Serve your neighbors.
       - Build to last.
   built:
-    heading: What Has Already Been Built
+    heading: This is not starting from zero
     lead: >-
-      Most campaigns start with an idea. This one starts with an operating foundation that
-      already exists.
+      Before asking anyone else to support Sunshine Climate Solutions, I put my own money
+      behind it first.
     proof:
-      - label: BUILT
+      - label: ABOUT $25,000 PERSONALLY INVESTED
         text: >-
-          A complete field platform — service truck with company signage, professional HVAC
-          tools, diagnostic and airflow instrumentation, plus the website, customer systems
-          and documentation that run alongside the work.
-      - label: WORKING
+          Truck, tools, diagnostic equipment, business infrastructure, insurance, marketing
+          assets, and operating capability were funded before this campaign went live.
+      - label: REAL EQUIPMENT. REAL FIELD CAPABILITY.
         text: >-
-          Real residential and commercial HVAC work: service, diagnostics, installation,
-          maintenance and TAB support, performed on real systems in the field.
-      - label: INVESTED
+          The company already has the tools and instrumentation needed for residential
+          service, installation, airflow diagnostics, electrical troubleshooting, and
+          commercial support.
+      - label: REAL WORK ALREADY BEING PERFORMED
         text: >-
-          Approximately $25,000 of the founder's own capital has already gone into the
-          operating foundation.
-      - label: NEXT
+          Sunshine Climate Solutions is already operating in the field — not waiting for
+          funding before beginning.
+      - label: THE NEXT STEP
         text: >-
-          $20,000 of growth capital to add capacity — and a longer-term licensing milestone.
-          Both are laid out below.
+          The next challenge is not proving the concept. It is giving the company enough
+          operating strength to grow without compromising the work.
     photos:
       - image: ./images/work-truck.jpg
         alt: >-
-          The SCS service truck, a white Ram 2500 with company graphics, parked under
-          Florida oaks.
-        caption: The service truck — the working platform the company operates from.
+          The SCS service truck, a white Ram 2500 with company graphics, parked under Florida
+          oaks.
+        caption: The operating platform already on the road.
       - image: ./images/brazed-lineset-detail.jpg
         alt: >-
           Close view of brazed copper refrigerant lines, a filter-drier and a compressor
           inside an outdoor unit.
-        caption: Brazed and sealed refrigerant connections inside an outdoor unit.
+        caption: Workmanship should be visible even in the details most customers never see.
       - image: ./images/static-pressure-display.jpg
         alt: >-
           Alnor digital manometer displaying a reading of -0.0439 inches of water column.
-        caption: A field reading captured on a digital manometer.
+        caption: Measure first. Understand the system. Then make the recommendation.
   useOfFunds:
-    heading: What the $20,000 Does
-    lead: >-
-      Every dollar is allocated to a specific operating need. The logic is simple: capital
-      builds capacity, capacity serves customers, and customers build a stronger operating
-      base.
+    heading: What your support actually builds
+    paragraphs:
+      - >-
+        The campaign has one purpose: give a young operating company more strength behind the
+        work it is already doing.
+      - >-
+        The $20,000 is not a vague “growth fund.” It is assigned to specific operating needs
+        that make the company more capable, more resilient, and better positioned to serve
+        customers consistently.
     totalLabel: Growth campaign target
-    logic: >-
-      Build the business → strengthen operations → pursue licensing → serve more customers
-      responsibly.
+    closing: >-
+      The purpose is simple: stronger operations create better service, better service
+      creates stronger customer relationships, and those relationships create a business
+      that can stand on its own.
     disclosure: >-
       Actual spending may shift modestly between categories as operating needs change. The
       goal stays the same: help the company acquire customers, complete work efficiently and
@@ -125,79 +146,97 @@ support:
       - label: Operating Reserve
         amount: 6000
         note: >-
-          Working capital that absorbs normal timing differences between expenses and
-          customer payments.
+          Creates breathing room between expenses and customer payments so short-term cash
+          timing does not dictate long-term decisions.
       - label: Service Inventory & Job Materials
         amount: 4000
         note: >-
-          Common repair parts and materials stocked on the truck, so jobs finish faster and
-          supply runs stop eating the day.
+          Keeps more common parts and materials on hand so fewer jobs lose time to
+          unnecessary supply runs.
       - label: Customer Acquisition & Local Marketing
         amount: 4000
         note: >-
-          Puts the already-built website, profile and content system to work generating
-          qualified local demand.
+          Turns the website, content, local outreach, and growing reputation into a
+          consistent pipeline of paying work.
       - label: Vehicle & Field Readiness
         amount: 2500
         note: >-
-          An organized, ready truck and field setup — less time searching, more time
-          working.
+          Keeps the truck, storage, and field setup organized, stocked, and prepared for
+          daily service.
       - label: Licensing, Insurance & Operating Costs
         amount: 2000
-        note: Keeps the company properly positioned and operating responsibly.
+        note: >-
+          Supports the ongoing costs of operating responsibly while the company continues
+          toward its next licensing milestone.
       - label: Diagnostic Equipment & Tool Reserve
         amount: 1500
         note: >-
-          Keeps the measurement tools behind the diagnostics maintained, calibrated and
-          ready.
+          Maintains and expands the instruments used to diagnose systems accurately rather
+          than relying on guesswork.
   growth:
-    heading: Where This Is Going
-    lead: >-
-      The foundation is built. What the business needs now is capital depth and customer
-      volume — the two things that make a young company increasingly self-sustaining.
+    heading: What I’m trying to build
+    paragraphs:
+      - I am not trying to build the biggest HVAC company in Florida.
+      - >-
+        I am trying to build one that people remember for being capable, fair, technically
+        serious, and dependable.
     paths:
-      - when: Now
-        text: Strengthen inventory, reserves and field readiness with the growth capital.
-      - when: The next 90 days
+      - when: RIGHT NOW
         text: >-
-          Put the capital to work: local demand, customer relationships, honest reviews and
-          repeat maintenance business.
-      - when: Beyond
+          Strengthen inventory, operating reserves, field readiness, and local customer
+          acquisition.
+      - when: OVER THE NEXT 90 DAYS
         text: >-
-          Enter the next season stronger — organized, visible, better capitalized and
-          steadily more self-sustaining.
-    licensing:
-      heading: The Next Major Milestone
-      estimate: Approximately 6 months · approximately $7,500
-      estimateLabel: Long-term licensing objective — current planning estimate
-      text: >-
-        Licensing is the next step in building the company properly. It strengthens the
-        company's long-term operating position, expands what the business will be able to
-        take on, and supports responsible growth. It is a separate milestone from this
-        campaign.
-      disclaimer: >-
-        Both the cost and the timeline are current planning estimates only — not guarantees
-        — and this campaign does not automatically fund the licensing milestone.
-    community:
-      heading: Built to Stay
-      text: >-
-        The goal is a company that remains part of this community: keeping skilled trade
-        work local, serving homeowners and businesses here for decades, and — as the
-        business grows — becoming a place where the next tradesman can learn the craft.
-      photo:
-        image: ./images/bottling-factory-field-visit.jpg
-        alt: >-
-          The owner in a high-visibility vest walking a commercial bottling facility
-          production line during a field visit.
-        caption: A commercial field visit — already part of the work.
+          Turn that stronger operating position into more completed work, more customer
+          relationships, more legitimate reviews, and more repeat business.
+      - when: THE NEXT MAJOR MILESTONE
+        text: >-
+          Continue toward the licensing objective that will strengthen the company’s
+          long-term position and expand what it can responsibly take on.
+  licensing:
+    heading: 'The next major milestone: licensing'
+    estimateLine: 'Current planning estimate: about six months / about $7,500'
+    paragraphs:
+      - Licensing is the next major step in building Sunshine Climate Solutions properly.
+      - >-
+        It strengthens the company’s long-term position, expands what the business can
+        responsibly take on, and creates a stronger foundation for future growth.
+      - >-
+        This campaign does not automatically fund that entire milestone. The timeline and
+        cost are current planning estimates, not guarantees. But the stronger the company
+        becomes now, the better positioned it will be to reach that milestone responsibly.
+  community:
+    heading: Built to stay
+    paragraphs:
+      - >-
+        I do not want Sunshine Climate Solutions to be a short-lived side business or another
+        name that disappears after a few years.
+      - I want to build something that remains part of this community.
+    lines:
+      - A company that homeowners can call years from now.
+      - A company businesses can rely on.
+      - A company that keeps skilled trade work local.
+      - >-
+        A company that eventually gives the next technician a place to learn the craft the
+        right way.
+    closing: Something worth putting my name on. Something worth leaving behind.
+    photo:
+      image: ./images/bottling-factory-field-visit.jpg
+      alt: >-
+        The owner in a high-visibility vest walking a commercial bottling facility production
+        line during a field visit.
+      caption: Commercial field experience is already part of the foundation being built.
   supportBand:
     eyebrow: Support the Campaign
-    heading: Help Close the Growth Gap
-    quote: >-
-      I'm not asking anyone to carry this business for me. I've already put my own money,
-      labor and reputation behind it. I'm asking for help closing the gap so I can build
-      the kind of HVAC company this community deserves.
-    attribution: Aaron Thomas, Founder & Owner/Operator
+    heading: 'If you believe in what I’m building, I’m asking you to stand behind it.'
+    paragraphs:
+      - >-
+        I have already put my own money, labor, time, and reputation behind Sunshine Climate
+        Solutions.
+      - I am not asking anyone to carry the business for me.
+      - >-
+        I am asking for help putting more strength behind what already exists — so I can keep
+        building it the right way.
     platformsNote: Two platforms, same objective — choose whichever you prefer.
     gofundme:
       name: GoFundMe
@@ -205,57 +244,48 @@ support:
     givesendgo:
       name: GiveSendGo
       ctaLabel: Support on GiveSendGo
-    waysHeading: Not everyone can contribute — that's not the only way to help.
+    waysHeading: You don’t have to contribute money to help.
     ways:
-      - title: Share this page
-        text: Send it to someone who might care about a local business like this.
-      - title: Refer a neighbor
-        text: When someone needs HVAC work, point them to SCS.
+      - title: Share the campaign
+        text: >-
+          Put it in front of someone who believes in local business, skilled trades, or what
+          this company is trying to become.
+      - title: Refer someone who needs HVAC work
+        text: Real customers are the most valuable support any business can receive.
       - title: Leave an honest review
-        text: After legitimate service, a review helps other homeowners find the company.
-      - title: Choose SCS
-        text: Hiring the business for real HVAC work helps it grow directly.
+        text: >-
+          After legitimate service, an honest review helps the next customer decide whether
+          SCS deserves their trust.
+      - title: Hire Sunshine Climate Solutions
+        text: If the need is real, simply choosing SCS keeps the business moving forward.
   faqs:
     - question: Is Sunshine Climate Solutions already operating?
       answer: >-
-        Yes. The owner is performing HVAC work in the field today, and the truck, tools and
-        customer systems are in place.
-    - question: What exactly does the money support?
+        Yes. SCS is already performing real HVAC work. This campaign is intended to
+        strengthen an operating business, not fund an idea that has not started.
+    - question: What does the $20,000 support?
       answer: >-
-        Six specific categories: operating reserve, service inventory, customer
-        acquisition, field readiness, licensing/insurance/operating costs, and a diagnostic
-        tool reserve. The full allocation is published on this page.
-    - question: Is this a charity?
+        Operating reserves, service inventory, local marketing, field readiness, business
+        operating costs, and diagnostic equipment. The allocation is published on this page
+        so supporters can see exactly what the campaign is intended to strengthen.
+    - question: Is this a charity or investment?
       answer: >-
-        No. Contributions support a privately owned business. They are not tax-deductible
-        charitable donations.
-    - question: Is this an investment or equity offering?
+        No. Sunshine Climate Solutions is a privately owned business. Contributions are
+        support for the growth of the company; they do not represent equity, repayment,
+        ownership, or an investment return.
+    - question: How can I help without contributing money?
       answer: >-
-        No. Contributors receive no ownership, equity, repayment, interest or financial
-        return, and none is promised. This is crowdfunding-style support for a private
-        business.
-    - question: Why does an operating business need support?
-      answer: >-
-        The operating platform is paid for; the remaining gap is capacity — inventory,
-        working capital, customer acquisition and field readiness during early growth. This
-        is a growth plan, not a rescue.
-    - question: Why are there two fundraising platforms?
-      answer: >-
-        Different supporters prefer different platforms. Both campaigns support the same
-        business-growth objective, and neither is officially preferred over the other.
-    - question: Can I help without contributing money?
-      answer: >-
-        Yes. Share the campaign, refer customers, leave an honest review after real
-        service, or hire SCS for legitimate work.
+        Share the campaign, refer someone who needs HVAC work, leave an honest review after
+        legitimate service, or hire SCS when you genuinely need the work.
   founderVideo:
-    heading: A Word From the Founder
+    heading: Hear it from me directly
     lead: >-
-      Aaron is recording a short founder video about why this company exists and what this
-      campaign is for. It will appear here as soon as it is published.
+      I’ll use this short video to explain why I started Sunshine Climate Solutions, what I
+      want this company to become, and why I’m asking for support.
     # Rendered once business.fundraising.founderVideoUrl is set to a valid public
     # YouTube link; the placeholder lead above stays for the unset state.
     readyLead: >-
       Aaron recorded a short founder video about why this company exists and what this
       campaign is for.
-    pending: Founder video — coming soon.
+    pending: Founder video coming soon.
 ---

@@ -41,14 +41,255 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
-  <!-- ── 1. Hero: what is happening + the invitation ─────────────────────── -->
-  <section class="support-hero">
-    <div class="container support-hero-inner">
-      <div class="support-hero-copy">
-        <p class="eyebrow">{s.hero.eyebrow}</p>
-        <h1>{s.hero.heading}</h1>
-        <p class="lead">{s.hero.lead}</p>
-        <div class="cluster support-hero-actions">
+  <div class="support-page">
+    <!-- ── 1. Hero: what is happening + the invitation ───────────────────── -->
+    <section class="support-hero">
+      <div class="container support-hero-inner">
+        <div class="support-hero-copy">
+          <p class="eyebrow">{s.hero.eyebrow}</p>
+          <h1>{s.hero.heading}</h1>
+          {s.hero.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+          <p class="support-proof-line">{s.hero.proofLine}</p>
+          <div class="cluster support-hero-actions">
+            <a
+              class="btn btn--gold btn--lg"
+              href={gofundme}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-support-platform="gofundme"
+            >
+              {s.supportBand.gofundme.ctaLabel}
+            </a>
+            <a
+              class="btn btn--gold btn--lg"
+              href={givesendgo}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-support-platform="givesendgo"
+            >
+              {s.supportBand.givesendgo.ctaLabel}
+            </a>
+          </div>
+          <p class="support-hero-secondary">
+            <a href="#support">Or help another way <Icon name="arrow-right" size={16} /></a>
+          </p>
+        </div>
+        <figure class="support-hero-media">
+          <Image
+            src={s.hero.portrait.image}
+            alt={s.hero.portrait.alt}
+            widths={[480, 720, 960]}
+            sizes="(min-width: 56em) 38vw, 92vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption>{s.hero.portrait.caption}</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── 2. Why I'm asking ──────────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="support-why-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-why-heading">{s.whyCare.heading}</h2>
+        </div>
+        <div class="support-why-body">
+          {
+            s.whyCare.paragraphs.map((paragraph, index) => (
+              <p class={index === 0 ? 'lead' : undefined}>{paragraph}</p>
+            ))
+          }
+        </div>
+        <ul class="support-reasons">
+          {
+            s.whyCare.reasons.map((reason) => (
+              <li>
+                <h3>{reason.title}</h3>
+                <p>{reason.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 3. The man behind the company ──────────────────────────────────── -->
+    <section class="section section--alt support-profile" aria-labelledby="support-person-heading">
+      <div class="container container--narrow">
+        <div class="section-heading">
+          <h2 id="support-person-heading">{s.person.heading}</h2>
+        </div>
+        <div class="prose support-profile-body">
+          {
+            s.person.paragraphs.map((paragraph, index) => (
+              <p class={index === 0 ? 'support-profile-lead' : undefined}>{paragraph}</p>
+            ))
+          }
+        </div>
+        <p class="support-profile-statement">{s.person.closingLine}</p>
+        <ul class="support-values">
+          {
+            s.person.values.map((value) => (
+              <li>
+                <Icon name="check" size={18} /> {value}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 4. This is not starting from zero ──────────────────────────────── -->
+    <section class="section" aria-labelledby="support-built-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-built-heading">{s.built.heading}</h2>
+          <p class="lead">{s.built.lead}</p>
+        </div>
+        <ul class="support-ledger">
+          {
+            s.built.proof.map((row) => (
+              <li>
+                <p class="support-ledger-label">{row.label}</p>
+                <p class="support-ledger-text">{row.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+        {
+          s.built.photos.length > 0 && (
+            <div class="support-evidence">
+              {s.built.photos.map((photo) => (
+                <figure>
+                  <Image
+                    src={photo.image}
+                    alt={photo.alt}
+                    widths={[400, 800]}
+                    sizes="(min-width: 48em) 30vw, 92vw"
+                    loading="lazy"
+                  />
+                  <figcaption>{photo.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- ── 5. What your support actually builds ───────────────────────────── -->
+    <section class="section section--alt" id="use-of-funds" aria-labelledby="support-funds-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-funds-heading">{s.useOfFunds.heading}</h2>
+          {s.useOfFunds.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+        </div>
+        <div class="support-total">
+          <span class="support-total-amount">{fmt(total)}</span>
+          <span class="support-total-label">{s.useOfFunds.totalLabel}</span>
+        </div>
+        <ul class="support-alloc">
+          {
+            s.useOfFunds.items.map((item) => {
+              const share = Math.round((item.amount / total) * 100);
+              return (
+                <li>
+                  <div class="support-alloc-head">
+                    <h3>{item.label}</h3>
+                    <span class="support-alloc-amount">
+                      {fmt(item.amount)} · {share}%
+                    </span>
+                  </div>
+                  <div class="support-alloc-bar" aria-hidden="true">
+                    <span style={`width: ${share}%`} />
+                  </div>
+                  <p class="support-alloc-note">{item.note}</p>
+                </li>
+              );
+            })
+          }
+        </ul>
+        <p class="support-alloc-closing">{s.useOfFunds.closing}</p>
+        <p class="support-disclosure">{s.useOfFunds.disclosure}</p>
+      </div>
+    </section>
+
+    <!-- ── 6. What I'm trying to build ────────────────────────────────────── -->
+    <section class="section" aria-labelledby="support-growth-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-growth-heading">{s.growth.heading}</h2>
+          {s.growth.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+        </div>
+        <div class="steps support-path">
+          {
+            s.growth.paths.map((entry, index) => (
+              <div class="step">
+                <span class="step-num" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3>{entry.when}</h3>
+                <p>{entry.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7. The next major milestone: licensing ─────────────────────────── -->
+    <section class="section section--alt" aria-labelledby="support-licensing-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-licensing-heading">{s.licensing.heading}</h2>
+        </div>
+        <div class="support-milestone">
+          <p class="support-milestone-line">{s.licensing.estimateLine}</p>
+          <div class="prose">
+            {s.licensing.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 8. Built to stay ───────────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="support-community-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="support-community-heading">{s.community.heading}</h2>
+        </div>
+        <div class="support-community">
+          <div class="support-community-copy">
+            {s.community.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            <ul class="support-stay-lines">
+              {s.community.lines.map((line) => <li>{line}</li>)}
+            </ul>
+            <p class="support-stay-closing">{s.community.closing}</p>
+          </div>
+          <figure>
+            <Image
+              src={s.community.photo.image}
+              alt={s.community.photo.alt}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 48em) 46vw, 92vw"
+              loading="lazy"
+            />
+            <figcaption>{s.community.photo.caption}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 9. Support: the page's single dark conversion band ─────────────── -->
+    <section class="band--charcoal support-band on-dark" id="support" aria-labelledby="support-cta-heading">
+      <div class="container container--narrow">
+        <p class="eyebrow">{s.supportBand.eyebrow}</p>
+        <h2 id="support-cta-heading">{s.supportBand.heading}</h2>
+        <div class="support-band-body">
+          {s.supportBand.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+        <div class="cluster support-cta-row">
           <a
             class="btn btn--gold btn--lg"
             href={gofundme}
@@ -67,310 +308,91 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
           >
             {s.supportBand.givesendgo.ctaLabel}
           </a>
-        </div>
-        <p class="support-hero-secondary">
-          <a href="#support">Or help another way <Icon name="arrow-right" size={16} /></a>
-        </p>
-        <ul class="support-facts">
-          {
-            s.hero.facts.map((fact) => (
-              <li>
-                <span class="value">{fact.value}</span>
-                <span class="label">{fact.label}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <figure class="support-hero-media">
-        <Image
-          src={s.hero.portrait.image}
-          alt={s.hero.portrait.alt}
-          widths={[480, 720, 960]}
-          sizes="(min-width: 56em) 38vw, 92vw"
-          loading="eager"
-          fetchpriority="high"
-        />
-        <figcaption>{s.hero.portrait.caption}</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ── 2. Why this matters ─────────────────────────────────────────────── -->
-  <section class="section" aria-labelledby="support-why-heading">
-    <div class="container">
-      <div class="section-heading">
-        <h2 id="support-why-heading">{s.whyCare.heading}</h2>
-        <p class="lead">{s.whyCare.lead}</p>
-      </div>
-      <ul class="support-reasons">
-        {
-          s.whyCare.reasons.map((reason) => (
-            <li>
-              <h3>{reason.title}</h3>
-              <p>{reason.text}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── 3. The person behind it ─────────────────────────────────────────── -->
-  <section class="section section--alt" aria-labelledby="support-person-heading">
-    <div class="container container--narrow">
-      <div class="section-heading">
-        <h2 id="support-person-heading">{s.person.heading}</h2>
-      </div>
-      <div class="prose">
-        {s.person.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-      <ul class="support-values">
-        {
-          s.person.values.map((value) => (
-            <li>
-              <Icon name="check" size={18} /> {value}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- ── 4. What has already been built (proof, not a résumé) ────────────── -->
-  <section class="section" aria-labelledby="support-built-heading">
-    <div class="container">
-      <div class="section-heading">
-        <h2 id="support-built-heading">{s.built.heading}</h2>
-        <p class="lead">{s.built.lead}</p>
-      </div>
-      <ul class="support-ledger">
-        {
-          s.built.proof.map((row) => (
-            <li>
-              <span class="label">{row.label}</span>
-              <p>{row.text}</p>
-            </li>
-          ))
-        }
-      </ul>
-      {
-        s.built.photos.length > 0 && (
-          <div class="support-evidence">
-            {s.built.photos.map((photo) => (
-              <figure>
-                <Image
-                  src={photo.image}
-                  alt={photo.alt}
-                  widths={[400, 800]}
-                  sizes="(min-width: 48em) 30vw, 92vw"
-                  loading="lazy"
-                />
-                <figcaption>{photo.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
-        )
-      }
-    </div>
-  </section>
-
-  <!-- ── 5. What the $20,000 does ────────────────────────────────────────── -->
-  <section class="section section--alt" id="use-of-funds" aria-labelledby="support-funds-heading">
-    <div class="container">
-      <div class="section-heading">
-        <p class="eyebrow">Planned Use of Funds</p>
-        <h2 id="support-funds-heading">{s.useOfFunds.heading}</h2>
-        <p class="lead">{s.useOfFunds.lead}</p>
-      </div>
-      <div class="support-total">
-        <span class="support-total-amount">{fmt(total)}</span>
-        <span class="support-total-label">{s.useOfFunds.totalLabel}</span>
-      </div>
-      <ul class="support-alloc">
-        {
-          s.useOfFunds.items.map((item) => {
-            const share = Math.round((item.amount / total) * 100);
-            return (
-              <li>
-                <div class="support-alloc-head">
-                  <h3>{item.label}</h3>
-                  <span class="support-alloc-amount">
-                    {fmt(item.amount)} · {share}%
-                  </span>
-                </div>
-                <div class="support-alloc-bar" aria-hidden="true">
-                  <span style={`width: ${share}%`} />
-                </div>
-                <p class="support-alloc-note">{item.note}</p>
-              </li>
-            );
-          })
-        }
-      </ul>
-      <p class="support-logic">{s.useOfFunds.logic}</p>
-      <p class="support-disclosure">{s.useOfFunds.disclosure}</p>
-    </div>
-  </section>
-
-  <!-- ── 6. Where this is going: path, licensing milestone, community ────── -->
-  <section class="section" aria-labelledby="support-growth-heading">
-    <div class="container">
-      <div class="section-heading">
-        <h2 id="support-growth-heading">{s.growth.heading}</h2>
-        <p class="lead">{s.growth.lead}</p>
-      </div>
-      <div class="steps support-path">
-        {
-          s.growth.paths.map((entry, index) => (
-            <div class="step">
-              <span class="step-num" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3>{entry.when}</h3>
-              <p>{entry.text}</p>
-            </div>
-          ))
-        }
-      </div>
-      <div class="support-milestone">
-        <p class="estimate-label">{s.growth.licensing.estimateLabel}</p>
-        <p class="estimate">{s.growth.licensing.estimate}</p>
-        <h3>{s.growth.licensing.heading}</h3>
-        <p>{s.growth.licensing.text}</p>
-        <p class="disclaimer">{s.growth.licensing.disclaimer}</p>
-      </div>
-      <div class="support-community">
-        <div>
-          <h3>{s.growth.community.heading}</h3>
-          <p>{s.growth.community.text}</p>
-        </div>
-        <figure>
-          <Image
-            src={s.growth.community.photo.image}
-            alt={s.growth.community.photo.alt}
-            widths={[480, 800, 1200]}
-            sizes="(min-width: 48em) 46vw, 92vw"
-            loading="lazy"
-          />
-          <figcaption>{s.growth.community.photo.caption}</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 7. Support: the page's single dark conversion band ──────────────── -->
-  <section class="band--charcoal support-band on-dark" id="support" aria-labelledby="support-cta-heading">
-    <div class="container container--narrow">
-      <p class="eyebrow">{s.supportBand.eyebrow}</p>
-      <h2 id="support-cta-heading">{s.supportBand.heading}</h2>
-      <blockquote class="support-quote support-quote--on-dark">
-        <p>{s.supportBand.quote}</p>
-        <footer>{s.supportBand.attribution}</footer>
-      </blockquote>
-      <div class="cluster support-cta-row">
-        <a
-          class="btn btn--gold btn--lg"
-          href={gofundme}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-support-platform="gofundme"
-        >
-          {s.supportBand.gofundme.ctaLabel}
-        </a>
-        <a
-          class="btn btn--gold btn--lg"
-          href={givesendgo}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-support-platform="givesendgo"
-        >
-          {s.supportBand.givesendgo.ctaLabel}
-        </a>
-        <button type="button" class="btn btn--outline-light btn--lg" data-share-support>
-          Share This Campaign
-        </button>
-      </div>
-      <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
-      <p class="support-platforms-note">{s.supportBand.platformsNote}</p>
-      <div class="support-ways">
-        <h3>{s.supportBand.waysHeading}</h3>
-        <ul class="support-ways-list">
-          {
-            s.supportBand.ways.map((way) => (
-              <li>
-                <h4>{way.title}</h4>
-                <p>{way.text}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 8. Transparency FAQ ─────────────────────────────────────────────── -->
-  <section class="section" aria-labelledby="support-faq-heading">
-    <div class="container container--narrow">
-      <div class="section-heading">
-        <h2 id="support-faq-heading">Transparency FAQ</h2>
-      </div>
-      <div class="faq-list">
-        {
-          s.faqs.map((faq) => (
-            <FaqItem question={faq.question}>
-              <p>{faq.answer}</p>
-            </FaqItem>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 9. Founder video ────────────────────────────────────────────────── -->
-  {
-    /* Founder video: set business.fundraising.founderVideoUrl in
-       src/config/business.ts to the approved public YouTube watch/share link.
-       This section then switches automatically from the designed placeholder
-       to a privacy-enhanced click-to-play embed (youtube-nocookie), loaded only
-       when the visitor presses play. No change is needed in this file or in
-       support.md. Non-YouTube values fail closed to the placeholder. */
-  }
-  <section class="section section--alt" aria-labelledby="support-video-heading">
-    <div class="container container--narrow">
-      <div class="section-heading">
-        <h2 id="support-video-heading">{s.founderVideo.heading}</h2>
-        <p class="lead">{founderVideoLead}</p>
-      </div>
-      {
-        founderVideoEmbedUrl ? (
-          <button
-            type="button"
-            class="support-video-frame support-video-frame--playable"
-            data-founder-video
-            data-embed-url={founderVideoEmbedUrl}
-            data-cta="support-founder-video"
-          >
-            <span class="support-video-play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
-                <path d="M8 5.5v13l10.5-6.5z" />
-              </svg>
-            </span>
-            <span class="support-video-label">Watch the Founder Video</span>
+          <button type="button" class="btn btn--outline-light btn--lg" data-share-support>
+            Share This Campaign
           </button>
-        ) : (
-          <div class="support-video-frame">
-            <span class="support-video-play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
-                <path d="M8 5.5v13l10.5-6.5z" />
-              </svg>
-            </span>
-            <p class="support-video-label">{s.founderVideo.pending}</p>
-          </div>
-        )
-      }
-    </div>
-  </section>
+        </div>
+        <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
+        <p class="support-platforms-note">{s.supportBand.platformsNote}</p>
+        <div class="support-ways">
+          <h3>{s.supportBand.waysHeading}</h3>
+          <ul class="support-ways-list">
+            {
+              s.supportBand.ways.map((way) => (
+                <li>
+                  <h4>{way.title}</h4>
+                  <p>{way.text}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 10. Transparency FAQ ───────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="support-faq-heading">
+      <div class="container container--narrow">
+        <div class="section-heading">
+          <h2 id="support-faq-heading">Transparency FAQ</h2>
+        </div>
+        <div class="faq-list">
+          {
+            s.faqs.map((faq) => (
+              <FaqItem question={faq.question}>
+                <p>{faq.answer}</p>
+              </FaqItem>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 11. Founder video ──────────────────────────────────────────────── -->
+    {
+      /* Founder video: set business.fundraising.founderVideoUrl in
+         src/config/business.ts to the approved public YouTube watch/share link.
+         This section then switches automatically from the designed placeholder
+         to a privacy-enhanced click-to-play embed (youtube-nocookie), loaded only
+         when the visitor presses play. No change is needed in this file or in
+         support.md. Non-YouTube values fail closed to the placeholder. */
+    }
+    <section class="section section--alt" aria-labelledby="support-video-heading">
+      <div class="container container--narrow">
+        <div class="section-heading">
+          <h2 id="support-video-heading">{s.founderVideo.heading}</h2>
+          <p class="lead">{founderVideoLead}</p>
+        </div>
+        {
+          founderVideoEmbedUrl ? (
+            <button
+              type="button"
+              class="support-video-frame support-video-frame--playable"
+              data-founder-video
+              data-embed-url={founderVideoEmbedUrl}
+              data-cta="support-founder-video"
+            >
+              <span class="support-video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
+                  <path d="M8 5.5v13l10.5-6.5z" />
+                </svg>
+              </span>
+              <span class="support-video-label">Watch the Founder Video</span>
+            </button>
+          ) : (
+            <div class="support-video-frame">
+              <span class="support-video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
+                  <path d="M8 5.5v13l10.5-6.5z" />
+                </svg>
+              </span>
+              <p class="support-video-label">{s.founderVideo.pending}</p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </div>
 
   <!-- Share: native Web Share API, clipboard fallback. No SDKs, no trackers,
        no personal data; the canonical clean URL is shared. -->
