@@ -48,6 +48,18 @@ These are copies/exports of the approved Logo 2 mark — no new logo was created
 and the geometry is untouched. Both fit a circular crop with margin (the
 lockup occupies ~62% of the width, centered).
 
+## Fundraising platform marks (`public/images/`)
+
+Owner-authorized for use on the `/support/` campaign page (authorized 2026-10-09).
+
+| Platform | File | Source | Note |
+| --- | --- | --- | --- |
+| GoFundMe | `gofundme-logo.webp` | Owner-supplied `gofundme2600.logowik.com.webp` (retained unmodified in `public/images/`) | Trimmed to the wordmark and resized to 120 px height for the support-page action. |
+| GiveSendGo | `givesendgo-logo.png` | Owner-supplied `givesendgo-logo-png_seeklogo-627102.png` (retained unmodified) | Trimmed to the wordmark and resized to 120 px height for the support-page action. |
+
+Both marks link only to the configured SCS fundraiser destinations and are used
+with the owner's authorization; trademarks remain the property of their owners.
+
 ## Rules applied
 
 - No images scraped from Google Images; no third-party hotlinking.

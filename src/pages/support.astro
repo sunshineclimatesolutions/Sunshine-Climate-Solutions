@@ -268,15 +268,28 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
           <h2 id="support-invitation-heading">{s.invitation.heading}</h2>
           {s.invitation.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
         </div>
-        <div class="cluster support-platforms">
+        {
+          /* Owner-authorized platform marks (2026-10-09): trimmed copies of the
+             owner-supplied GoFundMe and GiveSendGo wordmarks, stored locally in
+             public/images/ and used on the fundraising actions only. */
+        }
+        <div class="support-platforms">
           <a
-            class="btn btn--gold btn--lg support-platform"
+            class="support-platform"
             href={givesendgo}
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="givesendgo"
+            aria-label="Support on GiveSendGo"
           >
-            {s.invitation.givesendgo.ctaLabel}
+            <img
+              class="support-platform-mark"
+              src="/images/givesendgo-logo.png"
+              alt=""
+              width="573"
+              height="120"
+              loading="lazy"
+            />
             <svg
               class="support-external-icon"
               viewBox="0 0 24 24"
@@ -296,13 +309,21 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             </svg>
           </a>
           <a
-            class="btn btn--gold btn--lg support-platform"
+            class="support-platform"
             href={gofundme}
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="gofundme"
+            aria-label="Support on GoFundMe"
           >
-            {s.invitation.gofundme.ctaLabel}
+            <img
+              class="support-platform-mark"
+              src="/images/gofundme-logo.webp"
+              alt=""
+              width="349"
+              height="120"
+              loading="lazy"
+            />
             <svg
               class="support-external-icon"
               viewBox="0 0 24 24"

@@ -2944,20 +2944,51 @@ body.nav-open {
   max-width: 70ch;
 }
 
-/* ── Final invitation — platform actions + quiet share ─────────────────── */
+/* ── Final invitation — authorized platform marks + quiet share ─────────── */
 .support-platforms {
+  display: grid;
+  gap: var(--sp-sm);
   margin-top: var(--sp-md);
+}
+
+@media (min-width: 40em) {
+  .support-platforms {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 34rem;
+  }
 }
 
 .support-platform {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  min-height: 4.5rem;
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--c-card);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-sm);
+  text-decoration: none;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.support-platform:hover {
+  border-color: var(--c-line-hover);
+  box-shadow: var(--sh-md);
+}
+
+.support-platform-mark {
+  display: block;
+  block-size: 2.125rem;
+  inline-size: auto;
 }
 
 .support-external-icon {
   flex: none;
-  opacity: 0.9;
+  opacity: 0.55;
 }
 
 .support-share-row {
