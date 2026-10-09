@@ -2696,10 +2696,6 @@ body.nav-open {
   color: var(--c-ink-soft);
 }
 
-.support-hero-actions {
-  margin-top: var(--sp-2xs);
-}
-
 .support-hero-secondary {
   margin: 0;
   font-size: var(--text-md);
@@ -2989,6 +2985,12 @@ body.nav-open {
 .support-external-icon {
   flex: none;
   opacity: 0.55;
+}
+
+/* Hero placement: the same platform actions directly below the goal line. */
+.support-hero-platforms {
+  max-width: 34rem;
+  margin-top: var(--sp-2xs);
 }
 
 .support-share-row {

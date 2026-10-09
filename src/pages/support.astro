@@ -57,24 +57,74 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             <span class="support-goal-amount">{s.hero.goalAmount}</span>
             <span class="support-goal-label">{s.hero.goalLabel}</span>
           </p>
-          <div class="cluster support-hero-actions">
+          <div class="support-platforms support-hero-platforms">
             <a
-              class="btn btn--gold btn--lg"
+              class="support-platform"
               href={givesendgo}
               target="_blank"
               rel="noopener noreferrer"
               data-support-platform="givesendgo"
+              aria-label={s.invitation.givesendgo.ctaLabel}
             >
-              {s.invitation.givesendgo.ctaLabel}
+              <img
+                class="support-platform-mark"
+                src="/images/givesendgo-logo.png"
+                alt=""
+                width="573"
+                height="120"
+                loading="lazy"
+              />
+              <svg
+                class="support-external-icon"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
             </a>
             <a
-              class="btn btn--gold btn--lg"
+              class="support-platform"
               href={gofundme}
               target="_blank"
               rel="noopener noreferrer"
               data-support-platform="gofundme"
+              aria-label={s.invitation.gofundme.ctaLabel}
             >
-              {s.invitation.gofundme.ctaLabel}
+              <img
+                class="support-platform-mark"
+                src="/images/gofundme-logo.webp"
+                alt=""
+                width="349"
+                height="120"
+                loading="lazy"
+              />
+              <svg
+                class="support-external-icon"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
             </a>
           </div>
           <p class="support-hero-secondary">
@@ -280,7 +330,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="givesendgo"
-            aria-label="Support on GiveSendGo"
+            aria-label={s.invitation.givesendgo.ctaLabel}
           >
             <img
               class="support-platform-mark"
@@ -314,7 +364,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="gofundme"
-            aria-label="Support on GoFundMe"
+            aria-label={s.invitation.gofundme.ctaLabel}
           >
             <img
               class="support-platform-mark"
