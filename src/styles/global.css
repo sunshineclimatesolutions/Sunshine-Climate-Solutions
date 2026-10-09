@@ -2496,6 +2496,35 @@ body.nav-open {
   color: var(--c-ink-soft);
 }
 
+/* About: owner-authored body — one larger lead title, subordinate subsection
+   headings, and the grouped customer-experience statements. */
+.prose h2.about-lead-heading {
+  font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+}
+
+.prose h3.about-section-heading {
+  font-size: var(--text-h3);
+  margin-top: var(--sp-lg);
+}
+
+.about-experience-quotes {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: var(--sp-sm);
+}
+
+.about-experience-quotes p {
+  margin: 0;
+  padding-left: var(--sp-md);
+  border-left: 3px solid var(--c-gold);
+  font-size: var(--text-lg);
+  line-height: 1.5;
+  color: var(--c-ink);
+  max-width: 62ch;
+}
+
 /* Contact page: the request form is primary; call/text/email form a compact
    supporting column (October 2026 refinement). On mobile the form renders
    first so the visitor reaches it with minimal scrolling. */

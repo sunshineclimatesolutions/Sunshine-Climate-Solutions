@@ -6,19 +6,35 @@ import CtaBand from '../components/CtaBand.astro';
 import { getEntry } from 'astro:content';
 import truckImage from '../content/site/images/work-truck.jpg';
 import headshotImage from '../content/site/images/owner-headshot.jpg';
-import { need, interpolateBusiness } from '../lib/site-content';
+import { need } from '../lib/site-content';
 
 const about = await getEntry('site', 'about');
 if (!about) throw new Error('[content] src/content/site/about.md is missing');
 
 const hero = need(about.data.hero, 'about.md → hero');
+const intro = need(about.data.intro, 'about.md → intro');
 const story = need(about.data.story, 'about.md → story');
+const experience = need(about.data.experience, 'about.md → experience');
 const owner = need(about.data.owner, 'about.md → owner');
 const supportNote = need(about.data.supportNote, 'about.md → supportNote');
 const ctaBand = need(about.data.ctaBand, 'about.md → ctaBand');
 
 const title = about.data.metaTitle;
 const description = about.data.metaDescription;
+
+// Owner copy is authored as plain text with two inline conventions:
+// **bold** and [label](href). Escape first, then apply only those patterns.
+const escapeHtml = (text: string) =>
+  text
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+
+const renderInline = (text: string) =>
+  escapeHtml(text)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 ---
 
 <BaseLayout title={title} description={description}>
@@ -72,27 +88,29 @@ const description = about.data.metaDescription;
     </div>
   </section>
 
-  <section class="section" aria-labelledby="about-story-heading">
+  <!-- Owner-authored body: one lead title, subordinate sections, grouped
+       customer-experience statements. Copy is preserved verbatim. -->
+  <section class="section" aria-labelledby="about-intro-heading">
     <div class="container container--narrow">
-      <div class="prose">
+      <div class="prose about-body">
+        <h2 id="about-intro-heading" class="about-lead-heading">{intro.heading}</h2>
+        {intro.paragraphs.map((paragraph) => <p set:html={renderInline(paragraph)} />)}
+
         {
-          story.map((section, index) => (
+          story.map((section) => (
             <>
-              <h2 id={index === 0 ? 'about-story-heading' : undefined}>{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => (
-                <p>{interpolateBusiness(paragraph)}</p>
-              ))}
-              {section.list.length > 0 && (
-                <ul>
-                  {section.list.map((item) => (
-                    <li>{interpolateBusiness(item)}</li>
-                  ))}
-                </ul>
-              )}
-              {section.footnote && <p>{interpolateBusiness(section.footnote)}</p>}
+              <h3 class="about-section-heading">{section.heading}</h3>
+              {section.paragraphs.map((paragraph) => <p set:html={renderInline(paragraph)} />)}
             </>
           ))
         }
+
+        <h3 class="about-section-heading">{experience.heading}</h3>
+        <p>{experience.intro}</p>
+        <blockquote class="about-experience-quotes">
+          {experience.statements.map((statement) => <p>{statement}</p>)}
+        </blockquote>
+        <p set:html={renderInline(experience.closing)} />
       </div>
     </div>
   </section>

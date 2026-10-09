@@ -274,6 +274,14 @@ const site = defineCollection({
       })
       .optional(),
 
+    // about.md — owner-authored introduction (the largest body heading).
+    intro: z
+      .object({
+        heading: z.string(),
+        paragraphs: z.array(z.string()),
+      })
+      .optional(),
+
     // about.md — story sections rendered in order (first gets the section anchor id).
     story: z
       .array(
@@ -284,6 +292,16 @@ const site = defineCollection({
           footnote: z.string().optional(),
         }),
       )
+      .optional(),
+
+    // about.md — grouped customer-experience statements (not testimonials).
+    experience: z
+      .object({
+        heading: z.string(),
+        intro: z.string(),
+        statements: z.array(z.string()),
+        closing: z.string(),
+      })
       .optional(),
 
     // about.md — owner/credential facts block (name, role, clean credential list).
