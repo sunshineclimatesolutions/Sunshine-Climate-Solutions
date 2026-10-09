@@ -16,80 +16,162 @@ hero:
     with
     Traditional Values
   lead: >-
-    Owner-operated HVAC service in Spring Hill, built on traditional American
-    values: discipline, integrity, and sacrifice. We make it a point to treat
-    our community as family.
+    Local, owner-operated HVAC from someone who was born and raised here, loves
+    the trade, and believes people deserve to be treated right.
 
 # Story sections render in order; the first heading anchors the section.
 story:
-  - heading: Why This Company Exists
+  - heading: A Little About Me
     paragraphs:
       - >-
-        I didn't start another HVAC company because the trade needed one. I started
-        it because I kept running into the same situation: a homeowner with a real
-        problem, no practical way to verify the diagnosis in front of them, and a
-        recommendation that arrived before any measurement did.
+        My name is Aaron Thomas. I’m 27 years old, born and raised in the Tampa
+        Bay area, and I started Sunshine Climate Solutions because I genuinely
+        love HVAC and wanted to serve the community I grew up in.
       - >-
-        A homeowner can't climb into the attic to inspect the ductwork. They
-        can't test a capacitor or read a refrigerant circuit. When someone says
-        'you need a new system,' there's no way to confirm it's true — and that
-        imbalance is where people get taken advantage of.
+        Over the years, I watched too many HVAC companies turn technicians into
+        salesmen. I saw people pressured into expensive decisions, technicians
+        pushed to meet numbers, and customers expected to trust recommendations
+        from people who sometimes did not fully understand the systems they were
+        working on.
+      - That never sat right with me.
       - >-
-        I didn't want to work that way, and I didn't want to keep watching it.
-        So Sunshine Climate Solutions was built around a different order of
-        operations: measure first, show the findings, explain what they mean,
-        then talk about options. The customer decides.
+        I knew I had something valuable to offer, and eventually I decided I
+        would rather put my own name behind the work and be responsible for the
+        recommendation myself.
+      - Sunshine Climate Solutions is not a sales company. We are an HVAC company.
       - >-
-        The company is based in Spring Hill, where I live and work. The goal is a
-        trade business that earns its reputation one call at a time.
-  - heading: How We Work
-    list:
+        My job is to figure out what is actually going on with the system,
+        explain it in a way that makes sense, and give the customer practical
+        options. If something can reasonably be repaired, I want to repair it.
+        If replacement really is the better decision, I’ll explain why.
       - >-
-        You deal with me directly — the person who diagnoses the system is the
-        person who does the work.
+        The recommendation should make sense for the customer — not for somebody’s
+        sales quota.
+  - heading: From the Bottom Up
+    paragraphs:
+      - I started in HVAC at the bottom.
       - >-
-        Measurements come before conclusions, and you see the evidence behind
-        the recommendation.
-      - Nothing is ordered, scheduled, or installed until you approve it.
+        For a while, my days were basically work from 7:30 in the morning until
+        around 4:00, then straight to Lively Technical College for HVAC school
+        from 5:00 until 9:00 at night.
       - >-
-        If the system can be repaired, that's the recommendation. If replacement
-        is the better call, the reasons and the options come in writing.
+        I earned my EPA certification and worked my way through installation,
+        service, residential HVAC, commercial HVAC, testing and balancing,
+        diagnostics and eventually leadership and project-coordination work on
+        the TAB side of an engineering company.
       - >-
-        Your home is treated like someone lives there: floors covered, work
-        areas left clean, questions answered as they come up.
-  - heading: About the Owner
-    list:
+        It was a hard road at times, but somewhere along the way I fell in love
+        with the trade.
       - >-
-        Aaron Thomas — owner and operator. HVAC training through Lively
-        Technical College, EPA Section 608 certified.
+        I especially enjoy diagnostics, airflow and static pressure, testing and
+        balancing, and technical documentation. I like the problems that make
+        you stop, measure, think and actually understand what the system is
+        doing.
       - >-
-        Five years of hands-on work: residential and commercial installation,
-        service, and maintenance.
-      - >-
-        Field experience with engineering companies and smaller contractors,
-        including project coordination and mentoring.
-      - >-
-        Particular focus: airflow diagnostics and electrical / control-board
-        troubleshooting.
-    footnote: Licensed and insured.
-  - heading: The Technical Edge
+        I would rather know why something is happening than just change parts
+        until it stops happening.
+      - That mindset is a big part of how I approach the work today.
+  - heading: Teaching Has Always Been Part of It
     paragraphs:
       - >-
-        The problems I pay closest attention to are the quiet ones: a duct
-        system that has never moved the air it should, a blower working against
-        too much static pressure, a control circuit that fails once a week under
-        load. Those problems don't show up in a catalog.
+        Before I ever worked in HVAC, I spent several years tutoring people who
+        were working toward their GED.
       - >-
-        They show up on instruments: manometers, airflow meters, manifold
-        gauges, vacuum and electrical test equipment. I measure static pressure
-        and airflow through the whole air path, read the system with
-        psychrometrics instead of guessing, and trace electrical faults at the
-        board and the components. You get the readings, the findings, and the
-        recommendation in writing.
+        I always enjoyed teaching, and that carried over naturally into this
+        trade.
+      - >-
+        I like being able to take something technical and explain it in a way
+        that actually makes sense. That applies to customers, but it also
+        applies to technicians.
+      - >-
+        Long term, I want Sunshine Climate Solutions to do more than fix air
+        conditioners.
+      - >-
+        I want it to create good jobs, teach people valuable skills, give
+        younger technicians somewhere to learn the trade properly, and have a
+        positive impact on the community around it.
+      - That matters to me just as much as growing the company.
+  - heading: What Matters to Me
+    paragraphs:
+      - >-
+        Christianity is foundational to who I am and to the way I believe people
+        should be treated.
+      - >-
+        I’m also proud of my European heritage and the traditional American
+        culture I grew up respecting.
+      - To me, those things come with standards.
+      - Faith. Integrity. Discipline. Work ethic. Sincerity. Compassion. Community.
+      - >-
+        Keep your word. Know your craft. Take responsibility for your work.
+        Treat people with dignity. Help your neighbors when you are in a
+        position to help them.
+      - >-
+        When someone calls Sunshine Climate Solutions, I want them treated the
+        same way I would want my own brother, sister, grandmother or someone
+        else I cared about treated.
+      - That is really as complicated as it needs to be.
+  - heading: What I Mean by Traditional American Values
+    paragraphs:
+      - >-
+        When I say traditional American values, I’m talking about a standard
+        people used to expect from themselves.
+      - Your word mattered.
+      - The quality of your work mattered.
+      - Your reputation mattered.
+      - >-
+        You worked hard, took responsibility, treated people with respect and
+        tried to be useful to the people around you.
+      - >-
+        There was pride in doing something well simply because your name was
+        attached to it.
+      - >-
+        That is the part of traditional American culture I admire, and that is
+        the part I want Sunshine Climate Solutions to carry forward.
+  - heading: How I Want People to Feel After Calling Us
+    paragraphs:
+      - I want people to feel like they were taken care of.
+      - >-
+        I want them to understand what was wrong, what I found, what their
+        options were and what they paid for.
+      - >-
+        I want the work to be clean. I want the system to work the way I said it
+        would. I want the explanation to make sense without talking over
+        somebody’s head.
+      - >-
+        And I want people to know that I understand it is their money being
+        spent.
+      - >-
+        Being good at HVAC is important to me, but so is being considerate of
+        the person standing on the other side of the conversation.
+      - >-
+        If somebody finishes dealing with Sunshine Climate Solutions and thinks,
+        “That’s how it’s supposed to be done,” then I’m happy with that.
+      - Southern hospitality, real technical ability, and respect for the customer.
+
+owner:
+  name: Aaron Thomas
+  role: Owner / Operator
+  credentials:
+    - Born and raised in the Tampa Bay area
+    - Lively Technical College HVAC training
+    - EPA Section 608 certified
+    - Residential HVAC
+    - Commercial HVAC
+    - Installation and service
+    - Airflow and static-pressure diagnostics
+    - Testing and balancing
+    - Electrical / control diagnostics
+    - Technical documentation
+    - Project-coordination experience
+  footnote: Licensed and insured.
+
+supportNote:
+  lead: Interested in supporting the growth of Sunshine Climate Solutions?
+  linkLabel: View the support campaign
 
 ctaBand:
-  title: Work With the Owner Directly
+  title: Need Help With Your HVAC System?
   text: >-
-    Call or text and describe what the system is doing. You'll get a direct
-    answer about what's likely involved and what it takes to find out.
+    Call or text Sunshine Climate Solutions. Tell me what the system is doing
+    and we’ll go from there.
 ---

@@ -13,6 +13,8 @@ if (!about) throw new Error('[content] src/content/site/about.md is missing');
 
 const hero = need(about.data.hero, 'about.md → hero');
 const story = need(about.data.story, 'about.md → story');
+const owner = need(about.data.owner, 'about.md → owner');
+const supportNote = need(about.data.supportNote, 'about.md → supportNote');
 const ctaBand = need(about.data.ctaBand, 'about.md → ctaBand');
 
 const title = about.data.metaTitle;
@@ -53,7 +55,7 @@ const description = about.data.metaDescription;
             loading="lazy"
             style="object-position: 50% 30%"
           />
-          <figcaption>Aaron Thomas — owner and operator.</figcaption>
+          <figcaption>Aaron Thomas — Owner / Operator</figcaption>
         </figure>
         <figure class="about-media about-media--truck">
           <Image
@@ -64,7 +66,7 @@ const description = about.data.metaDescription;
             loading="lazy"
             style="object-position: 50% 52%"
           />
-          <figcaption>The Workhorse</figcaption>
+          <figcaption>Sunshine Climate Solutions</figcaption>
         </figure>
       </div>
     </div>
@@ -92,10 +94,22 @@ const description = about.data.metaDescription;
           ))
         }
       </div>
+    </div>
+  </section>
 
-      <p style="margin-top: var(--sp-md); font-size: var(--text-sm); color: var(--c-ink-soft);">
-        Interested in supporting the company's early growth? Read about the{' '}
-        <a href="/support/">current growth campaign</a>.
+  <!-- Owner / credential facts — clean, brief, no résumé paragraph. -->
+  <section class="section section--alt" aria-labelledby="about-owner-heading">
+    <div class="container container--narrow">
+      <div class="prose about-owner">
+        <h2 id="about-owner-heading">{owner.name}</h2>
+        <p class="about-owner-role">{owner.role}</p>
+        <ul>
+          {owner.credentials.map((item) => <li>{item}</li>)}
+        </ul>
+        {owner.footnote && <p class="about-owner-note">{owner.footnote}</p>}
+      </div>
+      <p class="about-support-note">
+        {supportNote.lead} <a href="/support/">{supportNote.linkLabel}</a>
       </p>
     </div>
   </section>

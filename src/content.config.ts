@@ -286,6 +286,19 @@ const site = defineCollection({
       )
       .optional(),
 
+    // about.md — owner/credential facts block (name, role, clean credential list).
+    owner: z
+      .object({
+        name: z.string(),
+        role: z.string(),
+        credentials: z.array(z.string()),
+        footnote: z.string().optional(),
+      })
+      .optional(),
+
+    // about.md — support-campaign note near the bottom of the page.
+    supportNote: z.object({ lead: z.string(), linkLabel: z.string() }).optional(),
+
     // contact.md — section headings (card bodies interpolate business facts in markup).
     waysHeading: z.string().optional(),
     hoursHeading: z.string().optional(),
@@ -463,92 +476,59 @@ const site = defineCollection({
       })
       .optional(),
 
-    // support.md — /support/ growth-campaign page (noindex, direct/referral
-    // only). Truthfulness rules: the ~$25,000 founder-capital figure, the
-    // $20,000 allocation and the licensing planning estimate are the only
-    // financial figures allowed; never fabricate progress, donor counts,
-    // testimonials, outcomes, or promises of jobs/licensing/revenue. Fundraiser
-    // URLs come from business.fundraising — never from this content file.
-    // Photo captions must describe only what each photograph actually shows.
+    // support.md — /support/ founder-led fundraising page (noindex, direct/
+    // referral only). Truthfulness rules: the ~$25,000 founder-investment
+    // figure, the $20,000 allocation and the qualifying-arrangement planning
+    // estimate are the only financial figures allowed; never fabricate
+    // progress, donor counts, testimonials, outcomes, or promises of
+    // licensing/revenue. The allocation is owner-approved. Fundraiser URLs
+    // come from business.fundraising — never from this content file. Photo
+    // captions describe only what each photograph actually shows.
     support: z
       .object({
         hero: z.object({
           eyebrow: z.string(),
           heading: z.string(),
           paragraphs: z.array(z.string()),
-          proofLine: z.string(),
+          goalAmount: z.string(),
+          goalLabel: z.string(),
           portrait: z.object({ image: image(), alt: z.string(), caption: z.string() }),
         }),
-        whyCare: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          reasons: z.array(z.object({ title: z.string(), text: z.string() })),
-        }),
-        person: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          closingLine: z.string(),
-          values: z.array(z.string()),
-        }),
-        built: z.object({
-          heading: z.string(),
-          lead: z.string(),
-          proof: z.array(z.object({ label: z.string(), text: z.string() })),
-          photos: z
-            .array(z.object({ image: image(), alt: z.string(), caption: z.string() }))
-            .default([]),
-        }),
-        useOfFunds: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          totalLabel: z.string(),
-          closing: z.string(),
-          disclosure: z.string(),
-          items: z.array(
-            z.object({
-              label: z.string(),
-              amount: z.number().int().positive(),
-              note: z.string(),
-            }),
-          ),
-        }),
-        growth: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          paths: z.array(z.object({ when: z.string(), text: z.string() })),
-        }),
-        licensing: z.object({
-          heading: z.string(),
-          estimateLine: z.string(),
-          paragraphs: z.array(z.string()),
-        }),
-        community: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          lines: z.array(z.string()),
-          closing: z.string(),
-          photo: z.object({ image: image(), alt: z.string(), caption: z.string() }),
-        }),
-        supportBand: z.object({
-          eyebrow: z.string(),
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          platformsNote: z.string(),
-          gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
-          givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),
-          waysHeading: z.string(),
-          ways: z.array(z.object({ title: z.string(), text: z.string() })),
-        }),
-        faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
         founderVideo: z.object({
           heading: z.string(),
-          // `lead` renders while no video is configured; `readyLead` replaces it
-          // once business.fundraising.founderVideoUrl holds a valid public
-          // YouTube link (see src/lib/video.ts).
-          lead: z.string(),
-          readyLead: z.string(),
+          placeholder: z.string(),
           pending: z.string(),
+          photo: z.object({ image: image(), alt: z.string() }),
         }),
+        story: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          photo: z.object({ image: image(), alt: z.string() }),
+        }),
+        investment: z.object({
+          heading: z.string(),
+          subheading: z.string(),
+          paragraphs: z.array(z.string()),
+          photos: z.array(z.object({ image: image(), alt: z.string() })),
+        }),
+        budget: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          allocationLabel: z.string(),
+          totalLabel: z.string(),
+          items: z.array(z.object({ label: z.string(), amount: z.number().int().positive() })),
+          priorities: z.array(z.object({ title: z.string(), amount: z.string(), text: z.string() })),
+          remainingNote: z.string(),
+          outcomesNote: z.string(),
+          disclosure: z.string(),
+        }),
+        invitation: z.object({
+          heading: z.string(),
+          paragraphs: z.array(z.string()),
+          givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),
+          gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
+        }),
+        faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
       })
       .optional(),
   }),

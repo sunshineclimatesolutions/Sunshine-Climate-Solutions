@@ -1,14 +1,16 @@
 ---
-// /support/ — growth-campaign page. NOINDEX by design: it is a direct/social/
-// email/referral destination, not a search-acquisition page.
+// /support/ — founder-led fundraising page. NOINDEX by design: it is a direct/
+// social/email/referral destination, not a search-acquisition page.
 //
 // Architecture: narrative copy lives in src/content/site/support.md (validated
 // by the site schema); fundraiser URLs come from business.fundraising; the
-// allocation amounts are structured data (numbers) so the proportional bars are
-// computed, never hand-drawn. Rules: never fabricate progress, donor counts,
-// testimonials, or outcomes; never imply tax deductibility, equity, repayment,
-// or investment returns; no service-funnel CTAs on this page beyond the normal
-// site chrome. Photo captions describe only what each photograph shows.
+// budget amounts are structured numbers so the allocation bars and percentages
+// are computed, never hand-drawn. Rules: never fabricate progress, donor
+// counts, testimonials, outcomes, or promises of licensing/revenue; never imply
+// tax deductibility, equity, repayment, service credit, or investment returns;
+// no service-funnel CTAs on this page beyond the normal site chrome. Photo
+// captions describe only what each photograph shows. The allocation is
+// owner-approved.
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -34,32 +36,28 @@ if (founderVideoUrl && !founderVideoEmbedUrl) {
     '[support] business.fundraising.founderVideoUrl is set but is not a recognized YouTube watch/share link — showing the placeholder.',
   );
 }
-const founderVideoLead = founderVideoEmbedUrl ? s.founderVideo.readyLead : s.founderVideo.lead;
 
-const total = s.useOfFunds.items.reduce((sum, item) => sum + item.amount, 0);
+const total = s.budget.items.reduce((sum, item) => sum + item.amount, 0);
 const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
+// Exact percentage to one decimal (×1000/10 avoids binary rounding noise).
+const shareOf = (amount: number) => (amount * 1000) / total / 10;
+const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.toFixed(1)}%`;
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
   <div class="support-page">
-    <!-- ── 1. Hero: what is happening + the invitation ───────────────────── -->
+    <!-- ── 1. Hero: the founder's message + the fundraising goal ──────────── -->
     <section class="support-hero">
       <div class="container support-hero-inner">
         <div class="support-hero-copy">
           <p class="eyebrow">{s.hero.eyebrow}</p>
           <h1>{s.hero.heading}</h1>
           {s.hero.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
-          <p class="support-proof-line">{s.hero.proofLine}</p>
+          <p class="support-goal">
+            <span class="support-goal-amount">{s.hero.goalAmount}</span>
+            <span class="support-goal-label">{s.hero.goalLabel}</span>
+          </p>
           <div class="cluster support-hero-actions">
-            <a
-              class="btn btn--gold btn--lg"
-              href={gofundme}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-support-platform="gofundme"
-            >
-              {s.supportBand.gofundme.ctaLabel}
-            </a>
             <a
               class="btn btn--gold btn--lg"
               href={givesendgo}
@@ -67,11 +65,22 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
               rel="noopener noreferrer"
               data-support-platform="givesendgo"
             >
-              {s.supportBand.givesendgo.ctaLabel}
+              {s.invitation.givesendgo.ctaLabel}
+            </a>
+            <a
+              class="btn btn--gold btn--lg"
+              href={gofundme}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-support-platform="gofundme"
+            >
+              {s.invitation.gofundme.ctaLabel}
             </a>
           </div>
           <p class="support-hero-secondary">
-            <a href="#support">Or help another way <Icon name="arrow-right" size={16} /></a>
+            <a href="#use-of-funds">
+              See How the Funds Will Be Used <Icon name="arrow-right" size={16} />
+            </a>
           </p>
         </div>
         <figure class="support-hero-media">
@@ -88,249 +97,241 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
       </div>
     </section>
 
-    <!-- ── 2. Why I'm asking ──────────────────────────────────────────────── -->
-    <section class="section" aria-labelledby="support-why-heading">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="support-why-heading">{s.whyCare.heading}</h2>
-        </div>
-        <div class="support-why-body">
-          {
-            s.whyCare.paragraphs.map((paragraph, index) => (
-              <p class={index === 0 ? 'lead' : undefined}>{paragraph}</p>
-            ))
-          }
-        </div>
-        <ul class="support-reasons">
-          {
-            s.whyCare.reasons.map((reason) => (
-              <li>
-                <h3>{reason.title}</h3>
-                <p>{reason.text}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-
-    <!-- ── 3. The man behind the company ──────────────────────────────────── -->
-    <section class="section section--alt support-profile" aria-labelledby="support-person-heading">
+    <!-- ── 2. Founder video — directly beneath the hero ───────────────────── -->
+    {
+      /* Founder video: set business.fundraising.founderVideoUrl in
+         src/config/business.ts to the approved public YouTube watch/share link.
+         This section then switches automatically from the designed placeholder
+         (real field photograph, no play affordance) to a privacy-enhanced
+         click-to-load embed (youtube-nocookie), loaded only when the visitor
+         presses play. No change is needed in this file or in support.md.
+         Non-YouTube values fail closed to the placeholder. */
+    }
+    <section class="support-video-section" aria-labelledby="support-video-heading">
       <div class="container container--narrow">
         <div class="section-heading">
-          <h2 id="support-person-heading">{s.person.heading}</h2>
+          <h2 id="support-video-heading">{s.founderVideo.heading}</h2>
+          {!founderVideoEmbedUrl && <p class="lead">{s.founderVideo.placeholder}</p>}
         </div>
-        <div class="prose support-profile-body">
-          {
-            s.person.paragraphs.map((paragraph, index) => (
-              <p class={index === 0 ? 'support-profile-lead' : undefined}>{paragraph}</p>
-            ))
-          }
-        </div>
-        <p class="support-profile-statement">{s.person.closingLine}</p>
-        <ul class="support-values">
-          {
-            s.person.values.map((value) => (
-              <li>
-                <Icon name="check" size={18} /> {value}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
-
-    <!-- ── 4. This is not starting from zero ──────────────────────────────── -->
-    <section class="section" aria-labelledby="support-built-heading">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="support-built-heading">{s.built.heading}</h2>
-          <p class="lead">{s.built.lead}</p>
-        </div>
-        <ul class="support-ledger">
-          {
-            s.built.proof.map((row) => (
-              <li>
-                <p class="support-ledger-label">{row.label}</p>
-                <p class="support-ledger-text">{row.text}</p>
-              </li>
-            ))
-          }
-        </ul>
         {
-          s.built.photos.length > 0 && (
-            <div class="support-evidence">
-              {s.built.photos.map((photo) => (
-                <figure>
-                  <Image
-                    src={photo.image}
-                    alt={photo.alt}
-                    widths={[400, 800]}
-                    sizes="(min-width: 48em) 30vw, 92vw"
-                    loading="lazy"
-                  />
-                  <figcaption>{photo.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
+          founderVideoEmbedUrl ? (
+            <button
+              type="button"
+              class="support-video-frame support-video-frame--playable"
+              data-founder-video
+              data-embed-url={founderVideoEmbedUrl}
+              data-cta="support-founder-video"
+              aria-label="Watch the founder video"
+            >
+              <Image
+                src={s.founderVideo.photo.image}
+                alt={s.founderVideo.photo.alt}
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 48em) 46vw, 92vw"
+                loading="lazy"
+              />
+              <span class="support-video-overlay">
+                <span class="support-video-play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
+                    <path d="M8 5.5v13l10.5-6.5z" />
+                  </svg>
+                </span>
+                <span class="support-video-label">Watch the video</span>
+              </span>
+            </button>
+          ) : (
+            <figure class="support-video-figure">
+              <div class="support-video-frame">
+                <Image
+                  src={s.founderVideo.photo.image}
+                  alt={s.founderVideo.photo.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 48em) 46vw, 92vw"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption class="support-video-note">{s.founderVideo.pending}</figcaption>
+            </figure>
           )
         }
       </div>
     </section>
 
-    <!-- ── 5. What your support actually builds ───────────────────────────── -->
-    <section class="section section--alt" id="use-of-funds" aria-labelledby="support-funds-heading">
+    <!-- ── 3. Founder story — editorial composition ───────────────────────── -->
+    <section class="section" aria-labelledby="support-story-heading">
       <div class="container">
-        <div class="section-heading">
-          <h2 id="support-funds-heading">{s.useOfFunds.heading}</h2>
-          {s.useOfFunds.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+        <div class="support-story">
+          <figure class="support-story-media">
+            <Image
+              src={s.story.photo.image}
+              alt={s.story.photo.alt}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 48em) 42vw, 92vw"
+              loading="lazy"
+            />
+          </figure>
+          <div class="support-story-copy">
+            <div class="section-heading">
+              <h2 id="support-story-heading">{s.story.heading}</h2>
+            </div>
+            <div class="prose">
+              {s.story.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </div>
         </div>
-        <div class="support-total">
-          <span class="support-total-amount">{fmt(total)}</span>
-          <span class="support-total-label">{s.useOfFunds.totalLabel}</span>
-        </div>
-        <ul class="support-alloc">
-          {
-            s.useOfFunds.items.map((item) => {
-              const share = Math.round((item.amount / total) * 100);
-              return (
-                <li>
-                  <div class="support-alloc-head">
-                    <h3>{item.label}</h3>
-                    <span class="support-alloc-amount">
-                      {fmt(item.amount)} · {share}%
-                    </span>
-                  </div>
-                  <div class="support-alloc-bar" aria-hidden="true">
-                    <span style={`width: ${share}%`} />
-                  </div>
-                  <p class="support-alloc-note">{item.note}</p>
-                </li>
-              );
-            })
-          }
-        </ul>
-        <p class="support-alloc-closing">{s.useOfFunds.closing}</p>
-        <p class="support-disclosure">{s.useOfFunds.disclosure}</p>
       </div>
     </section>
 
-    <!-- ── 6. What I'm trying to build ────────────────────────────────────── -->
-    <section class="section" aria-labelledby="support-growth-heading">
+    <!-- ── 4. Personal investment ─────────────────────────────────────────── -->
+    <section class="section section--alt" aria-labelledby="support-investment-heading">
       <div class="container">
         <div class="section-heading">
-          <h2 id="support-growth-heading">{s.growth.heading}</h2>
-          {s.growth.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+          <h2 id="support-investment-heading">{s.investment.heading}</h2>
+          <p class="support-investment-subheading">{s.investment.subheading}</p>
         </div>
-        <div class="steps support-path">
+        <div class="prose support-investment-copy">
+          {s.investment.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+        <div class="support-investment-photos">
           {
-            s.growth.paths.map((entry, index) => (
-              <div class="step">
-                <span class="step-num" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3>{entry.when}</h3>
-                <p>{entry.text}</p>
-              </div>
+            s.investment.photos.map((photo) => (
+              <figure>
+                <Image
+                  src={photo.image}
+                  alt={photo.alt}
+                  widths={[480, 800, 1200]}
+                  sizes="(min-width: 48em) 46vw, 92vw"
+                  loading="lazy"
+                />
+              </figure>
             ))
           }
         </div>
       </div>
     </section>
 
-    <!-- ── 7. The next major milestone: licensing ─────────────────────────── -->
-    <section class="section section--alt" aria-labelledby="support-licensing-heading">
+    <!-- ── 5. Where your support would go (approved allocation) ───────────── -->
+    <section class="section" id="use-of-funds" aria-labelledby="support-budget-heading">
       <div class="container">
         <div class="section-heading">
-          <h2 id="support-licensing-heading">{s.licensing.heading}</h2>
+          <h2 id="support-budget-heading">{s.budget.heading}</h2>
+          {s.budget.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
         </div>
-        <div class="support-milestone">
-          <p class="support-milestone-line">{s.licensing.estimateLine}</p>
-          <div class="prose">
-            {s.licensing.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="support-budget">
+          <p class="eyebrow support-budget-label">{s.budget.allocationLabel}</p>
+          <ul class="support-alloc">
+            {
+              s.budget.items.map((item) => {
+                const share = shareOf(item.amount);
+                return (
+                  <li>
+                    <div class="support-alloc-head">
+                      <h3>{item.label}</h3>
+                      <span class="support-alloc-amount">
+                        {fmt(item.amount)} · {fmtShare(share)}
+                      </span>
+                    </div>
+                    <div class="support-alloc-bar" aria-hidden="true">
+                      <span style={`width: ${share}%`} />
+                    </div>
+                  </li>
+                );
+              })
+            }
+            <li class="support-alloc-total">
+              <span>{s.budget.totalLabel}</span>
+              <span>{fmt(total)} · 100%</span>
+            </li>
+          </ul>
+          <div class="support-priorities">
+            {
+              s.budget.priorities.map((priority) => (
+                <div class="support-priority">
+                  <p class="support-priority-amount">{priority.amount}</p>
+                  <h3>{priority.title}</h3>
+                  <p>{priority.text}</p>
+                </div>
+              ))
+            }
           </div>
+          <p class="support-priority-remaining">{s.budget.remainingNote}</p>
+          <p class="support-priority-note">{s.budget.outcomesNote}</p>
+          <p class="support-disclosure">{s.budget.disclosure}</p>
         </div>
       </div>
     </section>
 
-    <!-- ── 8. Built to stay ───────────────────────────────────────────────── -->
-    <section class="section" aria-labelledby="support-community-heading">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="support-community-heading">{s.community.heading}</h2>
-        </div>
-        <div class="support-community">
-          <div class="support-community-copy">
-            {s.community.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-            <ul class="support-stay-lines">
-              {s.community.lines.map((line) => <li>{line}</li>)}
-            </ul>
-            <p class="support-stay-closing">{s.community.closing}</p>
-          </div>
-          <figure>
-            <Image
-              src={s.community.photo.image}
-              alt={s.community.photo.alt}
-              widths={[480, 800, 1200]}
-              sizes="(min-width: 48em) 46vw, 92vw"
-              loading="lazy"
-            />
-            <figcaption>{s.community.photo.caption}</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 9. Support: the page's single dark conversion band ─────────────── -->
-    <section class="band--charcoal support-band on-dark" id="support" aria-labelledby="support-cta-heading">
+    <!-- ── 6. Final support invitation ────────────────────────────────────── -->
+    <section class="section section--alt" aria-labelledby="support-invitation-heading">
       <div class="container container--narrow">
-        <p class="eyebrow">{s.supportBand.eyebrow}</p>
-        <h2 id="support-cta-heading">{s.supportBand.heading}</h2>
-        <div class="support-band-body">
-          {s.supportBand.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="section-heading">
+          <h2 id="support-invitation-heading">{s.invitation.heading}</h2>
+          {s.invitation.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
         </div>
-        <div class="cluster support-cta-row">
+        <div class="cluster support-platforms">
           <a
-            class="btn btn--gold btn--lg"
-            href={gofundme}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-support-platform="gofundme"
-          >
-            {s.supportBand.gofundme.ctaLabel}
-          </a>
-          <a
-            class="btn btn--gold btn--lg"
+            class="btn btn--gold btn--lg support-platform"
             href={givesendgo}
             target="_blank"
             rel="noopener noreferrer"
             data-support-platform="givesendgo"
           >
-            {s.supportBand.givesendgo.ctaLabel}
+            {s.invitation.givesendgo.ctaLabel}
+            <svg
+              class="support-external-icon"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
           </a>
-          <button type="button" class="btn btn--outline-light btn--lg" data-share-support>
-            Share This Campaign
+          <a
+            class="btn btn--gold btn--lg support-platform"
+            href={gofundme}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-support-platform="gofundme"
+          >
+            {s.invitation.gofundme.ctaLabel}
+            <svg
+              class="support-external-icon"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+        <div class="cluster support-share-row">
+          <button type="button" class="btn btn--outline-navy" data-share-support>
+            Share This Page
           </button>
         </div>
         <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
-        <p class="support-platforms-note">{s.supportBand.platformsNote}</p>
-        <div class="support-ways">
-          <h3>{s.supportBand.waysHeading}</h3>
-          <ul class="support-ways-list">
-            {
-              s.supportBand.ways.map((way) => (
-                <li>
-                  <h4>{way.title}</h4>
-                  <p>{way.text}</p>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
       </div>
     </section>
 
-    <!-- ── 10. Transparency FAQ ───────────────────────────────────────────── -->
+    <!-- ── 7. Short FAQ ───────────────────────────────────────────────────── -->
     <section class="section" aria-labelledby="support-faq-heading">
       <div class="container container--narrow">
         <div class="section-heading">
@@ -345,51 +346,6 @@ const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
             ))
           }
         </div>
-      </div>
-    </section>
-
-    <!-- ── 11. Founder video ──────────────────────────────────────────────── -->
-    {
-      /* Founder video: set business.fundraising.founderVideoUrl in
-         src/config/business.ts to the approved public YouTube watch/share link.
-         This section then switches automatically from the designed placeholder
-         to a privacy-enhanced click-to-play embed (youtube-nocookie), loaded only
-         when the visitor presses play. No change is needed in this file or in
-         support.md. Non-YouTube values fail closed to the placeholder. */
-    }
-    <section class="section section--alt" aria-labelledby="support-video-heading">
-      <div class="container container--narrow">
-        <div class="section-heading">
-          <h2 id="support-video-heading">{s.founderVideo.heading}</h2>
-          <p class="lead">{founderVideoLead}</p>
-        </div>
-        {
-          founderVideoEmbedUrl ? (
-            <button
-              type="button"
-              class="support-video-frame support-video-frame--playable"
-              data-founder-video
-              data-embed-url={founderVideoEmbedUrl}
-              data-cta="support-founder-video"
-            >
-              <span class="support-video-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
-                  <path d="M8 5.5v13l10.5-6.5z" />
-                </svg>
-              </span>
-              <span class="support-video-label">Watch the Founder Video</span>
-            </button>
-          ) : (
-            <div class="support-video-frame">
-              <span class="support-video-play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
-                  <path d="M8 5.5v13l10.5-6.5z" />
-                </svg>
-              </span>
-              <p class="support-video-label">{s.founderVideo.pending}</p>
-            </div>
-          )
-        }
       </div>
     </section>
   </div>
