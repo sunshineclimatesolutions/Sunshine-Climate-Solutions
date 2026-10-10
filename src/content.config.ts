@@ -515,6 +515,8 @@ const site = defineCollection({
           paragraphs: z.array(z.string()),
           goalAmount: z.string(),
           goalLabel: z.string(),
+          ownerAmount: z.string(),
+          ownerLabel: z.string(),
           secondaryLinkLabel: z.string(),
           secondaryLinkHref: z.string(),
           portrait: z.object({ image: image(), alt: z.string() }),
@@ -523,12 +525,6 @@ const site = defineCollection({
           heading: z.string(),
           description: z.string(),
           pending: z.string(),
-        }),
-        investment: z.object({
-          heading: z.string(),
-          subheading: z.string(),
-          paragraphs: z.array(z.string()),
-          photos: z.array(z.object({ image: image(), alt: z.string() })),
         }),
         budget: z.object({
           heading: z.string(),
@@ -553,7 +549,7 @@ const site = defineCollection({
                 z.object({
                   label: z.string(),
                   href: z.string().optional(),
-                  behavior: z.enum(['link', 'reviews', 'copy', 'share']).default('link'),
+                  behavior: z.enum(['link', 'copy', 'share']).default('link'),
                 }),
               ),
             }),

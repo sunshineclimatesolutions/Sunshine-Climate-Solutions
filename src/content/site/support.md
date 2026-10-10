@@ -51,6 +51,10 @@ support:
         building and to support the work we're doing.
     goalAmount: $20,000
     goalLabel: Fundraising goal
+    # Owner contribution = approximately $25,000 already personally invested by
+    # the owner — NOT money raised by the fundraiser. Never add it to the goal.
+    ownerAmount: $25,000
+    ownerLabel: Owner contribution
     secondaryLinkLabel: Other Ways to Help
     secondaryLinkHref: '#other-ways-to-help'
     portrait:
@@ -70,28 +74,6 @@ support:
       financial donations will be used, please watch this video and then head to either
       fundraiser in one of the links above (GiveSendGo/GoFundMe).
     pending: Coming Soon
-  investment:
-    heading: My Investment Into Our Community
-    subheading: Approximately $25,000 Personally Invested in SCS.
-    paragraphs:
-      - >-
-        Getting Sunshine Climate Solutions off the ground has meant a substantial investment
-        in the truck, professional tools, diagnostic equipment, and everything needed to
-        operate. Each investment has been a deliberate step toward building the kind of HVAC
-        company I believe our community deserves.
-      - >-
-        There's still a great deal I want to accomplish, both in the trade and through this
-        business. The goal is to build a lasting company that delivers exceptional work,
-        creates opportunities for others, and makes a meaningful difference here at home.
-    photos:
-      - image: ./images/field-service-manifold-gauges.jpg
-        alt: >-
-          Professional digital manifold gauges connected to a running outdoor unit during a
-          field service call.
-      - image: ./images/package-unit-install.jpg
-        alt: >-
-          A newly installed package unit and its duct connection set in place on a gravel pad
-          beside a home.
   budget:
     heading: Where Your Support Would Go
     paragraphs:
@@ -150,8 +132,6 @@ support:
           - label: Leave a Google Review
             href: /leave-review/
             behavior: link
-          - label: Read Our Reviews
-            behavior: reviews
       - icon: wrench
         title: Choose Sunshine Climate Solutions
         text: >-

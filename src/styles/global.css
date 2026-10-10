@@ -2743,12 +2743,25 @@ body.nav-open {
   color: var(--c-ink);
 }
 
-/* Fundraising goal, set adjacent to the primary actions. */
+/* Coordinated financial figures, set adjacent to the primary actions: the
+   fundraising goal keeps primary prominence; the owner contribution is a
+   smaller secondary figure separated by a hairline. Never summed. */
 .support-goal {
+  display: grid;
+  gap: var(--sp-2xs);
+  margin: var(--sp-2xs) 0 0;
+}
+
+.support-goal-row {
   display: flex;
   align-items: baseline;
   gap: var(--sp-2xs);
-  margin: var(--sp-2xs) 0 0;
+  margin: 0;
+}
+
+.support-goal-row--owner {
+  padding-top: var(--sp-2xs);
+  border-top: 1px solid var(--c-line);
 }
 
 .support-goal-amount {
@@ -2757,6 +2770,10 @@ body.nav-open {
   font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
   line-height: 1;
   color: var(--c-navy-deep);
+}
+
+.support-goal-amount--owner {
+  font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
 }
 
 .support-goal-label {
@@ -2823,47 +2840,6 @@ body.nav-open {
 
 .support-story-copy .section-heading {
   margin-bottom: var(--sp-sm);
-}
-
-/* ── Personal investment — magazine layout, one prominent figure ────────── */
-.support-investment-subheading {
-  margin: 0;
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.25rem);
-  line-height: 1.2;
-  color: var(--c-navy-deep);
-  max-width: 34ch;
-}
-
-.support-investment-copy {
-  max-width: 68ch;
-}
-
-.support-investment-photos {
-  display: grid;
-  gap: var(--sp-md);
-  margin-top: var(--sp-lg);
-}
-
-@media (min-width: 48em) {
-  .support-investment-photos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-.support-investment-photos figure {
-  margin: 0;
-}
-
-.support-investment-photos img {
-  display: block;
-  inline-size: 100%;
-  block-size: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border: 1px solid var(--c-line);
-  border-radius: var(--r-md);
 }
 
 /* ── Budget — proposed allocation with exact computed shares ───────────── */

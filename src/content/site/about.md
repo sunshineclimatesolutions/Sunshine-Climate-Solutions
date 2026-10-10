@@ -63,7 +63,7 @@ story:
         leadership and project coordination work for the TAB side of an
         engineering firm.
       - >-
-        It wasn't an easy road, but he's described it as well worth it. Somewhere
+        It wasn't an easy road, but he describes it as well worth it. Somewhere
         along the way, while doing service calls, he realized just how rewarding
         it is. It's an opportunity to save someone's day, and it's a privilege to
         do so.

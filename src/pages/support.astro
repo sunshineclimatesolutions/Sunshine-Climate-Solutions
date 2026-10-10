@@ -84,10 +84,21 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
         </h1>
         <div class="support-hero-copy">
           {s.hero.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
-          <p class="support-goal">
-            <span class="support-goal-amount">{s.hero.goalAmount}</span>
-            <span class="support-goal-label">{s.hero.goalLabel}</span>
-          </p>
+          {/* Coordinated financial figures: the fundraising goal keeps primary
+              prominence; the owner contribution is money already invested by
+              the owner, never added to the goal. */}
+          <div class="support-goal">
+            <p class="support-goal-row">
+              <span class="support-goal-amount">{s.hero.goalAmount}</span>
+              <span class="support-goal-label">{s.hero.goalLabel}</span>
+            </p>
+            <p class="support-goal-row support-goal-row--owner">
+              <span class="support-goal-amount support-goal-amount--owner">
+                {s.hero.ownerAmount}
+              </span>
+              <span class="support-goal-label">{s.hero.ownerLabel}</span>
+            </p>
+          </div>
           <div class="support-platforms support-hero-platforms">
             {
               platformActions.map((platform) => (
@@ -207,35 +218,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
       </div>
     </section>
 
-    <!-- ── 3. Personal investment ─────────────────────────────────────────── -->
-    <section class="section section--alt" aria-labelledby="support-investment-heading">
-      <div class="container">
-        <div class="section-heading">
-          <h2 id="support-investment-heading">{s.investment.heading}</h2>
-          <p class="support-investment-subheading">{s.investment.subheading}</p>
-        </div>
-        <div class="prose support-investment-copy">
-          {s.investment.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
-        <div class="support-investment-photos">
-          {
-            s.investment.photos.map((photo) => (
-              <figure>
-                <Image
-                  src={photo.image}
-                  alt={photo.alt}
-                  widths={[480, 800, 1200]}
-                  sizes="(min-width: 48em) 46vw, 92vw"
-                  loading="lazy"
-                />
-              </figure>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 4. Where your support would go (approved allocation) ───────────── -->
+    <!-- ── 3. Where your support would go (approved allocation) ───────────── -->
     <section class="section" id="use-of-funds" aria-labelledby="support-budget-heading">
       <div class="container">
         <div class="section-heading">
@@ -285,7 +268,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
       </div>
     </section>
 
-    <!-- ── 5. Other ways to help ──────────────────────────────────────────── -->
+    <!-- ── 4. Other ways to help ──────────────────────────────────────────── -->
     <section
       class="section section--alt support-other-ways"
       id="other-ways-to-help"
@@ -307,16 +290,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
                 <p>{item.text}</p>
                 <div class="cluster support-help-actions">
                   {item.actions.map((action) =>
-                    action.behavior === 'reviews' ? (
-                      <a
-                        class="support-help-action"
-                        href={business.reviewsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {action.label} <Icon name="arrow-right" size={15} />
-                      </a>
-                    ) : action.behavior === 'copy' ? (
+                    action.behavior === 'copy' ? (
                       <button type="button" class="support-help-action" data-copy-support>
                         {action.label} <Icon name="arrow-right" size={15} />
                       </button>
@@ -379,7 +353,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
       </div>
     </section>
 
-    <!-- ── 6. Short FAQ ───────────────────────────────────────────────────── -->
+    <!-- ── 5. Short FAQ ───────────────────────────────────────────────────── -->
     <section class="section" aria-labelledby="support-faq-heading">
       <div class="container container--narrow">
         <div class="section-heading">
