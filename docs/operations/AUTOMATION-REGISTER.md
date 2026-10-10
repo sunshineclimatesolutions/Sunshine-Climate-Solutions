@@ -132,7 +132,7 @@ deliberately. Script header comments document usage.
 
 ### B3. Brand and social image generation
 
-- `scripts/generate-brand-images.mjs` — regenerates `public/favicon.*`, `public/brand/icon-180.png`, `icon-192.png`, `icon-512.png`, `og-default.png` from approved `brand-source/` originals.
+- `scripts/generate-brand-images.mjs` — regenerates `public/favicon.*`, `public/brand/icon-180.png`, `icon-192.png`, `icon-512.png`, `og-default-2026-10.png` from approved `brand-source/` originals. The social-card filename is date-versioned on purpose: link-preview caches (iMessage, Facebook, LinkedIn, X) key on the image URL, so a card change must publish at a new filename and `src/components/BaseHead.astro` must be updated in the same change.
 - `scripts/generate-social-avatars.mjs` — generates `public/brand/social-avatar-400.png` / `-1024.png` from the approved mark.
 - `scripts/generate-service-area-map.mjs` — regenerates the county map SVGs from official U.S. Census geometry (outputs in `public/images/`).
 - `scripts/normalize-brand-logos.mjs` — brand-logo background normalization (historical maintenance utility).
