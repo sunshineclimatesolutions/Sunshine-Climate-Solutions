@@ -6,8 +6,9 @@
 # fundraiser URLs live in src/config/business.ts (fundraising) and are never
 # written here. The allocation below is owner-approved.
 # OWNER-AUTHORED COPY: the hero message and video description are the owner's
-# words. Only two mechanical corrections are permitted and applied:
-# "lead" -> "led" and "apart of" -> "a part of". Do not edit further.
+# words. The hero description was replaced 2026-10-10 with the owner-approved
+# proofread version (five paragraphs, same message and convictions). Do not
+# edit further.
 # Video strategy: business.fundraising.founderVideoUrl is the SHORT WEBSITE
 # INTRODUCTION only; the longer fundraiser presentation is a separate film.
 # See docs/marketing/SUPPORT-VIDEO-STRATEGY.md.
@@ -29,31 +30,38 @@ support:
     paragraphs:
       - >-
         The purpose of Sunshine Climate Solutions is to serve our community. In order to do
-        this there are many financial obligations and prerequisites that have led to the
-        owner dedicating nearly all of the money and time he has to making this dream a
-        reality.
+        this, there are many financial obligations and prerequisites that have led the owner
+        to dedicate nearly all of the money and time he has to making this dream a reality.
       - >-
-        The reality is our people deserve better than what the majority of the industry is
-        providing, many people recognize this and respect our mission and will attest to
-        difference between us and them. Getting our name out and having as many people see us
-        is integral to this, this requires more finances in the form of advertising and
-        marketing. being able to properly care for more customers requires more finances in
-        the form of truck stock, equipment, CRM etc. very soon we will be looking to
-        apprentice select members of our community to pass this character down, expand the
-        area of service and reduce wait times, this will also require finances etc. this is a
-        business and we will achieve these goals regardless, we're asking for the community
-        an opportunity to be a part of and show support for what we are doing through this
-        fundraiser.
+        The reality is that our people deserve better than what the majority of the industry
+        is providing. Many people recognize this, respect our mission, and will attest to the
+        difference between us and them.
+      - >-
+        Getting our name out and having as many people see us as possible is integral to this.
+        This requires more funding for advertising and marketing. Being able to properly care
+        for more customers requires more funding for truck stock, equipment, CRM, and other
+        operating needs.
+      - >-
+        Very soon, we will be looking to apprentice select members of our community to pass
+        this character down, expand our service area, and reduce wait times. This will also
+        require additional funding.
+      - >-
+        This is a business, and we will achieve these goals regardless. Through this
+        fundraiser, we're giving our community an opportunity to be a part of what we're
+        building and to support the work we're doing.
     goalAmount: $20,000
     goalLabel: Fundraising goal
     secondaryLinkLabel: Other Ways to Help
     secondaryLinkHref: '#other-ways-to-help'
     portrait:
-      image: ./images/owner-portrait.jpg
+      # Illustrative licensed photograph — Pexels License (free for commercial
+      # use): "Technician Inspecting Outdoor HVAC Unit" by Kathleen Austin Kuhn,
+      # Pexels photo 32497161. This is stock photography: never caption it as
+      # Aaron, as an SCS employee, or as SCS's own work.
+      image: ./images/technician-residential-service.jpg
       alt: >-
-        Aaron Thomas, founder and owner of Sunshine Climate Solutions, looking toward the
-        camera in front of a light-blue block wall.
-      caption: Aaron A. Thomas — Owner / Operator
+        A technician inspecting the top of an outdoor air-conditioning condenser beside a
+        home's white siding and a window in natural daylight.
   founderVideo:
     heading: A Brief Message from the Owner
     description: >-

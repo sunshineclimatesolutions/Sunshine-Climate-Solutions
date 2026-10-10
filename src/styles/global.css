@@ -2702,19 +2702,22 @@ body.nav-open {
   justify-items: start;
 }
 
-/* Coordinated two-row hero heading: kicker line (only "About" links to the
-   About page) above the main heading. Fluid sizes keep one row per line at
-   desktop widths; phones wrap naturally. */
+/* Coordinated two-row hero heading, centered above the text-and-image layout:
+   kicker line (only "About" links to the About page) above the main heading.
+   Fluid sizes keep one row per line at desktop widths (measured at the 1024px
+   content width); phones wrap naturally. */
 .support-hero-heading {
   display: grid;
+  justify-items: center;
   gap: 0.15em;
   margin: 0;
+  text-align: center;
 }
 
 .support-hero-heading-kicker {
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: clamp(1.3rem, 0.85rem + 1.5vw, 1.95rem);
+  font-size: clamp(1.55rem, 0.7rem + 2.52vw, 3rem);
   line-height: 1.15;
   color: var(--c-navy);
 }
@@ -2735,7 +2738,7 @@ body.nav-open {
 .support-hero-heading-main {
   font-family: var(--font-head);
   font-weight: 800;
-  font-size: clamp(1.8rem, 0.95rem + 2.1vw, 2.75rem);
+  font-size: clamp(1.9rem, 1rem + 2.42vw, 3.25rem);
   line-height: 1.08;
   color: var(--c-ink);
 }
@@ -2788,12 +2791,6 @@ body.nav-open {
   object-fit: cover;
   border-radius: var(--r-lg);
   border: 1px solid var(--c-line);
-}
-
-.support-hero-media figcaption {
-  margin-top: var(--sp-2xs);
-  font-size: var(--text-sm);
-  color: var(--c-ink-soft);
 }
 
 /* ── Founder story — editorial composition (photo + short copy) ─────────── */

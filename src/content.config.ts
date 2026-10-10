@@ -517,7 +517,7 @@ const site = defineCollection({
           goalLabel: z.string(),
           secondaryLinkLabel: z.string(),
           secondaryLinkHref: z.string(),
-          portrait: z.object({ image: image(), alt: z.string(), caption: z.string() }),
+          portrait: z.object({ image: image(), alt: z.string() }),
         }),
         founderVideo: z.object({
           heading: z.string(),
