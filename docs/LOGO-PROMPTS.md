@@ -10,8 +10,9 @@ approved **Logo 2** (bold, angular navy SCS letters with a horizontal gold strip
   `brand-source/logo-dark-full.png`, `brand-source/logo-light-full.png`.
 - Website assets: `public/brand/logo-dark.png`, `public/brand/logo-light.png` (331×96),
   `public/favicon.svg`, `public/brand/icon-180.png`, `public/brand/icon-512.png`,
-  `public/brand/og-default-2026-10.png` (date-versioned social card — bump the
-  filename and `src/components/BaseHead.astro` together when the card changes).
+  `public/brand/og-coverphoto-2026-10.jpg` (date-versioned social card built from the
+  owner's coverphoto artwork — bump the filename and `src/components/BaseHead.astro`
+  together when the card changes).
 - Regenerate display assets: `node scripts/generate-brand-images.mjs`.
 - Google review QR (destination in `business.reviewsSubmissionUrl`):
   `public/brand/qr-review.svg` / `.png` / `-print.png` — regenerate + decode-verify with
