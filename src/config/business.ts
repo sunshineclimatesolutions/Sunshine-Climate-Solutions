@@ -83,12 +83,16 @@ export const business = {
     gofundme:
       'https://www.gofundme.com/f/building-an-hvac-company-on-faith-heritage-integrity',
     givesendgo: 'https://www.givesendgo.com/support-american-hvac-in-our-communities',
-    // Optional founder video (YouTube). Leave EMPTY until the owner supplies an
-    // approved public URL. Until then the support page shows a designed
-    // placeholder. Once set to a normal YouTube watch/share link, it becomes a
-    // privacy-enhanced click-to-play embed (youtube-nocookie) that loads only
-    // when the visitor presses play — never a fake video, empty shell or
-    // arbitrary third-party iframe.
+    // Optional founder video (YouTube). This field is ONLY the SHORT WEBSITE
+    // INTRODUCTION (approx. 45–75 s) embedded on the /support/ page — see
+    // docs/marketing/SUPPORT-VIDEO-STRATEGY.md. The longer fundraiser
+    // presentation (approx. 2–3 min) is a separate film used on GoFundMe and
+    // GiveSendGo and is never configured here. Leave EMPTY until the owner
+    // supplies an approved public URL; until then the support page shows the
+    // designed "Coming Soon" placeholder (no image, no play control). Once set
+    // to a normal YouTube watch/share link it becomes a privacy-enhanced
+    // click-to-play embed (youtube-nocookie) that loads only when the visitor
+    // presses play — never a fake video, empty shell or arbitrary iframe.
     founderVideoUrl: '',
   },
 

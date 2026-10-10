@@ -11,6 +11,11 @@
 // no service-funnel CTAs on this page beyond the normal site chrome. Photo
 // captions describe only what each photograph shows. The allocation is
 // owner-approved.
+//
+// Video: business.fundraising.founderVideoUrl holds the SHORT WEBSITE
+// INTRODUCTION only (45–75 s). The longer fundraiser presentation is a
+// separate film for the fundraising platforms — see
+// docs/marketing/SUPPORT-VIDEO-STRATEGY.md. The placeholder shows no image.
 import { getEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -37,6 +42,27 @@ if (founderVideoUrl && !founderVideoEmbedUrl) {
   );
 }
 
+// The two authorized platform actions, reused in the hero and in the compact
+// repeat after "Other Ways to Help".
+const platformActions = [
+  {
+    key: 'givesendgo',
+    href: givesendgo,
+    label: 'Support on GiveSendGo',
+    logo: '/images/givesendgo-logo.png',
+    width: 573,
+    height: 120,
+  },
+  {
+    key: 'gofundme',
+    href: gofundme,
+    label: 'Support on GoFundMe',
+    logo: '/images/gofundme-logo.webp',
+    width: 349,
+    height: 120,
+  },
+];
+
 const total = s.budget.items.reduce((sum, item) => sum + item.amount, 0);
 const fmt = (amount: number) => `$${amount.toLocaleString('en-US')}`;
 // Exact percentage to one decimal (×1000/10 avoids binary rounding noise).
@@ -46,11 +72,15 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
 
 <BaseLayout title={title} description={description} noindex={true}>
   <div class="support-page">
-    <!-- ── 1. Hero: the founder's message + the fundraising goal ──────────── -->
+    <!-- ── 1. Hero: the owner's message + the fundraising goal ────────────── -->
     <section class="support-hero">
       <div class="container support-hero-inner">
         <div class="support-hero-copy">
-          <p class="eyebrow">{s.hero.eyebrow}</p>
+          <p class="support-hero-eyebrow">
+            <a class="support-hero-eyebrow-link" href={s.hero.eyebrowLinkHref}>
+              {s.hero.eyebrowLinkLabel} <Icon name="arrow-right" size={15} />
+            </a>
+          </p>
           <h1>{s.hero.heading}</h1>
           {s.hero.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
           <p class="support-goal">
@@ -58,78 +88,48 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             <span class="support-goal-label">{s.hero.goalLabel}</span>
           </p>
           <div class="support-platforms support-hero-platforms">
-            <a
-              class="support-platform"
-              href={givesendgo}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-support-platform="givesendgo"
-              aria-label={s.invitation.givesendgo.ctaLabel}
-            >
-              <img
-                class="support-platform-mark"
-                src="/images/givesendgo-logo.png"
-                alt=""
-                width="573"
-                height="120"
-                loading="lazy"
-              />
-              <svg
-                class="support-external-icon"
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-            <a
-              class="support-platform"
-              href={gofundme}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-support-platform="gofundme"
-              aria-label={s.invitation.gofundme.ctaLabel}
-            >
-              <img
-                class="support-platform-mark"
-                src="/images/gofundme-logo.webp"
-                alt=""
-                width="349"
-                height="120"
-                loading="lazy"
-              />
-              <svg
-                class="support-external-icon"
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
+            {
+              platformActions.map((platform) => (
+                <a
+                  class="support-platform"
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-support-platform={platform.key}
+                  aria-label={platform.label}
+                >
+                  <img
+                    class="support-platform-mark"
+                    src={platform.logo}
+                    alt=""
+                    width={platform.width}
+                    height={platform.height}
+                    loading="lazy"
+                  />
+                  <svg
+                    class="support-external-icon"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+              ))
+            }
           </div>
           <p class="support-hero-secondary">
-            <a href="#use-of-funds">
-              See How the Funds Will Be Used <Icon name="arrow-right" size={16} />
+            <a href={s.hero.secondaryLinkHref}>
+              {s.hero.secondaryLinkLabel} <Icon name="arrow-right" size={16} />
             </a>
           </p>
         </div>
@@ -141,27 +141,26 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             sizes="(min-width: 56em) 38vw, 92vw"
             loading="eager"
             fetchpriority="high"
+            style="object-position: 42% 18%"
           />
           <figcaption>{s.hero.portrait.caption}</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ── 2. Founder video — directly beneath the hero ───────────────────── -->
+    <!-- ── 2. Owner video — directly beneath the hero ─────────────────────── -->
     {
-      /* Founder video: set business.fundraising.founderVideoUrl in
-         src/config/business.ts to the approved public YouTube watch/share link.
-         This section then switches automatically from the designed placeholder
-         (real field photograph, no play affordance) to a privacy-enhanced
-         click-to-load embed (youtube-nocookie), loaded only when the visitor
-         presses play. No change is needed in this file or in support.md.
-         Non-YouTube values fail closed to the placeholder. */
+      /* Owner video: business.fundraising.founderVideoUrl holds the approved
+         SHORT WEBSITE INTRODUCTION only. When configured, this section switches
+         from the designed "Coming Soon" frame (no image, no play control) to a
+         privacy-enhanced click-to-load embed (youtube-nocookie), loaded only
+         when the visitor presses play. Non-YouTube values fail closed. */
     }
     <section class="support-video-section" aria-labelledby="support-video-heading">
       <div class="container container--narrow">
         <div class="section-heading">
           <h2 id="support-video-heading">{s.founderVideo.heading}</h2>
-          {!founderVideoEmbedUrl && <p class="lead">{s.founderVideo.placeholder}</p>}
+          <p class="lead">{s.founderVideo.description}</p>
         </div>
         {
           founderVideoEmbedUrl ? (
@@ -173,13 +172,6 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
               data-cta="support-founder-video"
               aria-label="Watch the founder video"
             >
-              <Image
-                src={s.founderVideo.photo.image}
-                alt={s.founderVideo.photo.alt}
-                widths={[480, 800, 1200]}
-                sizes="(min-width: 48em) 46vw, 92vw"
-                loading="lazy"
-              />
               <span class="support-video-overlay">
                 <span class="support-video-play" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" focusable="false">
@@ -190,49 +182,32 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
               </span>
             </button>
           ) : (
-            <figure class="support-video-figure">
-              <div class="support-video-frame">
-                <Image
-                  src={s.founderVideo.photo.image}
-                  alt={s.founderVideo.photo.alt}
-                  widths={[480, 800, 1200]}
-                  sizes="(min-width: 48em) 46vw, 92vw"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption class="support-video-note">{s.founderVideo.pending}</figcaption>
-            </figure>
+            <div class="support-video-frame support-video-frame--pending">
+              <p class="support-video-pending">{s.founderVideo.pending}</p>
+              <svg
+                class="support-video-camera-off"
+                viewBox="0 0 24 24"
+                width="46"
+                height="46"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M4 7h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" />
+                <path d="M15 10.5 21 7.5v9l-6-3" />
+                <line x1="3" y1="3" x2="21" y2="21" />
+              </svg>
+            </div>
           )
         }
       </div>
     </section>
 
-    <!-- ── 3. Founder story — editorial composition ───────────────────────── -->
-    <section class="section" aria-labelledby="support-story-heading">
-      <div class="container">
-        <div class="support-story">
-          <figure class="support-story-media">
-            <Image
-              src={s.story.photo.image}
-              alt={s.story.photo.alt}
-              widths={[480, 800, 1200]}
-              sizes="(min-width: 48em) 42vw, 92vw"
-              loading="lazy"
-            />
-          </figure>
-          <div class="support-story-copy">
-            <div class="section-heading">
-              <h2 id="support-story-heading">{s.story.heading}</h2>
-            </div>
-            <div class="prose">
-              {s.story.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 4. Personal investment ─────────────────────────────────────────── -->
+    <!-- ── 3. Personal investment ─────────────────────────────────────────── -->
     <section class="section section--alt" aria-labelledby="support-investment-heading">
       <div class="container">
         <div class="section-heading">
@@ -260,7 +235,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
       </div>
     </section>
 
-    <!-- ── 5. Where your support would go (approved allocation) ───────────── -->
+    <!-- ── 4. Where your support would go (approved allocation) ───────────── -->
     <section class="section" id="use-of-funds" aria-labelledby="support-budget-heading">
       <div class="container">
         <div class="section-heading">
@@ -297,7 +272,6 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             {
               s.budget.priorities.map((priority) => (
                 <div class="support-priority">
-                  <p class="support-priority-amount">{priority.amount}</p>
                   <h3>{priority.title}</h3>
                   <p>{priority.text}</p>
                 </div>
@@ -311,98 +285,101 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
       </div>
     </section>
 
-    <!-- ── 6. Final support invitation ────────────────────────────────────── -->
-    <section class="section section--alt" aria-labelledby="support-invitation-heading">
-      <div class="container container--narrow">
+    <!-- ── 5. Other ways to help ──────────────────────────────────────────── -->
+    <section
+      class="section section--alt support-other-ways"
+      id="other-ways-to-help"
+      aria-labelledby="support-other-ways-heading"
+    >
+      <div class="container">
         <div class="section-heading">
-          <h2 id="support-invitation-heading">{s.invitation.heading}</h2>
-          {s.invitation.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
+          <h2 id="support-other-ways-heading">{s.otherWays.heading}</h2>
+          <p class="lead">{s.otherWays.lead}</p>
         </div>
-        {
-          /* Owner-authorized platform marks (2026-10-09): trimmed copies of the
-             owner-supplied GoFundMe and GiveSendGo wordmarks, stored locally in
-             public/images/ and used on the fundraising actions only. */
-        }
-        <div class="support-platforms">
-          <a
-            class="support-platform"
-            href={givesendgo}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-support-platform="givesendgo"
-            aria-label={s.invitation.givesendgo.ctaLabel}
-          >
-            <img
-              class="support-platform-mark"
-              src="/images/givesendgo-logo.png"
-              alt=""
-              width="573"
-              height="120"
-              loading="lazy"
-            />
-            <svg
-              class="support-external-icon"
-              viewBox="0 0 24 24"
-              width="16"
-              height="16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-          <a
-            class="support-platform"
-            href={gofundme}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-support-platform="gofundme"
-            aria-label={s.invitation.gofundme.ctaLabel}
-          >
-            <img
-              class="support-platform-mark"
-              src="/images/gofundme-logo.webp"
-              alt=""
-              width="349"
-              height="120"
-              loading="lazy"
-            />
-            <svg
-              class="support-external-icon"
-              viewBox="0 0 24 24"
-              width="16"
-              height="16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-        </div>
-        <div class="cluster support-share-row">
-          <button type="button" class="btn btn--outline-navy" data-share-support>
-            Share This Page
-          </button>
-        </div>
+        <ul class="support-help-options">
+          {
+            s.otherWays.items.map((item) => (
+              <li class="support-help-card">
+                <span class="support-help-icon">
+                  <Icon name={item.icon} />
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <div class="cluster support-help-actions">
+                  {item.actions.map((action) =>
+                    action.behavior === 'reviews' ? (
+                      <a
+                        class="support-help-action"
+                        href={business.reviewsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {action.label} <Icon name="arrow-right" size={15} />
+                      </a>
+                    ) : action.behavior === 'copy' ? (
+                      <button type="button" class="support-help-action" data-copy-support>
+                        {action.label} <Icon name="arrow-right" size={15} />
+                      </button>
+                    ) : action.behavior === 'share' ? (
+                      <button type="button" class="support-help-action" data-share-support>
+                        {action.label} <Icon name="arrow-right" size={15} />
+                      </button>
+                    ) : (
+                      <a class="support-help-action" href={action.href}>
+                        {action.label} <Icon name="arrow-right" size={15} />
+                      </a>
+                    ),
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
         <p class="support-share-status" data-share-status role="status" aria-live="polite"></p>
+        <div class="support-platforms support-ways-repeat">
+          {
+            platformActions.map((platform) => (
+              <a
+                class="support-platform"
+                href={platform.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-support-platform={platform.key}
+                aria-label={platform.label}
+              >
+                <img
+                  class="support-platform-mark"
+                  src={platform.logo}
+                  alt=""
+                  width={platform.width}
+                  height={platform.height}
+                  loading="lazy"
+                />
+                <svg
+                  class="support-external-icon"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
       </div>
     </section>
 
-    <!-- ── 7. Short FAQ ───────────────────────────────────────────────────── -->
+    <!-- ── 6. Short FAQ ───────────────────────────────────────────────────── -->
     <section class="section" aria-labelledby="support-faq-heading">
       <div class="container container--narrow">
         <div class="section-heading">
@@ -421,19 +398,41 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
     </section>
   </div>
 
-  <!-- Share: native Web Share API, clipboard fallback. No SDKs, no trackers,
-       no personal data; the canonical clean URL is shared. -->
+  <!-- Share / copy: native Web Share API with clipboard fallbacks. No SDKs, no
+       trackers, no personal data; the canonical clean URL is shared or copied. -->
   <script is:inline>
     (function () {
       var statusNodes = document.querySelectorAll('[data-share-status]');
       function announce(message) {
         for (var i = 0; i < statusNodes.length; i++) statusNodes[i].textContent = message;
       }
+      function canonicalUrl() {
+        var canonical = document.querySelector('link[rel="canonical"]');
+        return canonical ? canonical.href : window.location.href;
+      }
+      function copyUrl() {
+        var url = canonicalUrl();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(
+            function () {
+              announce('Campaign link copied to your clipboard.');
+            },
+            function () {
+              announce('Copy this link: ' + url);
+            },
+          );
+          return;
+        }
+        announce('Copy this link: ' + url);
+      }
       document.addEventListener('click', function (event) {
+        if (event.target.closest('[data-copy-support]')) {
+          copyUrl();
+          return;
+        }
         var button = event.target.closest('[data-share-support]');
         if (!button) return;
-        var canonical = document.querySelector('link[rel="canonical"]');
-        var url = canonical ? canonical.href : window.location.href;
+        var url = canonicalUrl();
         var shareData = {
           title: document.title,
           text: 'Sunshine Climate Solutions is already operating — this campaign funds its next stage of growth.',
@@ -450,26 +449,15 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
           );
           return;
         }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(url).then(
-            function () {
-              announce('Campaign link copied to your clipboard.');
-            },
-            function () {
-              announce('Copy this link: ' + url);
-            },
-          );
-          return;
-        }
-        announce('Copy this link: ' + url);
+        copyUrl();
       });
     })();
   </script>
 
-  <!-- Founder video: swap the play frame for the privacy-enhanced YouTube embed
-       only when the visitor presses play — no third-party request before that,
-       and only ever a youtube-nocookie embed URL rendered by the build. The
-       script is emitted only when a valid video URL is configured. -->
+  <!-- Founder video: swap the frame for the privacy-enhanced YouTube embed only
+       when the visitor presses play — no third-party request before that, and
+       only ever a youtube-nocookie embed URL rendered by the build. The script
+       is emitted only when a valid video URL is configured. -->
   {
     founderVideoEmbedUrl && (
       <script is:inline>

@@ -4,8 +4,13 @@
 # progress, donor counts, testimonials, or outcomes; never imply tax
 # deductibility, equity, repayment, service credit, or investment returns;
 # fundraiser URLs live in src/config/business.ts (fundraising) and are never
-# written here. Photo captions describe only what each photograph actually
-# shows. The allocation below is owner-approved.
+# written here. The allocation below is owner-approved.
+# OWNER-AUTHORED COPY: the hero message and video description are the owner's
+# words. Only two mechanical corrections are permitted and applied:
+# "lead" -> "led" and "apart of" -> "a part of". Do not edit further.
+# Video strategy: business.fundraising.founderVideoUrl is the SHORT WEBSITE
+# INTRODUCTION only; the longer fundraiser presentation is a separate film.
+# See docs/marketing/SUPPORT-VIDEO-STRATEGY.md.
 metaTitle: Support the Growth of Sunshine Climate Solutions
 metaDescription: >-
   Sunshine Climate Solutions is already operating. See what the founder has built, why the
@@ -13,64 +18,45 @@ metaDescription: >-
 
 support:
   hero:
-    eyebrow: A PERSONAL MESSAGE FROM AARON A. THOMAS
-    heading: I'm building an HVAC company I'd trust with my own family's home.
+    eyebrowLinkLabel: Like What We're About?
+    eyebrowLinkHref: /about/
+    heading: Help Us Further Serve Our Community
     paragraphs:
       - >-
-        My name is Aaron A. Thomas. I was born and raised in Tampa Bay, and HVAC is a trade I
-        genuinely love. What I don't love is watching families pushed toward expensive
-        decisions before anyone takes the time to properly diagnose the problem.
+        The purpose of Sunshine Climate Solutions is to serve our community. In order to do
+        this there are many financial obligations and prerequisites that have led to the
+        owner dedicating nearly all of the money and time he has to making this dream a
+        reality.
       - >-
-        That's part of what led me to start Sunshine Climate Solutions. I want to do good
-        work, treat people like neighbors, and eventually help others learn the trade the
-        right way.
-      - >-
-        I'm raising $20,000 to help strengthen the business, maintain its qualifying
-        arrangement, keep essential parts on hand, and make room for the next stage of
-        growth.
+        The reality is our people deserve better than what the majority of the industry is
+        providing, many people recognize this and respect our mission and will attest to
+        difference between us and them. Getting our name out and having as many people see us
+        is integral to this, this requires more finances in the form of advertising and
+        marketing. being able to properly care for more customers requires more finances in
+        the form of truck stock, equipment, CRM etc. very soon we will be looking to
+        apprentice select members of our community to pass this character down, expand the
+        area of service and reduce wait times, this will also require finances etc. this is a
+        business and we will achieve these goals regardless, we're asking for the community
+        an opportunity to be a part of and show support for what we are doing through this
+        fundraiser.
     goalAmount: $20,000
     goalLabel: Fundraising goal
+    secondaryLinkLabel: Other Ways to Help
+    secondaryLinkHref: '#other-ways-to-help'
     portrait:
-      image: ./images/owner-headshot.jpg
-      alt: Portrait of Aaron A. Thomas, founder and owner-operator of Sunshine Climate Solutions.
+      image: ./images/owner-field-portrait.jpg
+      alt: >-
+        Aaron Thomas holding field equipment beneath a unit on a sunny day, wearing a navy
+        American-flag shirt.
       caption: Aaron A. Thomas — Owner / Operator
   founderVideo:
-    heading: A Message From Aaron
-    placeholder: >-
-      I'm putting together a short video to share more about this company, where it's
-      headed, and why I'm asking for your support.
-    pending: Video coming soon.
-    photo:
-      image: ./images/bottling-factory-field-visit.jpg
-      alt: >-
-        The owner in a high-visibility vest walking a commercial bottling facility production
-        line during a field visit.
-  story:
-    heading: More Than Just Running a Business
-    paragraphs:
-      - >-
-        Before getting into HVAC, I spent several years tutoring people working toward their
-        GED. Teaching has always been something I've enjoyed, and that hasn't changed since
-        entering the trade.
-      - >-
-        There's a lot of satisfaction in helping somebody understand something they didn't
-        before. Whether that's a homeowner trying to make sense of an AC problem or a young
-        technician learning the trade, I genuinely enjoy that part of the work.
-      - >-
-        My Christian faith, European heritage, and the traditional American values I grew up
-        admiring have a lot to do with the standards I hold myself to. Good workmanship,
-        keeping your word, treating people with respect, and looking out for your neighbors
-        still mean something to me.
-      - >-
-        My hope is that Sunshine Climate Solutions grows into more than a company that
-        repairs and installs air conditioners. I want to build a place where people can
-        learn, earn a good living, and take pride in what they do — while making a positive
-        difference in the community that raised me.
-    photo:
-      image: ./images/nitrogen-purge-during-brazing.jpg
-      alt: >-
-        Nitrogen purge flowing through refrigerant lines during brazing, verified at a flow
-        indicator.
+    heading: A Brief Message from the Owner
+    description: >-
+      For a deeper conversation with Aaron about who he is, what the long-term goals of SCS
+      are, who we are as a small business, why we are asking for community support and how
+      financial donations will be used, please watch this video and then head to either
+      fundraiser in one of the links above (GiveSendGo/GoFundMe).
+    pending: Coming Soon
   investment:
     heading: My Investment Into Our Community
     subheading: Approximately $25,000 Personally Invested in SCS.
@@ -85,17 +71,12 @@ support:
         business. The goal is to build a lasting company that delivers exceptional work,
         creates opportunities for others, and makes a meaningful difference here at home.
     photos:
-      - image: ./images/work-truck.jpg
+      - image: ./images/service-truck-oaks.jpg
         alt: >-
-          The SCS service truck, a white Ram 2500 with company graphics, parked under Florida
-          oaks.
-      - image: ./images/static-pressure-display.jpg
+          The company's white Ram 2500 service truck parked under Florida oaks.
+      - image: ./images/commercial-rooftop-exhaust.jpg
         alt: >-
-          Alnor digital manometer displaying a reading of -0.0439 inches of water column.
-      - image: ./images/brazed-lineset-detail.jpg
-        alt: >-
-          Close view of brazed copper refrigerant lines, a filter-drier and a compressor
-          inside an outdoor unit.
+          Rooftop commercial exhaust equipment and ductwork under a blue Florida sky.
   budget:
     heading: Where Your Support Would Go
     paragraphs:
@@ -124,14 +105,11 @@ support:
         amount: 1000
     priorities:
       - title: Keep the Business Properly Qualified
-        amount: $7,500
         text: >-
           Approximately $7,500 planned for six months of the existing qualifying arrangement.
       - title: Be Prepared When Customers Call
-        amount: $4,000
         text: $4,000 planned for service inventory and job materials.
       - title: Create Room to Grow
-        amount: $6,500
         text: $6,500 combined for operating reserves and local customer acquisition.
     remainingNote: The remaining $2,000 supports field readiness and diagnostic-equipment reserves.
     outcomesNote: >-
@@ -140,24 +118,54 @@ support:
       Figures represent planned uses of campaign proceeds and may change with actual business
       needs. The qualifying-arrangement cost is a current estimate. Payment-processing fees
       reduce the amount received.
-  invitation:
-    heading: If You'd Like to Be Part of This, I'd Be Grateful.
-    paragraphs:
-      - >-
-        This business means a great deal to me, and I'm proud of what I've been able to build
-        so far. There's still plenty of work ahead, but I'm excited about it.
-      - >-
-        If you'd like to help Sunshine Climate Solutions grow, you can contribute through
-        either fundraising platform below. And if contributing isn't something you're in a
-        position to do, sharing this page, referring a customer, or choosing us when you
-        need HVAC work means a great deal too.
-      - Thank you for taking an interest in what I'm building.
-    givesendgo:
-      name: GiveSendGo
-      ctaLabel: Support on GiveSendGo
-    gofundme:
-      name: GoFundMe
-      ctaLabel: Support on GoFundMe
+  otherWays:
+    heading: Other Ways to Help
+    lead: >-
+      We understand that not everyone is in a position to contribute financially. There are
+      other ways to support Sunshine Climate Solutions and help more people in our community
+      find us.
+    items:
+      - icon: star
+        title: Leave an Honest Review
+        text: >-
+          If we've provided HVAC service for you, an honest Google review can help other
+          people learn about our business. Including photographs of the work, when you're
+          comfortable sharing them, can be especially helpful.
+        actions:
+          - label: Leave a Google Review
+            href: /leave-review/
+            behavior: link
+          - label: Read Our Reviews
+            behavior: reviews
+      - icon: wrench
+        title: Choose Sunshine Climate Solutions
+        text: >-
+          One of the most direct ways to support our growth is to choose us when you need
+          HVAC service, maintenance, installation, or commercial work.
+        actions:
+          - label: Explore Our Services
+            href: /services/
+            behavior: link
+          - label: Request Service
+            href: /contact/
+            behavior: link
+      - icon: users
+        title: Recommend Us to Someone
+        text: >-
+          Know someone who could use our services? Referring a friend, family member,
+          neighbor, or business helps us reach people we might not otherwise have the
+          opportunity to serve.
+        actions:
+          - label: Copy Page Link
+            behavior: copy
+      - icon: share
+        title: Share Our Fundraiser
+        text: >-
+          Even sharing this page can help introduce Sunshine Climate Solutions to someone
+          who believes in what we're building.
+        actions:
+          - label: Share This Page
+            behavior: share
   faqs:
     - question: Is SCS already operating?
       answer: >-

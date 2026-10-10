@@ -505,23 +505,20 @@ const site = defineCollection({
     support: z
       .object({
         hero: z.object({
-          eyebrow: z.string(),
+          eyebrowLinkLabel: z.string(),
+          eyebrowLinkHref: z.string(),
           heading: z.string(),
           paragraphs: z.array(z.string()),
           goalAmount: z.string(),
           goalLabel: z.string(),
+          secondaryLinkLabel: z.string(),
+          secondaryLinkHref: z.string(),
           portrait: z.object({ image: image(), alt: z.string(), caption: z.string() }),
         }),
         founderVideo: z.object({
           heading: z.string(),
-          placeholder: z.string(),
+          description: z.string(),
           pending: z.string(),
-          photo: z.object({ image: image(), alt: z.string() }),
-        }),
-        story: z.object({
-          heading: z.string(),
-          paragraphs: z.array(z.string()),
-          photo: z.object({ image: image(), alt: z.string() }),
         }),
         investment: z.object({
           heading: z.string(),
@@ -535,16 +532,28 @@ const site = defineCollection({
           allocationLabel: z.string(),
           totalLabel: z.string(),
           items: z.array(z.object({ label: z.string(), amount: z.number().int().positive() })),
-          priorities: z.array(z.object({ title: z.string(), amount: z.string(), text: z.string() })),
+          priorities: z.array(z.object({ title: z.string(), text: z.string() })),
           remainingNote: z.string(),
           outcomesNote: z.string(),
           disclosure: z.string(),
         }),
-        invitation: z.object({
+        otherWays: z.object({
           heading: z.string(),
-          paragraphs: z.array(z.string()),
-          givesendgo: z.object({ name: z.string(), ctaLabel: z.string() }),
-          gofundme: z.object({ name: z.string(), ctaLabel: z.string() }),
+          lead: z.string(),
+          items: z.array(
+            z.object({
+              icon: siteIconEnum,
+              title: z.string(),
+              text: z.string(),
+              actions: z.array(
+                z.object({
+                  label: z.string(),
+                  href: z.string().optional(),
+                  behavior: z.enum(['link', 'reviews', 'copy', 'share']).default('link'),
+                }),
+              ),
+            }),
+          ),
         }),
         faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
       })
