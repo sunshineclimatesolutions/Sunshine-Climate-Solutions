@@ -75,13 +75,14 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
     <!-- ── 1. Hero: the owner's message + the fundraising goal ────────────── -->
     <section class="support-hero">
       <div class="container support-hero-inner">
+        {/* Coordinated two-row heading: kicker with only "About" as a link, then
+            the main heading. Keep the expressions adjacent — the spacing around
+            the link is deliberate (no whitespace before the "?"). */}
+        <h1 class="support-hero-heading">
+          <span class="support-hero-heading-kicker">{s.hero.headingKicker.before}<a class="support-hero-heading-link" href={s.hero.headingKicker.linkHref}>{s.hero.headingKicker.linkLabel}</a>{s.hero.headingKicker.after}</span>
+          <span class="support-hero-heading-main">{s.hero.heading}</span>
+        </h1>
         <div class="support-hero-copy">
-          <p class="support-hero-eyebrow">
-            <a class="support-hero-eyebrow-link" href={s.hero.eyebrowLinkHref}>
-              {s.hero.eyebrowLinkLabel} <Icon name="arrow-right" size={15} />
-            </a>
-          </p>
-          <h1>{s.hero.heading}</h1>
           {s.hero.paragraphs.map((paragraph) => <p class="lead">{paragraph}</p>)}
           <p class="support-goal">
             <span class="support-goal-amount">{s.hero.goalAmount}</span>
@@ -141,7 +142,7 @@ const fmtShare = (share: number) => `${Number.isInteger(share) ? share : share.t
             sizes="(min-width: 56em) 38vw, 92vw"
             loading="eager"
             fetchpriority="high"
-            style="object-position: 42% 18%"
+            style="object-position: 50% 25%"
           />
           <figcaption>{s.hero.portrait.caption}</figcaption>
         </figure>

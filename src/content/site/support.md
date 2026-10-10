@@ -18,8 +18,13 @@ metaDescription: >-
 
 support:
   hero:
-    eyebrowLinkLabel: Like What We're About?
-    eyebrowLinkHref: /about/
+    # Two-row coordinated heading: row 1 with only "About" as a link, row 2 the
+    # main heading. "before" keeps its trailing space.
+    headingKicker:
+      before: "Like What We're "
+      linkLabel: About
+      linkHref: /about/
+      after: "?"
     heading: Help Us Further Serve Our Community
     paragraphs:
       - >-
@@ -44,10 +49,10 @@ support:
     secondaryLinkLabel: Other Ways to Help
     secondaryLinkHref: '#other-ways-to-help'
     portrait:
-      image: ./images/owner-field-portrait.jpg
+      image: ./images/owner-portrait.jpg
       alt: >-
-        Aaron Thomas holding field equipment beneath a unit on a sunny day, wearing a navy
-        American-flag shirt.
+        Aaron Thomas, founder and owner of Sunshine Climate Solutions, looking toward the
+        camera in front of a light-blue block wall.
       caption: Aaron A. Thomas — Owner / Operator
   founderVideo:
     heading: A Brief Message from the Owner
@@ -71,12 +76,14 @@ support:
         business. The goal is to build a lasting company that delivers exceptional work,
         creates opportunities for others, and makes a meaningful difference here at home.
     photos:
-      - image: ./images/service-truck-oaks.jpg
+      - image: ./images/field-service-manifold-gauges.jpg
         alt: >-
-          The company's white Ram 2500 service truck parked under Florida oaks.
-      - image: ./images/commercial-rooftop-exhaust.jpg
+          Professional digital manifold gauges connected to a running outdoor unit during a
+          field service call.
+      - image: ./images/package-unit-install.jpg
         alt: >-
-          Rooftop commercial exhaust equipment and ductwork under a blue Florida sky.
+          A newly installed package unit and its duct connection set in place on a gravel pad
+          beside a home.
   budget:
     heading: Where Your Support Would Go
     paragraphs:

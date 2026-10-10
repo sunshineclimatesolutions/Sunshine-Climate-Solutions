@@ -505,8 +505,12 @@ const site = defineCollection({
     support: z
       .object({
         hero: z.object({
-          eyebrowLinkLabel: z.string(),
-          eyebrowLinkHref: z.string(),
+          headingKicker: z.object({
+            before: z.string(),
+            linkLabel: z.string(),
+            linkHref: z.string(),
+            after: z.string(),
+          }),
           heading: z.string(),
           paragraphs: z.array(z.string()),
           goalAmount: z.string(),

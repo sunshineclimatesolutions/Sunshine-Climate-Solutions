@@ -2685,8 +2685,14 @@ body.nav-open {
 @media (min-width: 56em) {
   .support-hero-inner {
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: var(--sp-xl);
+    gap: var(--sp-lg) var(--sp-xl);
     align-items: center;
+  }
+
+  /* Full-width heading row above the copy + portrait columns so each heading
+     line spans the widest available measure and stays a single row. */
+  .support-hero-heading {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2696,32 +2702,41 @@ body.nav-open {
   justify-items: start;
 }
 
-/* Integrated hero eyebrow link ("Like What We're About?") */
-.support-hero-eyebrow {
+/* Coordinated two-row hero heading: kicker line (only "About" links to the
+   About page) above the main heading. Fluid sizes keep one row per line at
+   desktop widths; phones wrap naturally. */
+.support-hero-heading {
+  display: grid;
+  gap: 0.15em;
   margin: 0;
 }
 
-.support-hero-eyebrow-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid var(--c-gold);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: var(--text-sm);
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+.support-hero-heading-kicker {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 0.85rem + 1.5vw, 1.95rem);
+  line-height: 1.15;
   color: var(--c-navy);
-  text-decoration: none;
 }
 
-.support-hero-eyebrow-link:hover {
+.support-hero-heading-link {
+  font-style: italic;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--c-gold);
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.13em;
+}
+
+.support-hero-heading-link:hover {
   color: var(--c-navy-deep);
 }
 
-.support-hero h1 {
-  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+.support-hero-heading-main {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 0.95rem + 2.1vw, 2.75rem);
+  line-height: 1.08;
   color: var(--c-ink);
 }
 
